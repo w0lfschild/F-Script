@@ -61,6 +61,15 @@
 #import <WebKit/WebKit.h>
 #import <WebKit/WebJavaPlugIn.h>
 //#import <XgridFoundation/XgridFoundation.h>
+#import <EventKit/EventKit.h>
+#import <Accounts/Accounts.h>
+#import <AudioVideoBridging/AudioVideoBridging.h>
+#import <GameKit/GameKit.h>
+#import <GLKit/GLKit.h>
+#import <SceneKit/SceneKit.h>
+#import <Social/Social.h>
+#import <VideoToolbox/VideoToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import "Number_fscript.h"
 #import "FSBoolean.h"

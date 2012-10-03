@@ -975,7 +975,6 @@
 		8F90A2F6096DB0660064F4BC /* FSBlockCompilationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */; };
 		8F90A2F7096DB0660064F4BC /* FSBlockCompilationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F90A2EF096DB0660064F4BC /* FSBlockCompilationResult.h */; };
 		8F90A2F8096DB0660064F4BC /* FSBlockCompilationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */; };
-		8F913FB80BDB8F9F001685EA /* InterfaceBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F913FB70BDB8F9F001685EA /* InterfaceBuilderKit.framework */; };
 		8F913FD20BDB92EE001685EA /* FScriptIBPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F913FD00BDB92EE001685EA /* FScriptIBPlugin.m */; };
 		8F913FDC0BDB92FC001685EA /* FScriptIBPluginInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F913FD50BDB92FC001685EA /* FScriptIBPluginInspector.m */; };
 		8F913FDF0BDB92FC001685EA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F913FD90BDB92FC001685EA /* Info.plist */; };
@@ -1192,6 +1191,15 @@
 		8FE9AE9407807269005B2CC4 /* FSObjectPointerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE9AE8207807269005B2CC4 /* FSObjectPointerPrivate.h */; };
 		8FF5AEFA0961E56400A3BEA9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF5AEF80961E56400A3BEA9 /* WebKit.framework */; };
 		8FF5AEFC0961E56400A3BEA9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF5AEF80961E56400A3BEA9 /* WebKit.framework */; };
+		E2DBA31D161CA57C0035A675 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA31C161CA57C0035A675 /* EventKit.framework */; };
+		E2DBA322161CA60C0035A675 /* AudioVideoBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA321161CA60C0035A675 /* AudioVideoBridging.framework */; };
+		E2DBA326161CA64B0035A675 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA325161CA64B0035A675 /* GLKit.framework */; };
+		E2DBA328161CA65A0035A675 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA327161CA65A0035A675 /* SceneKit.framework */; };
+		E2DBA32C161CA6660035A675 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA32B161CA6660035A675 /* VideoToolbox.framework */; };
+		E2DBA32E161CA7180035A675 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA32D161CA7180035A675 /* AVFoundation.framework */; };
+		E2DBA4AF161CB1C90035A675 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA31F161CA5D00035A675 /* Accounts.framework */; };
+		E2DBA4B0161CB1CE0035A675 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA329161CA6600035A675 /* Social.framework */; };
+		E2DBA4B1161CB20A0035A675 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA323161CA6270035A675 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1449,7 +1457,6 @@
 		8F8F58650D9FE6A900ED0FED /* FSCNStatementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNStatementList.m; sourceTree = "<group>"; };
 		8F90A2EF096DB0660064F4BC /* FSBlockCompilationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBlockCompilationResult.h; sourceTree = "<group>"; };
 		8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBlockCompilationResult.m; sourceTree = "<group>"; };
-		8F913FB70BDB8F9F001685EA /* InterfaceBuilderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InterfaceBuilderKit.framework; path = /Developer/Library/Frameworks/InterfaceBuilderKit.framework; sourceTree = "<absolute>"; };
 		8F913FCE0BDB92EE001685EA /* FScriptIBPlugin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FScriptIBPlugin_Prefix.pch; path = FScriptIBPlugin/FScriptIBPlugin_Prefix.pch; sourceTree = "<group>"; };
 		8F913FCF0BDB92EE001685EA /* FScriptIBPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FScriptIBPlugin.h; path = FScriptIBPlugin/FScriptIBPlugin.h; sourceTree = "<group>"; };
 		8F913FD00BDB92EE001685EA /* FScriptIBPlugin.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FScriptIBPlugin.m; path = FScriptIBPlugin/FScriptIBPlugin.m; sourceTree = "<group>"; };
@@ -1510,7 +1517,6 @@
 		8FC291710C4A82D10071E9CC /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = /System/Library/Frameworks/SecurityFoundation.framework; sourceTree = "<absolute>"; };
 		8FC2917F0C4A82F90071E9CC /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = /System/Library/Frameworks/SecurityInterface.framework; sourceTree = "<absolute>"; };
 		8FC291920C4A83380071E9CC /* SyncServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SyncServices.framework; path = /System/Library/Frameworks/SyncServices.framework; sourceTree = "<absolute>"; };
-		8FC291A80C4A83A50071E9CC /* XgridFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XgridFoundation.framework; path = /System/Library/Frameworks/XgridFoundation.framework; sourceTree = "<absolute>"; };
 		8FCA00C10EEAF34300B10420 /* Block_fscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block_fscript.h; sourceTree = "<group>"; };
 		8FCA00C20EEAF34300B10420 /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
 		8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNewlyAllocatedObject.h; path = "../F-Script/FSNewlyAllocatedObject.h"; sourceTree = "<group>"; };
@@ -1547,6 +1553,15 @@
 		8FE9AE1F078071CC005B2CC4 /* FSObjectPointer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectPointer.m; sourceTree = "<group>"; };
 		8FE9AE8207807269005B2CC4 /* FSObjectPointerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectPointerPrivate.h; sourceTree = "<group>"; };
 		8FF5AEF80961E56400A3BEA9 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		E2DBA31C161CA57C0035A675 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		E2DBA31F161CA5D00035A675 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		E2DBA321161CA60C0035A675 /* AudioVideoBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioVideoBridging.framework; path = System/Library/Frameworks/AudioVideoBridging.framework; sourceTree = SDKROOT; };
+		E2DBA323161CA6270035A675 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		E2DBA325161CA64B0035A675 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E2DBA327161CA65A0035A675 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		E2DBA329161CA6600035A675 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		E2DBA32B161CA6660035A675 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		E2DBA32D161CA7180035A675 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F501AF7B021497C401A75EC5 /* FScriptTextView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FScriptTextView.m; sourceTree = "<group>"; };
 		F505647F02DF417501FE0326 /* Pointer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Pointer.m; sourceTree = "<group>"; };
 		F505648002DF417501FE0326 /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
@@ -1629,7 +1644,6 @@
 				8F86086C0CF9F0AB00D2DC99 /* ScriptingBridge.framework in Frameworks */,
 				8FB5239B0C21FE330028B297 /* ExceptionHandling.framework in Frameworks */,
 				8FB523970C21FE030028B297 /* Cocoa.framework in Frameworks */,
-				8F913FB80BDB8F9F001685EA /* InterfaceBuilderKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1668,9 +1682,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DBA4B1161CB20A0035A675 /* GameKit.framework in Frameworks */,
+				E2DBA4B0161CB1CE0035A675 /* Social.framework in Frameworks */,
+				E2DBA4AF161CB1C90035A675 /* Accounts.framework in Frameworks */,
 				8FC20AE00CEE3B2F00D9871F /* AddressBook.framework in Frameworks */,
+				E2DBA322161CA60C0035A675 /* AudioVideoBridging.framework in Frameworks */,
 				8F589B610CE38B3B00C1D756 /* AudioUnit.framework in Frameworks */,
 				8F589B810CE38B7100C1D756 /* Automator.framework in Frameworks */,
+				E2DBA32E161CA7180035A675 /* AVFoundation.framework in Frameworks */,
 				8F552A790C00A6D4002B6067 /* CalendarStore.framework in Frameworks */,
 				8F85274907F6016900E706F5 /* Cocoa.framework in Frameworks */,
 				8FC28E9C0C4A7DDF0071E9CC /* Collaboration.framework in Frameworks */,
@@ -1680,7 +1699,9 @@
 				8F6DA8E3055FC70C0050409A /* DiscRecording.framework in Frameworks */,
 				8FC28E530C4A7CBF0071E9CC /* DiscRecordingUI.framework in Frameworks */,
 				8FC28ECE0C4A7EDC0071E9CC /* DiskArbitration.framework in Frameworks */,
+				E2DBA31D161CA57C0035A675 /* EventKit.framework in Frameworks */,
 				8F6DA8E0055FC70C0050409A /* ExceptionHandling.framework in Frameworks */,
+				E2DBA326161CA64B0035A675 /* GLKit.framework in Frameworks */,
 				8F589B990CE38CAB00C1D756 /* InputMethodKit.framework in Frameworks */,
 				8FC28FC80C4A7FDC0071E9CC /* InstantMessage.framework in Frameworks */,
 				8F6DA8E4055FC70C0050409A /* IOBluetooth.framework in Frameworks */,
@@ -1691,10 +1712,12 @@
 				8F6632490C4A2BA300FA798A /* QTKit.framework in Frameworks */,
 				8FC291170C4A82070071E9CC /* Quartz.framework in Frameworks */,
 				8F1873170B99C7AA003974F2 /* QuartzCore.framework in Frameworks */,
+				E2DBA328161CA65A0035A675 /* SceneKit.framework in Frameworks */,
 				8F6584F90C484A5100C8A3FC /* ScriptingBridge.framework in Frameworks */,
 				8FC291720C4A82D10071E9CC /* SecurityFoundation.framework in Frameworks */,
 				8FC291800C4A82F90071E9CC /* SecurityInterface.framework in Frameworks */,
 				8FC291930C4A83380071E9CC /* SyncServices.framework in Frameworks */,
+				E2DBA32C161CA6660035A675 /* VideoToolbox.framework in Frameworks */,
 				8FF5AEFA0961E56400A3BEA9 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1725,10 +1748,13 @@
 				8F6DA9DC055FC7200050409A /* Info-FScriptFramework__Upgraded_.plist */,
 				8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */,
 				8F6DA6D1055FC6980050409A /* Info-FSTest2_2.plist */,
+				E2DBA31F161CA5D00035A675 /* Accounts.framework */,
 				8FC20ADE0CEE3B2F00D9871F /* AddressBook.framework */,
 				8FC20A9F0CEE3AEE00D9871F /* AppKit.framework */,
 				8F589B800CE38B7100C1D756 /* Automator.framework */,
+				E2DBA321161CA60C0035A675 /* AudioVideoBridging.framework */,
 				8F589B600CE38B3B00C1D756 /* AudioUnit.framework */,
+				E2DBA32D161CA7180035A675 /* AVFoundation.framework */,
 				8F552A780C00A6D4002B6067 /* CalendarStore.framework */,
 				8F85274707F6016900E706F5 /* Cocoa.framework */,
 				8FC28E9B0C4A7DDF0071E9CC /* Collaboration.framework */,
@@ -1738,12 +1764,14 @@
 				F55D42D903583F2601B9E934 /* DiscRecording.framework */,
 				F55D42DA03583F2601B9E934 /* DiscRecordingUI.framework */,
 				8FC28ECD0C4A7EDC0071E9CC /* DiskArbitration.framework */,
+				E2DBA31C161CA57C0035A675 /* EventKit.framework */,
 				F51B24640271980D01DB4759 /* ExceptionHandling.framework */,
 				0CD4E46500D7E1C37BE9C1BD /* Foundation.framework */,
+				E2DBA323161CA6270035A675 /* GameKit.framework */,
+				E2DBA325161CA64B0035A675 /* GLKit.framework */,
 				8F589BA50CE38CCE00C1D756 /* InstallerPlugins.framework */,
 				8F589B980CE38CAB00C1D756 /* InputMethodKit.framework */,
 				8FC28FC70C4A7FDC0071E9CC /* InstantMessage.framework */,
-				8F913FB70BDB8F9F001685EA /* InterfaceBuilderKit.framework */,
 				F55D431803583F8501B9E934 /* IOBluetooth.framework */,
 				F55D431903583F8501B9E934 /* IOBluetoothUI.framework */,
 				0CD4E46900D7E1F17BE9C1BD /* JavaVM.framework */,
@@ -1754,13 +1782,15 @@
 				8FC291160C4A82070071E9CC /* Quartz.framework */,
 				8F1873160B99C7AA003974F2 /* QuartzCore.framework */,
 				8FC2911F0C4A82730071E9CC /* RubyCocoa.framework */,
+				E2DBA327161CA65A0035A675 /* SceneKit.framework */,
 				8FA095F80CE38F27001AC147 /* ScreenSaver.framework */,
 				8F6584F80C484A5100C8A3FC /* ScriptingBridge.framework */,
 				8FC291710C4A82D10071E9CC /* SecurityFoundation.framework */,
 				8FC2917F0C4A82F90071E9CC /* SecurityInterface.framework */,
+				E2DBA329161CA6600035A675 /* Social.framework */,
 				8FC291920C4A83380071E9CC /* SyncServices.framework */,
+				E2DBA32B161CA6660035A675 /* VideoToolbox.framework */,
 				8FF5AEF80961E56400A3BEA9 /* WebKit.framework */,
-				8FC291A80C4A83A50071E9CC /* XgridFoundation.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3873,7 +3903,7 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_MODEL_TUNING = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3890,7 +3920,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IBC_FLATTEN_NIBS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wmost";
@@ -3902,22 +3932,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					x86_64,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_MODEL_TUNING = "";
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_VERSION = "";
 				IBC_FLATTEN_NIBS = NO;
 				INSTALL_OWNER = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
