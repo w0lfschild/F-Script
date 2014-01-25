@@ -31,13 +31,19 @@
 #import <InstantMessage/IMService.h>
 #import <InstantMessage/IMAVManager.h>
 #import <IOBluetooth/IOBluetooth.h>
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7
 #import <IOBluetooth/objc/IOBluetoothHandsFreeGateway.h>
 #import <IOBluetooth/objc/IOBluetoothRFCOMMAudioController.h>
+#else
+#import <IOBluetooth/objc/IOBluetoothHandsFree.h>
+#endif
 #import <IOBluetoothUI/IOBluetoothUI.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 //#import <JavaVM/JavaVM.h>
 #import <LatentSemanticMapping/LatentSemanticMapping.h>
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7
 #import <Message/NSMailDelivery.h>
+#endif
 //#import <OpenDirectory/OpenDirectory.h>
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/glu.h>
@@ -59,7 +65,9 @@
 #import <SyncServices/SyncServices.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <WebKit/WebKit.h>
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7
 #import <WebKit/WebJavaPlugIn.h>
+#endif
 //#import <XgridFoundation/XgridFoundation.h>
 #import <EventKit/EventKit.h>
 #import <Accounts/Accounts.h>
