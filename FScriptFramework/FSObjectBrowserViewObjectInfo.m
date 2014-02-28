@@ -1767,12 +1767,21 @@ static id objectFromWritingDirection(NSWritingDirection writingDirection)
         for (i = 0; i < count; i++) 
         {
           NSString *propertyName = [NSString stringWithUTF8String:property_getName(properties[i])];
+            NSString* propertyEncoding = [ NSString stringWithUTF8String:property_getAttributes(properties[i])];
+          NSError*error=nil;
+          NSRegularExpression* customGetterRegexp = [ NSRegularExpression regularExpressionWithPattern:@"(?:^G|,G)([^,]+)" options:0 error:&error ];
+          NSTextCheckingResult* customGetterMatch = [ customGetterRegexp firstMatchInString:propertyEncoding options:0 range:NSMakeRange(0, propertyEncoding.length)];
+          NSString* getter = propertyName;
+          if (customGetterMatch) {
+            getter = [ propertyEncoding substringWithRange:[customGetterMatch rangeAtIndex:1]];
+          }
+          
           id propertyValue = nil; // initialized to nil in order to shut down a spurious warning
           NSString *errorMessage = nil;
           
           @try
           {
-            propertyValue = [[[[@"[:object| object " stringByAppendingString:propertyName] stringByAppendingString:@"]"] asBlock] value:object]; 
+            propertyValue = [[[[@"[:object| object " stringByAppendingString:getter] stringByAppendingString:@"]"] asBlock] value:object];
           }
           @catch (id exception)
           {
