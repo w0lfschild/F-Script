@@ -1176,7 +1176,6 @@
 		BA223126189F9A9A002C5B6A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223102189F9A99002C5B6A /* Quartz.framework */; };
 		BA223127189F9A9A002C5B6A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223103189F9A99002C5B6A /* QuartzCore.framework */; };
 		BA223128189F9A9A002C5B6A /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223104189F9A99002C5B6A /* QuickLook.framework */; };
-		BA22312B189F9A9A002C5B6A /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223107189F9A9A002C5B6A /* RubyCocoa.framework */; };
 		BA22312C189F9A9A002C5B6A /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223108189F9A9A002C5B6A /* ScreenSaver.framework */; };
 		BA22312E189F9A9A002C5B6A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22310A189F9A9A002C5B6A /* ScriptingBridge.framework */; };
 		BA22312F189F9A9A002C5B6A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22310B189F9A9A002C5B6A /* Security.framework */; };
@@ -1243,7 +1242,6 @@
 		BA223196189F9B2A002C5B6A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A1189F9A14002C5B6A /* AppKit.framework */; };
 		BA223198189F9B2A002C5B6A /* AppleScriptKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A3189F9A14002C5B6A /* AppleScriptKit.framework */; };
 		BA223199189F9B2A002C5B6A /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A4189F9A14002C5B6A /* AppleScriptObjC.framework */; };
-		BA22319A189F9B2A002C5B6A /* AppleShareClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A5189F9A14002C5B6A /* AppleShareClientCore.framework */; };
 		BA22319B189F9B2A002C5B6A /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A6189F9A14002C5B6A /* ApplicationServices.framework */; };
 		BA22319C189F9B2A002C5B6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223097189F9958002C5B6A /* AudioToolbox.framework */; };
 		BA22319D189F9B2A002C5B6A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A7189F9A14002C5B6A /* AudioUnit.framework */; };
@@ -2012,7 +2010,6 @@
 		BA2234BA189FA412002C5B6A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A1189F9A14002C5B6A /* AppKit.framework */; };
 		BA2234BB189FA412002C5B6A /* AppleScriptKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A3189F9A14002C5B6A /* AppleScriptKit.framework */; };
 		BA2234BC189FA412002C5B6A /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A4189F9A14002C5B6A /* AppleScriptObjC.framework */; };
-		BA2234BD189FA412002C5B6A /* AppleShareClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A5189F9A14002C5B6A /* AppleShareClientCore.framework */; };
 		BA2234BE189FA412002C5B6A /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A6189F9A14002C5B6A /* ApplicationServices.framework */; };
 		BA2234BF189FA412002C5B6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223097189F9958002C5B6A /* AudioToolbox.framework */; };
 		BA2234C0189FA412002C5B6A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A7189F9A14002C5B6A /* AudioUnit.framework */; };
@@ -2086,7 +2083,6 @@
 		BA223506189FA412002C5B6A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223103189F9A99002C5B6A /* QuartzCore.framework */; };
 		BA223507189FA412002C5B6A /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223104189F9A99002C5B6A /* QuickLook.framework */; };
 		BA223508189FA412002C5B6A /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223106189F9A9A002C5B6A /* Ruby.framework */; };
-		BA223509189FA412002C5B6A /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223107189F9A9A002C5B6A /* RubyCocoa.framework */; };
 		BA22350A189FA412002C5B6A /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223108189F9A9A002C5B6A /* ScreenSaver.framework */; };
 		BA22350B189FA412002C5B6A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22310A189F9A9A002C5B6A /* ScriptingBridge.framework */; };
 		BA22350C189FA412002C5B6A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22310B189F9A9A002C5B6A /* Security.framework */; };
@@ -3364,7 +3360,6 @@
 				BA223196189F9B2A002C5B6A /* AppKit.framework in Frameworks */,
 				BA223198189F9B2A002C5B6A /* AppleScriptKit.framework in Frameworks */,
 				BA223199189F9B2A002C5B6A /* AppleScriptObjC.framework in Frameworks */,
-				BA22319A189F9B2A002C5B6A /* AppleShareClientCore.framework in Frameworks */,
 				BA22319B189F9B2A002C5B6A /* ApplicationServices.framework in Frameworks */,
 				BA22319C189F9B2A002C5B6A /* AudioToolbox.framework in Frameworks */,
 				BA22319D189F9B2A002C5B6A /* AudioUnit.framework in Frameworks */,
@@ -3429,7 +3424,6 @@
 				BA223126189F9A9A002C5B6A /* Quartz.framework in Frameworks */,
 				BA223127189F9A9A002C5B6A /* QuartzCore.framework in Frameworks */,
 				BA223128189F9A9A002C5B6A /* QuickLook.framework in Frameworks */,
-				BA22312B189F9A9A002C5B6A /* RubyCocoa.framework in Frameworks */,
 				BA22312C189F9A9A002C5B6A /* ScreenSaver.framework in Frameworks */,
 				BA22312E189F9A9A002C5B6A /* ScriptingBridge.framework in Frameworks */,
 				BA22312F189F9A9A002C5B6A /* Security.framework in Frameworks */,
@@ -3568,7 +3562,6 @@
 				BA2234BA189FA412002C5B6A /* AppKit.framework in Frameworks */,
 				BA2234BB189FA412002C5B6A /* AppleScriptKit.framework in Frameworks */,
 				BA2234BC189FA412002C5B6A /* AppleScriptObjC.framework in Frameworks */,
-				BA2234BD189FA412002C5B6A /* AppleShareClientCore.framework in Frameworks */,
 				BA2234BE189FA412002C5B6A /* ApplicationServices.framework in Frameworks */,
 				BA2234BF189FA412002C5B6A /* AudioToolbox.framework in Frameworks */,
 				BA2234C0189FA412002C5B6A /* AudioUnit.framework in Frameworks */,
@@ -3644,7 +3637,6 @@
 				BA223506189FA412002C5B6A /* QuartzCore.framework in Frameworks */,
 				BA223507189FA412002C5B6A /* QuickLook.framework in Frameworks */,
 				BA223508189FA412002C5B6A /* Ruby.framework in Frameworks */,
-				BA223509189FA412002C5B6A /* RubyCocoa.framework in Frameworks */,
 				BA22350A189FA412002C5B6A /* ScreenSaver.framework in Frameworks */,
 				BA22350B189FA412002C5B6A /* ScriptingBridge.framework in Frameworks */,
 				BA22350C189FA412002C5B6A /* Security.framework in Frameworks */,
