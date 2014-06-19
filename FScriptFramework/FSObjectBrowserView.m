@@ -1795,6 +1795,10 @@ static NSMutableArray *customButtons = nil;
   
   if ( !([event type] == NSKeyDown && [[event characters] characterAtIndex:0] == ESCAPE) )
   {
+      // If Alt is held down, select the exact view shown in the floating window
+    if ((event.modifierFlags & NSAlternateKeyMask) && view != nil) {
+      selectedView = view;
+    }
     if (selectedView == nil)
       view = [[[[event window] contentView] superview] hitTest:[event locationInWindow]];
     else
