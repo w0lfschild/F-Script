@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F6392D00BDB8521005C8D94"
-               BuildableName = "FScriptIBPlugin.ibplugin"
-               BlueprintName = "FScriptIBPlugin"
+               BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
+               BuildableName = "F-Script 10.9 copy.app"
+               BlueprintName = "F-Script 10.10"
+               ReferencedContainer = "container:FScript.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E29F5DA619FD94FC00AD90CF"
+               BuildableName = "FScriptFramework 10.9 copy.framework"
+               BlueprintName = "FScriptFramework 10.10"
                ReferencedContainer = "container:FScript.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +43,15 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
+            BuildableName = "F-Script 10.9 copy.app"
+            BlueprintName = "F-Script 10.10"
+            ReferencedContainer = "container:FScript.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -39,15 +62,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F6392D00BDB8521005C8D94"
-            BuildableName = "FScriptIBPlugin.ibplugin"
-            BlueprintName = "FScriptIBPlugin"
+            BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
+            BuildableName = "F-Script 10.9 copy.app"
+            BlueprintName = "F-Script 10.10"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -57,6 +80,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
+            BuildableName = "F-Script 10.9 copy.app"
+            BlueprintName = "F-Script 10.10"
+            ReferencedContainer = "container:FScript.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

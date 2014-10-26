@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BA223362189FA412002C5B6A"
-               BuildableName = "F-Script copy.app"
+               BuildableName = "F-Script.app"
                BlueprintName = "F-Script 10.9"
                ReferencedContainer = "container:FScript.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BA22366A189FA431002C5B6A"
-               BuildableName = "FScriptFramework copy.framework"
+               BuildableName = "FScript.framework"
                BlueprintName = "FScriptFramework 10.9"
                ReferencedContainer = "container:FScript.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA223362189FA412002C5B6A"
-            BuildableName = "F-Script copy.app"
+            BuildableName = "F-Script.app"
             BlueprintName = "F-Script 10.9"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA223362189FA412002C5B6A"
-            BuildableName = "F-Script copy.app"
+            BuildableName = "F-Script.app"
             BlueprintName = "F-Script 10.9"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA223362189FA412002C5B6A"
-            BuildableName = "F-Script copy.app"
+            BuildableName = "F-Script.app"
             BlueprintName = "F-Script 10.9"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
