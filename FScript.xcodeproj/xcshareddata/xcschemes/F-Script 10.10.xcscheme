@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
-               BuildableName = "F-Script 10.9 copy.app"
+               BuildableName = "F-Script.app"
                BlueprintName = "F-Script 10.10"
                ReferencedContainer = "container:FScript.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E29F5DA619FD94FC00AD90CF"
-               BuildableName = "FScriptFramework 10.9 copy.framework"
+               BuildableName = "FScript.framework"
                BlueprintName = "FScriptFramework 10.10"
                ReferencedContainer = "container:FScript.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
-            BuildableName = "F-Script 10.9 copy.app"
+            BuildableName = "F-Script.app"
             BlueprintName = "F-Script 10.10"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
-            BuildableName = "F-Script 10.9 copy.app"
+            BuildableName = "F-Script.app"
             BlueprintName = "F-Script 10.10"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E29F5BCC19FD93FD00AD90CF"
-            BuildableName = "F-Script 10.9 copy.app"
+            BuildableName = "F-Script.app"
             BlueprintName = "F-Script 10.10"
             ReferencedContainer = "container:FScript.xcodeproj">
          </BuildableReference>
