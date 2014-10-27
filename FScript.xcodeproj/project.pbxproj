@@ -1174,7 +1174,6 @@
 		BA22315B189F9AC7002C5B6A /* GSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223148189F9AC5002C5B6A /* GSS.framework */; };
 		BA22315C189F9AC7002C5B6A /* ICADevices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223149189F9AC6002C5B6A /* ICADevices.framework */; };
 		BA22315D189F9AC7002C5B6A /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22314A189F9AC6002C5B6A /* ImageCaptureCore.framework */; };
-		BA22315E189F9AC7002C5B6A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22314B189F9AC6002C5B6A /* ImageIO.framework */; };
 		BA22315F189F9AC7002C5B6A /* IMServicePlugIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22314C189F9AC6002C5B6A /* IMServicePlugIn.framework */; };
 		BA223160189F9AC7002C5B6A /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22314D189F9AC6002C5B6A /* InputMethodKit.framework */; };
 		BA223161189F9AC7002C5B6A /* InstallerPlugins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22314E189F9AC6002C5B6A /* InstallerPlugins.framework */; };
@@ -1197,20 +1196,17 @@
 		BA22317F189F9AF4002C5B6A /* DVDPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230D9189F9A7A002C5B6A /* DVDPlayback.framework */; };
 		BA223180189F9B20002C5B6A /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B3189F9A2E002C5B6A /* CalendarStore.framework */; };
 		BA223181189F9B20002C5B6A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B4189F9A2E002C5B6A /* Carbon.framework */; };
-		BA223182189F9B20002C5B6A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B5189F9A2E002C5B6A /* CFNetwork.framework */; };
 		BA223183189F9B20002C5B6A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B6189F9A2E002C5B6A /* Cocoa.framework */; };
 		BA223184189F9B20002C5B6A /* Collaboration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B7189F9A2E002C5B6A /* Collaboration.framework */; };
 		BA223185189F9B20002C5B6A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22309B189F9988002C5B6A /* CoreAudio.framework */; };
 		BA223186189F9B20002C5B6A /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B8189F9A2F002C5B6A /* CoreAudioKit.framework */; };
 		BA223187189F9B20002C5B6A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B9189F9A2F002C5B6A /* CoreData.framework */; };
 		BA223188189F9B20002C5B6A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230BA189F9A2F002C5B6A /* CoreFoundation.framework */; };
-		BA223189189F9B20002C5B6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230BB189F9A2F002C5B6A /* CoreGraphics.framework */; };
 		BA22318A189F9B20002C5B6A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22309D189F99CC002C5B6A /* CoreLocation.framework */; };
 		BA22318B189F9B20002C5B6A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230BC189F9A2F002C5B6A /* CoreMedia.framework */; };
 		BA22318C189F9B20002C5B6A /* CoreMediaIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230BD189F9A2F002C5B6A /* CoreMediaIO.framework */; };
 		BA22318D189F9B20002C5B6A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230BE189F9A2F002C5B6A /* CoreMIDI.framework */; };
 		BA22318E189F9B20002C5B6A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230BF189F9A2F002C5B6A /* CoreServices.framework */; };
-		BA22318F189F9B20002C5B6A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230C0189F9A2F002C5B6A /* CoreText.framework */; };
 		BA223190189F9B20002C5B6A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230C1189F9A2F002C5B6A /* CoreVideo.framework */; };
 		BA223191189F9B20002C5B6A /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230C2189F9A2F002C5B6A /* CoreWLAN.framework */; };
 		BA223192189F9B2A002C5B6A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223095189F9924002C5B6A /* Accelerate.framework */; };
@@ -4121,20 +4117,17 @@
 				BA2231A0189F9B2A002C5B6A /* AVFoundation.framework in Frameworks */,
 				BA223180189F9B20002C5B6A /* CalendarStore.framework in Frameworks */,
 				BA223181189F9B20002C5B6A /* Carbon.framework in Frameworks */,
-				BA223182189F9B20002C5B6A /* CFNetwork.framework in Frameworks */,
 				BA223183189F9B20002C5B6A /* Cocoa.framework in Frameworks */,
 				BA223184189F9B20002C5B6A /* Collaboration.framework in Frameworks */,
 				BA223185189F9B20002C5B6A /* CoreAudio.framework in Frameworks */,
 				BA223186189F9B20002C5B6A /* CoreAudioKit.framework in Frameworks */,
 				BA223187189F9B20002C5B6A /* CoreData.framework in Frameworks */,
 				BA223188189F9B20002C5B6A /* CoreFoundation.framework in Frameworks */,
-				BA223189189F9B20002C5B6A /* CoreGraphics.framework in Frameworks */,
 				BA22318A189F9B20002C5B6A /* CoreLocation.framework in Frameworks */,
 				BA22318B189F9B20002C5B6A /* CoreMedia.framework in Frameworks */,
 				BA22318C189F9B20002C5B6A /* CoreMediaIO.framework in Frameworks */,
 				BA22318D189F9B20002C5B6A /* CoreMIDI.framework in Frameworks */,
 				BA22318E189F9B20002C5B6A /* CoreServices.framework in Frameworks */,
-				BA22318F189F9B20002C5B6A /* CoreText.framework in Frameworks */,
 				BA223190189F9B20002C5B6A /* CoreVideo.framework in Frameworks */,
 				BA223191189F9B20002C5B6A /* CoreWLAN.framework in Frameworks */,
 				BA223179189F9AF4002C5B6A /* DirectoryService.framework in Frameworks */,
@@ -4150,7 +4143,6 @@
 				BA22315B189F9AC7002C5B6A /* GSS.framework in Frameworks */,
 				BA22315C189F9AC7002C5B6A /* ICADevices.framework in Frameworks */,
 				BA22315D189F9AC7002C5B6A /* ImageCaptureCore.framework in Frameworks */,
-				BA22315E189F9AC7002C5B6A /* ImageIO.framework in Frameworks */,
 				BA22315F189F9AC7002C5B6A /* IMServicePlugIn.framework in Frameworks */,
 				BA223160189F9AC7002C5B6A /* InputMethodKit.framework in Frameworks */,
 				BA223161189F9AC7002C5B6A /* InstallerPlugins.framework in Frameworks */,
