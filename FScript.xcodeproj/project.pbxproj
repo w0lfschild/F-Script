@@ -3506,9 +3506,6 @@
 		E29F5F8419FD9C2F00AD90CF /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */; };
 		E29F5F8519FD9C3100AD90CF /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */; };
 		E29F5F8619FD9C3200AD90CF /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */; };
-		E29F5F8719FD9DC000AD90CF /* Kernel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223158189F9AC7002C5B6A /* Kernel.framework */; };
-		E29F5F8819FD9DC100AD90CF /* Kernel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223158189F9AC7002C5B6A /* Kernel.framework */; };
-		E29F5F8919FD9DC200AD90CF /* Kernel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223158189F9AC7002C5B6A /* Kernel.framework */; };
 		E29F5F8A19FD9E3A00AD90CF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223105189F9A99002C5B6A /* QuickTime.framework */; };
 		E29F5F8B19FD9E3B00AD90CF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223105189F9A99002C5B6A /* QuickTime.framework */; };
 		E29F5F8C19FD9E3C00AD90CF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223105189F9A99002C5B6A /* QuickTime.framework */; };
@@ -3974,7 +3971,6 @@
 		BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		BA223156189F9AC6002C5B6A /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = System/Library/Frameworks/JavaVM.framework; sourceTree = SDKROOT; };
 		BA223157189F9AC6002C5B6A /* Kerberos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kerberos.framework; path = System/Library/Frameworks/Kerberos.framework; sourceTree = SDKROOT; };
-		BA223158189F9AC7002C5B6A /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LatentSemanticMapping.framework; path = System/Library/Frameworks/LatentSemanticMapping.framework; sourceTree = SDKROOT; };
 		BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExceptionHandling.framework; path = System/Library/Frameworks/ExceptionHandling.framework; sourceTree = SDKROOT; };
 		BA223170189F9AD3002C5B6A /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
@@ -4169,7 +4165,6 @@
 				BA22315F189F9AC7002C5B6A /* IMServicePlugIn.framework in Frameworks */,
 				BA223160189F9AC7002C5B6A /* InputMethodKit.framework in Frameworks */,
 				BA223161189F9AC7002C5B6A /* InstallerPlugins.framework in Frameworks */,
-				E29F5F8919FD9DC200AD90CF /* Kernel.framework in Frameworks */,
 				BA223162189F9AC7002C5B6A /* InstantMessage.framework in Frameworks */,
 				BA223163189F9AC7002C5B6A /* IOBluetooth.framework in Frameworks */,
 				BA223164189F9AC7002C5B6A /* IOBluetoothUI.framework in Frameworks */,
@@ -4300,7 +4295,6 @@
 				BA22333C189FA403002C5B6A /* OpenAL.framework in Frameworks */,
 				BA22333D189FA403002C5B6A /* OpenCL.framework in Frameworks */,
 				BA22333E189FA403002C5B6A /* OpenDirectory.framework in Frameworks */,
-				E29F5F8819FD9DC100AD90CF /* Kernel.framework in Frameworks */,
 				E29F5F8019FD9C1700AD90CF /* DVComponentGlue.framework in Frameworks */,
 				BA22333F189FA403002C5B6A /* OpenGL.framework in Frameworks */,
 				BA223340189FA403002C5B6A /* OSAKit.framework in Frameworks */,
@@ -4375,7 +4369,6 @@
 				BA2234D8189FA412002C5B6A /* DiscRecording.framework in Frameworks */,
 				BA2234D9189FA412002C5B6A /* DiscRecordingUI.framework in Frameworks */,
 				E29F5F8F19FD9E5B00AD90CF /* Scripting.framework in Frameworks */,
-				E29F5F8719FD9DC000AD90CF /* Kernel.framework in Frameworks */,
 				BA2234DA189FA412002C5B6A /* DiskArbitration.framework in Frameworks */,
 				BA2234DB189FA412002C5B6A /* DVDPlayback.framework in Frameworks */,
 				BA2234DC189FA412002C5B6A /* EventKit.framework in Frameworks */,
@@ -5048,7 +5041,6 @@
 				BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */,
 				BA223156189F9AC6002C5B6A /* JavaVM.framework */,
 				BA223157189F9AC6002C5B6A /* Kerberos.framework */,
-				BA223158189F9AC7002C5B6A /* Kernel.framework */,
 				BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */,
 				BA223144189F9ABD002C5B6A /* LDAP.framework */,
 				E29F5D9719FD944500AD90CF /* LocalAuthentication.framework */,
