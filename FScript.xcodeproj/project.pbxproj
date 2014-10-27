@@ -1183,9 +1183,7 @@
 		BA223164189F9AC7002C5B6A /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223151189F9AC6002C5B6A /* IOBluetoothUI.framework */; };
 		BA223165189F9AC7002C5B6A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223152189F9AC6002C5B6A /* IOKit.framework */; };
 		BA223166189F9AC7002C5B6A /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223153189F9AC6002C5B6A /* IOSurface.framework */; };
-		BA223167189F9AC7002C5B6A /* JavaFrameEmbedding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223154189F9AC6002C5B6A /* JavaFrameEmbedding.framework */; };
 		BA223168189F9AC7002C5B6A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */; };
-		BA223169189F9AC7002C5B6A /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223156189F9AC6002C5B6A /* JavaVM.framework */; };
 		BA22316A189F9AC7002C5B6A /* Kerberos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223157189F9AC6002C5B6A /* Kerberos.framework */; };
 		BA22316C189F9AC7002C5B6A /* LatentSemanticMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */; };
 		BA223174189F9AD3002C5B6A /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */; };
@@ -1611,9 +1609,7 @@
 		BA22332D189FA403002C5B6A /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223151189F9AC6002C5B6A /* IOBluetoothUI.framework */; };
 		BA22332E189FA403002C5B6A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223152189F9AC6002C5B6A /* IOKit.framework */; };
 		BA22332F189FA403002C5B6A /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223153189F9AC6002C5B6A /* IOSurface.framework */; };
-		BA223330189FA403002C5B6A /* JavaFrameEmbedding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223154189F9AC6002C5B6A /* JavaFrameEmbedding.framework */; };
 		BA223331189FA403002C5B6A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */; };
-		BA223332189FA403002C5B6A /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223156189F9AC6002C5B6A /* JavaVM.framework */; };
 		BA223333189FA403002C5B6A /* Kerberos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223157189F9AC6002C5B6A /* Kerberos.framework */; };
 		BA223334189FA403002C5B6A /* LatentSemanticMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */; };
 		BA223335189FA403002C5B6A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA325161CA64B0035A675 /* GLKit.framework */; };
@@ -2036,9 +2032,7 @@
 		BA2234ED189FA412002C5B6A /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223151189F9AC6002C5B6A /* IOBluetoothUI.framework */; };
 		BA2234EE189FA412002C5B6A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223152189F9AC6002C5B6A /* IOKit.framework */; };
 		BA2234EF189FA412002C5B6A /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223153189F9AC6002C5B6A /* IOSurface.framework */; };
-		BA2234F0189FA412002C5B6A /* JavaFrameEmbedding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223154189F9AC6002C5B6A /* JavaFrameEmbedding.framework */; };
 		BA2234F1189FA412002C5B6A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */; };
-		BA2234F2189FA412002C5B6A /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223156189F9AC6002C5B6A /* JavaVM.framework */; };
 		BA2234F3189FA412002C5B6A /* Kerberos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223157189F9AC6002C5B6A /* Kerberos.framework */; };
 		BA2234F4189FA412002C5B6A /* LatentSemanticMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */; };
 		BA2234F5189FA412002C5B6A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA325161CA64B0035A675 /* GLKit.framework */; };
@@ -3476,7 +3470,6 @@
 		E29F5F6619FD995800AD90CF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29F5F6119FD98F600AD90CF /* AppKit.framework */; };
 		E29F5F6719FD996F00AD90CF /* Automator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A8189F9A14002C5B6A /* Automator.framework */; };
 		E29F5F6819FD997800AD90CF /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223101189F9A99002C5B6A /* QTKit.framework */; };
-		E29F5F6919FD998200AD90CF /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223156189F9AC6002C5B6A /* JavaVM.framework */; };
 		E29F5F6A19FD998A00AD90CF /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */; };
 		E29F5F6B19FD999200AD90CF /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230D4189F9A7A002C5B6A /* DiscRecording.framework */; };
 		E29F5F6C19FD999B00AD90CF /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223150189F9AC6002C5B6A /* IOBluetooth.framework */; };
@@ -3966,9 +3959,7 @@
 		BA223151189F9AC6002C5B6A /* IOBluetoothUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetoothUI.framework; path = System/Library/Frameworks/IOBluetoothUI.framework; sourceTree = SDKROOT; };
 		BA223152189F9AC6002C5B6A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		BA223153189F9AC6002C5B6A /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
-		BA223154189F9AC6002C5B6A /* JavaFrameEmbedding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFrameEmbedding.framework; path = System/Library/Frameworks/JavaFrameEmbedding.framework; sourceTree = SDKROOT; };
 		BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		BA223156189F9AC6002C5B6A /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = System/Library/Frameworks/JavaVM.framework; sourceTree = SDKROOT; };
 		BA223157189F9AC6002C5B6A /* Kerberos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kerberos.framework; path = System/Library/Frameworks/Kerberos.framework; sourceTree = SDKROOT; };
 		BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LatentSemanticMapping.framework; path = System/Library/Frameworks/LatentSemanticMapping.framework; sourceTree = SDKROOT; };
 		BA22316F189F9AD3002C5B6A /* ExceptionHandling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExceptionHandling.framework; path = System/Library/Frameworks/ExceptionHandling.framework; sourceTree = SDKROOT; };
@@ -4097,7 +4088,6 @@
 				E29F5F6C19FD999B00AD90CF /* IOBluetooth.framework in Frameworks */,
 				E29F5F6B19FD999200AD90CF /* DiscRecording.framework in Frameworks */,
 				E29F5F6A19FD998A00AD90CF /* ExceptionHandling.framework in Frameworks */,
-				E29F5F6919FD998200AD90CF /* JavaVM.framework in Frameworks */,
 				E29F5F6819FD997800AD90CF /* QTKit.framework in Frameworks */,
 				E29F5F6719FD996F00AD90CF /* Automator.framework in Frameworks */,
 			);
@@ -4170,9 +4160,7 @@
 				E29F5F7C19FD9BDB00AD90CF /* DrawSprocket.framework in Frameworks */,
 				BA223165189F9AC7002C5B6A /* IOKit.framework in Frameworks */,
 				BA223166189F9AC7002C5B6A /* IOSurface.framework in Frameworks */,
-				BA223167189F9AC7002C5B6A /* JavaFrameEmbedding.framework in Frameworks */,
 				BA223168189F9AC7002C5B6A /* JavaScriptCore.framework in Frameworks */,
-				BA223169189F9AC7002C5B6A /* JavaVM.framework in Frameworks */,
 				BA22316A189F9AC7002C5B6A /* Kerberos.framework in Frameworks */,
 				BA22316C189F9AC7002C5B6A /* LatentSemanticMapping.framework in Frameworks */,
 				BA223145189F9ABD002C5B6A /* LDAP.framework in Frameworks */,
@@ -4281,10 +4269,8 @@
 				BA22332D189FA403002C5B6A /* IOBluetoothUI.framework in Frameworks */,
 				BA22332E189FA403002C5B6A /* IOKit.framework in Frameworks */,
 				BA22332F189FA403002C5B6A /* IOSurface.framework in Frameworks */,
-				BA223330189FA403002C5B6A /* JavaFrameEmbedding.framework in Frameworks */,
 				E29F5F9019FD9E5B00AD90CF /* Scripting.framework in Frameworks */,
 				BA223331189FA403002C5B6A /* JavaScriptCore.framework in Frameworks */,
-				BA223332189FA403002C5B6A /* JavaVM.framework in Frameworks */,
 				BA223333189FA403002C5B6A /* Kerberos.framework in Frameworks */,
 				BA223334189FA403002C5B6A /* LatentSemanticMapping.framework in Frameworks */,
 				BA223335189FA403002C5B6A /* GLKit.framework in Frameworks */,
@@ -4389,9 +4375,7 @@
 				BA2234ED189FA412002C5B6A /* IOBluetoothUI.framework in Frameworks */,
 				BA2234EE189FA412002C5B6A /* IOKit.framework in Frameworks */,
 				BA2234EF189FA412002C5B6A /* IOSurface.framework in Frameworks */,
-				BA2234F0189FA412002C5B6A /* JavaFrameEmbedding.framework in Frameworks */,
 				BA2234F1189FA412002C5B6A /* JavaScriptCore.framework in Frameworks */,
-				BA2234F2189FA412002C5B6A /* JavaVM.framework in Frameworks */,
 				BA2234F3189FA412002C5B6A /* Kerberos.framework in Frameworks */,
 				BA2234F4189FA412002C5B6A /* LatentSemanticMapping.framework in Frameworks */,
 				BA2234F5189FA412002C5B6A /* GLKit.framework in Frameworks */,
@@ -5035,9 +5019,7 @@
 				BA223151189F9AC6002C5B6A /* IOBluetoothUI.framework */,
 				BA223152189F9AC6002C5B6A /* IOKit.framework */,
 				BA223153189F9AC6002C5B6A /* IOSurface.framework */,
-				BA223154189F9AC6002C5B6A /* JavaFrameEmbedding.framework */,
 				BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */,
-				BA223156189F9AC6002C5B6A /* JavaVM.framework */,
 				BA223157189F9AC6002C5B6A /* Kerberos.framework */,
 				BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */,
 				BA223144189F9ABD002C5B6A /* LDAP.framework */,
