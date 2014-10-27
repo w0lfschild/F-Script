@@ -8885,6 +8885,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.7;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -8913,6 +8914,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.7;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9017,6 +9019,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -9052,6 +9055,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.7;
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -9208,6 +9212,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -9244,6 +9249,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.8;
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -9271,6 +9277,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -9307,6 +9314,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.9;
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -9338,6 +9346,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.8;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9367,6 +9376,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.8;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9398,6 +9408,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.9;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9427,6 +9438,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.9;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9454,6 +9466,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.10;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -9490,6 +9503,7 @@
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "F-Script";
+				SDKROOT = macosx10.10;
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -9521,6 +9535,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.10;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9550,6 +9565,7 @@
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = FScript;
+				SDKROOT = macosx10.10;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
