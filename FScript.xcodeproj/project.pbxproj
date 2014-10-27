@@ -3494,7 +3494,6 @@
 		E29F5F7819FD9AD100AD90CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B6189F9A2E002C5B6A /* Cocoa.framework */; };
 		E29F5F7919FD9AD800AD90CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B6189F9A2E002C5B6A /* Cocoa.framework */; };
 		E29F5F7A19FD9ADE00AD90CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230B6189F9A2E002C5B6A /* Cocoa.framework */; };
-		E29F5F7B19FD9B0A00AD90CF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29F5D9319FD944400AD90CF /* CoreBluetooth.framework */; };
 		E29F5F7C19FD9BDB00AD90CF /* DrawSprocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230D7189F9A7A002C5B6A /* DrawSprocket.framework */; };
 		E29F5F7D19FD9BDC00AD90CF /* DrawSprocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230D7189F9A7A002C5B6A /* DrawSprocket.framework */; };
 		E29F5F7E19FD9BDD00AD90CF /* DrawSprocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230D7189F9A7A002C5B6A /* DrawSprocket.framework */; };
@@ -4330,7 +4329,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E29F5F7B19FD9B0A00AD90CF /* CoreBluetooth.framework in Frameworks */,
 				E29F5F6319FD991E00AD90CF /* AppKit.framework in Frameworks */,
 				BA2234B6189FA412002C5B6A /* Accelerate.framework in Frameworks */,
 				BA2234B7189FA412002C5B6A /* Accounts.framework in Frameworks */,
