@@ -67,6 +67,7 @@ static int compareClassesForAlphabeticalOrder(id class1, id class2, void *contex
 }
 */
 
+
 static FSObjectBrowserCell *addRowToMatrix(NSMatrix *matrix)
 {
   // Since we reuse cells when filtering (because we use renewRows:columns:), we must 
@@ -695,14 +696,19 @@ static NSMutableArray *customButtons = nil;
   }  
 }
 
-- (void)addObject:(id)object toMatrix:(NSMatrix *)matrix label:(NSString *)label classLabel:(NSString *)classLabel indentationLevel:(NSUInteger)indentationLevel leaf:(BOOL)leaf 
+
+
+- (void)addObject:(id)object
+         toMatrix:(NSMatrix *)matrix
+            label:(NSString *)label
+       classLabel:(NSString *)classLabel
+ indentationLevel:(NSUInteger)indentationLevel
+             leaf:(BOOL)leaf
 {
   FSObjectBrowserCell *cell;
   NSString *objectString = printStringForObjectBrowser(object); 
 
-  //[matrix addRow];
-  //cell = [matrix cellAtRow:[matrix numberOfRows]-1 column:0];  
-  cell =  addRowToMatrix(matrix); 
+  cell =  addRowToMatrix(matrix);
   
   if ([object isKindOfClass:[FSObjectBrowserNamedObjectWrapper class]]) [cell setRepresentedObject:[object object]];
   else                                                             [cell setRepresentedObject:object];
@@ -732,17 +738,38 @@ static NSMutableArray *customButtons = nil;
   [cell setObjectBrowserCellType:FSOBOBJECT];
 }
 
-- (void)addObject:(id)object toMatrix:(NSMatrix *)matrix label:(NSString *)label classLabel:(NSString *)classLabel indentationLevel:(NSUInteger)indentationLevel 
+
+
+- (void)addObject:(id)object
+         toMatrix:(NSMatrix *)matrix
+            label:(NSString *)label
+       classLabel:(NSString *)classLabel
+ indentationLevel:(NSUInteger)indentationLevel
 {
   [self addObject:object toMatrix:matrix label:label classLabel:classLabel indentationLevel:indentationLevel leaf:NO];
 }
 
-- (void)addObject:(id)object toMatrix:(NSMatrix *)matrix label:(NSString *)label classLabel:(NSString *)classLabel
+
+
+- (void)addObject:(id)object
+         toMatrix:(NSMatrix *)matrix
+            label:(NSString *)label
+       classLabel:(NSString *)classLabel
 {
   [self addObject:object toMatrix:matrix label:label classLabel:classLabel indentationLevel:1];
 }
 
-- (void)addObject:(id)object withLabel:(NSString *)label toMatrix:(NSMatrix *)matrix leaf:(BOOL)leaf classLabel:(NSString *)classLabel selectedClassLabel:(NSString *)selectedClassLabel selectedLabel:(NSString *)selectedLabel selectedObject:(id)selectedObject indentationLevel:(NSUInteger)indentationLevel
+
+
+- (void)addObject:(id)object
+        withLabel:(NSString *)label
+         toMatrix:(NSMatrix *)matrix
+             leaf:(BOOL)leaf
+       classLabel:(NSString *)classLabel
+selectedClassLabel:(NSString *)selectedClassLabel
+    selectedLabel:(NSString *)selectedLabel
+   selectedObject:(id)selectedObject
+ indentationLevel:(NSUInteger)indentationLevel
 { 
   BOOL addingSelectedObject = (object == selectedObject && [label isEqualToString:selectedLabel] && [classLabel isEqualToString:selectedClassLabel]);
 
@@ -758,12 +785,28 @@ static NSMutableArray *customButtons = nil;
   }  
 }
 
-- (void)addObject:(id)object withLabel:(NSString *)label toMatrix:(NSMatrix *)matrix classLabel:(NSString *)classLabel selectedClassLabel:(NSString *)selectedClassLabel selectedLabel:(NSString *)selectedLabel selectedObject:(id)selectedObject
+
+
+- (void)addObject:(id)object
+        withLabel:(NSString *)label
+         toMatrix:(NSMatrix *)matrix
+       classLabel:(NSString *)classLabel
+selectedClassLabel:(NSString *)selectedClassLabel
+    selectedLabel:(NSString *)selectedLabel
+   selectedObject:(id)selectedObject
 {
   [self addObject:object withLabel:label toMatrix:matrix leaf:NO classLabel:(NSString *)classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject indentationLevel:0];  
 }
 
-- (void)addObjects:(NSArray *)objects withLabel:(NSString *)label toMatrix:(NSMatrix *)matrix classLabel:(NSString *)classLabel selectedClassLabel:(NSString *)selectedClassLabel selectedLabel:(NSString *)selectedLabel selectedObject:(id)selectedObject
+
+
+- (void)addObjects:(NSArray *)objects
+         withLabel:(NSString *)label
+          toMatrix:(NSMatrix *)matrix
+        classLabel:(NSString *)classLabel
+selectedClassLabel:(NSString *)selectedClassLabel
+     selectedLabel:(NSString *)selectedLabel
+    selectedObject:(id)selectedObject
 {
   if (objects)
   {
@@ -1192,24 +1235,11 @@ static NSMutableArray *customButtons = nil;
     NSMutableAttributedString *attrStr = [[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"   %@ Methods  ", [cls printString]] attributes:txtDict] autorelease];
     [attrStr setAlignment:NSCenterTextAlignment range:NSMakeRange(0,[attrStr length])];
 
-    //[matrix addRow];
-    //cell = [matrix cellAtRow:[matrix numberOfRows]-1 column:0];
-    cell =  addRowToMatrix(matrix); 
+    cell =  addRowToMatrix(matrix);
     
     [cell setLeaf:YES];
     [cell setEnabled:NO];
     [cell setAttributedStringValue:attrStr];
-    //[matrix setToolTip:[cls printString] forCell:cell];
-                 
-    /*if ([filterString isEqualToString:@""])
-      while ( mlist = class_nextMethodList( cls, &iterator ) )
-      {
-        for (i = 0; i < mlist->method_count; i++) 
-        {
-          [selectorStrings addObject:[FSCompiler stringFromSelector:mlist->method_list[i].method_name]];
-        }
-      }
-    else*/  
 	
 #ifdef __LP64__
     unsigned methodCount; 
@@ -1263,62 +1293,6 @@ static NSMutableArray *customButtons = nil;
   }    
 }
 
-/*- (void)fillMatrix:(NSMatrix *)matrix withProperty:(NSString *)property
-{
-  //[matrix addRow];
-  //FSObjectBrowserCell *cell = [matrix cellAtRow:[matrix numberOfRows]-1 column:0];
-  FSObjectBrowserCell *cell = addRowToMatrix(matrix); 
-
-  [cell setObjectBrowserCellType:BBOBJECT];
-  [cell setStringValue:property];
-}*/
-
-/*- (void)fillMatrix:(NSMatrix *)matrix withProperties:(NSArray *)properties label:(NSString *)label
-{
-  if ([properties count] == 0) return;
-  
-  NSUInteger        propertiesCount     = [properties count];
-  NSMutableArray *filteredProperties  = [NSMutableArray arrayWithCapacity:propertiesCount];
-  BOOL            hasEmptyFilterString = [filterString isEqualToString:@""];
-    
-  for (NSUInteger i = 0; i < propertiesCount; i++)
-  {
-    NSString *property = [properties objectAtIndex:i];
-    if (hasEmptyFilterString || containsString(property, filterString, NSCaseInsensitiveSearch))             
-      [filteredProperties addObject:property];
-  }
-    
-  [filteredProperties sortUsingSelector:@selector(compare:)];
-    
-  NSDictionary *txtDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSColor whiteColor], NSForegroundColorAttributeName, [NSColor redColor], NSBackgroundColorAttributeName, nil];
-  NSMutableAttributedString *attrStr = [[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"   %@   ", label] attributes:txtDict] autorelease];
-  [attrStr setAlignment:NSCenterTextAlignment range:NSMakeRange(0,[attrStr length])];
-  //[matrix addRow];
-  //FSObjectBrowserCell *cell = [matrix cellAtRow:[matrix numberOfRows]-1 column:0];
-  FSObjectBrowserCell *cell =  addRowToMatrix(matrix);
-
-  [cell setLeaf:YES];
-  [cell setEnabled:NO];
-  [cell setAttributedStringValue:attrStr];
-  
-  for (NSUInteger i = 0, count = [filteredProperties count]; i < count; i++) 
-    [self fillMatrix:matrix withProperty:[filteredProperties objectAtIndex:i]];
-  
-  [self addBlankRowToMatrix:matrix];
-} */
-
-/*- (void)fillMatrix:(NSMatrix *)matrix withPropertiesForObject:(id)object
-{
-  //NSArray        *attributeKeys         = [object attributeKeys];
-  
-  if (!NSManagedObjectClass || ![object isKindOfClass:NSManagedObjectClass]) return;
-  
-  NSArray        *attributeKeys         = [[[object entity] attributesByName] allKeys];  
-  [self fillMatrix:(NSMatrix *)matrix withProperties:attributeKeys label:@"Attributes"];
-  
-  NSArray        *relationshipKeys         = [[[object entity] relationshipsByName] allKeys];
-  [self fillMatrix:(NSMatrix *)matrix withProperties:relationshipKeys label:@"Relationships"];
-} */
 
 - (void)filter
 {
