@@ -365,7 +365,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<string key="NSColorName">textBackgroundColor</string>
 									<reference key="NSColor" ref="634447872"/>
 								</object>
-								<object class="NSColor" key="NSTextColor" id="564893152">
+								<object class="NSColor" key="NSTextColor" id="884838003">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">labelColor</string>
@@ -608,7 +608,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<int key="NSfFlags">3100</int>
 								</object>
 								<reference key="NSBackgroundColor" ref="1011529054"/>
-								<reference key="NSTextColor" ref="564893152"/>
+								<reference key="NSTextColor" ref="884838003"/>
 							</object>
 							<reference key="NSContentView" ref="762552718"/>
 							<int key="NSBorderType">1</int>
@@ -624,7 +624,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string key="NSFrameSize">{896, 395}</string>
 					<reference key="NSNextKeyView" ref="384976158"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1417}}</string>
 				<string key="NSMinSize">{854, 304}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>

@@ -34,6 +34,8 @@
 #import "FSCNReturn.h"
 #import "FSCNDictionary.h"
 #import "FSAssociation.h"
+#import "CHBidirectionalDictionary.h"
+#import "metamacros.h"
 
 @interface FSObjectBrowserViewObjectHelper : NSObject
 {
@@ -121,39 +123,54 @@
 - (void)processNSWindow:(id)object;
 @end
 
-static id objectFromAnimationBlockingMode(NSAnimationBlockingMode animationBlockingMode)
-{
-  switch (animationBlockingMode)
-  {
-  case NSAnimationBlocking:            return [FSNamedNumber namedNumberWithDouble:animationBlockingMode name:@"NSAnimationBlocking"];
-  case NSAnimationNonblocking:         return [FSNamedNumber namedNumberWithDouble:animationBlockingMode name:@"NSAnimationNonblocking"];  
-  case NSAnimationNonblockingThreaded: return [FSNamedNumber namedNumberWithDouble:animationBlockingMode name:@"NSAnimationNonblockingThreaded"];
-  default:                             return [FSNumber numberWithDouble:animationBlockingMode];
-  } 
-} 
 
-static id objectFromAnimationCurve(NSAnimationCurve animationCurve)
-{
-  switch (animationCurve)
-  {
-  case NSAnimationEaseInOut: return [FSNamedNumber namedNumberWithDouble:animationCurve name:@"NSAnimationEaseInOut"];
-  case NSAnimationEaseIn:    return [FSNamedNumber namedNumberWithDouble:animationCurve name:@"NSAnimationEaseIn"];  
-  case NSAnimationEaseOut:   return [FSNamedNumber namedNumberWithDouble:animationCurve name:@"NSAnimationEaseOut"];
-  case NSAnimationLinear:    return [FSNamedNumber namedNumberWithDouble:animationCurve name:@"NSAnimationLinear"];
-  default:                   return [FSNumber numberWithDouble:animationCurve];
-  } 
-} 
+#define _BIDICT(_idx, _enum) \
+  @(_enum): @#_enum,
 
-static id objectFromAlertStyle(NSAlertStyle alertStyle)
-{
-  switch (alertStyle)
-  {
-  case NSWarningAlertStyle:       return [FSNamedNumber namedNumberWithDouble:alertStyle name:@"NSWarningAlertStyle"];
-  case NSInformationalAlertStyle: return [FSNamedNumber namedNumberWithDouble:alertStyle name:@"NSInformationalAlertStyle"];  
-  case NSCriticalAlertStyle:      return [FSNamedNumber namedNumberWithDouble:alertStyle name:@"NSCriticalAlertStyle"];
-  default:                        return [FSNumber numberWithDouble:alertStyle];
-  } 
-} 
+#define BIDICT(_name, ...) \
+static inline CHBidirectionalDictionary *_name ## Bimap() { \
+static CHBidirectionalDictionary *dict = nil; \
+if (!dict) { \
+  dict = [CHBidirectionalDictionary new]; \
+  [dict addEntriesFromDictionary:@{ \
+metamacro_foreach(_BIDICT, ,__VA_ARGS__) \
+  }]; \
+} \
+return dict; \
+}
+
+#define ENUMTOOBJ(_name, ...) \
+BIDICT(_name, __VA_ARGS__) \
+static id objectFrom ## _name(NS ## _name _name) \
+{ \
+  CHBidirectionalDictionary *dict = _name ## Bimap(); \
+  id lookup = dict[@(_name)]; \
+  return lookup ? [FSNamedNumber namedNumberWithDouble:(double)_name name:lookup] : [FSNumber numberWithDouble:_name]; \
+}
+
+
+ENUMTOOBJ(AnimationBlockingMode, 
+                                 NSAnimationBlocking,
+                                 NSAnimationNonblocking,
+                                 NSAnimationNonblockingThreaded
+                                 );
+
+
+
+ENUMTOOBJ(AnimationCurve, 
+                          NSAnimationEaseInOut,
+                          NSAnimationEaseIn,
+                          NSAnimationEaseOut,
+                          NSAnimationLinear
+                          );
+
+
+ENUMTOOBJ(AlertStyle, 
+                      NSWarningAlertStyle,
+                      NSInformationalAlertStyle,
+                      NSCriticalAlertStyle
+                      );
+
 
 static id objectFromAutoresizingMask(NSUInteger mask)
 {
@@ -174,79 +191,60 @@ static id objectFromAutoresizingMask(NSUInteger mask)
   }  
 }
 
-static id objectFromAttributeType(NSAttributeType attributeType)
-{
-  switch (attributeType)
-  {
-  case NSUndefinedAttributeType:     return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSUndefinedAttributeType"];
-  case NSInteger16AttributeType:     return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSInteger16AttributeType"];  
-  case NSInteger32AttributeType:     return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSInteger32AttributeType"];
-  case NSInteger64AttributeType:     return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSInteger64AttributeType"];
-  case NSDecimalAttributeType:       return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSDecimalAttributeType"];  
-  case NSDoubleAttributeType:        return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSDoubleAttributeType"];
-  case NSFloatAttributeType:         return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSFloatAttributeType"];
-  case NSStringAttributeType:        return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSStringAttributeType"];
-  case NSBooleanAttributeType:       return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSBooleanAttributeType"];  
-  case NSDateAttributeType:          return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSDateAttributeType"];
-  case NSBinaryDataAttributeType:    return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSBinaryDataAttributeType"];  
-  case NSTransformableAttributeType: return [FSNamedNumber namedNumberWithDouble:attributeType name:@"NSTransformableAttributeType"];  
-  default:                           return [FSNumber numberWithDouble:attributeType];
-  } 
-}
+ENUMTOOBJ(AttributeType, 
+                         NSUndefinedAttributeType,
+                         NSInteger16AttributeType,
+                         NSInteger32AttributeType,
+                         NSInteger64AttributeType,
+                         NSDecimalAttributeType,
+                         NSDoubleAttributeType,
+                         NSFloatAttributeType,
+                         NSStringAttributeType,
+                         NSBooleanAttributeType,
+                         NSDateAttributeType,
+                         NSBinaryDataAttributeType,
+                         NSTransformableAttributeType
+                          );
 
-static id objectFromBackgroundStyle(NSBackgroundStyle backgroundStyle)
-{
-  switch (backgroundStyle)
-  {
-  case NSBackgroundStyleLight:   return [FSNamedNumber namedNumberWithDouble:backgroundStyle name:@"NSBackgroundStyleLight"];
-  case NSBackgroundStyleDark:    return [FSNamedNumber namedNumberWithDouble:backgroundStyle name:@"NSBackgroundStyleDark"];  
-  case NSBackgroundStyleRaised:  return [FSNamedNumber namedNumberWithDouble:backgroundStyle name:@"NSBackgroundStyleRaised"];
-  case NSBackgroundStyleLowered: return [FSNamedNumber namedNumberWithDouble:backgroundStyle name:@"NSBackgroundStyleLowered"];
-  default:                       return [FSNumber numberWithDouble:backgroundStyle];
-  } 
-}
 
-static id objectFromBackingStoreType(NSBackingStoreType backingStoreType)
-{
-  switch (backingStoreType)
-  {
-  case NSBackingStoreBuffered:    return [FSNamedNumber namedNumberWithDouble:backingStoreType name:@"NSBackingStoreBuffered"];
-  case NSBackingStoreRetained:    return [FSNamedNumber namedNumberWithDouble:backingStoreType name:@"NSBackingStoreRetained"];  
-  case NSBackingStoreNonretained: return [FSNamedNumber namedNumberWithDouble:backingStoreType name:@"NSBackingStoreNonretained"];
-  default:                        return [FSNumber numberWithDouble:backingStoreType];
-  } 
-}
+ENUMTOOBJ(BackgroundStyle, 
+                           NSBackgroundStyleLight,
+                           NSBackgroundStyleDark,
+                           NSBackgroundStyleRaised,
+                           NSBackgroundStyleLowered
+                          );
 
-static id objectFromBorderType(NSBorderType borderType)
-{
-  switch (borderType)
-  {
-  case NSNoBorder:     return [FSNamedNumber namedNumberWithDouble:borderType name:@"NSNoBorder"];
-  case NSLineBorder:   return [FSNamedNumber namedNumberWithDouble:borderType name:@"NSLineBorder"];  
-  case NSBezelBorder:  return [FSNamedNumber namedNumberWithDouble:borderType name:@"NSBezelBorder"];
-  case NSGrooveBorder: return [FSNamedNumber namedNumberWithDouble:borderType name:@"NSGrooveBorder"];
-  default:             return [FSNumber numberWithDouble:borderType];
-  } 
-}
 
-static id objectFromBezelStyle(NSBezelStyle bezelStyle)
-{
-  switch (bezelStyle)
-  {
-  case NSRoundedBezelStyle:          return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSRoundedBezelStyle"];
-  case NSRegularSquareBezelStyle:    return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSRegularSquareBezelStyle"];  
-  case NSThickSquareBezelStyle:      return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSThickSquareBezelStyle"];
-  case NSThickerSquareBezelStyle:    return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSThickerSquareBezelStyle"];
-  case NSDisclosureBezelStyle:       return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSDisclosureBezelStyle"];  
-  case NSShadowlessSquareBezelStyle: return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSShadowlessSquareBezelStyle"];
-  case NSCircularBezelStyle:         return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSCircularBezelStyle"];
-  case NSTexturedSquareBezelStyle:   return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSTexturedSquareBezelStyle"];
-  case NSHelpButtonBezelStyle:       return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSHelpButtonBezelStyle"];
-  case NSSmallSquareBezelStyle:      return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSSmallSquareBezelStyle"];
-  case NSTexturedRoundedBezelStyle:  return [FSNamedNumber namedNumberWithDouble:bezelStyle name:@"NSTexturedRoundedBezelStyle"];  
-  default:                           return [FSNumber numberWithDouble:bezelStyle];
-  } 
-}
+
+ENUMTOOBJ(BackingStoreType, 
+                            NSBackingStoreBuffered,
+                            NSBackingStoreRetained,
+                            NSBackingStoreNonretained
+                          );
+
+
+ENUMTOOBJ(BorderType, 
+                      NSNoBorder,
+                      NSLineBorder,
+                      NSBezelBorder,
+                      NSGrooveBorder
+                          );
+
+ENUMTOOBJ(BezelStyle, 
+                      NSRoundedBezelStyle,
+                      NSRegularSquareBezelStyle,
+                      NSThickSquareBezelStyle,
+                      NSThickerSquareBezelStyle,
+                      NSDisclosureBezelStyle,
+                      NSShadowlessSquareBezelStyle,
+                      NSCircularBezelStyle,
+                      NSTexturedSquareBezelStyle,
+                      NSHelpButtonBezelStyle,
+                      NSSmallSquareBezelStyle,
+                      NSTexturedRoundedBezelStyle
+                          );
+
+
 
 static id objectFromBitmapFormat(NSBitmapFormat mask)
 {
@@ -262,18 +260,15 @@ static id objectFromBitmapFormat(NSBitmapFormat mask)
   }  
 }
 
-static id objectFromBoxType(NSBoxType boxType)
-{
-  switch (boxType)
-  {
-  case NSBoxPrimary:   return [FSNamedNumber namedNumberWithDouble:boxType name:@"NSBoxPrimary"];
-  case NSBoxSecondary: return [FSNamedNumber namedNumberWithDouble:boxType name:@"NSBoxSecondary"];  
-  case NSBoxSeparator: return [FSNamedNumber namedNumberWithDouble:boxType name:@"NSBoxSeparator"];
-  case NSBoxOldStyle:  return [FSNamedNumber namedNumberWithDouble:boxType name:@"NSBoxOldStyle"];
-  case NSBoxCustom:    return [FSNamedNumber namedNumberWithDouble:boxType name:@"NSBoxCustom"];
-  default:             return [FSNumber numberWithDouble:boxType];
-  } 
-}
+ENUMTOOBJ(BoxType, 
+                   NSBoxPrimary,
+                   NSBoxSecondary,
+                   NSBoxSeparator,
+                   NSBoxOldStyle,
+                   NSBoxCustom
+                          );
+
+
 
 static id objectFromButtonMask(NSUInteger mask)
 {
@@ -289,16 +284,13 @@ static id objectFromButtonMask(NSUInteger mask)
   }  
 }
 
-static id objectFromBrowserColumnResizingType(NSBrowserColumnResizingType browserColumnResizingType)
-{
-  switch (browserColumnResizingType)
-  {
-  case NSBrowserNoColumnResizing:   return [FSNamedNumber namedNumberWithDouble:browserColumnResizingType name:@"NSBrowserNoColumnResizing"];
-  case NSBrowserAutoColumnResizing: return [FSNamedNumber namedNumberWithDouble:browserColumnResizingType name:@"NSBrowserAutoColumnResizing"];  
-  case NSBrowserUserColumnResizing: return [FSNamedNumber namedNumberWithDouble:browserColumnResizingType name:@"NSBrowserUserColumnResizing"];
-  default:                          return [FSNumber numberWithDouble:browserColumnResizingType];
-  } 
-}
+
+ENUMTOOBJ(BrowserColumnResizingType, 
+                                     NSBrowserNoColumnResizing,
+                                     NSBrowserAutoColumnResizing,
+                                     NSBrowserUserColumnResizing
+                          );
+
 
 /*static id objectFromButtonType(NSButtonType buttonType)
 {
@@ -316,20 +308,16 @@ static id objectFromBrowserColumnResizingType(NSBrowserColumnResizingType browse
   } 
 }*/
 
-static id objectFromCellImagePosition(NSInteger cellImagePosition)
-{
-  switch (cellImagePosition)
-  {
-  case NSNoImage:       return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSNoImage"];
-  case NSImageOnly:     return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSImageOnly"];  
-  case NSImageLeft:     return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSImageLeft"];
-  case NSImageRight:    return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSImageRight"];
-  case NSImageBelow:    return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSImageBelow"];  
-  case NSImageAbove:    return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSImageAbove"];
-  case NSImageOverlaps: return [FSNamedNumber namedNumberWithDouble:cellImagePosition name:@"NSImageOverlaps"];  
-  default:              return [FSNumber numberWithDouble:cellImagePosition];
-  } 
-}
+ENUMTOOBJ(CellImagePosition, 
+                             NSNoImage,
+                             NSImageOnly,
+                             NSImageLeft,
+                             NSImageRight,
+                             NSImageBelow,
+                             NSImageAbove,
+                             NSImageOverlaps
+                          );
+
 
 static id objectFromCellMask(NSUInteger mask)
 { 
@@ -346,70 +334,50 @@ static id objectFromCellMask(NSUInteger mask)
   }   
 }
 
-static id objectFromCellStateValue(NSCellStateValue cellStateValue)
-{
-  switch (cellStateValue)
-  {
-  case NSMixedState: return [FSNamedNumber namedNumberWithDouble:cellStateValue name:@"NSMixedState"];
-  case NSOffState:   return [FSNamedNumber namedNumberWithDouble:cellStateValue name:@"NSOffState"];  
-  case NSOnState:    return [FSNamedNumber namedNumberWithDouble:cellStateValue name:@"NSOnState"];
-  default:           return [FSNumber numberWithDouble:cellStateValue];
-  } 
-}
+ENUMTOOBJ(CellStateValue, 
+                          NSMixedState,
+                          NSOffState,
+                          NSOnState
+                          );
 
-static id objectFromCellType(NSCellType cellType)
-{
-  switch (cellType)
-  {
-  case NSNullCellType:  return [FSNamedNumber namedNumberWithDouble:cellType name:@"NSNullCellType"];
-  case NSTextCellType:  return [FSNamedNumber namedNumberWithDouble:cellType name:@"NSTextCellType"];  
-  case NSImageCellType: return [FSNamedNumber namedNumberWithDouble:cellType name:@"NSImageCellType"];
-  default:              return [FSNumber numberWithDouble:cellType];
-  } 
-}
 
-static id objectFromCharacterCollection(NSCharacterCollection characterCollection)
-{
-  switch (characterCollection)
-  {
-  case NSIdentityMappingCharacterCollection: return [FSNamedNumber namedNumberWithDouble:characterCollection name:@"NSIdentityMappingCharacterCollection"];
-  case NSAdobeCNS1CharacterCollection:       return [FSNamedNumber namedNumberWithDouble:characterCollection name:@"NSAdobeCNS1CharacterCollection"];  
-  case NSAdobeGB1CharacterCollection:        return [FSNamedNumber namedNumberWithDouble:characterCollection name:@"NSAdobeGB1CharacterCollection"];
-  case NSAdobeJapan1CharacterCollection:     return [FSNamedNumber namedNumberWithDouble:characterCollection name:@"NSAdobeJapan1CharacterCollection"];
-  case NSAdobeJapan2CharacterCollection:     return [FSNamedNumber namedNumberWithDouble:characterCollection name:@"NSAdobeJapan2CharacterCollection"];  
-  case NSAdobeKorea1CharacterCollection:     return [FSNamedNumber namedNumberWithDouble:characterCollection name:@"NSAdobeKorea1CharacterCollection"];
-  default:                                   return [FSNumber numberWithDouble:characterCollection];
-  } 
-}
+ENUMTOOBJ(CellType, 
+                    NSNullCellType,
+                    NSTextCellType,
+                    NSImageCellType
+                          );
 
-static id objectFromColorPanelMode(NSInteger colorPanelMode)
-{
-  switch (colorPanelMode)
-  {
-  case NSGrayModeColorPanel:          return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSGrayModeColorPanel"];
-  case NSRGBModeColorPanel:           return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSRGBModeColorPanel"];  
-  case NSCMYKModeColorPanel:          return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSCMYKModeColorPanel"];
-  case NSHSBModeColorPanel:           return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSHSBModeColorPanel"];
-  case NSCustomPaletteModeColorPanel: return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSCustomPaletteModeColorPanel"];  
-  case NSColorListModeColorPanel:     return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSColorListModeColorPanel"];
-  case NSWheelModeColorPanel:         return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSWheelModeColorPanel"];  
-  case NSCrayonModeColorPanel:        return [FSNamedNumber namedNumberWithDouble:colorPanelMode name:@"NSCrayonModeColorPanel"];  
-  default:                            return [FSNumber numberWithDouble:colorPanelMode];
-  } 
-}
 
-static id objectFromColorRenderingIntent(NSColorRenderingIntent colorRenderingIntent)
-{
-  switch (colorRenderingIntent)
-  {
-  case NSColorRenderingIntentDefault:              return [FSNamedNumber namedNumberWithDouble:colorRenderingIntent name:@"NSColorRenderingIntentDefault"];
-  case NSColorRenderingIntentAbsoluteColorimetric: return [FSNamedNumber namedNumberWithDouble:colorRenderingIntent name:@"NSColorRenderingIntentAbsoluteColorimetric"];  
-  case NSColorRenderingIntentRelativeColorimetric: return [FSNamedNumber namedNumberWithDouble:colorRenderingIntent name:@"NSColorRenderingIntentRelativeColorimetric"];
-  case NSColorRenderingIntentPerceptual:           return [FSNamedNumber namedNumberWithDouble:colorRenderingIntent name:@"NSColorRenderingIntentPerceptual"];
-  case NSColorRenderingIntentSaturation:           return [FSNamedNumber namedNumberWithDouble:colorRenderingIntent name:@"NSColorRenderingIntentSaturation"];  
-  default:                                         return [FSNumber numberWithDouble:colorRenderingIntent];
-  } 
-}
+ENUMTOOBJ(CharacterCollection, 
+                               NSIdentityMappingCharacterCollection,
+                               NSAdobeCNS1CharacterCollection,
+                               NSAdobeGB1CharacterCollection,
+                               NSAdobeJapan1CharacterCollection,
+                               NSAdobeJapan2CharacterCollection,
+                               NSAdobeKorea1CharacterCollection
+                          );
+
+
+ENUMTOOBJ(ColorPanelMode, 
+                          NSGrayModeColorPanel,
+                          NSRGBModeColorPanel,
+                          NSCMYKModeColorPanel,
+                          NSHSBModeColorPanel,
+                          NSCustomPaletteModeColorPanel,
+                          NSColorListModeColorPanel,
+                          NSWheelModeColorPanel,
+                          NSCrayonModeColorPanel
+                          );
+
+
+ENUMTOOBJ(ColorRenderingIntent, 
+                                NSColorRenderingIntentDefault,
+                                NSColorRenderingIntentAbsoluteColorimetric,
+                                NSColorRenderingIntentRelativeColorimetric,
+                                NSColorRenderingIntentPerceptual,
+                                NSColorRenderingIntentSaturation
+                          );
+
 
 static id objectFromComparisonPredicateOptions(NSUInteger mask)
 {
@@ -423,72 +391,53 @@ static id objectFromComparisonPredicateOptions(NSUInteger mask)
   }   
 }
 
-static id objectFromComparisonPredicateModifier(NSComparisonPredicateModifier comparisonPredicateModifier)
-{
-  switch (comparisonPredicateModifier)
-  {
-  case NSDirectPredicateModifier: return [FSNamedNumber namedNumberWithDouble:comparisonPredicateModifier name:@"NSDirectPredicateModifier"];
-  case NSAllPredicateModifier:    return [FSNamedNumber namedNumberWithDouble:comparisonPredicateModifier name:@"NSAllPredicateModifier"];  
-  case NSAnyPredicateModifier:    return [FSNamedNumber namedNumberWithDouble:comparisonPredicateModifier name:@"NSAnyPredicateModifier"];
-  default:                        return [FSNumber numberWithDouble:comparisonPredicateModifier];
-  } 
-}
+ENUMTOOBJ(ComparisonPredicateModifier, 
+                                       NSDirectPredicateModifier,
+                                       NSAllPredicateModifier,
+                                       NSAnyPredicateModifier
+                          );
 
-static id objectFromCompositingOperation(NSCompositingOperation compositingOperation)
-{
-  switch (compositingOperation)
-  {
-  case NSCompositeClear:           return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeClear"];
-  case NSCompositeCopy:            return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeCopy"];  
-  case NSCompositeSourceOver:      return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeSourceOver"];
-  case NSCompositeSourceIn:        return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeSourceIn"];
-  case NSCompositeSourceOut:       return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeSourceOut"];  
-  case NSCompositeSourceAtop:      return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeSourceAtop"];
-  case NSCompositeDestinationOver: return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeDestinationOver"];  
-  case NSCompositeDestinationIn:   return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeDestinationIn"];  
-  case NSCompositeDestinationOut:  return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeDestinationOut"];
-  case NSCompositeDestinationAtop: return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeDestinationAtop"];
-  case NSCompositeXOR:             return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeXOR"];  
-  case NSCompositePlusDarker:      return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositePlusDarker"];
-  case NSCompositeHighlight:       return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositeHighlight"];  
-  case NSCompositePlusLighter:     return [FSNamedNumber namedNumberWithDouble:compositingOperation name:@"NSCompositePlusLighter"];  
-  default:                         return [FSNumber numberWithDouble:compositingOperation];
-  } 
-}
 
-static id objectFromCompoundPredicateType(NSCompoundPredicateType compoundPredicateType)
-{
-  switch (compoundPredicateType)
-  {
-  case NSNotPredicateType: return [FSNamedNumber namedNumberWithDouble:compoundPredicateType name:@"NSNotPredicateType"];
-  case NSAndPredicateType: return [FSNamedNumber namedNumberWithDouble:compoundPredicateType name:@"NSAndPredicateType"];  
-  case NSOrPredicateType:  return [FSNamedNumber namedNumberWithDouble:compoundPredicateType name:@"NSOrPredicateType"];
-  default:                 return [FSNumber numberWithDouble:compoundPredicateType];
-  } 
-}
+ENUMTOOBJ(CompositingOperation, 
+                                NSCompositeClear,
+                                NSCompositeCopy,
+                                NSCompositeSourceOver,
+                                NSCompositeSourceIn,
+                                NSCompositeSourceOut,
+                                NSCompositeSourceAtop,
+                                NSCompositeDestinationOver,
+                                NSCompositeDestinationIn,
+                                NSCompositeDestinationOut,
+                                NSCompositeDestinationAtop,
+                                NSCompositeXOR,
+                                NSCompositePlusDarker,
+                                NSCompositeHighlight,
+                                NSCompositePlusLighter
+                          );
 
-static id objectFromControlSize(NSControlSize controlSize)
-{
-  switch (controlSize)
-  {
-  case NSRegularControlSize: return [FSNamedNumber namedNumberWithDouble:controlSize name:@"NSRegularControlSize"];
-  case NSSmallControlSize:   return [FSNamedNumber namedNumberWithDouble:controlSize name:@"NSSmallControlSize"];  
-  case NSMiniControlSize:    return [FSNamedNumber namedNumberWithDouble:controlSize name:@"NSMiniControlSize"];
-  default:                   return [FSNumber numberWithDouble:controlSize];
-  } 
-}
 
-static id objectFromControlTint(NSControlTint controlTint)
-{
-  switch (controlTint)
-  {
-  case NSDefaultControlTint:  return [FSNamedNumber namedNumberWithDouble:controlTint name:@"NSDefaultControlTint"];
-  case NSBlueControlTint:     return [FSNamedNumber namedNumberWithDouble:controlTint name:@"NSBlueControlTint"];  
-  case NSGraphiteControlTint: return [FSNamedNumber namedNumberWithDouble:controlTint name:@"NSGraphiteControlTint"];
-  case NSClearControlTint:    return [FSNamedNumber namedNumberWithDouble:controlTint name:@"NSClearControlTint"];
-  default:                    return [FSNumber numberWithDouble:controlTint];
-  } 
-}
+
+ENUMTOOBJ(CompoundPredicateType, 
+                                 NSNotPredicateType,
+                                 NSAndPredicateType,
+                                 NSOrPredicateType
+                          );
+
+
+ENUMTOOBJ(ControlSize, 
+                       NSRegularControlSize,
+                       NSSmallControlSize,
+                       NSMiniControlSize
+                          );
+
+
+ENUMTOOBJ(ControlTint, 
+                       NSDefaultControlTint,
+                       NSBlueControlTint,
+                       NSGraphiteControlTint,
+                       NSClearControlTint
+                          );
+
 
 static id objectFromDatePickerElementFlags(NSUInteger mask)
 {
@@ -511,155 +460,113 @@ static id objectFromDatePickerElementFlags(NSUInteger mask)
   }  
 }
 
-static id objectFromDatePickerMode(NSDatePickerMode datePickerMode)
-{
-  switch (datePickerMode)
-  {
-  case NSSingleDateMode: return [FSNamedNumber namedNumberWithDouble:datePickerMode name:@"NSSingleDateMode"];
-  case NSRangeDateMode:  return [FSNamedNumber namedNumberWithDouble:datePickerMode name:@"NSRangeDateMode"];  
-  default:               return [FSNumber numberWithDouble:datePickerMode];
-  } 
-}
+ENUMTOOBJ(DatePickerMode, 
+                          NSSingleDateMode,
+                          NSRangeDateMode
+                          );
 
-static id objectFromDatePickerStyle(NSDatePickerStyle datePickerStyle)
-{
-  switch (datePickerStyle)
-  {
-  case NSTextFieldAndStepperDatePickerStyle: return [FSNamedNumber namedNumberWithDouble:datePickerStyle name:@"NSTextFieldAndStepperDatePickerStyle"];
-  case NSClockAndCalendarDatePickerStyle:    return [FSNamedNumber namedNumberWithDouble:datePickerStyle name:@"NSClockAndCalendarDatePickerStyle"];  
-  default:                                   return [FSNumber numberWithDouble:datePickerStyle];
-  } 
-}
 
-static id objectFromDeleteRule(NSDeleteRule deleteRule)
-{
-  switch (deleteRule)
-  {
-  case NSNoActionDeleteRule: return [FSNamedNumber namedNumberWithDouble:deleteRule name:@"NSNoActionDeleteRule"];
-  case NSNullifyDeleteRule:  return [FSNamedNumber namedNumberWithDouble:deleteRule name:@"NSNullifyDeleteRule"];  
-  case NSCascadeDeleteRule:  return [FSNamedNumber namedNumberWithDouble:deleteRule name:@"NSCascadeDeleteRule"];
-  case NSDenyDeleteRule:     return [FSNamedNumber namedNumberWithDouble:deleteRule name:@"NSDenyDeleteRule"];
-  default:                   return [FSNumber numberWithDouble:deleteRule];
-  } 
-}
+ENUMTOOBJ(DatePickerStyle, 
+                           NSTextFieldAndStepperDatePickerStyle,
+                           NSClockAndCalendarDatePickerStyle
+                          );
 
-static id objectFromDrawerState(NSDrawerState drawerState)
-{
-  switch (drawerState)
-  {
-  case NSDrawerClosedState:  return [FSNamedNumber namedNumberWithDouble:drawerState name:@"NSDrawerClosedState"];
-  case NSDrawerOpeningState: return [FSNamedNumber namedNumberWithDouble:drawerState name:@"NSDrawerOpeningState"];  
-  case NSDrawerOpenState:    return [FSNamedNumber namedNumberWithDouble:drawerState name:@"NSDrawerOpenState"];
-  case NSDrawerClosingState: return [FSNamedNumber namedNumberWithDouble:drawerState name:@"NSDrawerClosingState"];
-  default:                   return [FSNumber numberWithDouble:drawerState];
-  } 
-}
 
-static id objectFromEventType(NSEventType eventType)
-{
-  switch (eventType)
-  {
-  case NSLeftMouseDown:      return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSLeftMouseDown"];
-  case NSLeftMouseUp:        return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSLeftMouseUp"];  
-  case NSRightMouseDown:     return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSRightMouseDown"];
-  case NSRightMouseUp:       return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSRightMouseUp"];
-  case NSOtherMouseDown:     return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSOtherMouseDown"];
-  case NSOtherMouseUp:       return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSOtherMouseUp"];  
-  case NSMouseMoved:         return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSMouseMoved"];
-  case NSLeftMouseDragged:   return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSLeftMouseDragged"];
-  case NSRightMouseDragged:  return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSRightMouseDragged"];
-  case NSOtherMouseDragged:  return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSOtherMouseDragged"];  
-  case NSMouseEntered:       return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSMouseEntered"];
-  case NSMouseExited:        return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSMouseExited"];
-  case NSCursorUpdate:       return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSCursorUpdate"];
-  case NSKeyDown:            return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSKeyDown"];  
-  case NSKeyUp:              return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSKeyUp"];
-  case NSFlagsChanged:       return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSFlagsChanged"];
-  case NSAppKitDefined:      return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSAppKitDefined"];
-  case NSSystemDefined:      return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSSystemDefined"];  
-  case NSApplicationDefined: return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSApplicationDefined"];
-  case NSPeriodic:           return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSPeriodic"];
-  case NSScrollWheel:        return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSScrollWheel"];
-  case NSTabletPoint:        return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSTabletPoint"];
-  case NSTabletProximity:    return [FSNamedNumber namedNumberWithDouble:eventType name:@"NSTabletProximity"];
-  default:                   return [FSNumber numberWithDouble:eventType];
-  } 
-}
+ENUMTOOBJ(DeleteRule, 
+                      NSNoActionDeleteRule,
+                      NSNullifyDeleteRule,
+                      NSCascadeDeleteRule,
+                      NSDenyDeleteRule
+                          );
 
-static id objectFromEventSubtype(short eventSubtype)
-{
-  switch (eventSubtype)
-  {
-  case NSMouseEventSubtype:           return [FSNamedNumber namedNumberWithDouble:eventSubtype name:@"NSMouseEventSubtype"];
-  case NSTabletPointEventSubtype:     return [FSNamedNumber namedNumberWithDouble:eventSubtype name:@"NSTabletPointEventSubtype"];  
-  case NSTabletProximityEventSubtype: return [FSNamedNumber namedNumberWithDouble:eventSubtype name:@"NSTabletProximityEventSubtype"];
-  default:                            return [FSNumber numberWithDouble:eventSubtype];
-  } 
-}
- 
-static id objectFromExpressionType(NSExpressionType expressionType)
-{
-  switch (expressionType)
-  {
-  case NSConstantValueExpressionType:   return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSConstantValueExpressionType"];
-  case NSEvaluatedObjectExpressionType: return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSEvaluatedObjectExpressionType"];  
-  case NSVariableExpressionType:        return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSVariableExpressionType"];
-  case NSKeyPathExpressionType:         return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSKeyPathExpressionType"];  
-  case NSFunctionExpressionType:        return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSFunctionExpressionType"];
-  case NSUnionSetExpressionType:        return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSUnionSetExpressionType"];
-  case NSIntersectSetExpressionType:    return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSIntersectSetExpressionType"];
-  case NSMinusSetExpressionType:        return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSMinusSetExpressionType"];
-  case NSSubqueryExpressionType:        return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSSubqueryExpressionType"];
-  case NSAggregateExpressionType:       return [FSNamedNumber namedNumberWithDouble:expressionType name:@"NSAggregateExpressionType"];
-  default:                              return [FSNumber numberWithDouble:expressionType];
-  } 
-}
 
-static id objectFromFetchRequestResultType(NSFetchRequestResultType fetchRequestResultType)
-{
-  switch (fetchRequestResultType)
-  {
-  case NSManagedObjectResultType:   return [FSNamedNumber namedNumberWithDouble:fetchRequestResultType name:@"NSManagedObjectResultType"];
-  case NSManagedObjectIDResultType: return [FSNamedNumber namedNumberWithDouble:fetchRequestResultType name:@"NSManagedObjectIDResultType"];  
-  default:                          return [FSNumber numberWithDouble:fetchRequestResultType];
-  } 
-}
+ENUMTOOBJ(DrawerState, 
+                       NSDrawerClosedState,
+                       NSDrawerOpeningState,
+                       NSDrawerOpenState,
+                       NSDrawerClosingState
+                          );
 
-static id objectFromFocusRingType(NSFocusRingType focusRingType)
-{
-  switch (focusRingType)
-  {
-  case NSFocusRingTypeDefault:  return [FSNamedNumber namedNumberWithDouble:focusRingType name:@"NSFocusRingTypeDefault"];
-  case NSFocusRingTypeNone:     return [FSNamedNumber namedNumberWithDouble:focusRingType name:@"NSFocusRingTypeNone"];  
-  case NSFocusRingTypeExterior: return [FSNamedNumber namedNumberWithDouble:focusRingType name:@"NSFocusRingTypeExterior"];
-  default:                      return [FSNumber numberWithDouble:focusRingType];
-  } 
-}
 
-static id objectFromFontRenderingMode(NSFontRenderingMode fontRenderingMode)
-{
-  switch (fontRenderingMode)
-  {
-  case NSFontDefaultRenderingMode:                        return [FSNamedNumber namedNumberWithDouble:fontRenderingMode name:@"NSFontDefaultRenderingMode"];
-  case NSFontAntialiasedRenderingMode:                    return [FSNamedNumber namedNumberWithDouble:fontRenderingMode name:@"NSFontAntialiasedRenderingMode"];  
-  case NSFontIntegerAdvancementsRenderingMode:            return [FSNamedNumber namedNumberWithDouble:fontRenderingMode name:@"NSFontIntegerAdvancementsRenderingMode"];
-  case NSFontAntialiasedIntegerAdvancementsRenderingMode: return [FSNamedNumber namedNumberWithDouble:fontRenderingMode name:@"NSFontAntialiasedIntegerAdvancementsRenderingMode"];
-  default:                                                return [FSNumber numberWithDouble:fontRenderingMode];
-  } 
-}
 
-static id objectFromGradientType(NSGradientType gradientType)
-{
-  switch (gradientType)
-  {
-  case NSGradientNone:          return [FSNamedNumber namedNumberWithDouble:gradientType name:@"NSGradientNone"];
-  case NSGradientConcaveWeak:   return [FSNamedNumber namedNumberWithDouble:gradientType name:@"NSGradientConcaveWeak"];  
-  case NSGradientConcaveStrong: return [FSNamedNumber namedNumberWithDouble:gradientType name:@"NSGradientConcaveStrong"];
-  case NSGradientConvexWeak:    return [FSNamedNumber namedNumberWithDouble:gradientType name:@"NSGradientConvexWeak"];
-  case NSGradientConvexStrong:  return [FSNamedNumber namedNumberWithDouble:gradientType name:@"NSGradientConvexStrong"];  
-  default:                      return [FSNumber numberWithDouble:gradientType];
-  } 
-}
+ENUMTOOBJ(EventType, 
+                     NSLeftMouseDown,
+                     NSLeftMouseUp,
+                     NSRightMouseDown,
+                     NSRightMouseUp,
+                     NSOtherMouseDown,
+                     NSOtherMouseUp,
+                     NSMouseMoved,
+                     NSLeftMouseDragged,
+                     NSRightMouseDragged,
+                     NSOtherMouseDragged,
+                     NSMouseEntered,
+                     NSMouseExited,
+                     NSCursorUpdate,
+                     NSKeyDown,
+                     NSKeyUp,
+                     NSFlagsChanged,
+                     NSAppKitDefined,
+                     NSSystemDefined,
+                     NSApplicationDefined,
+                     NSPeriodic,
+                     NSScrollWheel,
+                     NSTabletPoint,
+                     NSTabletProximity
+                          );
+
+
+ENUMTOOBJ(EventSubtype, 
+                        NSMouseEventSubtype,
+                        NSTabletPointEventSubtype,
+                        NSTabletProximityEventSubtype
+                          );
+
+
+ENUMTOOBJ(ExpressionType, 
+                          NSConstantValueExpressionType,
+                          NSEvaluatedObjectExpressionType,
+                          NSVariableExpressionType,
+                          NSKeyPathExpressionType,
+                          NSFunctionExpressionType,
+                          NSUnionSetExpressionType,
+                          NSIntersectSetExpressionType,
+                          NSMinusSetExpressionType,
+                          NSSubqueryExpressionType,
+                          NSAggregateExpressionType
+                          );
+
+
+
+ENUMTOOBJ(FetchRequestResultType, 
+                                  NSManagedObjectResultType,
+                                  NSManagedObjectIDResultType
+                          );
+
+
+ENUMTOOBJ(FocusRingType, 
+                         NSFocusRingTypeDefault,
+                         NSFocusRingTypeNone,
+                         NSFocusRingTypeExterior
+                          );
+
+
+ENUMTOOBJ(FontRenderingMode, 
+                             NSFontDefaultRenderingMode,
+                             NSFontAntialiasedRenderingMode,
+                             NSFontIntegerAdvancementsRenderingMode,
+                             NSFontAntialiasedIntegerAdvancementsRenderingMode
+                          );
+
+
+ENUMTOOBJ(GradientType, 
+                        NSGradientNone,
+                        NSGradientConcaveWeak,
+                        NSGradientConcaveStrong,
+                        NSGradientConvexWeak,
+                        NSGradientConvexStrong
+                          );
+
 
 static id objectFromGridStyleMask(NSUInteger mask)
 {
@@ -674,71 +581,53 @@ static id objectFromGridStyleMask(NSUInteger mask)
   }   
 }
 
-static id objectFromImageAlignment(NSImageAlignment imageAlignment)
-{
-  switch (imageAlignment)
-  {
-  case NSImageAlignCenter:      return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignCenter"];
-  case NSImageAlignTop:         return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignTop"];  
-  case NSImageAlignTopLeft:     return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignTopLeft"];
-  case NSImageAlignTopRight:    return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignTopRight"];
-  case NSImageAlignLeft:        return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignLeft"];  
-  case NSImageAlignBottom:      return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignBottom"];
-  case NSImageAlignBottomLeft:  return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignBottomLeft"];  
-  case NSImageAlignBottomRight: return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignBottomRight"];
-  case NSImageAlignRight:       return [FSNamedNumber namedNumberWithDouble:imageAlignment name:@"NSImageAlignRight"];
-  default:                      return [FSNumber numberWithDouble:imageAlignment];
-  } 
-}
+ENUMTOOBJ(ImageAlignment, 
+                          NSImageAlignCenter,
+                          NSImageAlignTop,
+                          NSImageAlignTopLeft,
+                          NSImageAlignTopRight,
+                          NSImageAlignLeft,
+                          NSImageAlignBottom,
+                          NSImageAlignBottomLeft,
+                          NSImageAlignBottomRight,
+                          NSImageAlignRight
+                          );
 
-static id objectFromImageCacheMode(NSImageCacheMode imageCacheMode)
-{
-  switch (imageCacheMode)
-  {
-  case NSImageCacheDefault: return [FSNamedNumber namedNumberWithDouble:imageCacheMode name:@"NSImageCacheDefault"];
-  case NSImageCacheAlways:  return [FSNamedNumber namedNumberWithDouble:imageCacheMode name:@"NSImageCacheAlways"];  
-  case NSImageCacheBySize:  return [FSNamedNumber namedNumberWithDouble:imageCacheMode name:@"NSImageCacheBySize"];
-  case NSImageCacheNever:   return [FSNamedNumber namedNumberWithDouble:imageCacheMode name:@"NSImageCacheNever"];
-  default:                  return [FSNumber numberWithDouble:imageCacheMode];
-  } 
-}
 
-static id objectFromImageFrameStyle(NSImageFrameStyle imageFrameStyle)
-{
-  switch (imageFrameStyle)
-  {
-  case NSImageFrameNone:      return [FSNamedNumber namedNumberWithDouble:imageFrameStyle name:@"NSImageFrameNone"];
-  case NSImageFramePhoto:     return [FSNamedNumber namedNumberWithDouble:imageFrameStyle name:@"NSImageFramePhoto"];  
-  case NSImageFrameGrayBezel: return [FSNamedNumber namedNumberWithDouble:imageFrameStyle name:@"NSImageFrameGrayBezel"];
-  case NSImageFrameGroove:    return [FSNamedNumber namedNumberWithDouble:imageFrameStyle name:@"NSImageFrameGroove"];
-  case NSImageFrameButton:    return [FSNamedNumber namedNumberWithDouble:imageFrameStyle name:@"NSImageFrameButton"];  
-  default:                    return [FSNumber numberWithDouble:imageFrameStyle];
-  } 
-}
+ENUMTOOBJ(ImageCacheMode, 
+                          NSImageCacheDefault,
+                          NSImageCacheAlways,
+                          NSImageCacheBySize,
+                          NSImageCacheNever
+                          );
 
-static id objectFromImageInterpolation(NSImageInterpolation imageInterpolation)
-{
-  switch (imageInterpolation)
-  {
-  case NSImageInterpolationDefault: return [FSNamedNumber namedNumberWithDouble:imageInterpolation name:@"NSImageInterpolationDefault"];
-  case NSImageInterpolationNone:    return [FSNamedNumber namedNumberWithDouble:imageInterpolation name:@"NSImageInterpolationNone"];  
-  case NSImageInterpolationLow:     return [FSNamedNumber namedNumberWithDouble:imageInterpolation name:@"NSImageInterpolationLow"];
-  case NSImageInterpolationHigh:    return [FSNamedNumber namedNumberWithDouble:imageInterpolation name:@"NSImageInterpolationHigh"];
-  default:                          return [FSNumber numberWithDouble:imageInterpolation];
-  } 
-}
 
-static id objectFromImageScaling(NSImageScaling imageScaling)
-{
-  switch (imageScaling)
-  {
-  case NSImageScaleProportionallyDown:     return [FSNamedNumber namedNumberWithDouble:imageScaling name:@"NSImageScaleProportionallyDown"];
-  case NSImageScaleAxesIndependently:      return [FSNamedNumber namedNumberWithDouble:imageScaling name:@"NSImageScaleAxesIndependently"];  
-  case NSImageScaleNone:                   return [FSNamedNumber namedNumberWithDouble:imageScaling name:@"NSImageScaleNone"];
-  case NSImageScaleProportionallyUpOrDown: return [FSNamedNumber namedNumberWithDouble:imageScaling name:@"NSImageScaleProportionallyUpOrDown"];
-  default:                                 return [FSNumber numberWithDouble:imageScaling];
-  } 
-}
+
+ENUMTOOBJ(ImageFrameStyle, 
+                           NSImageFrameNone,
+                           NSImageFramePhoto,
+                           NSImageFrameGrayBezel,
+                           NSImageFrameGroove,
+                           NSImageFrameButton
+                          );
+
+
+
+ENUMTOOBJ(ImageInterpolation, 
+                              NSImageInterpolationDefault,
+                              NSImageInterpolationNone,
+                              NSImageInterpolationLow,
+                              NSImageInterpolationHigh
+                          );
+
+
+ENUMTOOBJ(ImageScaling, 
+                        NSImageScaleProportionallyDown,
+                        NSImageScaleAxesIndependently,
+                        NSImageScaleNone,
+                        NSImageScaleProportionallyUpOrDown
+                          );
+
 
 static id objectFromKeyModifierMask(NSUInteger mask)
 {
@@ -779,65 +668,45 @@ static id objectFromLayoutOptions(NSUInteger mask)
   }   
 }
 
-static id objectFromLevelIndicatorStyle(NSLevelIndicatorStyle levelIndicatorStyle)
-{
-  switch (levelIndicatorStyle)
-  {
-  case NSRelevancyLevelIndicatorStyle:          return [FSNamedNumber namedNumberWithDouble:levelIndicatorStyle name:@"NSRelevancyLevelIndicatorStyle"];
-  case NSContinuousCapacityLevelIndicatorStyle: return [FSNamedNumber namedNumberWithDouble:levelIndicatorStyle name:@"NSContinuousCapacityLevelIndicatorStyle"];  
-  case NSDiscreteCapacityLevelIndicatorStyle:   return [FSNamedNumber namedNumberWithDouble:levelIndicatorStyle name:@"NSDiscreteCapacityLevelIndicatorStyle"];
-  case NSRatingLevelIndicatorStyle:             return [FSNamedNumber namedNumberWithDouble:levelIndicatorStyle name:@"NSRatingLevelIndicatorStyle"];
-  default:                                      return [FSNumber numberWithDouble:levelIndicatorStyle];
-  } 
-}
+ENUMTOOBJ(LevelIndicatorStyle, 
+                               NSRelevancyLevelIndicatorStyle,
+                               NSContinuousCapacityLevelIndicatorStyle,
+                               NSDiscreteCapacityLevelIndicatorStyle,
+                               NSRatingLevelIndicatorStyle
+                          );
 
-static id objectFromLineBreakMode(NSLineBreakMode lineBreakMode)
-{
-  switch (lineBreakMode)
-  {
-  case NSLineBreakByWordWrapping:     return [FSNamedNumber namedNumberWithDouble:lineBreakMode name:@"NSLineBreakByWordWrapping"];
-  case NSLineBreakByCharWrapping:     return [FSNamedNumber namedNumberWithDouble:lineBreakMode name:@"NSLineBreakByCharWrapping"];  
-  case NSLineBreakByClipping:         return [FSNamedNumber namedNumberWithDouble:lineBreakMode name:@"NSLineBreakByClipping"];
-  case NSLineBreakByTruncatingHead:   return [FSNamedNumber namedNumberWithDouble:lineBreakMode name:@"NSLineBreakByTruncatingHead"];
-  case NSLineBreakByTruncatingTail:   return [FSNamedNumber namedNumberWithDouble:lineBreakMode name:@"NSLineBreakByTruncatingTail"];  
-  case NSLineBreakByTruncatingMiddle: return [FSNamedNumber namedNumberWithDouble:lineBreakMode name:@"NSLineBreakByTruncatingMiddle"];
-  default:                            return [FSNumber numberWithDouble:lineBreakMode];
-  } 
-}
 
-static id objectFromLineCapStyle(NSLineCapStyle lineCapStyle)
-{
-  switch (lineCapStyle)
-  {
-  case NSButtLineCapStyle:   return [FSNamedNumber namedNumberWithDouble:lineCapStyle name:@"NSButtLineCapStyle"];
-  case NSRoundLineCapStyle:  return [FSNamedNumber namedNumberWithDouble:lineCapStyle name:@"NSRoundLineCapStyle"];  
-  case NSSquareLineCapStyle: return [FSNamedNumber namedNumberWithDouble:lineCapStyle name:@"NSSquareLineCapStyle"];
-  default:                   return [FSNumber numberWithDouble:lineCapStyle];
-  } 
-}
+ENUMTOOBJ(LineBreakMode, 
+                         NSLineBreakByWordWrapping,
+                         NSLineBreakByCharWrapping,
+                         NSLineBreakByClipping,
+                         NSLineBreakByTruncatingHead,
+                         NSLineBreakByTruncatingTail,
+                         NSLineBreakByTruncatingMiddle
+                          );
 
-static id objectFromLineJoinStyle(NSLineJoinStyle lineJoinStyle)
-{
-  switch (lineJoinStyle)
-  {
-  case NSMiterLineJoinStyle: return [FSNamedNumber namedNumberWithDouble:lineJoinStyle name:@"NSMiterLineJoinStyle"];
-  case NSRoundLineJoinStyle: return [FSNamedNumber namedNumberWithDouble:lineJoinStyle name:@"NSRoundLineJoinStyle"];  
-  case NSBevelLineJoinStyle: return [FSNamedNumber namedNumberWithDouble:lineJoinStyle name:@"NSBevelLineJoinStyle"];
-  default:                   return [FSNumber numberWithDouble:lineJoinStyle];
-  } 
-}
 
-static id objectFromMatrixMode(NSMatrixMode matrixMode)
-{
-  switch (matrixMode)
-  {
-  case NSRadioModeMatrix:     return [FSNamedNumber namedNumberWithDouble:matrixMode name:@"NSRadioModeMatrix"];
-  case NSHighlightModeMatrix: return [FSNamedNumber namedNumberWithDouble:matrixMode name:@"NSHighlightModeMatrix"];  
-  case NSListModeMatrix:      return [FSNamedNumber namedNumberWithDouble:matrixMode name:@"NSListModeMatrix"];
-  case NSTrackModeMatrix :    return [FSNamedNumber namedNumberWithDouble:matrixMode name:@"NSTrackModeMatrix"];
-  default:                    return [FSNumber numberWithDouble:matrixMode];
-  } 
-}
+ENUMTOOBJ(LineCapStyle, 
+                        NSButtLineCapStyle,
+                        NSRoundLineCapStyle,
+                        NSSquareLineCapStyle
+                          );
+
+
+ENUMTOOBJ(LineJoinStyle, 
+                         NSMiterLineJoinStyle,
+                         NSRoundLineJoinStyle,
+                         NSBevelLineJoinStyle
+                          );
+
+
+ENUMTOOBJ(MatrixMode, 
+                      NSRadioModeMatrix,
+                      NSHighlightModeMatrix,
+                      NSListModeMatrix,
+                      NSTrackModeMatrix
+                          );
+
 
 static id objectFromMergePolicy(id mergePolicy)
 {
@@ -853,225 +722,153 @@ static id objectFromMergePolicy(id mergePolicy)
   else      return mergePolicy;
 }  
 
-static id objectFromNestingMode(NSRuleEditorNestingMode ruleEditorNestingMode)
-{
-  switch (ruleEditorNestingMode)
-  {
-  case NSRuleEditorNestingModeSingle:   return [FSNamedNumber namedNumberWithDouble:ruleEditorNestingMode name:@"NSRuleEditorNestingModeSingle"];
-  case NSRuleEditorNestingModeList:     return [FSNamedNumber namedNumberWithDouble:ruleEditorNestingMode name:@"NSRuleEditorNestingModeList"];  
-  case NSRuleEditorNestingModeCompound: return [FSNamedNumber namedNumberWithDouble:ruleEditorNestingMode name:@"NSRuleEditorNestingModeCompound"];
-  case NSRuleEditorNestingModeSimple:   return [FSNamedNumber namedNumberWithDouble:ruleEditorNestingMode name:@"NSRuleEditorNestingModeSimple"];
-  default:                              return [FSNumber numberWithDouble:ruleEditorNestingMode];
-  } 
-}
+ENUMTOOBJ(RuleEditorNestingMode, 
+                                 NSRuleEditorNestingModeSingle,
+                                 NSRuleEditorNestingModeList,
+                                 NSRuleEditorNestingModeCompound,
+                                 NSRuleEditorNestingModeSimple
+                          );
 
-static id objectFromPathStyle(NSPathStyle pathStyle)
-{
-  switch (pathStyle)
-  {
-  case NSPathStyleStandard:      return [FSNamedNumber namedNumberWithDouble:pathStyle name:@"NSPathStyleStandard"];
-  case NSPathStyleNavigationBar: return [FSNamedNumber namedNumberWithDouble:pathStyle name:@"NSPathStyleNavigationBar"];  
-  case NSPathStylePopUp:         return [FSNamedNumber namedNumberWithDouble:pathStyle name:@"NSPathStylePopUp"];
-  default:                       return [FSNumber numberWithDouble:pathStyle];
-  } 
-}
 
-static id objectFromPointingDeviceType(NSPointingDeviceType pointingDeviceType)
-{
-  switch (pointingDeviceType)
-  {
-  case NSUnknownPointingDevice: return [FSNamedNumber namedNumberWithDouble:pointingDeviceType name:@"NSUnknownPointingDevice"];
-  case NSPenPointingDevice:     return [FSNamedNumber namedNumberWithDouble:pointingDeviceType name:@"NSPenPointingDevice"];  
-  case NSCursorPointingDevice:  return [FSNamedNumber namedNumberWithDouble:pointingDeviceType name:@"NSCursorPointingDevice"];
-  case NSEraserPointingDevice:  return [FSNamedNumber namedNumberWithDouble:pointingDeviceType name:@"NSEraserPointingDevice"];
-  default:                      return [FSNumber numberWithDouble:pointingDeviceType];
-  } 
-}
+ENUMTOOBJ(PathStyle, 
+                     NSPathStyleStandard,
+                     NSPathStyleNavigationBar,
+                     NSPathStylePopUp
+                          );
 
-static id objectFromPredicateOperatorType(NSPredicateOperatorType predicateOperatorType)
-{
-  switch (predicateOperatorType)
-  {
-  case NSLessThanPredicateOperatorType:             return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSLessThanPredicateOperatorType"];
-  case NSLessThanOrEqualToPredicateOperatorType:    return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSLessThanOrEqualToPredicateOperatorType"];  
-  case NSGreaterThanPredicateOperatorType:          return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSGreaterThanPredicateOperatorType"];
-  case NSGreaterThanOrEqualToPredicateOperatorType: return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSGreaterThanOrEqualToPredicateOperatorType"];
-  case NSEqualToPredicateOperatorType:              return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSEqualToPredicateOperatorType"];
-  case NSNotEqualToPredicateOperatorType:           return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSNotEqualToPredicateOperatorType"];  
-  case NSMatchesPredicateOperatorType:              return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSMatchesPredicateOperatorType"];
-  case NSLikePredicateOperatorType :                return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSLikePredicateOperatorType"];
-  case NSBeginsWithPredicateOperatorType:           return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSBeginsWithPredicateOperatorType"];
-  case NSEndsWithPredicateOperatorType:             return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSEndsWithPredicateOperatorType"];  
-  case NSInPredicateOperatorType:                   return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSInPredicateOperatorType"];
-  case NSCustomSelectorPredicateOperatorType:       return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSCustomSelectorPredicateOperatorType"];
-  case NSContainsPredicateOperatorType:             return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSContainsPredicateOperatorType"];
-  case NSBetweenPredicateOperatorType:              return [FSNamedNumber namedNumberWithDouble:predicateOperatorType name:@"NSBetweenPredicateOperatorType"];
-  default:                                          return [FSNumber numberWithDouble:predicateOperatorType];
-  } 
-}
 
-static id objectFromProgressIndicatorStyle(NSProgressIndicatorStyle progressIndicatorStyle)
-{
-  switch (progressIndicatorStyle)
-  {
-  case NSProgressIndicatorBarStyle:      return [FSNamedNumber namedNumberWithDouble:progressIndicatorStyle name:@"NSProgressIndicatorBarStyle"];
-  case NSProgressIndicatorSpinningStyle: return [FSNamedNumber namedNumberWithDouble:progressIndicatorStyle name:@"NSProgressIndicatorSpinningStyle"];  
-  default:                               return [FSNumber numberWithDouble:progressIndicatorStyle];
-  } 
-}
+ENUMTOOBJ(PointingDeviceType, 
+                              NSUnknownPointingDevice,
+                              NSPenPointingDevice,
+                              NSCursorPointingDevice,
+                              NSEraserPointingDevice
+                          );
 
-static id objectFromPopUpArrowPosition(NSPopUpArrowPosition popUpArrowPosition)
-{
-  switch (popUpArrowPosition)
-  {
-  case NSPopUpNoArrow:       return [FSNamedNumber namedNumberWithDouble:popUpArrowPosition name:@"NSPopUpNoArrow"];
-  case NSPopUpArrowAtCenter: return [FSNamedNumber namedNumberWithDouble:popUpArrowPosition name:@"NSPopUpArrowAtCenter"];  
-  case NSPopUpArrowAtBottom: return [FSNamedNumber namedNumberWithDouble:popUpArrowPosition name:@"NSPopUpArrowAtBottom"];
-  default:                   return [FSNumber numberWithDouble:popUpArrowPosition];
-  } 
-}
 
-static id objectFromRectEdge(NSRectEdge rectEdge)
-{
-  switch (rectEdge)
-  {
-  case NSMinXEdge: return [FSNamedNumber namedNumberWithDouble:rectEdge name:@"NSMinXEdge"];
-  case NSMinYEdge: return [FSNamedNumber namedNumberWithDouble:rectEdge name:@"NSMinYEdge"];  
-  case NSMaxXEdge: return [FSNamedNumber namedNumberWithDouble:rectEdge name:@"NSMaxXEdge"];
-  case NSMaxYEdge: return [FSNamedNumber namedNumberWithDouble:rectEdge name:@"NSMaxYEdge"];
-  default:         return [FSNumber numberWithDouble:rectEdge];
-  } 
-}
+ENUMTOOBJ(PredicateOperatorType, 
+                                 NSLessThanPredicateOperatorType,
+                                 NSLessThanOrEqualToPredicateOperatorType,
+                                 NSGreaterThanPredicateOperatorType,
+                                 NSGreaterThanOrEqualToPredicateOperatorType,
+                                 NSEqualToPredicateOperatorType,
+                                 NSNotEqualToPredicateOperatorType,
+                                 NSMatchesPredicateOperatorType,
+                                 NSLikePredicateOperatorType,
+                                 NSBeginsWithPredicateOperatorType,
+                                 NSEndsWithPredicateOperatorType,
+                                 NSInPredicateOperatorType,
+                                 NSCustomSelectorPredicateOperatorType,
+                                 NSContainsPredicateOperatorType,
+                                 NSBetweenPredicateOperatorType
+                          );
 
-static id objectFromRulerOrientation(NSRulerOrientation rulerOrientation)
-{
-  switch (rulerOrientation)
-  {
-  case NSHorizontalRuler: return [FSNamedNumber namedNumberWithDouble:rulerOrientation name:@"NSHorizontalRuler"];
-  case NSVerticalRuler:   return [FSNamedNumber namedNumberWithDouble:rulerOrientation name:@"NSVerticalRuler"];  
-  default:                return [FSNumber numberWithDouble:rulerOrientation];
-  } 
-}
 
-static id objectFromScrollArrowPosition(NSScrollArrowPosition scrollArrowPosition)
-{
-  switch (scrollArrowPosition)
-  {
-  case NSScrollerArrowsDefaultSetting: return [FSNamedNumber namedNumberWithDouble:scrollArrowPosition name:@"NSScrollerArrowsDefaultSetting"];
-  case NSScrollerArrowsNone:           return [FSNamedNumber namedNumberWithDouble:scrollArrowPosition name:@"NSScrollerArrowsNone"];  
-  default:                             return [FSNumber numberWithDouble:scrollArrowPosition];
-  } 
-}
+ENUMTOOBJ(ProgressIndicatorStyle, 
+                                  NSProgressIndicatorBarStyle,
+                                  NSProgressIndicatorSpinningStyle
+                          );
 
-static id objectFromScrollerPart(NSScrollerPart scrollerPart)
-{
-  switch (scrollerPart) 
-  {
-  case NSScrollerNoPart:        return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerNoPart"];       
-  case NSScrollerDecrementPage: return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerDecrementPage"];      
-  case NSScrollerKnob:          return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerKnob"];     
-  case NSScrollerIncrementPage: return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerIncrementPage"];  
-  case NSScrollerDecrementLine: return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerDecrementLine"];
-  case NSScrollerIncrementLine: return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerIncrementLine"];  
-  case NSScrollerKnobSlot:      return [FSNamedNumber namedNumberWithDouble:scrollerPart name:@"NSScrollerKnobSlot"];
-  default:                      return [FSNumber numberWithDouble:scrollerPart];
-  }
-}
 
-static id objectFromSegmentSwitchTracking(NSSegmentSwitchTracking segmentSwitchTracking)
-{
-  switch (segmentSwitchTracking) 
-  {
-    case NSSegmentSwitchTrackingSelectOne: return [FSNamedNumber namedNumberWithDouble:segmentSwitchTracking name:@"NSSegmentSwitchTrackingSelectOne"];       
-    case NSSegmentSwitchTrackingSelectAny: return [FSNamedNumber namedNumberWithDouble:segmentSwitchTracking name:@"NSSegmentSwitchTrackingSelectAny"];      
-    case NSSegmentSwitchTrackingMomentary: return [FSNamedNumber namedNumberWithDouble:segmentSwitchTracking name:@"NSSegmentSwitchTrackingMomentary"];     
-    default:                               return [FSNumber numberWithDouble:segmentSwitchTracking];
-  }
-}
+ENUMTOOBJ(PopUpArrowPosition, 
+                              NSPopUpNoArrow,
+                              NSPopUpArrowAtCenter,
+                              NSPopUpArrowAtBottom
+                          );
 
-static id objectFromSelectionAffinity(NSSelectionAffinity selectionAffinity)
-{
-  switch (selectionAffinity) 
-  {
-    case NSSelectionAffinityUpstream:   return [FSNamedNumber namedNumberWithDouble:selectionAffinity name:@"NSSelectionAffinityUpstream"];       
-    case NSSelectionAffinityDownstream: return [FSNamedNumber namedNumberWithDouble:selectionAffinity name:@"NSSelectionAffinityDownstream"];      
-    default:                            return [FSNumber numberWithDouble:selectionAffinity];
-  }
-}
 
-static id objectFromSelectionDirection(NSSelectionDirection selectionDirection)
-{
-  switch (selectionDirection) 
-  {
-    case NSDirectSelection:   return [FSNamedNumber namedNumberWithDouble:selectionDirection name:@"NSDirectSelection"];       
-    case NSSelectingNext:     return [FSNamedNumber namedNumberWithDouble:selectionDirection name:@"NSSelectingNext"];      
-    case NSSelectingPrevious: return [FSNamedNumber namedNumberWithDouble:selectionDirection name:@"NSSelectingPrevious"];     
-    default:                  return [FSNumber numberWithDouble:selectionDirection];
-  }
-}
+ENUMTOOBJ(RectEdge, 
+                    NSMinXEdge,
+                    NSMinYEdge,
+                    NSMaxXEdge,
+                    NSMaxYEdge
+                          );
 
-static id objectFromSelectionGranularity(NSSelectionGranularity selectionGranularity)
-{
-  switch (selectionGranularity) 
-  {
-    case NSSelectByCharacter: return [FSNamedNumber namedNumberWithDouble:selectionGranularity name:@"NSSelectByCharacter"];       
-    case NSSelectByWord:      return [FSNamedNumber namedNumberWithDouble:selectionGranularity name:@"NSSelectByWord"];      
-    case NSSelectByParagraph: return [FSNamedNumber namedNumberWithDouble:selectionGranularity name:@"NSSelectByParagraph"];     
-    default:                  return [FSNumber numberWithDouble:selectionGranularity];
-  }
-}
 
-static id objectFromTableViewSelectionHighlightStyle(NSTableViewSelectionHighlightStyle tableViewSelectionHighlightStyle)
-{
-  switch (tableViewSelectionHighlightStyle) 
-  {
-    case NSTableViewSelectionHighlightStyleRegular:    return [FSNamedNumber namedNumberWithDouble:tableViewSelectionHighlightStyle name:@"NSTableViewSelectionHighlightStyleRegular"];       
-    case NSTableViewSelectionHighlightStyleSourceList: return [FSNamedNumber namedNumberWithDouble:tableViewSelectionHighlightStyle name:@"NSTableViewSelectionHighlightStyleSourceList"];      
-    default:                                           return [FSNumber numberWithDouble:tableViewSelectionHighlightStyle];
-  }
-}
+ENUMTOOBJ(RulerOrientation, 
+                            NSHorizontalRuler,
+                            NSVerticalRuler
+                          );
 
-static id objectFromSliderType(NSSliderType sliderType)
-{
-  switch (sliderType) 
-  {
-    case NSLinearSlider:   return [FSNamedNumber namedNumberWithDouble:sliderType name:@"NSLinearSlider"];       
-    case NSCircularSlider: return [FSNamedNumber namedNumberWithDouble:sliderType name:@"NSCircularSlider"];      
-    default:               return [FSNumber numberWithDouble:sliderType];
-  }
-}
 
-static id objectFromStatusItemLength(CGFloat statusItemLength)
-{
-  if      (statusItemLength == NSVariableStatusItemLength) return [FSNamedNumber namedNumberWithDouble:statusItemLength name:@"NSVariableStatusItemLength"];
-  else if (statusItemLength == NSSquareStatusItemLength)   return [FSNamedNumber namedNumberWithDouble:statusItemLength name:@"NSSquareStatusItemLength"];
-  else                                                     return [FSNumber numberWithDouble:statusItemLength];
-}
+ENUMTOOBJ(ScrollArrowPosition, 
+                               NSScrollerArrowsDefaultSetting,
+                               NSScrollerArrowsNone
+                          );
 
-static id objectFromStringEncoding(NSStringEncoding stringEncoding)
-{
-  switch (stringEncoding) 
-  {
-  case NSASCIIStringEncoding:         return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSASCIIStringEncoding"];       
-  case NSNEXTSTEPStringEncoding:      return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSNEXTSTEPStringEncoding"];      
-  case NSJapaneseEUCStringEncoding:   return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSJapaneseEUCStringEncoding"];     
-  case NSUTF8StringEncoding:          return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSUTF8StringEncoding"];  
-  case NSISOLatin1StringEncoding:     return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSISOLatin1StringEncoding"];
-  case NSSymbolStringEncoding:        return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSSymbolStringEncoding"];  
-  case NSNonLossyASCIIStringEncoding: return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSNonLossyASCIIStringEncoding"];
-  case NSShiftJISStringEncoding:      return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSShiftJISStringEncoding"];       
-  case NSISOLatin2StringEncoding:     return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSISOLatin2StringEncoding"];      
-  case NSUnicodeStringEncoding:       return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSUnicodeStringEncoding"];     
-  case NSWindowsCP1251StringEncoding: return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSWindowsCP1251StringEncoding"];  
-  case NSWindowsCP1252StringEncoding: return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSWindowsCP1252StringEncoding"];
-  case NSWindowsCP1253StringEncoding: return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSWindowsCP1253StringEncoding"];  
-  case NSWindowsCP1254StringEncoding: return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSWindowsCP1254StringEncoding"];
-  case NSWindowsCP1250StringEncoding: return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSWindowsCP1250StringEncoding"];       
-  case NSISO2022JPStringEncoding:     return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSISO2022JPStringEncoding"];      
-  case NSMacOSRomanStringEncoding:    return [FSNamedNumber namedNumberWithDouble:stringEncoding name:@"NSMacOSRomanStringEncoding"];     
-  default:                            return [FSNumber numberWithDouble:stringEncoding];
-  }
-}
+
+ENUMTOOBJ(ScrollerPart, 
+                        NSScrollerNoPart,
+                        NSScrollerDecrementPage,
+                        NSScrollerKnob,
+                        NSScrollerIncrementPage,
+                        NSScrollerDecrementLine,
+                        NSScrollerIncrementLine,
+                        NSScrollerKnobSlot
+                          );
+
+
+ENUMTOOBJ(SegmentSwitchTracking, 
+                                 NSSegmentSwitchTrackingSelectOne,
+                                 NSSegmentSwitchTrackingSelectAny,
+                                 NSSegmentSwitchTrackingMomentary
+                          );
+
+
+ENUMTOOBJ(SelectionAffinity, 
+                             NSSelectionAffinityUpstream,
+                             NSSelectionAffinityDownstream
+                          );
+
+
+ENUMTOOBJ(SelectionDirection, 
+                              NSDirectSelection,
+                              NSSelectingNext,
+                              NSSelectingPrevious
+                          );
+
+
+ENUMTOOBJ(SelectionGranularity, 
+                                NSSelectByCharacter,
+                                NSSelectByWord,
+                                NSSelectByParagraph
+                          );
+
+
+ENUMTOOBJ(TableViewSelectionHighlightStyle, 
+                                            NSTableViewSelectionHighlightStyleRegular,
+                                            NSTableViewSelectionHighlightStyleSourceList
+                          );
+
+
+ENUMTOOBJ(SliderType, 
+                      NSLinearSlider,
+                      NSCircularSlider
+                          );
+
+
+typedef CGFloat NSStatusItemLength;
+ENUMTOOBJ(StatusItemLength, NSVariableStatusItemLength, NSSquareStatusItemLength);
+
+ENUMTOOBJ(StringEncoding, 
+                          NSASCIIStringEncoding,
+                          NSNEXTSTEPStringEncoding,
+                          NSJapaneseEUCStringEncoding,
+                          NSUTF8StringEncoding,
+                          NSISOLatin1StringEncoding,
+                          NSSymbolStringEncoding,
+                          NSNonLossyASCIIStringEncoding,
+                          NSShiftJISStringEncoding,
+                          NSISOLatin2StringEncoding,
+                          NSUnicodeStringEncoding,
+                          NSWindowsCP1251StringEncoding,
+                          NSWindowsCP1252StringEncoding,
+                          NSWindowsCP1253StringEncoding,
+                          NSWindowsCP1254StringEncoding,
+                          NSWindowsCP1250StringEncoding,
+                          NSISO2022JPStringEncoding,
+                          NSMacOSRomanStringEncoding
+                          );
+
 
 static id objectFromTableColumnResizingMask(NSUInteger mask)
 {
@@ -1087,90 +884,63 @@ static id objectFromTableColumnResizingMask(NSUInteger mask)
   }  
 }
 
-static id objectFromTableViewColumnAutoresizingStyle(NSTableViewColumnAutoresizingStyle tableViewColumnAutoresizingStyle)
-{
-  switch (tableViewColumnAutoresizingStyle) 
-  {
-    case NSTableViewNoColumnAutoresizing:                     return [FSNamedNumber namedNumberWithDouble:tableViewColumnAutoresizingStyle name:@"NSTableViewNoColumnAutoresizing"];       
-    case NSTableViewUniformColumnAutoresizingStyle:           return [FSNamedNumber namedNumberWithDouble:tableViewColumnAutoresizingStyle name:@"NSTableViewUniformColumnAutoresizingStyle"];      
-    case NSTableViewSequentialColumnAutoresizingStyle:        return [FSNamedNumber namedNumberWithDouble:tableViewColumnAutoresizingStyle name:@"NSTableViewSequentialColumnAutoresizingStyle"];     
-    case NSTableViewReverseSequentialColumnAutoresizingStyle: return [FSNamedNumber namedNumberWithDouble:tableViewColumnAutoresizingStyle name:@"NSTableViewReverseSequentialColumnAutoresizingStyle"];       
-    case NSTableViewLastColumnOnlyAutoresizingStyle:          return [FSNamedNumber namedNumberWithDouble:tableViewColumnAutoresizingStyle name:@"NSTableViewLastColumnOnlyAutoresizingStyle"];      
-    case NSTableViewFirstColumnOnlyAutoresizingStyle:         return [FSNamedNumber namedNumberWithDouble:tableViewColumnAutoresizingStyle name:@"NSTableViewFirstColumnOnlyAutoresizingStyle"];     
-    default:                                                  return [FSNumber numberWithDouble:tableViewColumnAutoresizingStyle];
-  }
-}
+ENUMTOOBJ(TableViewColumnAutoresizingStyle, 
+                                            NSTableViewNoColumnAutoresizing,
+                                            NSTableViewUniformColumnAutoresizingStyle,
+                                            NSTableViewSequentialColumnAutoresizingStyle,
+                                            NSTableViewReverseSequentialColumnAutoresizingStyle,
+                                            NSTableViewLastColumnOnlyAutoresizingStyle,
+                                            NSTableViewFirstColumnOnlyAutoresizingStyle
+                          );
 
-static id objectFromTabState(NSTabState tabState)
-{
-  switch (tabState) 
-  {
-    case NSBackgroundTab: return [FSNamedNumber namedNumberWithDouble:tabState name:@"NSBackgroundTab"];       
-    case NSPressedTab:    return [FSNamedNumber namedNumberWithDouble:tabState name:@"NSPressedTab"];      
-    case NSSelectedTab:   return [FSNamedNumber namedNumberWithDouble:tabState name:@"NSSelectedTab"];     
-    default:              return [FSNumber numberWithDouble:tabState];
-  }
-}
 
-static id objectFromTabViewType(NSTabViewType tabViewType)
-{
-  switch (tabViewType) 
-  {
-  case NSTopTabsBezelBorder:    return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSTopTabsBezelBorder"];       
-  case NSLeftTabsBezelBorder:   return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSLeftTabsBezelBorder"];      
-  case NSBottomTabsBezelBorder: return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSBottomTabsBezelBorder"];     
-  case NSRightTabsBezelBorder:  return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSRightTabsBezelBorder"];  
-  case NSNoTabsBezelBorder:     return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSNoTabsBezelBorder"];
-  case NSNoTabsLineBorder:      return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSNoTabsLineBorder"];  
-  case NSNoTabsNoBorder:        return [FSNamedNumber namedNumberWithDouble:tabViewType name:@"NSNoTabsNoBorder"];
-  default:                      return [FSNumber numberWithDouble:tabViewType];
-  }
-}
 
-static id objectFromTextAlignment(NSTextAlignment alignment)
-{
-  switch (alignment) 
-  {
-  case NSLeftTextAlignment:      return [FSNamedNumber namedNumberWithDouble:alignment name:@"NSLeftTextAlignment"];       
-  case NSRightTextAlignment:     return [FSNamedNumber namedNumberWithDouble:alignment name:@"NSRightTextAlignment"];      
-  case NSCenterTextAlignment:    return [FSNamedNumber namedNumberWithDouble:alignment name:@"NSCenterTextAlignment"];     
-  case NSJustifiedTextAlignment: return [FSNamedNumber namedNumberWithDouble:alignment name:@"NSJustifiedTextAlignment"];  
-  case NSNaturalTextAlignment:   return [FSNamedNumber namedNumberWithDouble:alignment name:@"NSNaturalTextAlignment"];
-  default:                       return [FSNumber numberWithDouble:alignment];
-  }
-}
+ENUMTOOBJ(TabState, 
+                    NSBackgroundTab,
+                    NSPressedTab,
+                    NSSelectedTab
+                          );
 
-static id objectFromTextBlockValueType(NSTextBlockValueType valueType)
-{
-  switch (valueType) 
-  {
-  case NSTextBlockAbsoluteValueType:   return [FSNamedNumber namedNumberWithDouble:valueType name:@"NSTextBlockAbsoluteValueType"];       
-  case NSTextBlockPercentageValueType: return [FSNamedNumber namedNumberWithDouble:valueType name:@"NSTextBlockPercentageValueType"];      
-  default:                             return [FSNumber numberWithDouble:valueType];
-  }
-}
 
-static id objectFromTextBlockVerticalAlignment(NSTextBlockVerticalAlignment verticalAlignment)
-{
-  switch (verticalAlignment) 
-  {
-  case NSTextBlockTopAlignment:      return [FSNamedNumber namedNumberWithDouble:verticalAlignment name:@"NSTextBlockAbsoluteValueType"];       
-  case NSTextBlockMiddleAlignment:   return [FSNamedNumber namedNumberWithDouble:verticalAlignment name:@"NSTextBlockPercentageValueType"];      
-  case NSTextBlockBottomAlignment:   return [FSNamedNumber namedNumberWithDouble:verticalAlignment name:@"NSTextBlockAbsoluteValueType"];       
-  case NSTextBlockBaselineAlignment: return [FSNamedNumber namedNumberWithDouble:verticalAlignment name:@"NSTextBlockPercentageValueType"];      
-  default:                           return [FSNumber numberWithDouble:verticalAlignment];
-  }
-}
+ENUMTOOBJ(TabViewType, 
+                       NSTopTabsBezelBorder,
+                       NSLeftTabsBezelBorder,
+                       NSBottomTabsBezelBorder,
+                       NSRightTabsBezelBorder,
+                       NSNoTabsBezelBorder,
+                       NSNoTabsLineBorder,
+                       NSNoTabsNoBorder
+                          );
 
-static id objectFromTextFieldBezelStyle(NSTextFieldBezelStyle textFielBezelStyle)
-{
-  switch (textFielBezelStyle)
-  {
-  case NSTextFieldSquareBezel:  return [FSNamedNumber namedNumberWithDouble:textFielBezelStyle name:@"NSTextFieldSquareBezel"];
-  case NSTextFieldRoundedBezel: return [FSNamedNumber namedNumberWithDouble:textFielBezelStyle name:@"NSTextFieldRoundedBezel"];  
-  default:                      return [FSNumber numberWithDouble:textFielBezelStyle];
-  } 
-}
+
+ENUMTOOBJ(TextAlignment, 
+                         NSLeftTextAlignment,
+                         NSRightTextAlignment,
+                         NSCenterTextAlignment,
+                         NSJustifiedTextAlignment,
+                         NSNaturalTextAlignment
+                          );
+
+
+ENUMTOOBJ(TextBlockValueType, 
+                              NSTextBlockAbsoluteValueType,
+                              NSTextBlockPercentageValueType
+                          );
+
+
+ENUMTOOBJ(TextBlockVerticalAlignment, 
+                                      NSTextBlockTopAlignment,
+                                      NSTextBlockMiddleAlignment,
+                                      NSTextBlockBottomAlignment,
+                                      NSTextBlockBaselineAlignment
+                          );
+
+
+ENUMTOOBJ(TextFieldBezelStyle, 
+                               NSTextFieldSquareBezel,
+                               NSTextFieldRoundedBezel
+                          );
+
 
 static id objectFromTextListOptionsMask(NSUInteger mask)
 {
@@ -1197,27 +967,19 @@ static id objectFromTextStorageEditedMask(NSUInteger mask)
   }  
 }
 
-static id objectFromTextTableLayoutAlgorithm(NSTextTableLayoutAlgorithm layoutAlgorithm)
-{
-  switch (layoutAlgorithm) 
-  {
-  case NSTextTableAutomaticLayoutAlgorithm: return [FSNamedNumber namedNumberWithDouble:layoutAlgorithm name:@"NSTextTableAutomaticLayoutAlgorithm"];       
-  case NSTextTableFixedLayoutAlgorithm:     return [FSNamedNumber namedNumberWithDouble:layoutAlgorithm name:@"NSTextTableFixedLayoutAlgorithm"];      
-  default:                                  return [FSNumber numberWithDouble:layoutAlgorithm];
-  }
-}
+ENUMTOOBJ(TextTableLayoutAlgorithm, 
+                                    NSTextTableAutomaticLayoutAlgorithm,
+                                    NSTextTableFixedLayoutAlgorithm
+                          );
 
-static id objectFromTextTabType(NSTextTabType textTabType)
-{
-  switch (textTabType) 
-  {
-  case NSLeftTabStopType:    return [FSNamedNumber namedNumberWithDouble:textTabType name:@"NSLeftTabStopType"];       
-  case NSRightTabStopType:   return [FSNamedNumber namedNumberWithDouble:textTabType name:@"NSRightTabStopType"];      
-  case NSCenterTabStopType:  return [FSNamedNumber namedNumberWithDouble:textTabType name:@"NSCenterTabStopType"];     
-  case NSDecimalTabStopType: return [FSNamedNumber namedNumberWithDouble:textTabType name:@"NSDecimalTabStopType"];  
-  default:                   return [FSNumber numberWithDouble:textTabType];
-  }
-}
+
+ENUMTOOBJ(TextTabType, 
+                       NSLeftTabStopType,
+                       NSRightTabStopType,
+                       NSCenterTabStopType,
+                       NSDecimalTabStopType
+                          );
+
 
 static id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertical)
 {
@@ -1231,82 +993,58 @@ static id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL i
   }
 }
 
-static id objectFromTIFFCompression(NSTIFFCompression compression)
-{
-  switch (compression) 
-  {
-  case NSTIFFCompressionNone:      return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionNone"];       
-  case NSTIFFCompressionCCITTFAX3: return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionCCITTFAX3"];      
-  case NSTIFFCompressionCCITTFAX4: return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionCCITTFAX4"];     
-  case NSTIFFCompressionLZW:       return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionLZW"];  
-  case NSTIFFCompressionJPEG:      return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionJPEG"];
-  case NSTIFFCompressionNEXT:      return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionNEXT"];  
-  case NSTIFFCompressionPackBits:  return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionPackBits"];
-  case NSTIFFCompressionOldJPEG:   return [FSNamedNumber namedNumberWithDouble:compression name:@"NSTIFFCompressionOldJPEG"];
-  default:                         return [FSNumber numberWithDouble:compression];
-  }
-}
+ENUMTOOBJ(TIFFCompression, 
+                           NSTIFFCompressionNone,
+                           NSTIFFCompressionCCITTFAX3,
+                           NSTIFFCompressionCCITTFAX4,
+                           NSTIFFCompressionLZW,
+                           NSTIFFCompressionJPEG,
+                           NSTIFFCompressionNEXT,
+                           NSTIFFCompressionPackBits,
+                           NSTIFFCompressionOldJPEG
+                          );
 
-static id objectFromTitlePosition(NSTitlePosition titlePosition)
-{
-  switch (titlePosition) 
-  {
-  case NSNoTitle:     return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSNoTitle"];       
-  case NSAboveTop:    return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSAboveTop"];      
-  case NSAtTop:       return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSAtTop"];     
-  case NSBelowTop:    return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSBelowTop"];  
-  case NSAboveBottom: return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSAboveBottom"];
-  case NSAtBottom:    return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSAtBottom"];  
-  case NSBelowBottom: return [FSNamedNumber namedNumberWithDouble:titlePosition name:@"NSBelowBottom"];
-  default:            return [FSNumber numberWithDouble:titlePosition];
-  }
-}
 
-static id objectFromTokenStyle(NSTokenStyle tokenStyle)
-{
-  switch (tokenStyle) 
-  {
-  case NSDefaultTokenStyle:   return [FSNamedNumber namedNumberWithDouble:tokenStyle name:@"NSDefaultTokenStyle"];       
-  case NSPlainTextTokenStyle: return [FSNamedNumber namedNumberWithDouble:tokenStyle name:@"NSPlainTextTokenStyle"];      
-  case NSRoundedTokenStyle:   return [FSNamedNumber namedNumberWithDouble:tokenStyle name:@"NSRoundedTokenStyle"];     
-  default:                    return [FSNumber numberWithDouble:tokenStyle];
-  }
-}
+ENUMTOOBJ(TitlePosition, 
+                         NSNoTitle,
+                         NSAboveTop,
+                         NSAtTop,
+                         NSBelowTop,
+                         NSAboveBottom,
+                         NSAtBottom,
+                         NSBelowBottom
+                          );
 
-static id objectFromToolbarDisplayMode(NSToolbarDisplayMode toolbarDisplayMode)
-{
-  switch (toolbarDisplayMode) 
-  {
-  case NSToolbarDisplayModeDefault:      return [FSNamedNumber namedNumberWithDouble:toolbarDisplayMode name:@"NSToolbarDisplayModeDefault"];       
-  case NSToolbarDisplayModeIconAndLabel: return [FSNamedNumber namedNumberWithDouble:toolbarDisplayMode name:@"NSToolbarDisplayModeIconAndLabel"];      
-  case NSToolbarDisplayModeIconOnly:     return [FSNamedNumber namedNumberWithDouble:toolbarDisplayMode name:@"NSToolbarDisplayModeIconOnly"];     
-  case NSToolbarDisplayModeLabelOnly:    return [FSNamedNumber namedNumberWithDouble:toolbarDisplayMode name:@"NSToolbarDisplayModeLabelOnly"];  
-  default:                               return [FSNumber numberWithDouble:toolbarDisplayMode];
-  }
-}
 
-static id objectFromToolbarItemVisibilityPriority(NSInteger priority)
-{
-  switch (priority) 
-  {
-  case NSToolbarItemVisibilityPriorityStandard: return [FSNamedNumber namedNumberWithDouble:priority name:@"NSToolbarItemVisibilityPriorityStandard"];       
-  case NSToolbarItemVisibilityPriorityLow:      return [FSNamedNumber namedNumberWithDouble:priority name:@"NSToolbarItemVisibilityPriorityLow"];      
-  case NSToolbarItemVisibilityPriorityHigh:     return [FSNamedNumber namedNumberWithDouble:priority name:@"NSToolbarItemVisibilityPriorityHigh"];     
-  case NSToolbarItemVisibilityPriorityUser:     return [FSNamedNumber namedNumberWithDouble:priority name:@"NSToolbarItemVisibilityPriorityUser"];  
-  default:                                      return [FSNumber numberWithDouble:priority];
-  }
-}
+ENUMTOOBJ(TokenStyle, 
+                      NSDefaultTokenStyle,
+                      NSPlainTextTokenStyle,
+                      NSRoundedTokenStyle
+                          );
 
-static id objectFromToolbarSizeMode(NSToolbarSizeMode toolbarSizeMode)
-{
-  switch (toolbarSizeMode) 
-  {
-  case NSToolbarSizeModeDefault:      return [FSNamedNumber namedNumberWithDouble:toolbarSizeMode name:@"NSToolbarSizeModeDefault"];       
-  case NSToolbarSizeModeRegular:      return [FSNamedNumber namedNumberWithDouble:toolbarSizeMode name:@"NSToolbarSizeModeRegular"];      
-  case NSToolbarSizeModeSmall:        return [FSNamedNumber namedNumberWithDouble:toolbarSizeMode name:@"NSToolbarSizeModeSmall"];     
-  default:                            return [FSNumber numberWithDouble:toolbarSizeMode];
-  }
-}
+
+ENUMTOOBJ(ToolbarDisplayMode, 
+                              NSToolbarDisplayModeDefault,
+                              NSToolbarDisplayModeIconAndLabel,
+                              NSToolbarDisplayModeIconOnly,
+                              NSToolbarDisplayModeLabelOnly
+                          );
+
+typedef NSUInteger NSToolbarItemVisibilityPriority;
+ENUMTOOBJ(ToolbarItemVisibilityPriority, 
+                                         NSToolbarItemVisibilityPriorityStandard,
+                                         NSToolbarItemVisibilityPriorityLow,
+                                         NSToolbarItemVisibilityPriorityHigh,
+                                         NSToolbarItemVisibilityPriorityUser
+                          );
+
+
+ENUMTOOBJ(ToolbarSizeMode, 
+                           NSToolbarSizeModeDefault,
+                           NSToolbarSizeModeRegular,
+                           NSToolbarSizeModeSmall
+                          );
+
 
 static id objectFromTrackingAreaOptions(NSTrackingAreaOptions mask)
 {
@@ -1331,40 +1069,28 @@ static id objectFromTrackingAreaOptions(NSTrackingAreaOptions mask)
   }   
 }
 
-static id objectFromTypesetterBehavior(NSTypesetterBehavior typesetterBehavior)
-{
-  switch (typesetterBehavior) 
-  {
-  case NSTypesetterLatestBehavior:                  return [FSNamedNumber namedNumberWithDouble:typesetterBehavior name:@"NSTypesetterLatestBehavior"];       
-  case NSTypesetterOriginalBehavior:                return [FSNamedNumber namedNumberWithDouble:typesetterBehavior name:@"NSTypesetterOriginalBehavior"];      
-  case NSTypesetterBehavior_10_2_WithCompatibility: return [FSNamedNumber namedNumberWithDouble:typesetterBehavior name:@"NSTypesetterBehavior_10_2_WithCompatibility"];     
-  case NSTypesetterBehavior_10_2:                   return [FSNamedNumber namedNumberWithDouble:typesetterBehavior name:@"NSTypesetterBehavior_10_2"];  
-  case NSTypesetterBehavior_10_3:                   return [FSNamedNumber namedNumberWithDouble:typesetterBehavior name:@"NSTypesetterBehavior_10_3"];
-  case NSTypesetterBehavior_10_4:                   return [FSNamedNumber namedNumberWithDouble:typesetterBehavior name:@"NSTypesetterBehavior_10_4"];
-  default:                                          return [FSNumber numberWithDouble:typesetterBehavior];
-  }
-}
+ENUMTOOBJ(TypesetterBehavior, 
+                              NSTypesetterLatestBehavior,
+                              NSTypesetterOriginalBehavior,
+                              NSTypesetterBehavior_10_2_WithCompatibility,
+                              NSTypesetterBehavior_10_2,
+                              NSTypesetterBehavior_10_3,
+                              NSTypesetterBehavior_10_4
+                          );
 
-static id objectFromUsableScrollerParts(NSUsableScrollerParts usableScrollerParts)
-{
-  switch (usableScrollerParts) 
-  {
-  case NSNoScrollerParts:    return [FSNamedNumber namedNumberWithDouble:usableScrollerParts name:@"NSNoScrollerParts"];       
-  case NSOnlyScrollerArrows: return [FSNamedNumber namedNumberWithDouble:usableScrollerParts name:@"NSOnlyScrollerArrows"];      
-  case NSAllScrollerParts:   return [FSNamedNumber namedNumberWithDouble:usableScrollerParts name:@"NSAllScrollerParts"];     
-  default:                   return [FSNumber numberWithDouble:usableScrollerParts];
-  }
-}
-    
-static id objectFromWindingRule(NSWindingRule windingRule)
-{
-  switch (windingRule) 
-  {
-  case NSNonZeroWindingRule: return [FSNamedNumber namedNumberWithDouble:windingRule name:@"NSNonZeroWindingRule"];       
-  case NSEvenOddWindingRule: return [FSNamedNumber namedNumberWithDouble:windingRule name:@"NSEvenOddWindingRule"];      
-  default:                   return [FSNumber numberWithDouble:windingRule];
-  }
-}
+
+ENUMTOOBJ(UsableScrollerParts, 
+                               NSNoScrollerParts,
+                               NSOnlyScrollerArrows,
+                               NSAllScrollerParts
+                          );
+
+
+ENUMTOOBJ(WindingRule, 
+                       NSNonZeroWindingRule,
+                       NSEvenOddWindingRule
+                          );
+
 
 static id objectFromWindowLevel(NSInteger windowLevel)
 {
@@ -1400,38 +1126,26 @@ static id objectFromWindowMask(NSUInteger mask)
   }  
 }
 
-static id objectFromWindowBackingLocation(NSWindowBackingLocation windowBackingLocation)
-{
-  switch (windowBackingLocation)
-  {
-  case NSWindowBackingLocationDefault:     return [FSNamedNumber namedNumberWithDouble:windowBackingLocation name:@"NSBackingStoreBuffered"];
-  case NSWindowBackingLocationVideoMemory: return [FSNamedNumber namedNumberWithDouble:windowBackingLocation name:@"NSBackingStoreRetained"];  
-  case NSWindowBackingLocationMainMemory:  return [FSNamedNumber namedNumberWithDouble:windowBackingLocation name:@"NSBackingStoreNonretained"];
-  default:                                 return [FSNumber numberWithDouble:windowBackingLocation];
-  } 
-}
+ENUMTOOBJ(WindowBackingLocation, 
+                                 NSWindowBackingLocationDefault,
+                                 NSWindowBackingLocationVideoMemory,
+                                 NSWindowBackingLocationMainMemory
+                          );
 
-static id objectFromWindowCollectionBehavior(NSWindowCollectionBehavior windowCollectionBehavior)
-{
-  switch (windowCollectionBehavior)
-  {
-  case NSWindowCollectionBehaviorDefault:           return [FSNamedNumber namedNumberWithDouble:windowCollectionBehavior name:@"NSWindowCollectionBehaviorDefault"];
-  case NSWindowCollectionBehaviorCanJoinAllSpaces:  return [FSNamedNumber namedNumberWithDouble:windowCollectionBehavior name:@"NSWindowCollectionBehaviorCanJoinAllSpaces"];  
-  case NSWindowCollectionBehaviorMoveToActiveSpace: return [FSNamedNumber namedNumberWithDouble:windowCollectionBehavior name:@"NSWindowCollectionBehaviorMoveToActiveSpace"];
-  default:                                          return [FSNumber numberWithDouble:windowCollectionBehavior];
-  } 
-}
 
-static id objectFromWindowSharingType(NSWindowSharingType windowSharingType)
-{
-  switch (windowSharingType) 
-  {
-  case NSWindowSharingNone:      return [FSNamedNumber namedNumberWithDouble:windowSharingType name:@"NSWindowSharingNone"];       
-  case NSWindowSharingReadOnly:  return [FSNamedNumber namedNumberWithDouble:windowSharingType name:@"NSWindowSharingReadOnly"];      
-  case NSWindowSharingReadWrite: return [FSNamedNumber namedNumberWithDouble:windowSharingType name:@"NSWindowSharingReadWrite"];     
-  default:                       return [FSNumber numberWithDouble:windowSharingType];
-  }
-}
+ENUMTOOBJ(WindowCollectionBehavior, 
+                                    NSWindowCollectionBehaviorDefault,
+                                    NSWindowCollectionBehaviorCanJoinAllSpaces,
+                                    NSWindowCollectionBehaviorMoveToActiveSpace
+                          );
+
+
+ENUMTOOBJ(WindowSharingType, 
+                             NSWindowSharingNone,
+                             NSWindowSharingReadOnly,
+                             NSWindowSharingReadWrite
+                          );
+
 
 /*static id objectFromWindowOrderingMode(NSWindowOrderingMode orderingMode)
 {
@@ -1444,16 +1158,12 @@ static id objectFromWindowSharingType(NSWindowSharingType windowSharingType)
   }
 }*/
 
-static id objectFromWritingDirection(NSWritingDirection writingDirection)
-{
-  switch (writingDirection) 
-  {
-  case NSWritingDirectionNatural:     return [FSNamedNumber namedNumberWithDouble:writingDirection name:@"NSWritingDirectionNatural"];       
-  case NSWritingDirectionLeftToRight: return [FSNamedNumber namedNumberWithDouble:writingDirection name:@"NSWritingDirectionLeftToRight"];       
-  case NSWritingDirectionRightToLeft: return [FSNamedNumber namedNumberWithDouble:writingDirection name:@"NSWritingDirectionRightToLeft"];      
-  default:                            return [FSNumber numberWithDouble:writingDirection];
-  }
-}
+ENUMTOOBJ(WritingDirection, 
+                            NSWritingDirectionNatural,
+                            NSWritingDirectionLeftToRight,
+                            NSWritingDirectionRightToLeft
+                          );
+
 
 @implementation FSObjectBrowserView (FSObjectBrowserViewObjectInfo)
 
@@ -4041,7 +3751,7 @@ static id objectFromWritingDirection(NSWritingDirection writingDirection)
       ADD_DICTIONARY(    [o formattingDictionary]               ,@"Formatting dictionary")
       ADD_OBJECT_NOT_NIL([o formattingStringsFilename]          ,@"Formatting strings filename")
       ADD_BOOL(          [o isEditable]                         ,@"Is editable")
-      ADD_OBJECT(objectFromNestingMode([o nestingMode])         ,@"Nesting mode")
+      ADD_OBJECT(objectFromRuleEditorNestingMode([o nestingMode])         ,@"Nesting mode")
       ADD_NUMBER(        [o numberOfRows]                       ,@"Number of rows")
       ADD_OBJECT(        [o predicate]                          ,@"Predicate")
       ADD_OBJECT(        [o rowClass]                           ,@"Row class")
@@ -4213,6 +3923,7 @@ static id objectFromWritingDirection(NSWritingDirection writingDirection)
     ADD_OBJECT(          objectFromTextAlignment([o alignment]) ,@"Alignment")
     ADD_OBJECT(objectFromWritingDirection([o baseWritingDirection]) ,@"Base writing direction") 
     ADD_OBJECT(          [o cell]                               ,@"Cell")
+    ADD_OBJECT(objectFromControlSize([o controlSize])               ,@"Control size")
     ADD_OBJECT_NOT_NIL(  [o currentEditor]                      ,@"Current editor")
     ADD_OBJECT(          [o font]                               ,@"Font")
     ADD_OBJECT(          [o formatter]                          ,@"Formatter")

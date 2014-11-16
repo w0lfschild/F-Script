@@ -2738,6 +2738,58 @@
 		EDFB2FF81A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */; };
 		EDFB2FF91A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */; };
 		EDFB2FFA1A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */; };
+		EDFB30011A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30021A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30031A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30041A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30051A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30061A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30071A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */; };
+		EDFB30081A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB30091A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB300A1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB300B1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB300C1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB300D1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB300E1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB300F1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */; };
+		EDFB30101A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30111A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30121A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30131A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30141A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30151A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30161A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */; };
+		EDFB30171A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB30181A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB30191A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB301A1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB301B1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB301C1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB301D1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB301E1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */; };
+		EDFB301F1A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30201A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30211A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30221A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30231A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30241A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30251A188B4E002C8DD7 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB2FFF1A188B4E002C8DD7 /* Util.h */; };
+		EDFB30261A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB30271A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB30281A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB30291A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB302A1A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB302B1A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB302C1A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB302D1A188B4E002C8DD7 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB30001A188B4E002C8DD7 /* Util.m */; };
+		EDFB302F1A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
+		EDFB30301A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
+		EDFB30311A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
+		EDFB30321A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
+		EDFB30331A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
+		EDFB30341A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
+		EDFB30351A18CA26002C8DD7 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB302E1A18CA26002C8DD7 /* metamacros.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3236,6 +3288,13 @@
 		EDE508D119DD4D310012F16A /* FSConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSConsole.xib; sourceTree = "<group>"; };
 		EDE508DA19DD4FDC0012F16A /* FScriptPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FScriptPreferences.xib; sourceTree = "<group>"; };
 		EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectBrowserButtonsInspector.xib; sourceTree = "<group>"; };
+		EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHBidirectionalDictionary.h; sourceTree = "<group>"; };
+		EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHBidirectionalDictionary.m; sourceTree = "<group>"; };
+		EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMutableDictionary.h; sourceTree = "<group>"; };
+		EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMutableDictionary.m; sourceTree = "<group>"; };
+		EDFB2FFF1A188B4E002C8DD7 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		EDFB30001A188B4E002C8DD7 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		EDFB302E1A18CA26002C8DD7 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		F501AF7B021497C401A75EC5 /* FScriptTextView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FScriptTextView.m; sourceTree = "<group>"; };
 		F505647F02DF417501FE0326 /* Pointer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Pointer.m; sourceTree = "<group>"; };
 		F505648002DF417501FE0326 /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
@@ -3718,6 +3777,13 @@
 		0CD4E30D00D7DFE17BE9C1BD /* FScriptFramework */ = {
 			isa = PBXGroup;
 			children = (
+				EDFB302E1A18CA26002C8DD7 /* metamacros.h */,
+				EDFB2FFB1A188B4E002C8DD7 /* CHBidirectionalDictionary.h */,
+				EDFB2FFC1A188B4E002C8DD7 /* CHBidirectionalDictionary.m */,
+				EDFB2FFD1A188B4E002C8DD7 /* CHMutableDictionary.h */,
+				EDFB2FFE1A188B4E002C8DD7 /* CHMutableDictionary.m */,
+				EDFB2FFF1A188B4E002C8DD7 /* Util.h */,
+				EDFB30001A188B4E002C8DD7 /* Util.m */,
 				8F31A4C00EC74A2E00D1B8E8 /* Array_fscript.h */,
 				8F31A4C10EC74A2E00D1B8E8 /* Array.m */,
 				0CD4E31300D7DFE17BE9C1BD /* ArrayPrivate.h */,
@@ -4286,6 +4352,7 @@
 				8F6DA5EA055FC6980050409A /* FSObjectBrowserArgumentPanel.h in Headers */,
 				8F6DA5EB055FC6980050409A /* FSObjectBrowserCell.h in Headers */,
 				8F6DA5EC055FC6980050409A /* FSObjectBrowserView.h in Headers */,
+				EDFB30351A18CA26002C8DD7 /* metamacros.h in Headers */,
 				8F6DA5ED055FC6980050409A /* FSBlock.h in Headers */,
 				8F6DA5EE055FC6980050409A /* BlockInspector.h in Headers */,
 				8F6DA5EF055FC6980050409A /* BlockPrivate.h in Headers */,
@@ -4295,6 +4362,7 @@
 				8F6DA5F3055FC6980050409A /* CLIView.h in Headers */,
 				8F6DA5F4055FC6980050409A /* build_config.h in Headers */,
 				8F6DA5F5055FC6980050409A /* FSCompilationResult.h in Headers */,
+				EDFB30161A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				8F6DA5F6055FC6980050409A /* CompiledCodeNode.h in Headers */,
 				8F6DA5F7055FC6980050409A /* FSCompiler.h in Headers */,
 				8F6DA5F8055FC6980050409A /* FSConstantsInitialization.h in Headers */,
@@ -4329,6 +4397,7 @@
 				8F6DA618055FC6980050409A /* FSVoidPrivate.h in Headers */,
 				8F6DA619055FC6980050409A /* FSGenericObjectInspector.h in Headers */,
 				8F6DA61A055FC6980050409A /* KTestManager.h in Headers */,
+				EDFB30071A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				8F6DA61B055FC6980050409A /* MessagePatternCodeNode.h in Headers */,
 				8F6DA61C055FC6980050409A /* FSMiscTools.h in Headers */,
 				8F6DA61D055FC6980050409A /* FSMsgContext.h in Headers */,
@@ -4384,6 +4453,7 @@
 				8F8EA7F5077F719800AC1C96 /* FSPointerPrivate.h in Headers */,
 				8F8EA85B077F79A000AC1C96 /* FSGenericPointerPrivate.h in Headers */,
 				8FE9AE2C078071CC005B2CC4 /* FSObjectPointer.h in Headers */,
+				EDFB30251A188B4E002C8DD7 /* Util.h in Headers */,
 				8FE9AE8F07807269005B2CC4 /* FSObjectPointerPrivate.h in Headers */,
 				8F86923A07F19BA8000D20A4 /* FSObjectBrowserNamedObjectWrapper.h in Headers */,
 				8F95E3C908034A670030B65C /* FSPredicateTextView.h in Headers */,
@@ -4486,11 +4556,13 @@
 				8F6DA81A055FC70C0050409A /* FSNSArray.h in Headers */,
 				8F6DA81B055FC70C0050409A /* FSNSArrayPrivate.h in Headers */,
 				8F6DA81C055FC70C0050409A /* FSNSDate.h in Headers */,
+				EDFB30101A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				8F6DA81D055FC70C0050409A /* FSNSDictionary.h in Headers */,
 				8F6DA81E055FC70C0050409A /* FSNSDistantObject.h in Headers */,
 				8F6DA81F055FC70C0050409A /* FSNSMutableString.h in Headers */,
 				8F6DA820055FC70C0050409A /* FSNSNumber.h in Headers */,
 				8F6DA821055FC70C0050409A /* FSNSObject.h in Headers */,
+				EDFB301F1A188B4E002C8DD7 /* Util.h in Headers */,
 				8F6DA822055FC70C0050409A /* FSNSProxy.h in Headers */,
 				8F6DA825055FC70C0050409A /* FSPattern.h in Headers */,
 				8F6DA828055FC70C0050409A /* FSUnarchiver.h in Headers */,
@@ -4522,6 +4594,7 @@
 				8F6DA84C055FC70C0050409A /* DOCustom.h in Headers */,
 				8F6DA84E055FC70C0050409A /* Pointer.h in Headers */,
 				8F6DA84F055FC70C0050409A /* PointerPrivate.h in Headers */,
+				EDFB302F1A18CA26002C8DD7 /* metamacros.h in Headers */,
 				8F6DA850055FC70C0050409A /* FSInterpreterPrivate.h in Headers */,
 				8F6DA851055FC70C0050409A /* FSIdentifierFormatter.h in Headers */,
 				8F6DA852055FC70C0050409A /* FSObjectFormatter.h in Headers */,
@@ -4549,6 +4622,7 @@
 				8F658B2D05C9694F0040FB24 /* FSNSFont.h in Headers */,
 				8FB5060505D53C8600153B33 /* FSObjectBrowserMatrix.h in Headers */,
 				8F130131064EC77F00A90302 /* FSNSString.h in Headers */,
+				EDFB30011A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				8F130140064EC78400A90302 /* FSNSStringPrivate.h in Headers */,
 				8F17C08106B1309C00F07862 /* FSSymbolTable.h in Headers */,
 				8F6937F206B6E03D00AEAC6A /* TestFS.h in Headers */,
@@ -4672,6 +4746,7 @@
 				8F6DA930055FC71F0050409A /* FSPilot.h in Headers */,
 				8F6DA931055FC71F0050409A /* Pointer.h in Headers */,
 				8F6DA933055FC71F0050409A /* FSReplacementForCoderForClass.h in Headers */,
+				EDFB30301A18CA26002C8DD7 /* metamacros.h in Headers */,
 				8F6DA934055FC71F0050409A /* ShellView.h in Headers */,
 				8F6DA935055FC71F0050409A /* Space.h in Headers */,
 				8F6DA936055FC71F0050409A /* FSCommandHistory.h in Headers */,
@@ -4704,13 +4779,16 @@
 				8F6DA95C055FC71F0050409A /* ArrayRepBoolean.h in Headers */,
 				8F6DA95D055FC71F0050409A /* FSNSObjectPrivate.h in Headers */,
 				8F6DA95E055FC71F0050409A /* FSArrayEnumerator.h in Headers */,
+				EDFB30201A188B4E002C8DD7 /* Util.h in Headers */,
 				8F6DA95F055FC71F0050409A /* TestFS.h in Headers */,
 				8F6DA960055FC71F0050409A /* FSNSMutableArray.h in Headers */,
 				8F553BF90585222700A92293 /* FSNSValue.h in Headers */,
 				8F7D7DBF058E32CD00F1B8A8 /* FSReplacementForCoderForNilInArray.h in Headers */,
 				8F0E3B82059F3DBB003F6CE9 /* FSNamedNumber.h in Headers */,
+				EDFB30111A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				8F60217205A25CDC0004EFF1 /* FSCollectionInspectorTableView.h in Headers */,
 				8F60F24B05A9FE8B00985FEC /* FSNSSet.h in Headers */,
+				EDFB30021A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				8FDCCD5205C09F8200747C0A /* FSAttributedStringInspector.h in Headers */,
 				8FDCCDC305C0A23000747C0A /* FSNSAttributedString.h in Headers */,
 				8F71F72405C43A7D00C34794 /* FSInterpreterViewPrivate.h in Headers */,
@@ -4818,11 +4896,13 @@
 				BA2231CD189FA403002C5B6A /* FSNSArray.h in Headers */,
 				BA2231CE189FA403002C5B6A /* FSNSArrayPrivate.h in Headers */,
 				BA2231CF189FA403002C5B6A /* FSNSDate.h in Headers */,
+				EDFB30121A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				BA2231D0189FA403002C5B6A /* FSNSDictionary.h in Headers */,
 				BA2231D1189FA403002C5B6A /* FSNSDistantObject.h in Headers */,
 				BA2231D2189FA403002C5B6A /* FSNSMutableString.h in Headers */,
 				BA2231D3189FA403002C5B6A /* FSNSNumber.h in Headers */,
 				BA2231D4189FA403002C5B6A /* FSNSObject.h in Headers */,
+				EDFB30211A188B4E002C8DD7 /* Util.h in Headers */,
 				BA2231D5189FA403002C5B6A /* FSNSProxy.h in Headers */,
 				BA2231D6189FA403002C5B6A /* FSPattern.h in Headers */,
 				BA2231D7189FA403002C5B6A /* FSUnarchiver.h in Headers */,
@@ -4854,6 +4934,7 @@
 				BA2231F1189FA403002C5B6A /* DOCustom.h in Headers */,
 				BA2231F2189FA403002C5B6A /* Pointer.h in Headers */,
 				BA2231F3189FA403002C5B6A /* PointerPrivate.h in Headers */,
+				EDFB30311A18CA26002C8DD7 /* metamacros.h in Headers */,
 				BA2231F4189FA403002C5B6A /* FSInterpreterPrivate.h in Headers */,
 				BA2231F5189FA403002C5B6A /* FSIdentifierFormatter.h in Headers */,
 				BA2231F6189FA403002C5B6A /* FSObjectFormatter.h in Headers */,
@@ -4881,6 +4962,7 @@
 				BA22320C189FA403002C5B6A /* FSNSFont.h in Headers */,
 				BA22320D189FA403002C5B6A /* FSObjectBrowserMatrix.h in Headers */,
 				BA22320E189FA403002C5B6A /* FSNSString.h in Headers */,
+				EDFB30031A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				BA22320F189FA403002C5B6A /* FSNSStringPrivate.h in Headers */,
 				BA223210189FA403002C5B6A /* FSSymbolTable.h in Headers */,
 				BA223211189FA403002C5B6A /* TestFS.h in Headers */,
@@ -4986,11 +5068,13 @@
 				BA22338D189FA412002C5B6A /* FSNSArray.h in Headers */,
 				BA22338E189FA412002C5B6A /* FSNSArrayPrivate.h in Headers */,
 				BA22338F189FA412002C5B6A /* FSNSDate.h in Headers */,
+				EDFB30141A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				BA223390189FA412002C5B6A /* FSNSDictionary.h in Headers */,
 				BA223391189FA412002C5B6A /* FSNSDistantObject.h in Headers */,
 				BA223392189FA412002C5B6A /* FSNSMutableString.h in Headers */,
 				BA223393189FA412002C5B6A /* FSNSNumber.h in Headers */,
 				BA223394189FA412002C5B6A /* FSNSObject.h in Headers */,
+				EDFB30231A188B4E002C8DD7 /* Util.h in Headers */,
 				BA223395189FA412002C5B6A /* FSNSProxy.h in Headers */,
 				BA223396189FA412002C5B6A /* FSPattern.h in Headers */,
 				BA223397189FA412002C5B6A /* FSUnarchiver.h in Headers */,
@@ -5022,6 +5106,7 @@
 				BA2233B1189FA412002C5B6A /* DOCustom.h in Headers */,
 				BA2233B2189FA412002C5B6A /* Pointer.h in Headers */,
 				BA2233B3189FA412002C5B6A /* PointerPrivate.h in Headers */,
+				EDFB30331A18CA26002C8DD7 /* metamacros.h in Headers */,
 				BA2233B4189FA412002C5B6A /* FSInterpreterPrivate.h in Headers */,
 				BA2233B5189FA412002C5B6A /* FSIdentifierFormatter.h in Headers */,
 				BA2233B6189FA412002C5B6A /* FSObjectFormatter.h in Headers */,
@@ -5049,6 +5134,7 @@
 				BA2233CC189FA412002C5B6A /* FSNSFont.h in Headers */,
 				BA2233CD189FA412002C5B6A /* FSObjectBrowserMatrix.h in Headers */,
 				BA2233CE189FA412002C5B6A /* FSNSString.h in Headers */,
+				EDFB30051A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				BA2233CF189FA412002C5B6A /* FSNSStringPrivate.h in Headers */,
 				BA2233D0189FA412002C5B6A /* FSSymbolTable.h in Headers */,
 				BA2233D1189FA412002C5B6A /* TestFS.h in Headers */,
@@ -5172,6 +5258,7 @@
 				BA22355B189FA429002C5B6A /* FSPilot.h in Headers */,
 				BA22355C189FA429002C5B6A /* Pointer.h in Headers */,
 				BA22355D189FA429002C5B6A /* FSReplacementForCoderForClass.h in Headers */,
+				EDFB30321A18CA26002C8DD7 /* metamacros.h in Headers */,
 				BA22355E189FA429002C5B6A /* ShellView.h in Headers */,
 				BA22355F189FA429002C5B6A /* Space.h in Headers */,
 				BA223560189FA429002C5B6A /* FSCommandHistory.h in Headers */,
@@ -5204,13 +5291,16 @@
 				BA22357B189FA429002C5B6A /* ArrayRepBoolean.h in Headers */,
 				BA22357C189FA429002C5B6A /* FSNSObjectPrivate.h in Headers */,
 				BA22357D189FA429002C5B6A /* FSArrayEnumerator.h in Headers */,
+				EDFB30221A188B4E002C8DD7 /* Util.h in Headers */,
 				BA22357E189FA429002C5B6A /* TestFS.h in Headers */,
 				BA22357F189FA429002C5B6A /* FSNSMutableArray.h in Headers */,
 				BA223580189FA429002C5B6A /* FSNSValue.h in Headers */,
 				BA223581189FA429002C5B6A /* FSReplacementForCoderForNilInArray.h in Headers */,
 				BA223582189FA429002C5B6A /* FSNamedNumber.h in Headers */,
+				EDFB30131A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				BA223583189FA429002C5B6A /* FSCollectionInspectorTableView.h in Headers */,
 				BA223584189FA429002C5B6A /* FSNSSet.h in Headers */,
+				EDFB30041A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				BA223585189FA429002C5B6A /* FSAttributedStringInspector.h in Headers */,
 				BA223586189FA429002C5B6A /* FSNSAttributedString.h in Headers */,
 				BA223587189FA429002C5B6A /* FSInterpreterViewPrivate.h in Headers */,
@@ -5336,6 +5426,7 @@
 				BA2236A3189FA431002C5B6A /* FSPilot.h in Headers */,
 				BA2236A4189FA431002C5B6A /* Pointer.h in Headers */,
 				BA2236A5189FA431002C5B6A /* FSReplacementForCoderForClass.h in Headers */,
+				EDFB30341A18CA26002C8DD7 /* metamacros.h in Headers */,
 				BA2236A6189FA431002C5B6A /* ShellView.h in Headers */,
 				BA2236A7189FA431002C5B6A /* Space.h in Headers */,
 				BA2236A8189FA431002C5B6A /* FSCommandHistory.h in Headers */,
@@ -5368,13 +5459,16 @@
 				BA2236C3189FA431002C5B6A /* ArrayRepBoolean.h in Headers */,
 				BA2236C4189FA431002C5B6A /* FSNSObjectPrivate.h in Headers */,
 				BA2236C5189FA431002C5B6A /* FSArrayEnumerator.h in Headers */,
+				EDFB30241A188B4E002C8DD7 /* Util.h in Headers */,
 				BA2236C6189FA431002C5B6A /* TestFS.h in Headers */,
 				BA2236C7189FA431002C5B6A /* FSNSMutableArray.h in Headers */,
 				BA2236C8189FA431002C5B6A /* FSNSValue.h in Headers */,
 				BA2236C9189FA431002C5B6A /* FSReplacementForCoderForNilInArray.h in Headers */,
 				BA2236CA189FA431002C5B6A /* FSNamedNumber.h in Headers */,
+				EDFB30151A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				BA2236CB189FA431002C5B6A /* FSCollectionInspectorTableView.h in Headers */,
 				BA2236CC189FA431002C5B6A /* FSNSSet.h in Headers */,
+				EDFB30061A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				BA2236CD189FA431002C5B6A /* FSAttributedStringInspector.h in Headers */,
 				BA2236CE189FA431002C5B6A /* FSNSAttributedString.h in Headers */,
 				BA2236CF189FA431002C5B6A /* FSInterpreterViewPrivate.h in Headers */,
@@ -6006,6 +6100,7 @@
 				8F0CBBFC0BDB94AD002B0AD7 /* FSBoolean.m in Sources */,
 				8F0CBBFD0BDB94AD002B0AD7 /* FScriptFunctions.m in Sources */,
 				8F0CBBFE0BDB94AD002B0AD7 /* FSInterpreter.m in Sources */,
+				EDFB301E1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				8F0CBBFF0BDB94AD002B0AD7 /* FSInterpreterResult.m in Sources */,
 				8F0CBC000BDB94AD002B0AD7 /* FSInterpreterView.m in Sources */,
 				8F0CBC010BDB94AD002B0AD7 /* FSNSArray.m in Sources */,
@@ -6055,6 +6150,7 @@
 				8F0CBC350BDB94AD002B0AD7 /* FSNSImage.m in Sources */,
 				8F0CBC360BDB94AD002B0AD7 /* FSObjectBrowserToolbarItem.m in Sources */,
 				8F0CBC370BDB94AD002B0AD7 /* ArrayRepBoolean.m in Sources */,
+				EDFB300F1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				8F0CBC380BDB94AD002B0AD7 /* FSArrayEnumerator.m in Sources */,
 				8F0CBC390BDB94AD002B0AD7 /* FSNSMutableArray.m in Sources */,
 				8F0CBC3C0BDB94AD002B0AD7 /* FSNSValue.m in Sources */,
@@ -6070,6 +6166,7 @@
 				8F0CBC460BDB94AD002B0AD7 /* FSSymbolTable.m in Sources */,
 				8F0CBC480BDB94AD002B0AD7 /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				8F0CBC490BDB94AD002B0AD7 /* FSCollectionInspectorView.m in Sources */,
+				EDFB302D1A188B4E002C8DD7 /* Util.m in Sources */,
 				8F0CBC4A0BDB94AD002B0AD7 /* ArrayRepFetchRequest.m in Sources */,
 				8F0CBC4B0BDB94AD002B0AD7 /* FSPointer.m in Sources */,
 				8F0CBC4C0BDB94AD002B0AD7 /* FSGenericPointer.m in Sources */,
@@ -6192,6 +6289,7 @@
 				8F6DA6AD055FC6980050409A /* FSTask.m in Sources */,
 				8F6DA6AE055FC6980050409A /* FSObjectBrowserToolbarButton.m in Sources */,
 				8F6DA6B0055FC6980050409A /* FSObjectBrowserButtonCtxBlock.m in Sources */,
+				EDFB300E1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				8F6DA6B1055FC6980050409A /* FSObjectBrowserButtonsInspector.m in Sources */,
 				8F6DA6B2055FC6980050409A /* Pointer.m in Sources */,
 				8F6DA6B3055FC6980050409A /* FSIdentifierFormatter.m in Sources */,
@@ -6202,6 +6300,7 @@
 				8F6DA6BA055FC6980050409A /* FSImageInspector.m in Sources */,
 				8F6DA6BB055FC6980050409A /* FSNSImage.m in Sources */,
 				8F6DA6BC055FC6980050409A /* FSObjectBrowserToolbarItem.m in Sources */,
+				EDFB302C1A188B4E002C8DD7 /* Util.m in Sources */,
 				8F6DA6BD055FC6980050409A /* ArrayRepBoolean.m in Sources */,
 				8F6DA6BE055FC6980050409A /* FSArrayEnumerator.m in Sources */,
 				8F6DA6BF055FC6980050409A /* FSNSMutableArray.m in Sources */,
@@ -6246,6 +6345,7 @@
 				8F2E34410D8DBFE700912543 /* FSCNKeywordMessage.m in Sources */,
 				8F5900160D9468FC003A8B17 /* FSCNCascade.m in Sources */,
 				8F8F58690D9FE6AA00ED0FED /* FSCNStatementList.m in Sources */,
+				EDFB301D1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				8F747DAC0DA03AE200148342 /* FSCNPrecomputedObject.m in Sources */,
 				8F747DBB0DA0467100148342 /* FSCNArray.m in Sources */,
 				8FAE79B00DA0ED5D00CB6E14 /* FSCNBlock.m in Sources */,
@@ -6304,6 +6404,7 @@
 				8F6DA88E055FC70C0050409A /* FSExecEngine.m in Sources */,
 				8F6DA88F055FC70C0050409A /* FSExecutor.m in Sources */,
 				8F6DA890055FC70C0050409A /* FSFlight.m in Sources */,
+				EDFB30261A188B4E002C8DD7 /* Util.m in Sources */,
 				8F6DA891055FC70C0050409A /* FSArchiver.m in Sources */,
 				8F6DA892055FC70C0050409A /* FSBoolean.m in Sources */,
 				8F6DA894055FC70C0050409A /* FScriptFunctions.m in Sources */,
@@ -6316,6 +6417,7 @@
 				8F6DA89B055FC70C0050409A /* FSNSDictionary.m in Sources */,
 				8F6DA89C055FC70C0050409A /* FSNSDistantObject.m in Sources */,
 				8F6DA89D055FC70C0050409A /* FSNSMutableString.m in Sources */,
+				EDFB30171A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				8F6DA89E055FC70C0050409A /* FSNSNumber.m in Sources */,
 				8F6DA89F055FC70C0050409A /* FSNSObject.m in Sources */,
 				8F6DA8A0055FC70C0050409A /* FSNSProxy.m in Sources */,
@@ -6395,6 +6497,7 @@
 				8FE639810D09C0F400255EBA /* FSCNBase.m in Sources */,
 				8FE639910D09DCB600255EBA /* FSCNIdentifier.m in Sources */,
 				8FE3DD260D26D49900A1D767 /* FSTestObjCClass1.m in Sources */,
+				EDFB30081A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				8F48220A0D2C317700754A4E /* FSTestObjCClass2.m in Sources */,
 				8F8112F70D85E58200CB3407 /* FSCNCategory.m in Sources */,
 				8F59CA760D86DD0800D67A78 /* FSCNMessage.m in Sources */,
@@ -6449,6 +6552,7 @@
 				8F6DA985055FC71F0050409A /* CompiledCodeNode.m in Sources */,
 				8F6DA986055FC71F0050409A /* FSCompiler.m in Sources */,
 				8F6DA987055FC71F0050409A /* FSConstantsInitialization.m in Sources */,
+				EDFB30271A188B4E002C8DD7 /* Util.m in Sources */,
 				8F6DA988055FC71F0050409A /* FSExecEngine.m in Sources */,
 				8F6DA989055FC71F0050409A /* FSExecutor.m in Sources */,
 				8F6DA98A055FC71F0050409A /* FSFlight.m in Sources */,
@@ -6461,6 +6565,7 @@
 				8F6DA992055FC71F0050409A /* FSNSArray.m in Sources */,
 				8F6DA993055FC71F0050409A /* FSNSDate.m in Sources */,
 				8F6DA994055FC71F0050409A /* FSNSDictionary.m in Sources */,
+				EDFB30091A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				8F6DA995055FC71F0050409A /* FSNSMutableString.m in Sources */,
 				8F6DA996055FC71F0050409A /* FSNSNumber.m in Sources */,
 				8F6DA997055FC71F0050409A /* FSNSObject.m in Sources */,
@@ -6521,6 +6626,7 @@
 				8F4E294F075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				8FA8EDEC07735B3B001BEC7B /* FSCollectionInspectorView.m in Sources */,
 				8FBC289F077B7D5200F9B4A2 /* ArrayRepFetchRequest.m in Sources */,
+				EDFB30181A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				8F8EA731077F6A5200AC1C96 /* FSPointer.m in Sources */,
 				8F8EA7A1077F6C9300AC1C96 /* FSGenericPointer.m in Sources */,
 				8FE9AE3A078071CC005B2CC4 /* FSObjectPointer.m in Sources */,
@@ -6597,6 +6703,7 @@
 				BA223278189FA403002C5B6A /* FSExecEngine.m in Sources */,
 				BA223279189FA403002C5B6A /* FSExecutor.m in Sources */,
 				BA22327A189FA403002C5B6A /* FSFlight.m in Sources */,
+				EDFB30281A188B4E002C8DD7 /* Util.m in Sources */,
 				BA22327B189FA403002C5B6A /* FSArchiver.m in Sources */,
 				BA22327C189FA403002C5B6A /* FSBoolean.m in Sources */,
 				BA22327D189FA403002C5B6A /* FScriptFunctions.m in Sources */,
@@ -6609,6 +6716,7 @@
 				BA223284189FA403002C5B6A /* FSNSDictionary.m in Sources */,
 				BA223285189FA403002C5B6A /* FSNSDistantObject.m in Sources */,
 				BA223286189FA403002C5B6A /* FSNSMutableString.m in Sources */,
+				EDFB30191A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				BA223287189FA403002C5B6A /* FSNSNumber.m in Sources */,
 				BA223288189FA403002C5B6A /* FSNSObject.m in Sources */,
 				BA223289189FA403002C5B6A /* FSNSProxy.m in Sources */,
@@ -6688,6 +6796,7 @@
 				BA2232D3189FA403002C5B6A /* FSCNBase.m in Sources */,
 				BA2232D4189FA403002C5B6A /* FSCNIdentifier.m in Sources */,
 				BA2232D5189FA403002C5B6A /* FSTestObjCClass1.m in Sources */,
+				EDFB300A1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				BA2232D6189FA403002C5B6A /* FSTestObjCClass2.m in Sources */,
 				BA2232D7189FA403002C5B6A /* FSCNCategory.m in Sources */,
 				BA2232D8189FA403002C5B6A /* FSCNMessage.m in Sources */,
@@ -6747,6 +6856,7 @@
 				BA223438189FA412002C5B6A /* FSExecEngine.m in Sources */,
 				BA223439189FA412002C5B6A /* FSExecutor.m in Sources */,
 				BA22343A189FA412002C5B6A /* FSFlight.m in Sources */,
+				EDFB302A1A188B4E002C8DD7 /* Util.m in Sources */,
 				BA22343B189FA412002C5B6A /* FSArchiver.m in Sources */,
 				BA22343C189FA412002C5B6A /* FSBoolean.m in Sources */,
 				BA22343D189FA412002C5B6A /* FScriptFunctions.m in Sources */,
@@ -6759,6 +6869,7 @@
 				BA223444189FA412002C5B6A /* FSNSDictionary.m in Sources */,
 				BA223445189FA412002C5B6A /* FSNSDistantObject.m in Sources */,
 				BA223446189FA412002C5B6A /* FSNSMutableString.m in Sources */,
+				EDFB301B1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				BA223447189FA412002C5B6A /* FSNSNumber.m in Sources */,
 				BA223448189FA412002C5B6A /* FSNSObject.m in Sources */,
 				BA223449189FA412002C5B6A /* FSNSProxy.m in Sources */,
@@ -6838,6 +6949,7 @@
 				BA223493189FA412002C5B6A /* FSCNBase.m in Sources */,
 				BA223494189FA412002C5B6A /* FSCNIdentifier.m in Sources */,
 				BA223495189FA412002C5B6A /* FSTestObjCClass1.m in Sources */,
+				EDFB300C1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				BA223496189FA412002C5B6A /* FSTestObjCClass2.m in Sources */,
 				BA223497189FA412002C5B6A /* FSCNCategory.m in Sources */,
 				BA223498189FA412002C5B6A /* FSCNMessage.m in Sources */,
@@ -6892,6 +7004,7 @@
 				BA2235E6189FA429002C5B6A /* CompiledCodeNode.m in Sources */,
 				BA2235E7189FA429002C5B6A /* FSCompiler.m in Sources */,
 				BA2235E8189FA429002C5B6A /* FSConstantsInitialization.m in Sources */,
+				EDFB30291A188B4E002C8DD7 /* Util.m in Sources */,
 				BA2235E9189FA429002C5B6A /* FSExecEngine.m in Sources */,
 				BA2235EA189FA429002C5B6A /* FSExecutor.m in Sources */,
 				BA2235EB189FA429002C5B6A /* FSFlight.m in Sources */,
@@ -6904,6 +7017,7 @@
 				BA2235F2189FA429002C5B6A /* FSNSArray.m in Sources */,
 				BA2235F3189FA429002C5B6A /* FSNSDate.m in Sources */,
 				BA2235F4189FA429002C5B6A /* FSNSDictionary.m in Sources */,
+				EDFB300B1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				BA2235F5189FA429002C5B6A /* FSNSMutableString.m in Sources */,
 				BA2235F6189FA429002C5B6A /* FSNSNumber.m in Sources */,
 				BA2235F7189FA429002C5B6A /* FSNSObject.m in Sources */,
@@ -6964,6 +7078,7 @@
 				BA22362E189FA429002C5B6A /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				BA22362F189FA429002C5B6A /* FSCollectionInspectorView.m in Sources */,
 				BA223630189FA429002C5B6A /* ArrayRepFetchRequest.m in Sources */,
+				EDFB301A1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				BA223631189FA429002C5B6A /* FSPointer.m in Sources */,
 				BA223632189FA429002C5B6A /* FSGenericPointer.m in Sources */,
 				BA223633189FA429002C5B6A /* FSObjectPointer.m in Sources */,
@@ -7035,6 +7150,7 @@
 				BA22372E189FA431002C5B6A /* CompiledCodeNode.m in Sources */,
 				BA22372F189FA431002C5B6A /* FSCompiler.m in Sources */,
 				BA223730189FA431002C5B6A /* FSConstantsInitialization.m in Sources */,
+				EDFB302B1A188B4E002C8DD7 /* Util.m in Sources */,
 				BA223731189FA431002C5B6A /* FSExecEngine.m in Sources */,
 				BA223732189FA431002C5B6A /* FSExecutor.m in Sources */,
 				BA223733189FA431002C5B6A /* FSFlight.m in Sources */,
@@ -7047,6 +7163,7 @@
 				BA22373A189FA431002C5B6A /* FSNSArray.m in Sources */,
 				BA22373B189FA431002C5B6A /* FSNSDate.m in Sources */,
 				BA22373C189FA431002C5B6A /* FSNSDictionary.m in Sources */,
+				EDFB300D1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				BA22373D189FA431002C5B6A /* FSNSMutableString.m in Sources */,
 				BA22373E189FA431002C5B6A /* FSNSNumber.m in Sources */,
 				BA22373F189FA431002C5B6A /* FSNSObject.m in Sources */,
@@ -7107,6 +7224,7 @@
 				BA223776189FA431002C5B6A /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				BA223777189FA431002C5B6A /* FSCollectionInspectorView.m in Sources */,
 				BA223778189FA431002C5B6A /* ArrayRepFetchRequest.m in Sources */,
+				EDFB301C1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				BA223779189FA432002C5B6A /* FSPointer.m in Sources */,
 				BA22377A189FA432002C5B6A /* FSGenericPointer.m in Sources */,
 				BA22377B189FA432002C5B6A /* FSObjectPointer.m in Sources */,
