@@ -8,17 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef NS_ENUM(NSUInteger, FSInspectorVMItemType) {
+typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
   FS_ITEM_HEADER,
   FS_ITEM_ENUM,
   FS_ITEM_OPTIONS,
-  FS_ITEM_CONTINUOUS,
+  FS_ITEM_NUMBER,
   FS_ITEM_SIZE,
-  FS_ITEM_RECT
+  FS_ITEM_RECT,
+  FS_ITEM_OBJECT,
+  FS_ITEM_POINT,
+  FS_ITEM_RANGE,
+  FS_ITEM_BOOL,
 };
 
 @interface FSObjectInspectorViewModelItem : NSTreeNode
 @property (copy,nonatomic) NSString *name;
-@property (retain,nonatomic) id value;
-@property (assign,nonatomic) FSInspectorVMItemType itemType;
+@property (strong,nonatomic) id value;
+@property (assign,nonatomic) FSInspectorVMValueType valueType;
+@property (readonly,nonatomic) NSString *displayValue;
 @end

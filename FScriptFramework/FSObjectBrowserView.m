@@ -238,6 +238,7 @@ static NSString* FScriptObjectTemplateForEncodedObjCType(const char* ptr)
 static NSMutableArray* customButtons = nil;
 
 @interface FSObjectBrowserView () // Methods declaration to let the compiler know
+@property (retain,nonatomic) NSMutableDictionary *columnToRootViewModelItem;
 
 - (void)fillMatrixForClassesBrowsing:(NSMatrix*)matrix;
 - (void)fillMatrixForWorkspaceBrowsing:(NSMatrix*)matrix;
@@ -248,7 +249,6 @@ static NSMutableArray* customButtons = nil;
 - (void)selectMethodNamed:(NSString*)methodName;
 - (void)selfAction:(id)sender;
 - (void)sendMessage:(SEL)selector withArguments:(FSArray*)arguments;
-- (BOOL)sendMessageTo:(id)receiver selectorString:(NSString*)selectorStr arguments:(FSArray*)arguments putResultInMatrix:(NSMatrix*)matrix;
 - (void)setFilterString:(NSString*)theFilterString;
 - (void)setTitleOfLastColumn:(NSString*)title;
 - (id)validSelectedObject;
@@ -345,6 +345,16 @@ static NSMutableArray* customButtons = nil;
 + (void)saveCustomButtonsSettings:(NSNotification*)aNotification
 {
         [self saveCustomButtonsSettings];
+}
+
+-(void)setRootViewModelObject:(FSObjectInspectorViewModelItem*)viewModel forColumn:(NSUInteger)column
+{
+        self.columnToRootViewModelItem[@(column)] = viewModel;
+}
+
+-(FSObjectInspectorViewModelItem*)rootViewModelForColumn:(NSUInteger)column
+{
+        return [[self.columnToRootViewModelItem[@(column)] retain]autorelease];
 }
 
 - (void)addBindingForObject:(id)object withName:(NSString*)name toMatrix:(NSMatrix*)matrix classLabel:(NSString*)classLabel selectedClassLabel:(NSString*)selectedClassLabel selectedLabel:(NSString*)selectedLabel selectedObject:(id)selectedObject
@@ -510,7 +520,7 @@ static NSMutableArray* customButtons = nil;
                         interpreterResult = [contextualizedBlock executeWithArguments:[NSArray arrayWithObject:selectedObject]];
 
                         if ([interpreterResult isOK])
-                                [self fillMatrix:[browser matrixInColumn:[browser lastColumn]] withObject:[interpreterResult result]];
+                                [self fillMatrix:[browser matrixInColumn:[browser lastColumn]] column:browser.lastColumn withObject:[interpreterResult result]];
                         else {
                                 NSRunAlertPanel(@"Error", [interpreterResult errorMessage], @"OK", nil, nil, nil);
                                 [interpreterResult inspectBlocksInCallStack];
@@ -805,14 +815,14 @@ static NSMutableArray* customButtons = nil;
                         [self fillMatrixForClassesBrowsing:matrix];
                         break;
                 case FSBrowsingObject:
-                        [self fillMatrix:matrix withObject:rootObject];
+                                [self fillMatrix:matrix column:column withObject:rootObject];
                         break;
                 case FSBrowsingNothing:
                         break;
                 }
         }
         else if ([[browser selectedCell] objectBrowserCellType] == FSOBOBJECT || [[browser selectedCell] objectBrowserCellType] == FSOBCLASS) {
-                [self fillMatrix:matrix withObject:[[browser selectedCell] representedObject]];
+                [self fillMatrix:matrix column:column withObject:[[browser selectedCell] representedObject]];
         }
         else {
                 NSString* selectedString = [[browser selectedCell] stringValue];
@@ -841,7 +851,7 @@ static NSMutableArray* customButtons = nil;
                         return;
                 }
                 else if (nbarg == 0) {
-                        [self sendMessageTo:selectedObject selectorString:selectedString arguments:(FSArray*)[NSArray array] putResultInMatrix:matrix];
+                        [self sendMessageTo:selectedObject selectorString:selectedString arguments:(FSArray*)[NSArray array] column:column putResultInMatrix:matrix];
                 }
                 else {
                         NSInteger i;
@@ -959,6 +969,7 @@ static NSMutableArray* customButtons = nil;
 {
         // NSLog(@"FSObjectBrowserView dealloc");
 
+        [_columnToRootViewModelItem release];
         [matrixes release];
         [rootObject release];
         [interpreter release];
@@ -1202,7 +1213,7 @@ static NSMutableArray* customButtons = nil;
                 }
 
                 if ([matrix numberOfRows] > 0)
-                        [self fillMatrix:matrix withObject:[[matrix cellAtRow:0 column:0] representedObject]];
+                        [self fillMatrix:matrix column:i withObject:[[matrix cellAtRow:0 column:0] representedObject]];
 
                 if (selectedRow != -1 && cellType == FSOBMETHOD) {
                         for (j = 0, rowCount = [matrix numberOfRows]; j < rowCount; j++) {
@@ -1274,8 +1285,11 @@ static NSMutableArray* customButtons = nil;
                 CGFloat fontSize;
 
                 fontSize = systemFontSize();
+                _columnToRootViewModelItem = [NSMutableDictionary new];
 
                 browser = [[NSBrowser alloc] initWithFrame:NSMakeRect(0, FSObjectBrowserBottomBarHeight, baseWidth, baseHeight - FSObjectBrowserBottomBarHeight)];
+                [browser setMatrixClass:FSObjectBrowserMatrix.class];
+          
                 [browser setCellClass:[FSObjectBrowserCell class]];
                 [browser setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
                 [browser setHasHorizontalScroller:YES];
@@ -1311,7 +1325,7 @@ static NSMutableArray* customButtons = nil;
 
 - (void)inspectAction:(id)sender
 {
-        inspect([self selectedObject], interpreter, nil);
+        inspect([self selectedObject], interpreter, [self rootViewModelForColumn:browser.selectedColumn]);
 }
 
 - (void)menuWillSendAction:(NSNotification*)notification;
@@ -1627,7 +1641,7 @@ static NSMutableArray* customButtons = nil;
 
         if (arguments && [arguments count] > 0) {
                 [browser setDelegate:self];
-                [self sendMessageTo:selectedObject selectorString:methodName arguments:arguments putResultInMatrix:[browser matrixInColumn:[browser lastColumn]]];
+                [self sendMessageTo:selectedObject selectorString:methodName arguments:arguments column:browser.lastColumn putResultInMatrix:[browser matrixInColumn:[browser lastColumn]]];
         }
 
         [browser scrollColumnToVisible:[browser lastColumn]];
@@ -1665,7 +1679,7 @@ static NSMutableArray* customButtons = nil;
         {
                 BOOL success;
                 NSMatrix* matrix = [browser matrixInColumn:[browser lastColumn]];
-                success = [self sendMessageTo:selectedObject selectorString:selectedString arguments:arguments putResultInMatrix:matrix];
+                success = [self sendMessageTo:selectedObject selectorString:selectedString arguments:arguments column:browser.lastColumn putResultInMatrix:matrix];
                 if (success) {
                         [NSApp endSheet:[sender window]];
                         [[sender window] close];
@@ -1674,7 +1688,7 @@ static NSMutableArray* customButtons = nil;
         }
 }
 
-- (BOOL)sendMessageTo:(id)receiver selectorString:(NSString*)selectorStr arguments:(FSArray*)arguments putResultInMatrix:(NSMatrix*)matrix
+- (BOOL)sendMessageTo:(id)receiver selectorString:(NSString*)selectorStr arguments:(FSArray*)arguments column:(NSUInteger)column putResultInMatrix:(NSMatrix*)matrix
 {
         NSInteger nbarg = [arguments count];
         id args[nbarg + 2];
@@ -1703,7 +1717,7 @@ static NSMutableArray* customButtons = nil;
                 result = [FSNewlyAllocatedObjectHolder newlyAllocatedObjectHolderWithObject:result];
 
         if (FSEncode([[receiver methodSignatureForSelector:selector] methodReturnType]) != 'v')
-                [self fillMatrix:matrix withObject:result];
+                [self fillMatrix:matrix column:column withObject:result];
 
         return YES;
 }

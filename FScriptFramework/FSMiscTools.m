@@ -14,6 +14,7 @@
 #import <ExceptionHandling/NSExceptionHandler.h>
 #import <Cocoa/Cocoa.h>
 #import "FSCollectionInspector.h"
+#import "FSDetailedObjectInspector.h"
 #import "FSGenericObjectInspector.h"
 #import "FSInterpreter.h"
 //#import "FScript.h"
@@ -286,6 +287,31 @@ BOOL FSIsIgnoredSelector(SEL selector)
   return (selector == @selector(retain) && selector == @selector(release));
 }
 
+@interface FSInspectorRepository : NSObject
++(void)addInspector:(id)inspector;
++(void)removeInspector:(id) inspector;
+@end
+@implementation FSInspectorRepository
+static NSMutableSet *sInspectors = nil;
++(void)initialize
+{
+  if (self == FSInspectorRepository.class) {
+    sInspectors = [NSMutableSet new];
+  }
+}
+
++(void)addInspector:(id)inspector
+{
+  [sInspectors addObject:inspector];
+}
++(void)removeInspector:(NSNotification*)notification
+{
+  id inspector = [notification.object delegate];
+  [sInspectors removeObject:inspector];
+}
+@end
+
+
 void inspect(id object, FSInterpreter *interpreter, id argument)
 {
   BOOL error = NO;
@@ -310,8 +336,18 @@ void inspect(id object, FSInterpreter *interpreter, id argument)
         [object inspectWithSystem:[interpreter objectForIdentifier:@"sys" found:NULL]];
       else if ([object respondsToSelector:@selector(inspect)])
         [object inspect];
-      else [FSGenericObjectInspector genericObjectInspectorWithObject:object];
-    }  
+      else if (argument) {
+        FSDetailedObjectInspector *inspector = [FSDetailedObjectInspector detailedObjectInspectorWithObject:object rootViewModelItem:argument];
+        [NSNotificationCenter.defaultCenter addObserver:FSInspectorRepository.class
+                                               selector:@selector(removeInspector:)
+                                                   name:NSWindowWillCloseNotification
+                                                 object:inspector.window ];
+        [FSInspectorRepository addInspector:inspector];
+      }
+      else {
+        [FSGenericObjectInspector genericObjectInspectorWithObject:object];
+      }
+    }
   }    
 }
 

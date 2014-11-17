@@ -6,6 +6,6 @@
 
 @interface FSObjectBrowserView (FSObjectBrowserViewObjectInfo)
 
-- (void)fillMatrix:(NSMatrix *)m withObject:(id)object; 
+- (void)fillMatrix:(NSMatrix*)m column:(NSUInteger)col withObject:(id)object;
    
 @end

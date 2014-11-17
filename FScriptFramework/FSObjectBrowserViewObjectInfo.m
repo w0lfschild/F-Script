@@ -4,6 +4,7 @@
 #import "FSObjectBrowserViewObjectInfo.h"
 #import "FSObjectEnumInfo.h"
 #import "FSObjectBrowserCell.h"
+#import "FSObjectBrowserMatrix.h"
 #import "FSNamedNumber.h"
 #import "FSNumber.h"
 #import "FSMiscTools.h"
@@ -127,14 +128,14 @@
 @implementation FSObjectBrowserView (FSObjectBrowserViewObjectInfo)
 
 
-- (void)fillMatrix:(NSMatrix*)m withObject:(id)object
+- (void)fillMatrix:(NSMatrix*)m column:(NSUInteger)col withObject:(id)object
 {
-
         FSObjectBrowserViewObjectHelper* objectHelper = [[FSObjectBrowserViewObjectHelper alloc] initWithObjectBrowserView:self];
         [objectHelper fillMatrix:m withObject:object];
 
         [self addBlankRowToMatrix:m];
         [self fillMatrix:m withMethodsForObject:object];
+        [self setRootViewModelObject:objectHelper.rootViewModelItem forColumn:col];
 
         [m sizeToCells];
         //[m scrollCellToVisibleAtRow:[matrix selectedRow] column:0];
@@ -148,11 +149,16 @@
 
 @implementation FSObjectBrowserViewObjectHelper
 
-- (void)addObject:(id)object withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
 {
         @try {
                 if (!notNil || object) {
                         [view addObject:object withLabel:label toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];
+                        FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
+                        item.name = label;
+                        item.valueType = valueType;
+                        item.value = object;
+                        [self.rootViewModelItem.mutableChildNodes addObject:item];
                 }
         }
         @catch (id exception)
@@ -160,11 +166,8 @@
                 NSLog(@"%@", exception);
         }
 }
-#define ADD_ENUM(OBJECT, LABEL) \
-        [self addObject:(OBJECT)withLabel:(LABEL)toMatrix:m notNil:NO];
-
-#define ADD_ENUM_NOT_NIL(OBJECT, LABEL) \
-        [self addObject:(OBJECT)withLabel:(LABEL)toMatrix:m notNil:YES];
+#define ADD_ENUM(ENUM, OBJECT, LABEL) \
+        [self addObject:objectFrom ## ENUM(OBJECT) valueType:FS_ITEM_ENUM withLabel:(LABEL) toMatrix:m notNil:NO];
 
 #define ADD_OBJECT(OBJECT, LABEL)                                                                                                                                                           \
         @try {                                                                                                                                                                              \
@@ -185,7 +188,7 @@
                 if ([(OBJECTS)count] <= 20)                                                                                                                                                              \
                         [view addDictionary:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                     \
-                        [self addObject:(OBJECTS)withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                                 \
+                        [self addObject:(OBJECTS) valueType:FS_ITEM_OBJECT withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                                 \
         }                                                                                                                                                                                                \
         @catch (id exception) { NSLog(@"%@", exception); }
 
@@ -194,15 +197,15 @@
                 if ([(OBJECTS)count] <= 20)                                                                                                                                                           \
                         [view addObjects:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                  \
-                        [self addObject:(OBJECTS)withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                              \
+                        [self addObject:(OBJECTS)valueType:FS_ITEM_OBJECT withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                              \
         }                                                                                                                                                                                             \
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_BOOL(B, LABEL) \
-        [self addObject:[FSBoolean booleanWithBool:(B)] withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[FSBoolean booleanWithBool:(B)] valueType:FS_ITEM_BOOL withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_NUMBER(NUMBER, LABEL) \
-        [self addObject:[FSNumber numberWithDouble:(NUMBER)] withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[FSNumber numberWithDouble:(NUMBER)] valueType:FS_ITEM_NUMBER withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_SEL(S, LABEL)                                                                                                                                                                                                                       \
         @try {                                                                                                                                                                                                                                  \
@@ -221,13 +224,13 @@
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_SIZE(SIZE, LABEL) \
-        [self addObject:[NSValue valueWithSize:(SIZE)] withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithSize:(SIZE)] valueType:FS_ITEM_SIZE withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_RECT(RECT, LABEL) \
-        [self addObject:[NSValue valueWithRect:(RECT)] withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithRect:(RECT)] valueType:FS_ITEM_RECT withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_POINT(POINT, LABEL) \
-        [self addObject:[NSValue valueWithPoint:(POINT)] withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithPoint:(POINT)] valueType:FS_ITEM_POINT withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_POINTER(POINTER, LABEL)                                                                                                                                                                                                                                                                                           \
         @try {                                                                                                                                                                                                                                                                                                                \
@@ -237,7 +240,7 @@
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_RANGE(RANGE, LABEL) \
-        [self addObject:[NSValue valueWithRange:(RANGE)] withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithRange:(RANGE)] valueType:FS_ITEM_RANGE withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_CLASS_LABEL(LABEL)                              \
         {                                                   \
@@ -262,6 +265,7 @@
                 }
 
                 view = [[theView retain] autorelease];
+                self.rootViewModelItem = [FSObjectInspectorViewModelItem new];
         }
 
         return self;
@@ -270,6 +274,7 @@
 - (void)dealloc
 {
         [baseClasses release];
+        [_rootViewModelItem release];
         [super dealloc];
 }
 
@@ -683,7 +688,7 @@
         NSAlert* o = object;
         ADD_CLASS_LABEL(@"NSAlert Info");
         ADD_OBJECT([o accessoryView], @"Accessory view")
-        ADD_OBJECT(objectFromAlertStyle([o alertStyle]), @"Alert style")
+        ADD_ENUM(AlertStyle, [o alertStyle], @"Alert style")
         ADD_OBJECTS([o buttons], @"Buttons")
         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
         ADD_OBJECT_NOT_NIL([o helpAnchor], @"Help anchor")
@@ -709,8 +714,8 @@
 
         NSAnimation* o = object;
         ADD_CLASS_LABEL(@"NSAnimation Info");
-        ADD_OBJECT(objectFromAnimationBlockingMode([o animationBlockingMode]), @"Animation blocking mode")
-        ADD_OBJECT(objectFromAnimationCurve([o animationCurve]), @"Animation curve")
+        ADD_ENUM(AnimationBlockingMode, [o animationBlockingMode], @"Animation blocking mode")
+        ADD_ENUM(AnimationCurve, [o animationCurve], @"Animation curve")
         ADD_NUMBER([o currentProgress], @"Current progress")
         ADD_NUMBER([o currentValue], @"Current value")
         ADD_OBJECT([o delegate], @"Delegate")
@@ -737,7 +742,7 @@
                         //ADD_OBJECT(          [o attributeRuns]                      ,@"Attribute runs")
                         ADD_NUMBER([o changeInLength], @"Change in length")
                         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
-                        ADD_OBJECT(objectFromTextStorageEditedOptions([o editedMask]), @"Edited mask")
+                        ADD_ENUM(TextStorageEditedOptions, [o editedMask], @"Edited mask")
                         ADD_RANGE([o editedRange], @"Edited range")
                         ADD_BOOL([o fixesAttributesLazily], @"Fixes attributes lazily")
                         ADD_OBJECT([o font], @"Font")
@@ -759,11 +764,11 @@
         ADD_NUMBER([o elementCount], @"Element count")
         ADD_NUMBER([o flatness], @"Flatness")
         ADD_BOOL([o isEmpty], @"Is empty")
-        ADD_OBJECT(objectFromLineCapStyle([o lineCapStyle]), @"Line cap style")
-        ADD_OBJECT(objectFromLineJoinStyle([o lineJoinStyle]), @"Line join style")
+        ADD_ENUM(LineCapStyle, [o lineCapStyle], @"Line cap style")
+        ADD_ENUM(LineJoinStyle, [o lineJoinStyle], @"Line join style")
         ADD_NUMBER([o lineWidth], @"Line width")
         ADD_NUMBER([o miterLimit], @"Miter limit")
-        ADD_OBJECT(objectFromWindingRule([o windingRule]), @"Winding rule")
+        ADD_ENUM(WindingRule, [o windingRule], @"Winding rule")
 }
 
 - (void)addNSCell:(id)object
@@ -775,13 +780,13 @@
                                         NSPopUpButtonCell* o = object;
                                         ADD_CLASS_LABEL(@"NSPopUpButtonCell Info");
                                         ADD_BOOL([o altersStateOfSelectedItem], @"Alters state of selected item")
-                                        ADD_OBJECT(objectFromPopUpArrowPosition([o arrowPosition]), @"Arrow position")
+                                        ADD_ENUM(PopUpArrowPosition, [o arrowPosition], @"Arrow position")
                                         ADD_BOOL([o autoenablesItems], @"Autoenables Items")
                                         ADD_NUMBER([o indexOfSelectedItem], @"Index of selected item")
                                         ADD_OBJECTS([o itemArray], @"Item array")
                                         ADD_NUMBER([o numberOfItems], @"Number of items")
                                         ADD_OBJECT([o objectValue], @"Object value")
-                                        ADD_OBJECT(objectFromRectEdge([o preferredEdge]), @"Preferred edge")
+                                        ADD_ENUM(RectEdge, [o preferredEdge], @"Preferred edge")
                                         ADD_BOOL([o pullsDown], @"Pulls down")
                                         ADD_OBJECT([o selectedItem], @"Selected item")
                                         ADD_BOOL([o usesItemFromMenu], @"Uses item from menu")
@@ -808,17 +813,17 @@
                         ADD_OBJECT([o attributedAlternateTitle], @"Attributed alternate title")
                         ADD_OBJECT([o attributedTitle], @"Attributed title")
                         ADD_OBJECT([o backgroundColor], @"Background color")
-                        ADD_OBJECT(objectFromBezelStyle([o bezelStyle]), @"Bezel style")
-                        ADD_OBJECT(objectFromGradientType([o gradientType]), @"Gradient type")
-                        ADD_OBJECT(objectFromCellStyleMask([o highlightsBy]), @"Highlights by")
+                        ADD_ENUM(BezelStyle, [o bezelStyle], @"Bezel style")
+                        ADD_ENUM(GradientType, [o gradientType], @"Gradient type")
+                        ADD_ENUM(CellStyleMask, [o highlightsBy], @"Highlights by")
                         ADD_BOOL([o imageDimsWhenDisabled], @"Image dims when disabled")
-                        ADD_OBJECT(objectFromCellImagePosition([o imagePosition]), @"Image position")
-                        ADD_OBJECT(objectFromImageScaling([o imageScaling]), @"Image scaling")
+                        ADD_ENUM(CellImagePosition, [o imagePosition], @"Image position")
+                        ADD_ENUM(ImageScaling, [o imageScaling], @"Image scaling")
                         ADD_BOOL([o isTransparent], @"Is transparent")
                         ADD_OBJECT_NOT_NIL([o keyEquivalentFont], @"Key equivalent font")
-                        ADD_OBJECT(objectFromKeyModifierMask([o keyEquivalentModifierMask]), @"Key equivalent modifier mask")
+                        ADD_ENUM(KeyModifierMask, [o keyEquivalentModifierMask], @"Key equivalent modifier mask")
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], @"Shows border only while mouse inside")
-                        ADD_OBJECT(objectFromCellStyleMask([o showsStateBy]), @"Shows state by")
+                        ADD_ENUM(CellStyleMask, [o showsStateBy], @"Shows state by")
                         ADD_OBJECT_NOT_NIL([o sound], @"Sound")
                         ADD_OBJECT([o title], @"Title")
                 }
@@ -827,9 +832,9 @@
                         ADD_CLASS_LABEL(@"NSDatePickerCell Info");
                         ADD_OBJECT([o backgroundColor], @"Background color")
                         ADD_OBJECT([o calendar], @"Calendar")
-                        ADD_OBJECT(objectFromDatePickerElementFlags([o datePickerElements]), @"Date picker elements")
-                        ADD_OBJECT(objectFromDatePickerMode([o datePickerMode]), @"Date picker mode")
-                        ADD_OBJECT(objectFromDatePickerStyle([o datePickerStyle]), @"Date picker style")
+                        ADD_ENUM(DatePickerElementFlags, [o datePickerElements], @"Date picker elements")
+                        ADD_ENUM(DatePickerMode, [o datePickerMode], @"Date picker mode")
+                        ADD_ENUM(DatePickerStyle, [o datePickerStyle], @"Date picker style")
                         ADD_OBJECT([o dateValue], @"Date value")
                         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
                         ADD_BOOL([o drawsBackground], @"Draws background")
@@ -846,8 +851,8 @@
                         ADD_OBJECT([o attributedTitle], @"Attributed title")
                         ADD_OBJECT_NOT_NIL([o placeholderAttributedString], @"Placeholder attributed string")
                         ADD_OBJECT_NOT_NIL([o placeholderString], @"Placeholder string")
-                        ADD_OBJECT(objectFromTextAlignment([o titleAlignment]), @"Title alignment")
-                        ADD_OBJECT(objectFromWritingDirection([o titleBaseWritingDirection]), @"Title base writing direction")
+                        ADD_ENUM(TextAlignment, [o titleAlignment], @"Title alignment")
+                        ADD_ENUM(WritingDirection, [o titleBaseWritingDirection], @"Title base writing direction")
                         ADD_OBJECT([o titleFont], @"Title font")
                         ADD_NUMBER([o titleWidth], @"Title width")
                 }
@@ -855,7 +860,7 @@
                         NSLevelIndicatorCell* o = object;
                         ADD_CLASS_LABEL(@"NSLevelIndicatorCell Info");
                         ADD_NUMBER([o criticalValue], @"Critical value")
-                        ADD_OBJECT(objectFromLevelIndicatorStyle([o levelIndicatorStyle]), @"Level indicator style")
+                        ADD_ENUM(LevelIndicatorStyle, [o levelIndicatorStyle], @"Level indicator style")
                         ADD_NUMBER([o maxValue], @"Max value")
                         ADD_NUMBER([o minValue], @"Min value")
                         ADD_NUMBER([o numberOfMajorTickMarks], @"Number of major tick marks")
@@ -871,7 +876,7 @@
                         ADD_OBJECT([o delegate], @"Delegate")
                         ADD_SEL([o doubleAction], @"Double action")
                         ADD_OBJECTS([o pathComponentCells], @"Path component cells")
-                        ADD_OBJECT(objectFromPathStyle([o pathStyle]), @"Path style")
+                        ADD_ENUM(PathStyle, [o pathStyle], @"Path style")
                         ADD_OBJECT_NOT_NIL([o placeholderAttributedString], @"Placeholder attributed string")
                         ADD_OBJECT_NOT_NIL([o placeholderString], @"Placeholder string")
                         ADD_OBJECT_NOT_NIL([o URL], @"URL")
@@ -883,7 +888,7 @@
 
                         ADD_NUMBER(segmentCount, @"Segment count")
                         ADD_NUMBER([o selectedSegment], @"Selected segment")
-                        ADD_OBJECT(objectFromSegmentSwitchTracking([o trackingMode]), @"Tracking mode")
+                        ADD_ENUM(SegmentSwitchTracking, [o trackingMode], @"Tracking mode")
 
                         for (NSInteger i = 0; i < segmentCount; i++) {
                                 ADD_OBJECT_NOT_NIL([o imageForSegment:i], ([NSString stringWithFormat:@"Image for segment %ld", (long)i]))
@@ -907,7 +912,7 @@
                         ADD_NUMBER([o maxValue], @"Max value")
                         ADD_NUMBER([o minValue], @"Min value")
                         ADD_NUMBER([o numberOfTickMarks], @"Number of tick marks")
-                        ADD_OBJECT(objectFromSliderType([o sliderType]), @"Slider type")
+                        ADD_ENUM(SliderType, [o sliderType], @"Slider type")
                         ADD_OBJECT(objectFromTickMarkPosition([o tickMarkPosition], [(NSSliderCell*)o isVertical] == 1), @"Tick mark position")
                         ADD_RECT([o trackRect], @"Track rect")
                 }
@@ -963,14 +968,14 @@
                                 ADD_NUMBER([o completionDelay], @"Completion delay")
                                 ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
                                 ADD_OBJECT([o tokenizingCharacterSet], @"Tokenizing character set")
-                                ADD_OBJECT(objectFromTokenStyle([o tokenStyle]), @"Token style")
+                                ADD_ENUM(TokenStyle, [o tokenStyle], @"Token style")
                         }
 
                         NSTextFieldCell* o = object;
                         ADD_CLASS_LABEL(@"NSTextFieldCell Info");
                         ADD_OBJECTS([o allowedInputSourceLocales], @"Allowed input source locales")
                         ADD_OBJECT([o backgroundColor], @"Background color")
-                        ADD_OBJECT(objectFromTextFieldBezelStyle([o bezelStyle]), @"Bezel style")
+                        ADD_ENUM(TextFieldBezelStyle, [o bezelStyle], @"Bezel style")
                         ADD_BOOL([o drawsBackground], @"Draws background")
                         ADD_OBJECT_NOT_NIL([o placeholderAttributedString], @"Placeholder attributed string")
                         ADD_OBJECT_NOT_NIL([o placeholderString], @"Placeholder string")
@@ -987,8 +992,8 @@
         else if ([object isKindOfClass:[NSImageCell class]]) {
                 NSImageCell* o = object;
                 ADD_CLASS_LABEL(@"NSImageCell Info");
-                ADD_OBJECT(objectFromImageAlignment([o imageAlignment]), @"Image alignment")
-                ADD_OBJECT(objectFromImageScaling([o imageScaling]), @"Image scaling")
+                ADD_ENUM(ImageAlignment, [o imageAlignment], @"Image alignment")
+                ADD_ENUM(ImageScaling, [o imageScaling], @"Image scaling")
         }
         else if ([object isKindOfClass:[NSTextAttachmentCell class]]) {
                 NSTextAttachmentCell* o = object;
@@ -1003,24 +1008,24 @@
         ADD_CLASS_LABEL(@"NSCell Info");
         ADD_BOOL([o acceptsFirstResponder], @"Accepts first responder")
         ADD_SEL_NOT_NULL([o action], @"Action")
-        ADD_OBJECT(objectFromTextAlignment([o alignment]), @"Alignment")
+        ADD_ENUM(TextAlignment, [o alignment], @"Alignment")
         ADD_BOOL([o allowsEditingTextAttributes], @"Allows editing text attributes")
         ADD_BOOL([o allowsMixedState], @"Allows mixed state")
         ADD_BOOL([o allowsUndo], @"Allows undo")
         //ADD_OBJECT(              [o attributedStringValue]              ,@"Attributed string value")
-        ADD_OBJECT(objectFromBackgroundStyle([o backgroundStyle]), @"Background style")
-        ADD_OBJECT(objectFromWritingDirection([o baseWritingDirection]), @"Base writing direction")
+        ADD_ENUM(BackgroundStyle, [o backgroundStyle], @"Background style")
+        ADD_ENUM(WritingDirection, [o baseWritingDirection], @"Base writing direction")
         ADD_SIZE([o cellSize], @"Cell size")
-        ADD_OBJECT(objectFromControlSize([o controlSize]), @"Control size")
-        ADD_OBJECT(objectFromControlTint([o controlTint]), @"Control tint")
+        ADD_ENUM(ControlSize, [o controlSize], @"Control size")
+        ADD_ENUM(ControlTint, [o controlTint], @"Control tint")
         ADD_OBJECT_NOT_NIL([o controlView], @"Control view")
-        ADD_OBJECT(objectFromFocusRingType([o focusRingType]), @"Focus ring type")
+        ADD_ENUM(FocusRingType, [o focusRingType], @"Focus ring type")
         ADD_OBJECT([o font], @"Font")
         ADD_OBJECT_NOT_NIL([o formatter], @"Formatter")
         ADD_OBJECT_NOT_NIL([o image], @"Image")
         if ([(NSCell*)o type] == NSTextCellType)
                 ADD_BOOL([o importsGraphics], @"Imports graphics")
-        ADD_OBJECT(objectFromBackgroundStyle([o interiorBackgroundStyle]), @"Interior background style")
+        ADD_ENUM(BackgroundStyle, [o interiorBackgroundStyle], @"Interior background style")
         ADD_BOOL([o isBezeled], @"Is bezeled")
         ADD_BOOL([o isBordered], @"Is bordered")
         ADD_BOOL([o isContinuous], @"Is continuous")
@@ -1032,22 +1037,22 @@
         ADD_BOOL([o isSelectable], @"Is selectable")
         if ([[o keyEquivalent] length] != 0)
                 ADD_OBJECT([o keyEquivalent], @"Key equivalent")
-        ADD_OBJECT(objectFromLineBreakMode([o lineBreakMode]), @"Line break mode")
+        ADD_ENUM(LineBreakMode, [o lineBreakMode], @"Line break mode")
         ADD_OBJECT_NOT_NIL([o menu], @"Menu")
         if ([[o mnemonic] length] != 0)
                 ADD_OBJECT([o mnemonic], @"Mnemonic")
         if ([o mnemonicLocation] != NSNotFound)
                 ADD_NUMBER([o mnemonicLocation], @"Mnemonic location")
-        ADD_OBJECT(objectFromCellStateValue([o nextState]), @"Next state")
+        ADD_ENUM(CellStateValue, [o nextState], @"Next state")
         //ADD_OBJECT(              [o objectValue]                        ,@"Object value")
         ADD_BOOL([o refusesFirstResponder], @"Refuses first responder")
         ADD_OBJECT_NOT_NIL([o representedObject], @"Represented object")
         ADD_BOOL([o sendsActionOnEndEditing], @"Sends action on end editing")
         ADD_BOOL([o showsFirstResponder], @"Shows first responder")
-        ADD_OBJECT(objectFromCellStateValue([o state]), @"State")
+        ADD_ENUM(CellStateValue, [o state], @"State")
         ADD_NUMBER([o tag], @"Tag")
         ADD_OBJECT_NOT_NIL([o target], @"Target")
-        ADD_OBJECT(objectFromCellType([(NSCell*)o type]), @"Type")
+        ADD_ENUM(CellType, [(NSCell*)o type], @"Type")
         ADD_BOOL([o wantsNotificationForMarkedText], @"Wants notification for marked text")
         ADD_BOOL([o wraps], @"Wraps")
 }
@@ -1066,10 +1071,10 @@
 {
         NSComparisonPredicate* o = object;
         ADD_CLASS_LABEL(@"NSComparisonPredicate Info");
-        ADD_OBJECT(objectFromComparisonPredicateModifier([o comparisonPredicateModifier]), @"Comparison predicate modifier")
+        ADD_ENUM(ComparisonPredicateModifier, [o comparisonPredicateModifier], @"Comparison predicate modifier")
         ADD_SEL_NOT_NULL([o customSelector], @"Custom selector")
         ADD_OBJECT([o leftExpression], @"Left expression")
-        ADD_OBJECT(objectFromPredicateOperatorType([o predicateOperatorType]), @"Predicate operator type")
+        ADD_ENUM(PredicateOperatorType, [o predicateOperatorType], @"Predicate operator type")
         ADD_OBJECT([o rightExpression], @"Right expression")
 }
 
@@ -1077,7 +1082,7 @@
 {
         NSCompoundPredicate* o = object;
         ADD_CLASS_LABEL(@"NSCompoundPredicate Info")
-        ADD_OBJECT(objectFromCompoundPredicateType([o compoundPredicateType]), @"Compound predicate type")
+        ADD_ENUM(CompoundPredicateType, [o compoundPredicateType], @"Compound predicate type")
         ADD_OBJECTS([o subpredicates], @"Subpredicates")
 }
 
@@ -1252,7 +1257,7 @@
                 ADD_NUMBER([o absoluteX], @"Absolute x")
                 ADD_NUMBER([o absoluteY], @"Absolute y")
                 ADD_NUMBER([o absoluteZ], @"Absolute z")
-                ADD_OBJECT(objectFromEventButtonMask([o buttonMask]), @"Button mask")
+                ADD_ENUM(EventButtonMask, [o buttonMask], @"Button mask")
         }
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp)
                 ADD_NUMBER([o buttonNumber], @"Button number")
@@ -1288,18 +1293,18 @@
                 ADD_NUMBER([o keyCode], @"Key code")
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel)
                 ADD_POINT([o locationInWindow], @"Location in window")
-        ADD_OBJECT(objectFromKeyModifierMask([o modifierFlags]), @"Modifier flags")
+        ADD_ENUM(KeyModifierMask, [o modifierFlags], @"Modifier flags")
         if (type == NSTabletProximity || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletProximityEventSubtype)) {
                 ADD_NUMBER([o pointingDeviceID], @"Pointing device ID")
                 ADD_NUMBER([o pointingDeviceSerialNumber], @"Pointing device serial number")
-                ADD_OBJECT(objectFromPointingDeviceType([o pointingDeviceType]), @"Pointing device type")
+                ADD_ENUM(PointingDeviceType, [o pointingDeviceType], @"Pointing device type")
         }
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel)
                 ADD_NUMBER([o pressure], @"Pressure")
         if (type == NSTabletPoint || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletPointEventSubtype))
                 ADD_NUMBER([o rotation], @"Rotation")
         if (type == NSAppKitDefined || type == NSSystemDefined || type == NSApplicationDefined || type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel)
-                ADD_OBJECT(objectFromEventSubtype([o subtype]), @"Subtype")
+                ADD_ENUM(EventSubtype, [o subtype], @"Subtype")
         if (type == NSTabletProximity || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletProximityEventSubtype)) {
                 ADD_NUMBER([o systemTabletID], @"System tablet ID")
                 ADD_NUMBER([o tabletID], @"Tablet ID")
@@ -1313,7 +1318,7 @@
                 ADD_OBJECT([o trackingArea], @"Tracking area")
                 ADD_NUMBER([o trackingNumber], @"Tracking number")
         }
-        ADD_OBJECT(objectFromEventType([(NSEvent*)o type]), @"Type")
+        ADD_ENUM(EventType, [(NSEvent*)o type], @"Type")
         if (type == NSTabletProximity || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletProximityEventSubtype))
                 ADD_NUMBER([o uniqueID], @"Unique ID")
         if (type == NSMouseEntered || type == NSMouseExited || type == NSCursorUpdate) {
@@ -1423,7 +1428,7 @@
         if (constantValueIsInitialized)
                 ADD_OBJECT(constantValue, @"Constant value");
         if (expressionTypeIsInitialized)
-                ADD_OBJECT(objectFromExpressionType(expressionType), @"Expression type");
+                ADD_ENUM(ExpressionType, expressionType, @"Expression type");
         if (functionIsInitialized)
                 ADD_OBJECT(function, @"Function");
         if (keyPathIsInitialized)
@@ -1451,7 +1456,7 @@
         ADD_BOOL([o includesSubentities], @"Includes bubentities")
         ADD_OBJECT([o predicate], @"Predicate")
         ADD_OBJECTS([o relationshipKeyPathsForPrefetching], @"Relationship key paths for prefetching")
-        ADD_OBJECT(objectFromFetchRequestResultType([o resultType]), @"Result type")
+        ADD_ENUM(FetchRequestResultType, [o resultType], @"Result type")
         ADD_BOOL([o returnsObjectsAsFaults], @"Returns objects as faults")
         ADD_OBJECTS([o sortDescriptors], @"Sort descriptors")
 }
@@ -1493,11 +1498,11 @@
         [view addObject:matrixString withLabel:@"Matrix" toMatrix:m leaf:YES classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject indentationLevel:0];
 
         ADD_SIZE([o maximumAdvancement], @"Maximum advancement")
-        ADD_OBJECT(objectFromStringEncoding([o mostCompatibleStringEncoding]), @"Most compatible string encoding")
+        ADD_ENUM(StringEncoding, [o mostCompatibleStringEncoding], @"Most compatible string encoding")
         ADD_NUMBER([o numberOfGlyphs], @"Number of glyphs")
         ADD_NUMBER([o pointSize], @"Point size")
         ADD_OBJECT([o printerFont], @"Printer font")
-        ADD_OBJECT(objectFromFontRenderingMode([o renderingMode]), @"Rendering mode")
+        ADD_ENUM(FontRenderingMode, [o renderingMode], @"Rendering mode")
         ADD_OBJECT_NOT_NIL([o screenFont], @"Screen font")
         ADD_NUMBER([o underlinePosition], @"Underline position")
         ADD_NUMBER([o underlineThickness], @"Underline thickness")
@@ -1534,7 +1539,7 @@
 {
         NSGlyphInfo* o = object;
         ADD_CLASS_LABEL(@"NSGlyphInfo Info");
-        ADD_OBJECT(objectFromCharacterCollection([o characterCollection]), @"Character collection")
+        ADD_ENUM(CharacterCollection, [o characterCollection], @"Character collection")
         if ([o characterIdentifier])
                 ADD_NUMBER([o characterIdentifier], @"Character identifier");
         ADD_OBJECT_NOT_NIL([o glyphName], @"Glyph name")
@@ -1560,10 +1565,10 @@
         NSGraphicsContext* o = object;
         ADD_CLASS_LABEL(@"NSGraphicsContext Info");
         ADD_DICTIONARY([o attributes], @"Attributes")
-        ADD_OBJECT(objectFromColorRenderingIntent([o colorRenderingIntent]), @"Color rendering intent")
-        ADD_OBJECT(objectFromCompositingOperation([o compositingOperation]), @"Compositing operation")
+        ADD_ENUM(ColorRenderingIntent, [o colorRenderingIntent], @"Color rendering intent")
+        ADD_ENUM(CompositingOperation, [o compositingOperation], @"Compositing operation")
         ADD_POINTER([o graphicsPort], @"Graphics port")
-        ADD_OBJECT(objectFromImageInterpolation([o imageInterpolation]), @"Image interpolation")
+        ADD_ENUM(ImageInterpolation, [o imageInterpolation], @"Image interpolation")
         ADD_BOOL([o isDrawingToScreen], @"Is drawing to screen")
         ADD_BOOL([o isFlipped], @"Is flipped")
         ADD_POINT([o patternPhase], @"Pattern phase")
@@ -1577,7 +1582,7 @@
         ADD_RECT([o alignmentRect], @"Alignment rect")
         ADD_OBJECT([o backgroundColor], @"Background color")
         ADD_BOOL([o cacheDepthMatchesImageDepth], @"Cache depth matches image depth")
-        ADD_OBJECT(objectFromImageCacheMode([o cacheMode]), @"Cache mode")
+        ADD_ENUM(ImageCacheMode, [o cacheMode], @"Cache mode")
         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
         ADD_BOOL([o isCachedSeparately], @"Is cached separately")
         ADD_BOOL([o isDataRetained], @"Is data retained")
@@ -1598,7 +1603,7 @@
         if ([object isKindOfClass:[NSBitmapImageRep class]]) {
                 NSBitmapImageRep* o = object;
                 ADD_CLASS_LABEL(@"NSBitmapImageRep Info");
-                ADD_OBJECT(objectFromBitmapFormat([o bitmapFormat]), @"Bitmap format")
+                ADD_ENUM(BitmapFormat, [o bitmapFormat], @"Bitmap format")
                 ADD_NUMBER([o bitsPerPixel], @"Bits per pixel")
                 ADD_NUMBER([o bytesPerPlane], @"Bytes per plane")
                 ADD_NUMBER([o bytesPerRow], @"Bytes per row")
@@ -1607,7 +1612,7 @@
                 {
                         id compressionMethod = [o valueForProperty:NSImageCompressionMethod];
                         if ([compressionMethod isKindOfClass:[NSNumber class]])
-                                ADD_OBJECT(objectFromTIFFCompression([[o valueForProperty:NSImageCompressionMethod] longValue]), @"Compression method")
+                                ADD_ENUM(TIFFCompression, [[o valueForProperty:NSImageCompressionMethod] longValue], @"Compression method")
                 }
                 ADD_OBJECT_NOT_NIL([o valueForProperty:NSImageCurrentFrame], @"Current frame")
                 ADD_OBJECT_NOT_NIL([o valueForProperty:NSImageCurrentFrameDuration], @"Current frame duration")
@@ -1670,7 +1675,7 @@
         ADD_CLASS_LABEL(@"NSLayoutManager Info");
         ADD_BOOL([o allowsNonContiguousLayout], @"Allows non contiguous layout")
         ADD_BOOL([o backgroundLayoutEnabled], @"Background layout enabled")
-        ADD_OBJECT(objectFromImageScaling([o defaultAttachmentScaling]), @"Default attachment scaling")
+        ADD_ENUM(ImageScaling, [o defaultAttachmentScaling], @"Default attachment scaling")
         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
         ADD_RECT([o extraLineFragmentRect], @"Extra line fragment rect")
         ADD_OBJECT_NOT_NIL([o extraLineFragmentTextContainer], @"Extra line fragment text container")
@@ -1681,14 +1686,14 @@
         ADD_OBJECT([o glyphGenerator], @"Glyph generator")
         ADD_BOOL([o hasNonContiguousLayout], @"Has non contiguous layout")
         ADD_NUMBER([o hyphenationFactor], @"Hyphenation factor")
-        ADD_OBJECT(objectFromGlyphStorageLayoutOptions([o layoutOptions]), @"Layout options")
+        ADD_ENUM(GlyphStorageLayoutOptions, [o layoutOptions], @"Layout options")
         ADD_BOOL([o showsControlCharacters], @"Shows control characters")
         ADD_BOOL([o showsInvisibleCharacters], @"Shows invisible characters")
         ADD_OBJECTS([o textContainers], @"Text containers")
         ADD_OBJECT([o textStorage], @"Text storage")
         ADD_OBJECT([o textViewForBeginningOfSelection], @"Text view for beginning of selection")
         ADD_OBJECT([o typesetter], @"Typesetter")
-        ADD_OBJECT(objectFromTypesetterBehavior([o typesetterBehavior]), @"Typesetter behavior")
+        ADD_ENUM(TypesetterBehavior, [o typesetterBehavior], @"Typesetter behavior")
         ADD_BOOL([o usesFontLeading], @"Uses font leading")
         ADD_BOOL([o usesScreenFonts], @"Uses screen fonts")
 }
@@ -1700,7 +1705,7 @@
         ADD_OBJECT([o deletedObjects], @"Deleted objects")
         ADD_BOOL([o hasChanges], @"Has changes")
         ADD_OBJECT([o insertedObjects], @"Inserted objects")
-        ADD_OBJECT(objectFromMergePolicy([o mergePolicy]), @"Merge policy")
+        ADD_ENUM(MergePolicy, [o mergePolicy], @"Merge policy")
         ADD_OBJECT([o persistentStoreCoordinator], @"Persistent store coordinator")
         ADD_BOOL([o propagatesDeletesAtEndOfEvent], @"Propagates deletes at end of event")
         ADD_OBJECT([o registeredObjects], @"Registered objects")
@@ -1762,13 +1767,13 @@
         ADD_BOOL([o isHighlighted], @"Is highlighted")
         ADD_BOOL([o isSeparatorItem], @"Is separatorItem")
         ADD_OBJECT([o keyEquivalent], @"Key equivalent")
-        ADD_OBJECT(objectFromKeyModifierMask([o keyEquivalentModifierMask]), @"Key equivalent modifier mask")
+        ADD_ENUM(KeyModifierMask, [o keyEquivalentModifierMask], @"Key equivalent modifier mask")
         ADD_OBJECT([o menu], @"Menu")
         ADD_OBJECT_NOT_NIL([o mixedStateImage], @"Mixed state image")
         ADD_OBJECT_NOT_NIL([o offStateImage], @"Off state image")
         ADD_OBJECT_NOT_NIL([o onStateImage], @"On state image")
         ADD_OBJECT_NOT_NIL([o representedObject], @"Represented object")
-        ADD_OBJECT(objectFromCellStateValue([o state]), @"State")
+        ADD_ENUM(CellStateValue, [o state], @"State")
         ADD_OBJECT_NOT_NIL([o submenu], @"Submenu")
         ADD_NUMBER([o tag], @"Tag")
         ADD_OBJECT_NOT_NIL([o target], @"Target")
@@ -1824,14 +1829,14 @@
 {
         NSParagraphStyle* o = object;
         ADD_CLASS_LABEL(@"NSParagraphStyle Info")
-        ADD_OBJECT(objectFromTextAlignment([o alignment]), @"Alignment")
-        ADD_OBJECT(objectFromWritingDirection([o baseWritingDirection]), @"Base writing direction")
+        ADD_ENUM(TextAlignment, [o alignment], @"Alignment")
+        ADD_ENUM(WritingDirection, [o baseWritingDirection], @"Base writing direction")
         ADD_NUMBER([o defaultTabInterval], @"Default tab interval")
         ADD_NUMBER([o firstLineHeadIndent], @"First line head indent")
         ADD_NUMBER([o headerLevel], @"HeaderLevel")
         ADD_NUMBER([o headIndent], @"Head indent")
         ADD_NUMBER([o hyphenationFactor], @"hyphenationFactor")
-        ADD_OBJECT(objectFromLineBreakMode([o lineBreakMode]), @"Line break mode")
+        ADD_ENUM(LineBreakMode, [o lineBreakMode], @"Line break mode")
         ADD_NUMBER([o lineHeightMultiple], @"Line height multiple")
         ADD_NUMBER([o lineSpacing], @"Line spacing")
         ADD_NUMBER([o maximumLineHeight], @"Maximum line height")
@@ -1859,10 +1864,10 @@
         ADD_CLASS_LABEL(@"NSPredicateEditorRowTemplate Info")
         ADD_OBJECTS([o compoundTypes], @"Compound types")
         ADD_OBJECTS([o leftExpressions], @"Left expressions")
-        ADD_OBJECT(objectFromComparisonPredicateModifier([o modifier]), @"Modifier")
+        ADD_ENUM(ComparisonPredicateModifier, [o modifier], @"Modifier")
         ADD_OBJECTS([o operators], @"Operators")
-        ADD_OBJECT(objectFromComparisonPredicateOptions([o options]), @"Options")
-        ADD_OBJECT(objectFromAttributeType([o rightExpressionAttributeType]), @"Right expression attribute type")
+        ADD_ENUM(ComparisonPredicateOptions, [o options], @"Options")
+        ADD_ENUM(AttributeType, [o rightExpressionAttributeType], @"Right expression attribute type")
         ADD_OBJECTS([o rightExpressions], @"Right expressions")
         ADD_OBJECTS([o templateViews], @"Template views")
 }
@@ -1872,7 +1877,7 @@
         if ([object isKindOfClass:[NSAttributeDescription class]]) {
                 NSAttributeDescription* o = object;
                 ADD_CLASS_LABEL(@"NSAttributeDescription Info")
-                ADD_OBJECT(objectFromAttributeType([o attributeType]), @"Attribute type")
+                ADD_ENUM(AttributeType, [o attributeType], @"Attribute type")
                 ADD_OBJECT([o attributeValueClassName], @"Attribute value class name")
                 ADD_OBJECT([o defaultValue], @"Default value")
 
@@ -1887,7 +1892,7 @@
         else if ([object isKindOfClass:[NSRelationshipDescription class]]) {
                 NSRelationshipDescription* o = object;
                 ADD_CLASS_LABEL(@"NSRelationshipDescription Info")
-                ADD_OBJECT(objectFromDeleteRule([o deleteRule]), @"Delete rule")
+                ADD_ENUM(DeleteRule, [o deleteRule], @"Delete rule")
                 ADD_OBJECT([o destinationEntity], @"Destination entity")
                 ADD_OBJECT([o inverseRelationship], @"Inverse relationship")
                 ADD_BOOL([o isToMany], @"Is to many")
@@ -1937,13 +1942,13 @@
                 ADD_SIZE([o contentSize], @"Content size")
                 ADD_OBJECT([o contentView], @"Content view")
                 ADD_OBJECT([o delegate], @"Delegate")
-                ADD_OBJECT(objectFromRectEdge([o edge]), @"Edge")
+                ADD_ENUM(RectEdge, [o edge], @"Edge")
                 ADD_NUMBER([o leadingOffset], @"Leading offset")
                 ADD_SIZE([o maxContentSize], @"Max content size")
                 ADD_SIZE([o minContentSize], @"Min content size")
                 ADD_OBJECT([o parentWindow], @"Parent window")
-                ADD_OBJECT(objectFromRectEdge([o preferredEdge]), @"Preferred edge")
-                ADD_OBJECT(objectFromDrawerState([o state]), @"State")
+                ADD_ENUM(RectEdge, [o preferredEdge], @"Preferred edge")
+                ADD_ENUM(DrawerState, [o state], @"State")
                 ADD_NUMBER([o trailingOffset], @"Trailing offset")
         }
         else if ([object isKindOfClass:[NSView class]]) {
@@ -2053,7 +2058,7 @@
         ADD_BOOL([o highlightMode], @"Highlight mode")
         ADD_OBJECT_NOT_NIL([o image], @"Image")
         ADD_BOOL([o isEnabled], @"Is enabled")
-        ADD_OBJECT(objectFromStatusItemLength([o length]), @"Length")
+        ADD_ENUM(StatusItemLength, [o length], @"Length")
         ADD_OBJECT_NOT_NIL([o menu], @"Menu")
         ADD_OBJECT([o statusBar], @"Status bar")
         ADD_OBJECT([o target], @"Target")
@@ -2070,7 +2075,7 @@
         ADD_OBJECT([(NSTabViewItem*)o identifier], @"Identifier")
         ADD_OBJECT([o initialFirstResponder], @"Initial first responder")
         ADD_OBJECT([o label], @"Label")
-        ADD_OBJECT(objectFromTabState([o tabState]), @"Tab state")
+        ADD_ENUM(TabState, [o tabState], @"Tab state")
         ADD_OBJECT([o tabView], @"Parent tab view")
         ADD_OBJECT([o view], @"View")
 }
@@ -2087,7 +2092,7 @@
         ADD_BOOL([o isHidden], @"Is hidden")
         ADD_NUMBER([o maxWidth], @"Max width")
         ADD_NUMBER([o minWidth], @"Min width")
-        ADD_OBJECT(objectFromTableColumnResizingOptions([o resizingMask]), @"Resizing mask")
+        ADD_ENUM(TableColumnResizingOptions, [o resizingMask], @"Resizing mask")
         ADD_OBJECT_NOT_NIL([o sortDescriptorPrototype], @"Sort descriptor prototype")
         ADD_OBJECT([o tableView], @"Table view")
         ADD_NUMBER([o width], @"Width")
@@ -2117,7 +2122,7 @@
                 ADD_CLASS_LABEL(@"NSTextTable Info");
                 ADD_BOOL([o collapsesBorders], @"Collapses borders")
                 ADD_BOOL([o hidesEmptyCells], @"Hides empty cells")
-                ADD_OBJECT(objectFromTextTableLayoutAlgorithm([o layoutAlgorithm]), @"Layout algorithm")
+                ADD_ENUM(TextTableLayoutAlgorithm, [o layoutAlgorithm], @"Layout algorithm")
                 ADD_NUMBER([o numberOfColumns], @"Number of columns")
         }
 
@@ -2125,8 +2130,8 @@
         ADD_CLASS_LABEL(@"NSTextBlock Info");
         ADD_OBJECT([o backgroundColor], @"Background color")
         ADD_NUMBER([o contentWidth], @"Content width")
-        ADD_OBJECT(objectFromTextBlockValueType([o contentWidthValueType]), @"Content width value type")
-        ADD_OBJECT(objectFromTextBlockVerticalAlignment([o verticalAlignment]), @"Vertical alignment")
+        ADD_ENUM(TextBlockValueType, [o contentWidthValueType], @"Content width value type")
+        ADD_ENUM(TextBlockVerticalAlignment, [o verticalAlignment], @"Vertical alignment")
 }
 
 - (void)addNSTextContainer:(id)object
@@ -2146,7 +2151,7 @@
 {
         NSTextList* o = object;
         ADD_CLASS_LABEL(@"NSTextList Info");
-        ADD_OBJECT(objectFromTextListOptions([o listOptions]), @"List options")
+        ADD_ENUM(TextListOptions, [o listOptions], @"List options")
         ADD_OBJECT([o markerFormat], @"Marker format")
 }
 
@@ -2154,10 +2159,10 @@
 {
         NSTextTab* o = object;
         ADD_CLASS_LABEL(@"NSTextTab Info");
-        ADD_OBJECT(objectFromTextAlignment([o alignment]), @"Alignment")
+        ADD_ENUM(TextAlignment, [o alignment], @"Alignment")
         ADD_NUMBER([o location], @"Location")
         ADD_OBJECT([o options], @"Options")
-        ADD_OBJECT(objectFromTextTabType([o tabStopType]), @"Tab stop type")
+        ADD_ENUM(TextTabType, [o tabStopType], @"Tab stop type")
 }
 
 - (void)addNSToolbar:(id)object
@@ -2169,13 +2174,13 @@
         ADD_DICTIONARY([o configurationDictionary], @"Configuration dictionary")
         ADD_BOOL([o customizationPaletteIsRunning], @"Customization palette is running")
         ADD_OBJECT([o delegate], @"Delegate")
-        ADD_OBJECT(objectFromToolbarDisplayMode([o displayMode]), @"Display mode")
+        ADD_ENUM(ToolbarDisplayMode, [o displayMode], @"Display mode")
         ADD_OBJECT([(NSToolbar*)o identifier], @"Identifier")
         ADD_BOOL([o isVisible], @"Is visible")
         ADD_OBJECTS([o items], @"Items")
         ADD_OBJECT_NOT_NIL([o selectedItemIdentifier], @"Selected item identifier")
         ADD_BOOL([o showsBaselineSeparator], @"Shows baseline separator")
-        ADD_OBJECT(objectFromToolbarSizeMode([o sizeMode]), @"Identifier")
+        ADD_ENUM(ToolbarSizeMode, [o sizeMode], @"Identifier")
         ADD_OBJECTS([o visibleItems], @"Visible items")
 }
 
@@ -2205,14 +2210,14 @@
         ADD_OBJECT([o toolbar], @"Toolbar")
         ADD_OBJECT_NOT_NIL([o toolTip], @"Tool tip")
         ADD_OBJECT([o view], @"View")
-        ADD_OBJECT(objectFromToolbarItemVisibilityPriority([o visibilityPriority]), @"Visibility priority")
+        ADD_ENUM(ToolbarItemVisibilityPriority, [o visibilityPriority], @"Visibility priority")
 }
 
 - (void)addNSTrackingArea:(id)object
 {
         NSTrackingArea* o = object;
         ADD_CLASS_LABEL(@"NSTrackingArea Info");
-        ADD_OBJECT(objectFromTrackingAreaOptions([o options]), @"Options")
+        ADD_ENUM(TrackingAreaOptions, [o options], @"Options")
         ADD_OBJECT([o owner], @"Owner")
         ADD_RECT([o rect], @"Rect")
         ADD_DICTIONARY([o userInfo], @"User info")
@@ -2249,7 +2254,7 @@
         ADD_NUMBER([o hyphenationFactor], @"Hyphenation factor")
         ADD_OBJECT_NOT_NIL([o layoutManager], @"Layout manager")
         ADD_NUMBER([o lineFragmentPadding], @"Line fragment padding")
-        ADD_OBJECT(objectFromTypesetterBehavior([o typesetterBehavior]), @"Typesetter behavior")
+        ADD_ENUM(TypesetterBehavior, [o typesetterBehavior], @"Typesetter behavior")
         ADD_BOOL([o usesFontLeading], @"Uses font leading")
 }
 
@@ -2261,9 +2266,9 @@
                 ADD_CLASS_LABEL(@"NSBox Info");
                 ADD_OBJECT([o borderColor], @"Border color")
                 ADD_RECT([o borderRect], @"Border rect")
-                ADD_OBJECT(objectFromBorderType([o borderType]), @"Border type")
+                ADD_ENUM(BorderType, [o borderType], @"Border type")
                 ADD_NUMBER([o borderWidth], @"Border width")
-                ADD_OBJECT(objectFromBoxType([o boxType]), @"Box type")
+                ADD_ENUM(BoxType, [o boxType], @"Box type")
                 ADD_OBJECT([o contentView], @"Content view")
                 ADD_SIZE([o contentViewMargins], @"Content view margins")
                 ADD_NUMBER([o cornerRadius], @"Corner radius")
@@ -2272,7 +2277,7 @@
                 ADD_OBJECT([o title], @"Title")
                 ADD_OBJECT([o titleCell], @"Title cell")
                 ADD_OBJECT([o titleFont], @"Title font")
-                ADD_OBJECT(objectFromTitlePosition([o titlePosition]), @"Title position")
+                ADD_ENUM(TitlePosition, [o titlePosition], @"Title position")
                 ADD_RECT([o titleRect], @"Title rect")
         }
         if ([object isKindOfClass:[NSCollectionView class]]) {
@@ -2313,8 +2318,8 @@
         else if ([object isKindOfClass:[NSProgressIndicator class]]) {
                 NSProgressIndicator* o = object;
                 ADD_CLASS_LABEL(@"NSProgressIndicator Info");
-                ADD_OBJECT(objectFromControlSize([o controlSize]), @"Control size")
-                ADD_OBJECT(objectFromControlTint([o controlTint]), @"Control tint")
+                ADD_ENUM(ControlSize, [o controlSize], @"Control size")
+                ADD_ENUM(ControlTint, [o controlTint], @"Control tint")
                 if ([o style] == NSProgressIndicatorBarStyle && ![o isIndeterminate])
                         ADD_NUMBER([o doubleValue], @"Double value")
                 ADD_BOOL([o isBezeled], @"Is bezeled")
@@ -2323,7 +2328,7 @@
                         ADD_NUMBER([o maxValue], @"Max value")
                         ADD_NUMBER([o minValue], @"Min value")
                 }
-                ADD_OBJECT(objectFromProgressIndicatorStyle([o style]), @"Style")
+                ADD_ENUM(ProgressIndicatorStyle, [o style], @"Style")
                 ADD_BOOL([o usesThreadedAnimation], @"Uses threaded animation")
         }
         else if ([object isKindOfClass:[NSRulerView class]]) {
@@ -2335,7 +2340,7 @@
                 ADD_BOOL([o isFlipped], @"Is flipped")
                 ADD_OBJECTS([o markers], @"Markers")
                 ADD_OBJECT([o measurementUnits], @"Measurement units")
-                ADD_OBJECT(objectFromRulerOrientation([o orientation]), @"Orientation")
+                ADD_ENUM(RulerOrientation, [o orientation], @"Orientation")
                 ADD_NUMBER([o originOffset], @"Origin offset")
                 ADD_NUMBER([o requiredThickness], @"Required thickness")
                 ADD_NUMBER([o reservedThicknessForAccessoryView], @"Reserved thickness for accessory view")
@@ -2348,7 +2353,7 @@
                 ADD_CLASS_LABEL(@"NSScrollView Info");
                 ADD_BOOL([o autohidesScrollers], @"Autohides scrollers")
                 ADD_OBJECT([o backgroundColor], @"Background color")
-                ADD_OBJECT(objectFromBorderType([o borderType]), @"Border type")
+                ADD_ENUM(BorderType, [o borderType], @"Border type")
                 ADD_SIZE([o contentSize], @"Content size")
                 ADD_OBJECT([o contentView], @"Content view")
                 ADD_OBJECT([o documentCursor], @"Document cursor")
@@ -2385,15 +2390,15 @@
                 ADD_CLASS_LABEL(@"NSTabView Info");
                 ADD_BOOL([o allowsTruncatedLabels], @"Allows truncated labels")
                 ADD_RECT([o contentRect], @"Content rect")
-                ADD_OBJECT(objectFromControlSize([o controlSize]), @"Control size")
-                ADD_OBJECT(objectFromControlTint([o controlTint]), @"Control tint")
+                ADD_ENUM(ControlSize, [o controlSize], @"Control size")
+                ADD_ENUM(ControlTint, [o controlTint], @"Control tint")
                 ADD_OBJECT([o delegate], @"Delegate")
                 ADD_BOOL([o drawsBackground], @"Draws background")
                 ADD_OBJECT([o font], @"Font")
                 ADD_SIZE([o minimumSize], @"Minimum size")
                 ADD_OBJECT([o selectedTabViewItem], @"Selected tab view item")
                 ADD_OBJECTS([o tabViewItems], @"Tab view items")
-                ADD_OBJECT(objectFromTabViewType([o tabViewType]), @"Tab view type")
+                ADD_ENUM(TabViewType, [o tabViewType], @"Tab view type")
         }
         else if ([object isKindOfClass:[NSTableHeaderView class]]) {
                 NSTableHeaderView* o = object;
@@ -2427,8 +2432,8 @@
                         ADD_OBJECTS([o readablePasteboardTypes], @"Readable pasteboard types")
                         ADD_OBJECTS([o selectedRanges], @"Selected ranges")
                         ADD_DICTIONARY([o selectedTextAttributes], @"Selected text attributes")
-                        ADD_OBJECT(objectFromSelectionAffinity([o selectionAffinity]), @"Selection affinity")
-                        ADD_OBJECT(objectFromSelectionGranularity([o selectionGranularity]), @"Selection granularity")
+                        ADD_ENUM(SelectionAffinity, [o selectionAffinity], @"Selection affinity")
+                        ADD_ENUM(SelectionGranularity, [o selectionGranularity], @"Selection granularity")
                         ADD_BOOL([o shouldDrawInsertionPoint], @"Should draw insertion point")
                         ADD_BOOL([o smartInsertDeleteEnabled], @"Smart insert delete enabled")
                         ADD_NUMBER([o spellCheckerDocumentTag], @"Spell checker document tag")
@@ -2445,9 +2450,9 @@
 
                 NSText* o = object;
                 ADD_CLASS_LABEL(@"NSText Info");
-                ADD_OBJECT(objectFromTextAlignment([o alignment]), @"Alignment")
+                ADD_ENUM(TextAlignment, [o alignment], @"Alignment")
                 ADD_OBJECT([o backgroundColor], @"Background color")
-                ADD_OBJECT(objectFromWritingDirection([o baseWritingDirection]), @"Base writing direction")
+                ADD_ENUM(WritingDirection, [o baseWritingDirection], @"Base writing direction")
                 ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
                 ADD_BOOL([o drawsBackground], @"Draws background")
                 ADD_OBJECT([o font], @"Font")
@@ -2469,7 +2474,7 @@
 
         NSView* o = object;
         ADD_CLASS_LABEL(@"NSView Info");
-        ADD_OBJECT(objectFromAutoresizingMaskOptions([o autoresizingMask]), @"Autoresizing mask")
+        ADD_ENUM(AutoresizingMaskOptions, [o autoresizingMask], @"Autoresizing mask")
         ADD_BOOL([o autoresizesSubviews], @"Autoresizes subviews")
         ADD_RECT([o bounds], @"Bounds")
         ADD_NUMBER([o boundsRotation], @"Bounds rotation")
@@ -2479,7 +2484,7 @@
         ADD_OBJECT_NOT_NIL([o enclosingScrollView], @"Enclosing scroll view")
         ADD_RECT([o frame], @"Frame")
         ADD_NUMBER([o frameRotation], @"Frame rotation")
-        ADD_OBJECT(objectFromFocusRingType([o focusRingType]), @"Focus ring type")
+        ADD_ENUM(FocusRingType, [o focusRingType], @"Focus ring type")
         ADD_NUMBER([o gState], @"gState")
         ADD_NUMBER([o heightAdjustLimit], @"Height adjust limit")
         ADD_BOOL([o isFlipped], @"Is flipped")
@@ -2525,7 +2530,7 @@
                         ADD_BOOL([o allowsTypeSelect], @"Allows type select")
                         ADD_OBJECT([o backgroundColor], @"Background color")
                         ADD_OBJECT([o cellPrototype], @"Cell prototype")
-                        ADD_OBJECT(objectFromBrowserColumnResizingType([o columnResizingType]), @"Column resizing type")
+                        ADD_ENUM(BrowserColumnResizingType, [o columnResizingType], @"Column resizing type")
                         ADD_OBJECT([o columnsAutosaveName], @"Columns autosave name")
                         ADD_OBJECT([o delegate], @"Delegate")
                         ADD_SEL([o doubleAction], @"Double action")
@@ -2559,7 +2564,7 @@
                                 ADD_OBJECTS([o itemArray], @"Item array")
                                 ADD_NUMBER([o numberOfItems], @"Number of items")
                                 ADD_OBJECT([o objectValue], @"Object value")
-                                ADD_OBJECT(objectFromRectEdge([o preferredEdge]), @"Preferred edge")
+                                ADD_ENUM(RectEdge, [o preferredEdge], @"Preferred edge")
                                 ADD_BOOL([o pullsDown], @"Pulls down")
                                 ADD_OBJECT([o selectedItem], @"Selected item")
                         }
@@ -2571,16 +2576,16 @@
                         ADD_OBJECT([o alternateTitle], @"Alternate title")
                         ADD_OBJECT([o attributedAlternateTitle], @"Attributed alternate title")
                         ADD_OBJECT([o attributedTitle], @"Attributed title")
-                        ADD_OBJECT(objectFromBezelStyle([o bezelStyle]), @"Bezel style")
+                        ADD_ENUM(BezelStyle, [o bezelStyle], @"Bezel style")
                         ADD_OBJECT([o image], @"Image")
-                        ADD_OBJECT(objectFromCellImagePosition([o imagePosition]), @"Image position")
+                        ADD_ENUM(CellImagePosition, [o imagePosition], @"Image position")
                         ADD_BOOL([o isBordered], @"Is bordered")
                         ADD_BOOL([o isTransparent], @"Is transparent")
                         ADD_OBJECT([o keyEquivalent], @"Key equivalent")
-                        ADD_OBJECT(objectFromKeyModifierMask([o keyEquivalentModifierMask]), @"Key equivalent modifier mask")
+                        ADD_ENUM(KeyModifierMask, [o keyEquivalentModifierMask], @"Key equivalent modifier mask")
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], @"Shows border only while mouse inside")
                         ADD_OBJECT_NOT_NIL([o sound], @"Sound")
-                        ADD_OBJECT(objectFromCellStateValue([o state]), @"State")
+                        ADD_ENUM(CellStateValue, [o state], @"State")
                         ADD_OBJECT([o title], @"Title")
                 }
                 else if ([object isKindOfClass:[NSColorWell class]]) {
@@ -2595,9 +2600,9 @@
                         ADD_CLASS_LABEL(@"NSDatePicker Info");
                         ADD_OBJECT([o backgroundColor], @"Background color")
                         ADD_OBJECT([o calendar], @"Calendar")
-                        ADD_OBJECT(objectFromDatePickerElementFlags([o datePickerElements]), @"Date picker elements")
-                        ADD_OBJECT(objectFromDatePickerMode([o datePickerMode]), @"Date picker mode")
-                        ADD_OBJECT(objectFromDatePickerStyle([o datePickerStyle]), @"Date picker style")
+                        ADD_ENUM(DatePickerElementFlags, [o datePickerElements], @"Date picker elements")
+                        ADD_ENUM(DatePickerMode, [o datePickerMode], @"Date picker mode")
+                        ADD_ENUM(DatePickerStyle, [o datePickerStyle], @"Date picker style")
                         ADD_OBJECT([o dateValue], @"Date value")
                         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
                         ADD_BOOL([o drawsBackground], @"Draws background")
@@ -2616,9 +2621,9 @@
                         ADD_BOOL([o allowsCutCopyPaste], @"Allows cut copy paste")
                         ADD_BOOL([o animates], @"Animates")
                         ADD_OBJECT([o image], @"Image")
-                        ADD_OBJECT(objectFromImageAlignment([o imageAlignment]), @"Image alignment")
-                        ADD_OBJECT(objectFromImageFrameStyle([o imageFrameStyle]), @"Image frame style")
-                        ADD_OBJECT(objectFromImageScaling([o imageScaling]), @"Image scaling")
+                        ADD_ENUM(ImageAlignment, [o imageAlignment], @"Image alignment")
+                        ADD_ENUM(ImageFrameStyle, [o imageFrameStyle], @"Image frame style")
+                        ADD_ENUM(ImageScaling, [o imageScaling], @"Image scaling")
                         ADD_BOOL([o isEditable], @"Is editable")
                 }
                 else if ([object isKindOfClass:[NSLevelIndicator class]]) {
@@ -2662,7 +2667,7 @@
                         ADD_BOOL([o isAutoscroll], @"Is autoscroll")
                         ADD_BOOL([o isSelectionByRect], @"Is selection by rect")
                         ADD_OBJECT([o keyCell], @"Key cell")
-                        ADD_OBJECT(objectFromMatrixMode([(NSMatrix*)o mode]), @"Mode")
+                        ADD_ENUM(MatrixMode, [(NSMatrix*)o mode], @"Mode")
                         ADD_NUMBER([o numberOfColumns], @"Number of columns")
                         ADD_NUMBER([o numberOfRows], @"Number of rows")
                         ADD_OBJECT([o prototype], @"Prototype")
@@ -2678,7 +2683,7 @@
                         ADD_OBJECT([o delegate], @"Delegate")
                         ADD_SEL([o doubleAction], @"Double action")
                         ADD_OBJECTS([o pathComponentCells], @"Path component cells")
-                        ADD_OBJECT(objectFromPathStyle([o pathStyle]), @"Path style")
+                        ADD_ENUM(PathStyle, [o pathStyle], @"Path style")
                         ADD_OBJECT([o URL], @"URL")
                 }
                 else if ([object isKindOfClass:[NSRuleEditor class]]) {
@@ -2697,7 +2702,7 @@
                         ADD_DICTIONARY([o formattingDictionary], @"Formatting dictionary")
                         ADD_OBJECT_NOT_NIL([o formattingStringsFilename], @"Formatting strings filename")
                         ADD_BOOL([o isEditable], @"Is editable")
-                        ADD_OBJECT(objectFromRuleEditorNestingMode([o nestingMode]), @"Nesting mode")
+                        ADD_ENUM(RuleEditorNestingMode, [o nestingMode], @"Nesting mode")
                         ADD_NUMBER([o numberOfRows], @"Number of rows")
                         ADD_OBJECT([o predicate], @"Predicate")
                         ADD_OBJECT([o rowClass], @"Row class")
@@ -2709,13 +2714,13 @@
                 else if ([object isKindOfClass:[NSScroller class]]) {
                         NSScroller* o = object;
                         ADD_CLASS_LABEL(@"NSScroller Info");
-                        ADD_OBJECT(objectFromScrollArrowPosition([o arrowsPosition]), @"Arrows position")
-                        ADD_OBJECT(objectFromControlSize([o controlSize]), @"Control size")
-                        ADD_OBJECT(objectFromControlTint([o controlTint]), @"Control tint")
+                        ADD_ENUM(ScrollArrowPosition, [o arrowsPosition], @"Arrows position")
+                        ADD_ENUM(ControlSize, [o controlSize], @"Control size")
+                        ADD_ENUM(ControlTint, [o controlTint], @"Control tint")
                         ADD_NUMBER([o doubleValue], @"Double value")
-                        ADD_OBJECT(objectFromScrollerPart([o hitPart]), @"Hit part")
+                        ADD_ENUM(ScrollerPart, [o hitPart], @"Hit part")
                         ADD_NUMBER([o knobProportion], @"Knob proportion")
-                        ADD_OBJECT(objectFromUsableScrollerParts([o usableParts]), @"Usable parts")
+                        ADD_ENUM(UsableScrollerParts, [o usableParts], @"Usable parts")
                 }
                 else if ([object isKindOfClass:[NSSegmentedControl class]]) {
                         NSSegmentedControl* o = object;
@@ -2770,13 +2775,13 @@
                         ADD_OBJECT_NOT_NIL([o autosaveName], @"Autosave name")
                         ADD_BOOL([o autosaveTableColumns], @"Autosave table columns")
                         ADD_OBJECT([o backgroundColor], @"Background color")
-                        ADD_OBJECT(objectFromTableViewColumnAutoresizingStyle([o columnAutoresizingStyle]), @"Column autoresizing style")
+                        ADD_ENUM(TableViewColumnAutoresizingStyle, [o columnAutoresizingStyle], @"Column autoresizing style")
                         ADD_OBJECT([o cornerView], @"Corner view")
                         ADD_OBJECT([o dataSource], @"Data source")
                         ADD_OBJECT([o delegate], @"Delegate")
                         ADD_SEL([o doubleAction], @"Double action")
                         ADD_OBJECT([o gridColor], @"Grid color")
-                        ADD_OBJECT(objectFromTableViewGridLineStyle([o gridStyleMask]), @"Grid style mask")
+                        ADD_ENUM(TableViewGridLineStyle, [o gridStyleMask], @"Grid style mask")
                         ADD_OBJECT([o headerView], @"Header view")
                         ADD_OBJECT_NOT_NIL([o highlightedTableColumn], @"Highlighted table column")
                         ADD_SIZE([o intercellSpacing], @"Intercell spacing")
@@ -2789,7 +2794,7 @@
                         ADD_OBJECT([o selectedColumnIndexes], @"Selected column indexes")
                         ADD_NUMBER([o selectedRow], @"Selected row")
                         ADD_OBJECT([o selectedRowIndexes], @"Selected row indexes")
-                        ADD_OBJECT(objectFromTableViewSelectionHighlightStyle([o selectionHighlightStyle]), @"Selection highlight style")
+                        ADD_ENUM(TableViewSelectionHighlightStyle, [o selectionHighlightStyle], @"Selection highlight style")
                         ADD_OBJECTS([o sortDescriptors], @"Sort descriptors")
                         ADD_OBJECTS([o tableColumns], @"Table columns")
                         ADD_BOOL([o usesAlternatingRowBackgroundColors], @"Uses alternating row background colors")
@@ -2835,14 +2840,14 @@
                                 ADD_CLASS_LABEL(@"NSTokenField Info");
                                 ADD_NUMBER([o completionDelay], @"Completion delay")
                                 ADD_OBJECT([o tokenizingCharacterSet], @"Tokenizing character set")
-                                ADD_OBJECT(objectFromTokenStyle([o tokenStyle]), @"Token style")
+                                ADD_ENUM(TokenStyle, [o tokenStyle], @"Token style")
                         }
 
                         NSTextField* o = object;
                         ADD_CLASS_LABEL(@"NSTextField Info");
                         ADD_BOOL([o allowsEditingTextAttributes], @"Allows editing text attributes")
                         ADD_OBJECT([o backgroundColor], @"Background color")
-                        ADD_OBJECT(objectFromTextFieldBezelStyle([o bezelStyle]), @"Bezel style")
+                        ADD_ENUM(TextFieldBezelStyle, [o bezelStyle], @"Bezel style")
                         ADD_OBJECT_NOT_NIL([o delegate], @"Delegate")
                         ADD_BOOL([o drawsBackground], @"Draws background")
                         ADD_BOOL([o importsGraphics], @"Imports graphics")
@@ -2856,10 +2861,10 @@
                 NSControl* o = object;
                 ADD_CLASS_LABEL(@"NSControl Info");
                 ADD_SEL([o action], @"Action")
-                ADD_OBJECT(objectFromTextAlignment([o alignment]), @"Alignment")
-                ADD_OBJECT(objectFromWritingDirection([o baseWritingDirection]), @"Base writing direction")
+                ADD_ENUM(TextAlignment, [o alignment], @"Alignment")
+                ADD_ENUM(WritingDirection, [o baseWritingDirection], @"Base writing direction")
                 ADD_OBJECT([o cell], @"Cell")
-                ADD_OBJECT(objectFromControlSize([o controlSize]), @"Control size")
+                ADD_ENUM(ControlSize, [o controlSize], @"Control size")
                 ADD_OBJECT_NOT_NIL([o currentEditor], @"Current editor")
                 ADD_OBJECT([o font], @"Font")
                 ADD_OBJECT([o formatter], @"Formatter")
@@ -2886,7 +2891,7 @@
                                 ADD_NUMBER([o alpha], @"Alpha")
                                 ADD_OBJECT([o color], @"Color")
                                 ADD_BOOL([o isContinuous], @"Is continuous")
-                                ADD_OBJECT(objectFromColorPanelMode([o mode]), @"Mode")
+                                ADD_ENUM(ColorPanelMode, [o mode], @"Mode")
                                 ADD_BOOL([o showsAlpha], @"Shows alpha")
                         }
                         else if ([object isKindOfClass:[NSFontPanel class]]) {
@@ -2942,15 +2947,15 @@
                 ADD_SIZE([o aspectRatio], @"Aspect ratio")
                 ADD_OBJECT_NOT_NIL([o attachedSheet], @"Attached sheet")
                 ADD_BOOL([o autorecalculatesKeyViewLoop], @"Autorecalculates key view loop")
-                ADD_OBJECT(objectFromWindowBackingLocation([o backingLocation]), @"Backing location")
+                ADD_ENUM(WindowBackingLocation, [o backingLocation], @"Backing location")
                 ADD_OBJECT([o backgroundColor], @"Background color")
-                ADD_OBJECT(objectFromBackingStoreType([o backingType]), @"Backing type")
+                ADD_ENUM(BackingStoreType, [o backingType], @"Backing type")
                 ADD_BOOL([o canBecomeKeyWindow], @"Can become key window")
                 ADD_BOOL([o canBecomeMainWindow], @"Can become main window")
                 ADD_BOOL([o canBecomeVisibleWithoutLogin], @"Can become visible without login")
                 ADD_BOOL([o canHide], @"Can hide")
                 ADD_BOOL([o canStoreColor], @"Can store color")
-                ADD_OBJECT(objectFromWindowCollectionBehavior([o collectionBehavior]), @"Collection behavior")
+                ADD_ENUM(WindowCollectionBehavior, [o collectionBehavior], @"Collection behavior")
                 ADD_OBJECTS([o childWindows], @"Child windows")
                 ADD_SIZE([o contentAspectRatio], @"Content aspect ratio")
                 ADD_SIZE([o contentMaxSize], @"Content max size")
@@ -2987,23 +2992,23 @@
                 ADD_BOOL([o isSheet], @"Is sheet")
                 ADD_BOOL([o isVisible], @"Is visible")
                 ADD_BOOL([o isZoomed], @"Is zoomed")
-                ADD_OBJECT(objectFromSelectionDirection([o keyViewSelectionDirection]), @"Key view selection direction")
-                ADD_OBJECT(objectFromWindowLevel([o level]), @"Level")
+                ADD_ENUM(SelectionDirection, [o keyViewSelectionDirection], @"Key view selection direction")
+                ADD_ENUM(WindowLevel, [o level], @"Level")
                 ADD_SIZE([o maxSize], @"Max size")
                 ADD_SIZE([o minSize], @"Min size")
                 ADD_OBJECT_NOT_NIL([o miniwindowImage], @"Miniwindow image")
                 ADD_OBJECT([o miniwindowTitle], @"Miniwindow title")
                 ADD_OBJECT_NOT_NIL([o parentWindow], @"Parent window")
-                ADD_OBJECT(objectFromWindowBackingLocation([o preferredBackingLocation]), @"Preferred backing location")
+                ADD_ENUM(WindowBackingLocation, [o preferredBackingLocation], @"Preferred backing location")
                 ADD_BOOL([o preservesContentDuringLiveResize], @"Preserves content during live resize")
                 ADD_OBJECT_NOT_NIL([o representedFilename], @"Represented filename")
                 ADD_OBJECT_NOT_NIL([o representedURL], @"Represented URL")
                 ADD_SIZE([o resizeIncrements], @"Resize increments")
                 ADD_OBJECT([o screen], @"Screen")
-                ADD_OBJECT(objectFromWindowSharingType([o sharingType]), @"Sharing type")
+                ADD_ENUM(WindowSharingType, [o sharingType], @"Sharing type")
                 ADD_BOOL([o showsResizeIndicator], @"Shows resize indicator")
                 ADD_BOOL([o showsToolbarButton], @"Shows toolbar button")
-                ADD_OBJECT(objectFromWindowMask([o styleMask]), @"Style mask")
+                ADD_ENUM(WindowMask, [o styleMask], @"Style mask")
                 ADD_OBJECT([o title], @"Title")
                 ADD_OBJECT_NOT_NIL([o toolbar], @"Toolbar")
                 ADD_NUMBER([o userSpaceScaleFactor], @"User space scale factor")
