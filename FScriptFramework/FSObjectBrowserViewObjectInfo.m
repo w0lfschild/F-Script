@@ -148,6 +148,24 @@
 
 @implementation FSObjectBrowserViewObjectHelper
 
+- (void)addObject:(id)object withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
+{
+        @try {
+                if (!notNil || object) {
+                        [view addObject:object withLabel:label toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];
+                }
+        }
+        @catch (id exception)
+        {
+                NSLog(@"%@", exception);
+        }
+}
+#define ADD_ENUM(OBJECT, LABEL) \
+        [self addObject:(OBJECT)withLabel:(LABEL)toMatrix:m notNil:NO];
+
+#define ADD_ENUM_NOT_NIL(OBJECT, LABEL) \
+        [self addObject:(OBJECT)withLabel:(LABEL)toMatrix:m notNil:YES];
+
 #define ADD_OBJECT(OBJECT, LABEL)                                                                                                                                                           \
         @try {                                                                                                                                                                              \
                 [view addObject:(OBJECT)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
@@ -167,7 +185,7 @@
                 if ([(OBJECTS)count] <= 20)                                                                                                                                                              \
                         [view addDictionary:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                     \
-                        [view addObject:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];     \
+                        [self addObject:(OBJECTS)withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                                 \
         }                                                                                                                                                                                                \
         @catch (id exception) { NSLog(@"%@", exception); }
 
@@ -176,21 +194,15 @@
                 if ([(OBJECTS)count] <= 20)                                                                                                                                                           \
                         [view addObjects:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                  \
-                        [view addObject:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];  \
+                        [self addObject:(OBJECTS)withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                              \
         }                                                                                                                                                                                             \
         @catch (id exception) { NSLog(@"%@", exception); }
 
-#define ADD_BOOL(B, LABEL)                                                                                                                                                                                          \
-        @try {                                                                                                                                                                                                      \
-                [view addObject:[FSBoolean booleanWithBool:(B)] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                           \
-        @catch (id exception) { NSLog(@"%@", exception); }
+#define ADD_BOOL(B, LABEL) \
+        [self addObject:[FSBoolean booleanWithBool:(B)] withLabel:(LABEL)toMatrix:m notNil:NO];
 
-#define ADD_NUMBER(NUMBER, LABEL)                                                                                                                                                                                        \
-        @try {                                                                                                                                                                                                           \
-                [view addObject:[FSNumber numberWithDouble:(NUMBER)] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                                \
-        @catch (id exception) { NSLog(@"%@", exception); }
+#define ADD_NUMBER(NUMBER, LABEL) \
+        [self addObject:[FSNumber numberWithDouble:(NUMBER)] withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_SEL(S, LABEL)                                                                                                                                                                                                                       \
         @try {                                                                                                                                                                                                                                  \
@@ -208,23 +220,14 @@
         }                                                                                                                                                                                                                                                            \
         @catch (id exception) { NSLog(@"%@", exception); }
 
-#define ADD_SIZE(SIZE, LABEL)                                                                                                                                                                                      \
-        @try {                                                                                                                                                                                                     \
-                [view addObject:[NSValue valueWithSize:(SIZE)] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                          \
-        @catch (id exception) { NSLog(@"%@", exception); }
+#define ADD_SIZE(SIZE, LABEL) \
+        [self addObject:[NSValue valueWithSize:(SIZE)] withLabel:(LABEL)toMatrix:m notNil:NO];
 
-#define ADD_RECT(RECT, LABEL)                                                                                                                                                                                      \
-        @try {                                                                                                                                                                                                     \
-                [view addObject:[NSValue valueWithRect:(RECT)] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                          \
-        @catch (id exception) { NSLog(@"%@", exception); }
+#define ADD_RECT(RECT, LABEL) \
+        [self addObject:[NSValue valueWithRect:(RECT)] withLabel:(LABEL)toMatrix:m notNil:NO];
 
-#define ADD_POINT(POINT, LABEL)                                                                                                                                                                                      \
-        @try {                                                                                                                                                                                                       \
-                [view addObject:[NSValue valueWithPoint:(POINT)] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                            \
-        @catch (id exception) { NSLog(@"%@", exception); }
+#define ADD_POINT(POINT, LABEL) \
+        [self addObject:[NSValue valueWithPoint:(POINT)] withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_POINTER(POINTER, LABEL)                                                                                                                                                                                                                                                                                           \
         @try {                                                                                                                                                                                                                                                                                                                \
@@ -233,11 +236,8 @@
         }                                                                                                                                                                                                                                                                                                                     \
         @catch (id exception) { NSLog(@"%@", exception); }
 
-#define ADD_RANGE(RANGE, LABEL)                                                                                                                                                                                      \
-        @try {                                                                                                                                                                                                       \
-                [view addObject:[NSValue valueWithRange:(RANGE)] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                            \
-        @catch (id exception) { NSLog(@"%@", exception); }
+#define ADD_RANGE(RANGE, LABEL) \
+        [self addObject:[NSValue valueWithRange:(RANGE)] withLabel:(LABEL)toMatrix:m notNil:NO];
 
 #define ADD_CLASS_LABEL(LABEL)                              \
         {                                                   \

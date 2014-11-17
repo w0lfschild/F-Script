@@ -3030,7 +3030,7 @@
 		8F4822020D2C317700754A4E /* FSTestObjCClass2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTestObjCClass2.h; sourceTree = "<group>"; };
 		8F4822030D2C317700754A4E /* FSTestObjCClass2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTestObjCClass2.m; sourceTree = "<group>"; };
 		8F4E294C075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowserViewObjectInfo.h; sourceTree = "<group>"; };
-		8F4E294D075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowserViewObjectInfo.m; sourceTree = "<group>"; };
+		8F4E294D075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowserViewObjectInfo.m; sourceTree = "<group>"; tabWidth = 8; };
 		8F5189E707F072EA00A50735 /* FSNSManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSManagedObjectContext.h; sourceTree = "<group>"; };
 		8F5189E807F072EA00A50735 /* FSNSManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSManagedObjectContext.m; sourceTree = "<group>"; };
 		8F552A780C00A6D4002B6067 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = /System/Library/Frameworks/CalendarStore.framework; sourceTree = "<absolute>"; };
