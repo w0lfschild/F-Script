@@ -9,6 +9,7 @@
 #import "FSObjectInspectorViewModelItem.h"
 #import "FSNamedNumber.h"
 #import "FSNumber.h"
+#import "CHBidirectionalDictionary.h"
 
 @implementation FSObjectInspectorViewModelItem
 

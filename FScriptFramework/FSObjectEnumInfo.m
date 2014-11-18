@@ -14,109 +14,119 @@
 #import "CHBidirectionalDictionary.h"
 #import "metamacros.h"
 
-#define _BIDICT(_idx, _enum) \
-@(_enum): @metamacro_stringify(_enum),
+#define _BIDICT(_idx, _enum)              \
+        @(_enum)                          \
+            : @metamacro_stringify(_enum) \
+            ,
 
-#define _BIDICT_LEADER(_name) \
-static inline CHBidirectionalDictionary *_name ## Bimap() { \
-static CHBidirectionalDictionary *dict = nil; \
-if (!dict) { \
-dict = [CHBidirectionalDictionary new]; \
-[dict addEntriesFromDictionary:
+#define _BIDICT_LEADER(_name)                                   \
+        static inline CHBidirectionalDictionary* _name##Bimap() \
+        {                                                       \
+                static CHBidirectionalDictionary* dict = nil;   \
+                if (!dict) {                                    \
+                        dict = [CHBidirectionalDictionary new]; \
+                        [dict addEntriesFromDictionary:
 
-#define BIDICT(_name, ...) \
-_BIDICT_LEADER(_name) \
-@{ metamacro_foreach(_BIDICT, ,__VA_ARGS__) } \
-];} \
-return dict; \
-}
+
+#define BIDICT(_name, ...)                                            \
+        _BIDICT_LEADER(_name)                                         \
+                        @{ metamacro_foreach(_BIDICT, ,__VA_ARGS__) } \
+                        ];                                            \
+        }                                                             \
+        return dict;                                                  \
+        }
 
 #define BIDICT_LIT(_name, _dict) \
-_BIDICT_LEADER(_name) \
-_dict \
-];} \
-return dict; \
-}
+        _BIDICT_LEADER(_name)    \
+                        _dict    \
+                        ];       \
+        }                        \
+        return dict;             \
+        }
 
 #define _IDENTITY(_idx, _val) _val
 
 #define OPTSMASK(...) \
-metamacro_foreach(_IDENTITY, |, __VA_ARGS__)
+        metamacro_foreach(_IDENTITY, |, __VA_ARGS__)
 
-#define BIMAP_CLASS_METHODS_DECL(_name) \
-+(id)objectFor ## _name :(NS ## _name)mask; \
-+(NSDictionary*)optionsFor ## _name ; \
-extern id objectFrom ## _name(NS ## _name _name);
 
-#define BIMAP_CLASS_METHODS_DEFN(_name) \
-+(id)objectFor ## _name :(NS ## _name)mask { return objectFrom ## _name(mask); } \
-+(NSDictionary*)optionsFor ## _name { return (_name ## Bimap()).inverseDictionary; }
+#define BIMAP_CLASS_METHODS_DEFN(_name)                                             \
+        +(id)objectFor##_name : (NS##_name)mask { return objectFrom##_name(mask); } \
+        +(CHBidirectionalDictionary*)optionsFor##_name { return (_name##Bimap()); }
 
-#define ENUM_FUNC(_name) \
-id objectFrom ## _name(NS ## _name _name) \
-{ \
-  CHBidirectionalDictionary *dict = _name ## Bimap(); \
-  id lookup = dict[@(_name)]; \
-  return lookup ? [FSNamedNumber namedNumberWithDouble:(double)_name name:lookup] : [FSNumber numberWithDouble:_name]; \
-} \
+#define _FS_NUMBER_WRAPPER(_name) \
+        lookup ? [FSNamedNumber namedNumberWithDouble:(double)value name:lookup] : [FSNumber numberWithDouble:value]
+#define _FS_OBJECT_WRAPPER(_name) \
+        lookup ? [FSObjectBrowserNamedObjectWrapper namedObjectWrapperWithObject:value name:lookup] : value
+
+#define ENUM_FUNC(_name, _lookup, _boxed_value)                   \
+        id objectFrom##_name(NS##_name value)                     \
+        {                                                         \
+                CHBidirectionalDictionary* dict = _name##Bimap(); \
+                id lookup = dict[_boxed_value];                   \
+                return _lookup;                                   \
+        }
 
 // Define a lookup function 'objectTo<Enumeration>', for simple enumerations (can take one, and only one value from the enum)
-#define ENUMTOOBJ(_name, ...) \
-BIDICT(_name, __VA_ARGS__) \
-ENUM_FUNC(_name) \
-BIMAP_CLASS_METHODS_DEFN(_name)
+#define ENUMTOOBJ(_name, ...)                                 \
+        BIDICT(_name, __VA_ARGS__)                            \
+        ENUM_FUNC(_name, _FS_NUMBER_WRAPPER(_name), @(value)) \
+        BIMAP_CLASS_METHODS_DEFN(_name)
 
+// Define a lookup function 'objectTo<ObjectName>', for 'marker' objects (e.g. NSMergePolicy)
+#define OBJTOOBJ_LIT(_name, _dict)                         \
+        BIDICT_LIT(_name, _dict)                           \
+        ENUM_FUNC(_name, _FS_OBJECT_WRAPPER(_name), value) \
+        BIMAP_CLASS_METHODS_DEFN(_name)
 
 // Same as 'ENUMTOOBJ', but use when the elements of the 'enumeration' are actually macros
-#define ENUMTOOBJ_DICT(_name, _dict) \
-BIDICT_LIT(_name, _dict) \
-ENUM_FUNC(_name) \
-BIMAP_CLASS_METHODS_DEFN(_name)
+#define ENUMTOOBJ_DICT(_name, _dict)                          \
+        BIDICT_LIT(_name, _dict)                              \
+        ENUM_FUNC(_name, _FS_NUMBER_WRAPPER(_name), @(value)) \
+        BIMAP_CLASS_METHODS_DEFN(_name)
 
-#define OPTSDICT(_name, ...) \
-const NSUInteger _name ## Mask = OPTSMASK(__VA_ARGS__); \
-BIDICT(_name, __VA_ARGS__)
+#define OPTSDICT(_name, ...)                                  \
+        const NSUInteger _name##Mask = OPTSMASK(__VA_ARGS__); \
+        BIDICT(_name, __VA_ARGS__)
 
 // Define a lookup function 'objectTo<Enumeration>', for flag enumerations (can take a logical OR of enumeration values)
-#define OPTSTOOBJ(_name, ...) \
-OPTSDICT(_name, __VA_ARGS__) \
-id objectFrom ## _name(NS ## _name mask) \
-{ \
-if (_name ## Mask == 0 || (mask & ~(_name ## Mask))) { return [FSNumber numberWithDouble:mask]; } \
-CHBidirectionalDictionary *dict = _name ## Bimap(); \
-NSMutableArray *result = [NSMutableArray array] ; \
-for (NSNumber *opt in dict.allKeys) { \
-if (mask & opt.unsignedIntegerValue) { \
-[result addObject:dict[opt]]; \
-} \
-} \
-return result.count ? [FSNamedNumber namedNumberWithDouble:mask name:[result componentsJoinedByString:@" + "]] : [FSNumber numberWithDouble:mask];\
-} \
-BIMAP_CLASS_METHODS_DEFN(_name)
+#define OPTSTOOBJ(_name, ...)                                                                                                                                      \
+        OPTSDICT(_name, __VA_ARGS__)                                                                                                                               \
+        id objectFrom##_name(NS##_name mask)                                                                                                                       \
+        {                                                                                                                                                          \
+                if (_name##Mask == 0 || (mask & ~(_name##Mask))) {                                                                                                 \
+                        return [FSNumber numberWithDouble:mask];                                                                                                   \
+                }                                                                                                                                                  \
+                CHBidirectionalDictionary* dict = _name##Bimap();                                                                                                  \
+                NSMutableArray* result = [NSMutableArray array];                                                                                                   \
+                for (NSNumber * opt in dict.allKeys) {                                                                                                             \
+                        if (mask & opt.unsignedIntegerValue) {                                                                                                     \
+                                [result addObject:dict[opt]];                                                                                                      \
+                        }                                                                                                                                          \
+                }                                                                                                                                                  \
+                return result.count ? [FSNamedNumber namedNumberWithDouble:mask name:[result componentsJoinedByString:@" + "]] : [FSNumber numberWithDouble:mask]; \
+        }                                                                                                                                                          \
+        BIMAP_CLASS_METHODS_DEFN(_name)
 
 @implementation FSObjectEnumInfo
 
 ENUMTOOBJ(AnimationBlockingMode,
           NSAnimationBlocking,
           NSAnimationNonblocking,
-          NSAnimationNonblockingThreaded
-          );
-
+          NSAnimationNonblockingThreaded);
 
 
 ENUMTOOBJ(AnimationCurve,
           NSAnimationEaseInOut,
           NSAnimationEaseIn,
           NSAnimationEaseOut,
-          NSAnimationLinear
-          );
+          NSAnimationLinear);
 
 
 ENUMTOOBJ(AlertStyle,
           NSWarningAlertStyle,
           NSInformationalAlertStyle,
-          NSCriticalAlertStyle
-          );
+          NSCriticalAlertStyle);
 
 
 OPTSTOOBJ(AutoresizingMaskOptions,
@@ -125,8 +135,7 @@ OPTSTOOBJ(AutoresizingMaskOptions,
           NSViewMaxXMargin,
           NSViewMinYMargin,
           NSViewHeightSizable,
-          NSViewMaxYMargin
-          );
+          NSViewMaxYMargin);
 
 ENUMTOOBJ(AttributeType,
           NSUndefinedAttributeType,
@@ -140,32 +149,27 @@ ENUMTOOBJ(AttributeType,
           NSBooleanAttributeType,
           NSDateAttributeType,
           NSBinaryDataAttributeType,
-          NSTransformableAttributeType
-          );
+          NSTransformableAttributeType);
 
 
 ENUMTOOBJ(BackgroundStyle,
           NSBackgroundStyleLight,
           NSBackgroundStyleDark,
           NSBackgroundStyleRaised,
-          NSBackgroundStyleLowered
-          );
-
+          NSBackgroundStyleLowered);
 
 
 ENUMTOOBJ(BackingStoreType,
           NSBackingStoreBuffered,
           NSBackingStoreRetained,
-          NSBackingStoreNonretained
-          );
+          NSBackingStoreNonretained);
 
 
 ENUMTOOBJ(BorderType,
           NSNoBorder,
           NSLineBorder,
           NSBezelBorder,
-          NSGrooveBorder
-          );
+          NSGrooveBorder);
 
 ENUMTOOBJ(BezelStyle,
           NSRoundedBezelStyle,
@@ -178,55 +182,33 @@ ENUMTOOBJ(BezelStyle,
           NSTexturedSquareBezelStyle,
           NSHelpButtonBezelStyle,
           NSSmallSquareBezelStyle,
-          NSTexturedRoundedBezelStyle
-          );
-
+          NSTexturedRoundedBezelStyle);
 
 
 OPTSTOOBJ(BitmapFormat,
           NSAlphaFirstBitmapFormat,
           NSAlphaNonpremultipliedBitmapFormat,
-          NSFloatingPointSamplesBitmapFormat
-          );
+          NSFloatingPointSamplesBitmapFormat);
 
 ENUMTOOBJ(BoxType,
           NSBoxPrimary,
           NSBoxSecondary,
           NSBoxSeparator,
           NSBoxOldStyle,
-          NSBoxCustom
-          );
+          NSBoxCustom);
 
 
 OPTSTOOBJ(EventButtonMask,
           NSPenTipMask,
           NSPenLowerSideMask,
-          NSPenUpperSideMask
-          );
+          NSPenUpperSideMask);
 
 
 ENUMTOOBJ(BrowserColumnResizingType,
           NSBrowserNoColumnResizing,
           NSBrowserAutoColumnResizing,
-          NSBrowserUserColumnResizing
-          );
+          NSBrowserUserColumnResizing);
 
-
-/*static id objectFromButtonType(NSButtonType buttonType)
- {
- switch (buttonType)
- {
- case NSMomentaryLight:        return [NamedNumber namedNumberWithDouble:buttonType name:@"NSMomentaryLight"];
- case NSMomentaryPushButton:   return [NamedNumber namedNumberWithDouble:buttonType name:@"NSMomentaryPushButton"];
- case NSMomentaryChangeButton: return [NamedNumber namedNumberWithDouble:buttonType name:@"NSMomentaryChangeButton"];
- case NSPushOnPushOffButton:   return [NamedNumber namedNumberWithDouble:buttonType name:@"NSPushOnPushOffButton"];
- case NSOnOffButton:           return [NamedNumber namedNumberWithDouble:buttonType name:@"NSOnOffButton"];
- case NSToggleButton:          return [NamedNumber namedNumberWithDouble:buttonType name:@"NSToggleButton"];
- case NSSwitchButton:          return [NamedNumber namedNumberWithDouble:buttonType name:@"NSSwitchButton"];
- case NSRadioButton:           return [NamedNumber namedNumberWithDouble:buttonType name:@"NSRadioButton"];
- default:                      return [Number numberWithDouble:buttonType];
- }
- }*/
 
 ENUMTOOBJ(CellImagePosition,
           NSNoImage,
@@ -235,8 +217,7 @@ ENUMTOOBJ(CellImagePosition,
           NSImageRight,
           NSImageBelow,
           NSImageAbove,
-          NSImageOverlaps
-          );
+          NSImageOverlaps);
 
 
 OPTSTOOBJ(CellStyleMask,
@@ -244,21 +225,18 @@ OPTSTOOBJ(CellStyleMask,
           NSContentsCellMask,
           NSPushInCellMask,
           NSChangeGrayCellMask,
-          NSChangeBackgroundCellMask
-          );
+          NSChangeBackgroundCellMask);
 
 ENUMTOOBJ(CellStateValue,
           NSMixedState,
           NSOffState,
-          NSOnState
-          );
+          NSOnState);
 
 
 ENUMTOOBJ(CellType,
           NSNullCellType,
           NSTextCellType,
-          NSImageCellType
-          );
+          NSImageCellType);
 
 
 ENUMTOOBJ(CharacterCollection,
@@ -267,8 +245,7 @@ ENUMTOOBJ(CharacterCollection,
           NSAdobeGB1CharacterCollection,
           NSAdobeJapan1CharacterCollection,
           NSAdobeJapan2CharacterCollection,
-          NSAdobeKorea1CharacterCollection
-          );
+          NSAdobeKorea1CharacterCollection);
 
 
 ENUMTOOBJ(ColorPanelMode,
@@ -279,8 +256,7 @@ ENUMTOOBJ(ColorPanelMode,
           NSCustomPaletteModeColorPanel,
           NSColorListModeColorPanel,
           NSWheelModeColorPanel,
-          NSCrayonModeColorPanel
-          );
+          NSCrayonModeColorPanel);
 
 
 ENUMTOOBJ(ColorRenderingIntent,
@@ -288,21 +264,18 @@ ENUMTOOBJ(ColorRenderingIntent,
           NSColorRenderingIntentAbsoluteColorimetric,
           NSColorRenderingIntentRelativeColorimetric,
           NSColorRenderingIntentPerceptual,
-          NSColorRenderingIntentSaturation
-          );
+          NSColorRenderingIntentSaturation);
 
 
 OPTSTOOBJ(ComparisonPredicateOptions,
           NSCaseInsensitivePredicateOption,
           NSDiacriticInsensitivePredicateOption,
-          NSNormalizedPredicateOption
-          );
+          NSNormalizedPredicateOption);
 
 ENUMTOOBJ(ComparisonPredicateModifier,
           NSDirectPredicateModifier,
           NSAllPredicateModifier,
-          NSAnyPredicateModifier
-          );
+          NSAnyPredicateModifier);
 
 
 ENUMTOOBJ(CompositingOperation,
@@ -319,31 +292,26 @@ ENUMTOOBJ(CompositingOperation,
           NSCompositeXOR,
           NSCompositePlusDarker,
           NSCompositeHighlight,
-          NSCompositePlusLighter
-          );
-
+          NSCompositePlusLighter);
 
 
 ENUMTOOBJ(CompoundPredicateType,
           NSNotPredicateType,
           NSAndPredicateType,
-          NSOrPredicateType
-          );
+          NSOrPredicateType);
 
 
 ENUMTOOBJ(ControlSize,
           NSRegularControlSize,
           NSSmallControlSize,
-          NSMiniControlSize
-          );
+          NSMiniControlSize);
 
 
 ENUMTOOBJ(ControlTint,
           NSDefaultControlTint,
           NSBlueControlTint,
           NSGraphiteControlTint,
-          NSClearControlTint
-          );
+          NSClearControlTint);
 
 OPTSTOOBJ(DatePickerElementFlags,
           NSHourMinuteDatePickerElementFlag,
@@ -351,36 +319,30 @@ OPTSTOOBJ(DatePickerElementFlags,
           NSTimeZoneDatePickerElementFlag,
           NSYearMonthDatePickerElementFlag,
           NSYearMonthDayDatePickerElementFlag,
-          NSEraDatePickerElementFlag
-          );
+          NSEraDatePickerElementFlag);
 
 ENUMTOOBJ(DatePickerMode,
           NSSingleDateMode,
-          NSRangeDateMode
-          );
+          NSRangeDateMode);
 
 
 ENUMTOOBJ(DatePickerStyle,
           NSTextFieldAndStepperDatePickerStyle,
-          NSClockAndCalendarDatePickerStyle
-          );
+          NSClockAndCalendarDatePickerStyle);
 
 
 ENUMTOOBJ(DeleteRule,
           NSNoActionDeleteRule,
           NSNullifyDeleteRule,
           NSCascadeDeleteRule,
-          NSDenyDeleteRule
-          );
+          NSDenyDeleteRule);
 
 
 ENUMTOOBJ(DrawerState,
           NSDrawerClosedState,
           NSDrawerOpeningState,
           NSDrawerOpenState,
-          NSDrawerClosingState
-          );
-
+          NSDrawerClosingState);
 
 
 ENUMTOOBJ(EventType,
@@ -406,15 +368,13 @@ ENUMTOOBJ(EventType,
           NSPeriodic,
           NSScrollWheel,
           NSTabletPoint,
-          NSTabletProximity
-          );
+          NSTabletProximity);
 
 
 ENUMTOOBJ(EventSubtype,
           NSMouseEventSubtype,
           NSTabletPointEventSubtype,
-          NSTabletProximityEventSubtype
-          );
+          NSTabletProximityEventSubtype);
 
 
 ENUMTOOBJ(ExpressionType,
@@ -427,30 +387,25 @@ ENUMTOOBJ(ExpressionType,
           NSIntersectSetExpressionType,
           NSMinusSetExpressionType,
           NSSubqueryExpressionType,
-          NSAggregateExpressionType
-          );
-
+          NSAggregateExpressionType);
 
 
 ENUMTOOBJ(FetchRequestResultType,
           NSManagedObjectResultType,
-          NSManagedObjectIDResultType
-          );
+          NSManagedObjectIDResultType);
 
 
 ENUMTOOBJ(FocusRingType,
           NSFocusRingTypeDefault,
           NSFocusRingTypeNone,
-          NSFocusRingTypeExterior
-          );
+          NSFocusRingTypeExterior);
 
 
 ENUMTOOBJ(FontRenderingMode,
           NSFontDefaultRenderingMode,
           NSFontAntialiasedRenderingMode,
           NSFontIntegerAdvancementsRenderingMode,
-          NSFontAntialiasedIntegerAdvancementsRenderingMode
-          );
+          NSFontAntialiasedIntegerAdvancementsRenderingMode);
 
 
 ENUMTOOBJ(GradientType,
@@ -458,16 +413,14 @@ ENUMTOOBJ(GradientType,
           NSGradientConcaveWeak,
           NSGradientConcaveStrong,
           NSGradientConvexWeak,
-          NSGradientConvexStrong
-          );
+          NSGradientConvexStrong);
 
 
 OPTSTOOBJ(TableViewGridLineStyle,
           NSTableViewSolidVerticalGridLineMask,
           NSTableViewSolidHorizontalGridLineMask,
-          NSTableViewDashedHorizontalGridLineMask
-          );
-          
+          NSTableViewDashedHorizontalGridLineMask);
+
 
 ENUMTOOBJ(ImageAlignment,
           NSImageAlignCenter,
@@ -478,17 +431,14 @@ ENUMTOOBJ(ImageAlignment,
           NSImageAlignBottom,
           NSImageAlignBottomLeft,
           NSImageAlignBottomRight,
-          NSImageAlignRight
-          );
+          NSImageAlignRight);
 
 
 ENUMTOOBJ(ImageCacheMode,
           NSImageCacheDefault,
           NSImageCacheAlways,
           NSImageCacheBySize,
-          NSImageCacheNever
-          );
-
+          NSImageCacheNever);
 
 
 ENUMTOOBJ(ImageFrameStyle,
@@ -496,25 +446,21 @@ ENUMTOOBJ(ImageFrameStyle,
           NSImageFramePhoto,
           NSImageFrameGrayBezel,
           NSImageFrameGroove,
-          NSImageFrameButton
-          );
-
+          NSImageFrameButton);
 
 
 ENUMTOOBJ(ImageInterpolation,
           NSImageInterpolationDefault,
           NSImageInterpolationNone,
           NSImageInterpolationLow,
-          NSImageInterpolationHigh
-          );
+          NSImageInterpolationHigh);
 
 
 ENUMTOOBJ(ImageScaling,
           NSImageScaleProportionallyDown,
           NSImageScaleAxesIndependently,
           NSImageScaleNone,
-          NSImageScaleProportionallyUpOrDown
-          );
+          NSImageScaleProportionallyUpOrDown);
 
 
 OPTSTOOBJ(EventModifierFlags,
@@ -525,28 +471,19 @@ OPTSTOOBJ(EventModifierFlags,
           NSCommandKeyMask,
           NSNumericPadKeyMask,
           NSHelpKeyMask,
-          NSFunctionKeyMask
-          );
-
-id objectFromKeyModifierMask(NSUInteger mask)
-{
-  NSUInteger deviceIndependentMask = mask & ~(NSUInteger)32767; // The lower 16 bits of the modifier flags are reserved for device-dependent bits.
-  return objectFromEventModifierFlags(deviceIndependentMask);
-}
+          NSFunctionKeyMask);
 
 OPTSTOOBJ(GlyphStorageLayoutOptions,
           NSShowControlGlyphs,
           NSShowInvisibleGlyphs,
-          NSWantsBidiLevels
-          );
+          NSWantsBidiLevels);
 
 
 ENUMTOOBJ(LevelIndicatorStyle,
           NSRelevancyLevelIndicatorStyle,
           NSContinuousCapacityLevelIndicatorStyle,
           NSDiscreteCapacityLevelIndicatorStyle,
-          NSRatingLevelIndicatorStyle
-          );
+          NSRatingLevelIndicatorStyle);
 
 
 ENUMTOOBJ(LineBreakMode,
@@ -555,67 +492,54 @@ ENUMTOOBJ(LineBreakMode,
           NSLineBreakByClipping,
           NSLineBreakByTruncatingHead,
           NSLineBreakByTruncatingTail,
-          NSLineBreakByTruncatingMiddle
-          );
+          NSLineBreakByTruncatingMiddle);
 
 
 ENUMTOOBJ(LineCapStyle,
           NSButtLineCapStyle,
           NSRoundLineCapStyle,
-          NSSquareLineCapStyle
-          );
+          NSSquareLineCapStyle);
 
 
 ENUMTOOBJ(LineJoinStyle,
           NSMiterLineJoinStyle,
           NSRoundLineJoinStyle,
-          NSBevelLineJoinStyle
-          );
+          NSBevelLineJoinStyle);
 
 
 ENUMTOOBJ(MatrixMode,
           NSRadioModeMatrix,
           NSHighlightModeMatrix,
           NSListModeMatrix,
-          NSTrackModeMatrix
-          );
+          NSTrackModeMatrix);
 
 
-id objectFromMergePolicy(id mergePolicy)
-{
-  NSString *name = nil;
-  
-  if      (mergePolicy == NSErrorMergePolicy)                      name = @"NSErrorMergePolicy";
-  else if (mergePolicy == NSMergeByPropertyStoreTrumpMergePolicy)  name = @"NSMergeByPropertyStoreTrumpMergePolicy";
-  else if (mergePolicy == NSMergeByPropertyObjectTrumpMergePolicy) name = @"NSMergeByPropertyObjectTrumpMergePolicy";
-  else if (mergePolicy == NSOverwriteMergePolicy)                  name = @"NSOverwriteMergePolicy";
-  else if (mergePolicy == NSRollbackMergePolicy)                   name = @"NSRollbackMergePolicy";
-  
-  if (name) return [FSObjectBrowserNamedObjectWrapper namedObjectWrapperWithObject:mergePolicy name:name];
-  else      return mergePolicy;
-}
+OBJTOOBJ_LIT(MergePolicyMarker, (@{
+                                    NSErrorMergePolicy : @"NSErrorMergePolicy",
+                                    NSMergeByPropertyStoreTrumpMergePolicy : @"NSMergeByPropertyStoreTrumpMergePolicy",
+                                    NSMergeByPropertyObjectTrumpMergePolicy : @"NSMergeByPropertyObjectTrumpMergePolicy",
+                                    NSOverwriteMergePolicy : @"NSOverwriteMergePolicy",
+                                    NSRollbackMergePolicy : @"NSRollbackMergePolicy"
+                                }));
 
 ENUMTOOBJ(RuleEditorNestingMode,
           NSRuleEditorNestingModeSingle,
           NSRuleEditorNestingModeList,
           NSRuleEditorNestingModeCompound,
-          NSRuleEditorNestingModeSimple
-          );
+          NSRuleEditorNestingModeSimple);
 
 
 ENUMTOOBJ(PathStyle,
           NSPathStyleStandard,
           NSPathStyleNavigationBar,
-          NSPathStylePopUp
-          );
+          NSPathStylePopUp);
 
 
 ENUMTOOBJ(PointingDeviceType,
           NSUnknownPointingDevice,
           NSPenPointingDevice,
           NSCursorPointingDevice,
-          NSEraserPointingDevice
-          );
+          NSEraserPointingDevice);
 
 
 ENUMTOOBJ(PredicateOperatorType,
@@ -632,42 +556,36 @@ ENUMTOOBJ(PredicateOperatorType,
           NSInPredicateOperatorType,
           NSCustomSelectorPredicateOperatorType,
           NSContainsPredicateOperatorType,
-          NSBetweenPredicateOperatorType
-          );
+          NSBetweenPredicateOperatorType);
 
 
 ENUMTOOBJ(ProgressIndicatorStyle,
           NSProgressIndicatorBarStyle,
-          NSProgressIndicatorSpinningStyle
-          );
+          NSProgressIndicatorSpinningStyle);
 
 
 ENUMTOOBJ(PopUpArrowPosition,
           NSPopUpNoArrow,
           NSPopUpArrowAtCenter,
-          NSPopUpArrowAtBottom
-          );
+          NSPopUpArrowAtBottom);
 
 
-ENUMTOOBJ_DICT(RectEdge,
-               (@{@(NSMinXEdge):@"NSMinXEdge",
-                  @(NSMinYEdge):@"NSMinYEdge",
-                  @(NSMaxXEdge):@"NSMaxXEdge",
-                  @(NSMaxYEdge):@"NSMaxYEdge"
-                  })
-          );
+ENUMTOOBJ_DICT(RectEdge, (@{
+                             @(NSMinXEdge) : @"NSMinXEdge",
+                             @(NSMinYEdge) : @"NSMinYEdge",
+                             @(NSMaxXEdge) : @"NSMaxXEdge",
+                             @(NSMaxYEdge) : @"NSMaxYEdge"
+                         }));
 
 
 ENUMTOOBJ(RulerOrientation,
           NSHorizontalRuler,
-          NSVerticalRuler
-          );
+          NSVerticalRuler);
 
 
 ENUMTOOBJ(ScrollArrowPosition,
           NSScrollerArrowsDefaultSetting,
-          NSScrollerArrowsNone
-          );
+          NSScrollerArrowsNone);
 
 
 ENUMTOOBJ(ScrollerPart,
@@ -677,53 +595,45 @@ ENUMTOOBJ(ScrollerPart,
           NSScrollerIncrementPage,
           NSScrollerDecrementLine,
           NSScrollerIncrementLine,
-          NSScrollerKnobSlot
-          );
+          NSScrollerKnobSlot);
 
 
 ENUMTOOBJ(SegmentSwitchTracking,
           NSSegmentSwitchTrackingSelectOne,
           NSSegmentSwitchTrackingSelectAny,
-          NSSegmentSwitchTrackingMomentary
-          );
+          NSSegmentSwitchTrackingMomentary);
 
 
 ENUMTOOBJ(SelectionAffinity,
           NSSelectionAffinityUpstream,
-          NSSelectionAffinityDownstream
-          );
+          NSSelectionAffinityDownstream);
 
 
 ENUMTOOBJ(SelectionDirection,
           NSDirectSelection,
           NSSelectingNext,
-          NSSelectingPrevious
-          );
+          NSSelectingPrevious);
 
 
 ENUMTOOBJ(SelectionGranularity,
           NSSelectByCharacter,
           NSSelectByWord,
-          NSSelectByParagraph
-          );
+          NSSelectByParagraph);
 
 
 ENUMTOOBJ(TableViewSelectionHighlightStyle,
           NSTableViewSelectionHighlightStyleRegular,
-          NSTableViewSelectionHighlightStyleSourceList
-          );
+          NSTableViewSelectionHighlightStyleSourceList);
 
 
 ENUMTOOBJ(SliderType,
           NSLinearSlider,
-          NSCircularSlider
-          );
+          NSCircularSlider);
 
 
 ENUMTOOBJ(StatusItemLength,
           NSVariableStatusItemLength,
-          NSSquareStatusItemLength
-          );
+          NSSquareStatusItemLength);
 
 ENUMTOOBJ(StringEncoding,
           NSASCIIStringEncoding,
@@ -742,15 +652,13 @@ ENUMTOOBJ(StringEncoding,
           NSWindowsCP1254StringEncoding,
           NSWindowsCP1250StringEncoding,
           NSISO2022JPStringEncoding,
-          NSMacOSRomanStringEncoding
-          );
+          NSMacOSRomanStringEncoding);
 
 
 OPTSTOOBJ(TableColumnResizingOptions,
           NSTableColumnNoResizing,
           NSTableColumnAutoresizingMask,
-          NSTableColumnUserResizingMask
-          );
+          NSTableColumnUserResizingMask);
 
 ENUMTOOBJ(TableViewColumnAutoresizingStyle,
           NSTableViewNoColumnAutoresizing,
@@ -758,16 +666,13 @@ ENUMTOOBJ(TableViewColumnAutoresizingStyle,
           NSTableViewSequentialColumnAutoresizingStyle,
           NSTableViewReverseSequentialColumnAutoresizingStyle,
           NSTableViewLastColumnOnlyAutoresizingStyle,
-          NSTableViewFirstColumnOnlyAutoresizingStyle
-          );
-
+          NSTableViewFirstColumnOnlyAutoresizingStyle);
 
 
 ENUMTOOBJ(TabState,
           NSBackgroundTab,
           NSPressedTab,
-          NSSelectedTab
-          );
+          NSSelectedTab);
 
 
 ENUMTOOBJ(TabViewType,
@@ -777,8 +682,7 @@ ENUMTOOBJ(TabViewType,
           NSRightTabsBezelBorder,
           NSNoTabsBezelBorder,
           NSNoTabsLineBorder,
-          NSNoTabsNoBorder
-          );
+          NSNoTabsNoBorder);
 
 
 ENUMTOOBJ(TextAlignment,
@@ -786,64 +690,44 @@ ENUMTOOBJ(TextAlignment,
           NSRightTextAlignment,
           NSCenterTextAlignment,
           NSJustifiedTextAlignment,
-          NSNaturalTextAlignment
-          );
+          NSNaturalTextAlignment);
 
 
 ENUMTOOBJ(TextBlockValueType,
           NSTextBlockAbsoluteValueType,
-          NSTextBlockPercentageValueType
-          );
+          NSTextBlockPercentageValueType);
 
 
 ENUMTOOBJ(TextBlockVerticalAlignment,
           NSTextBlockTopAlignment,
           NSTextBlockMiddleAlignment,
           NSTextBlockBottomAlignment,
-          NSTextBlockBaselineAlignment
-          );
+          NSTextBlockBaselineAlignment);
 
 
 ENUMTOOBJ(TextFieldBezelStyle,
           NSTextFieldSquareBezel,
-          NSTextFieldRoundedBezel
-          );
+          NSTextFieldRoundedBezel);
 
 OPTSTOOBJ(TextListOptions,
-          NSTextListPrependEnclosingMarker
-          );
+          NSTextListPrependEnclosingMarker);
 
 
 OPTSTOOBJ(TextStorageEditedOptions,
           NSTextStorageEditedAttributes,
-          NSTextStorageEditedCharacters
-          );
+          NSTextStorageEditedCharacters);
 
 ENUMTOOBJ(TextTableLayoutAlgorithm,
           NSTextTableAutomaticLayoutAlgorithm,
-          NSTextTableFixedLayoutAlgorithm
-          );
+          NSTextTableFixedLayoutAlgorithm);
 
 
 ENUMTOOBJ(TextTabType,
           NSLeftTabStopType,
           NSRightTabStopType,
           NSCenterTabStopType,
-          NSDecimalTabStopType
-          );
+          NSDecimalTabStopType);
 
-
-id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertical)
-{
-  switch (tickMarkPosition)
-  {
-    case NSTickMarkBelow: return [FSNamedNumber namedNumberWithDouble:tickMarkPosition name: isVertical ? @"NSTickMarkRight" : @"NSTickMarkBelow"];
-    case NSTickMarkAbove: return [FSNamedNumber namedNumberWithDouble:tickMarkPosition name: isVertical ? @"NSTickMarkLeft"  : @"NSTickMarkAbove"];
-      //case NSTickMarkLeft:  return [NamedNumber namedNumberWithDouble:tickMarkPosition name:@"NSTickMarkLeft"];
-      //case NSTickMarkRight: return [NamedNumber namedNumberWithDouble:tickMarkPosition name:@"NSTickMarkRight"];
-    default:              return [FSNumber numberWithDouble:tickMarkPosition];
-  }
-}
 
 ENUMTOOBJ(TIFFCompression,
           NSTIFFCompressionNone,
@@ -853,8 +737,7 @@ ENUMTOOBJ(TIFFCompression,
           NSTIFFCompressionJPEG,
           NSTIFFCompressionNEXT,
           NSTIFFCompressionPackBits,
-          NSTIFFCompressionOldJPEG
-          );
+          NSTIFFCompressionOldJPEG);
 
 
 ENUMTOOBJ(TitlePosition,
@@ -864,37 +747,32 @@ ENUMTOOBJ(TitlePosition,
           NSBelowTop,
           NSAboveBottom,
           NSAtBottom,
-          NSBelowBottom
-          );
+          NSBelowBottom);
 
 
 ENUMTOOBJ(TokenStyle,
           NSDefaultTokenStyle,
           NSPlainTextTokenStyle,
-          NSRoundedTokenStyle
-          );
+          NSRoundedTokenStyle);
 
 
 ENUMTOOBJ(ToolbarDisplayMode,
           NSToolbarDisplayModeDefault,
           NSToolbarDisplayModeIconAndLabel,
           NSToolbarDisplayModeIconOnly,
-          NSToolbarDisplayModeLabelOnly
-          );
+          NSToolbarDisplayModeLabelOnly);
 
 ENUMTOOBJ(ToolbarItemVisibilityPriority,
           NSToolbarItemVisibilityPriorityStandard,
           NSToolbarItemVisibilityPriorityLow,
           NSToolbarItemVisibilityPriorityHigh,
-          NSToolbarItemVisibilityPriorityUser
-          );
+          NSToolbarItemVisibilityPriorityUser);
 
 
 ENUMTOOBJ(ToolbarSizeMode,
           NSToolbarSizeModeDefault,
           NSToolbarSizeModeRegular,
-          NSToolbarSizeModeSmall
-          );
+          NSToolbarSizeModeSmall);
 
 
 OPTSTOOBJ(TrackingAreaOptions,
@@ -907,8 +785,7 @@ OPTSTOOBJ(TrackingAreaOptions,
           NSTrackingActiveAlways,
           NSTrackingAssumeInside,
           NSTrackingInVisibleRect,
-          NSTrackingEnabledDuringMouseDrag
-          );
+          NSTrackingEnabledDuringMouseDrag);
 
 
 ENUMTOOBJ(TypesetterBehavior,
@@ -917,34 +794,31 @@ ENUMTOOBJ(TypesetterBehavior,
           NSTypesetterBehavior_10_2_WithCompatibility,
           NSTypesetterBehavior_10_2,
           NSTypesetterBehavior_10_3,
-          NSTypesetterBehavior_10_4
-          );
+          NSTypesetterBehavior_10_4);
 
 
 ENUMTOOBJ(UsableScrollerParts,
           NSNoScrollerParts,
           NSOnlyScrollerArrows,
-          NSAllScrollerParts
-          );
+          NSAllScrollerParts);
 
 
 ENUMTOOBJ(WindingRule,
           NSNonZeroWindingRule,
-          NSEvenOddWindingRule
-          );
+          NSEvenOddWindingRule);
 
-ENUMTOOBJ_DICT(WindowLevel,
-          (@{@(NSNormalWindowLevel):@"NSNormalWindowLevel",
-             @(NSFloatingWindowLevel):@"NSFloatingWindowLevel",
-             @(NSSubmenuWindowLevel):@"NSSubmenuWindowLevel",
-             @(NSTornOffMenuWindowLevel):@"NSTornOffMenuWindowLevel",
-             @(NSMainMenuWindowLevel):@"NSMainMenuWindowLevel",
-             @(NSStatusWindowLevel):@"NSStatusWindowLevel",
-             @(NSDockWindowLevel):@"NSDockWindowLevel",
-             @(NSModalPanelWindowLevel):@"NSModalPanelWindowLevel",
-             @(NSPopUpMenuWindowLevel):@"NSPopUpMenuWindowLevel",
-             @(NSScreenSaverWindowLevel):@"NSScreenSaverWindowLevel"})
-          );
+ENUMTOOBJ_DICT(WindowLevel, (@{
+                                @(NSNormalWindowLevel) : @"NSNormalWindowLevel",
+                                @(NSFloatingWindowLevel) : @"NSFloatingWindowLevel",
+                                @(NSSubmenuWindowLevel) : @"NSSubmenuWindowLevel",
+                                @(NSTornOffMenuWindowLevel) : @"NSTornOffMenuWindowLevel",
+                                @(NSMainMenuWindowLevel) : @"NSMainMenuWindowLevel",
+                                @(NSStatusWindowLevel) : @"NSStatusWindowLevel",
+                                @(NSDockWindowLevel) : @"NSDockWindowLevel",
+                                @(NSModalPanelWindowLevel) : @"NSModalPanelWindowLevel",
+                                @(NSPopUpMenuWindowLevel) : @"NSPopUpMenuWindowLevel",
+                                @(NSScreenSaverWindowLevel) : @"NSScreenSaverWindowLevel"
+                            }));
 
 
 OPTSTOOBJ(WindowMask,
@@ -956,45 +830,43 @@ OPTSTOOBJ(WindowMask,
           NSTexturedBackgroundWindowMask,
           NSUnifiedTitleAndToolbarWindowMask,
           NSFullScreenWindowMask,
-          NSFullSizeContentViewWindowMask
-          );
+          NSFullSizeContentViewWindowMask);
 
 ENUMTOOBJ(WindowBackingLocation,
           NSWindowBackingLocationDefault,
           NSWindowBackingLocationVideoMemory,
-          NSWindowBackingLocationMainMemory
-          );
+          NSWindowBackingLocationMainMemory);
 
 
 ENUMTOOBJ(WindowCollectionBehavior,
           NSWindowCollectionBehaviorDefault,
           NSWindowCollectionBehaviorCanJoinAllSpaces,
-          NSWindowCollectionBehaviorMoveToActiveSpace
-          );
+          NSWindowCollectionBehaviorMoveToActiveSpace);
 
 
 ENUMTOOBJ(WindowSharingType,
           NSWindowSharingNone,
           NSWindowSharingReadOnly,
-          NSWindowSharingReadWrite
-          );
+          NSWindowSharingReadWrite);
 
-
-/*static id objectFromWindowOrderingMode(NSWindowOrderingMode orderingMode)
- {
- switch (orderingMode)
- {
- case NSWindowAbove: return [NamedNumber namedNumberWithDouble:orderingMode name:@"NSWindowAbove"];
- case NSWindowBelow: return [NamedNumber namedNumberWithDouble:orderingMode name:@"NSWindowBelow"];
- case NSWindowOut:   return [NamedNumber namedNumberWithDouble:orderingMode name:@"NSWindowOut"];
- default:            return [Number numberWithDouble:orderingMode];
- }
- }*/
 
 ENUMTOOBJ(WritingDirection,
           NSWritingDirectionNatural,
           NSWritingDirectionLeftToRight,
-          NSWritingDirectionRightToLeft
-          );
+          NSWritingDirectionRightToLeft);
 
+
+id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertical)
+{
+        switch (tickMarkPosition) {
+        case NSTickMarkBelow:
+                return [FSNamedNumber namedNumberWithDouble:tickMarkPosition name:isVertical ? @"NSTickMarkRight" : @"NSTickMarkBelow"];
+        case NSTickMarkAbove:
+                return [FSNamedNumber namedNumberWithDouble:tickMarkPosition name:isVertical ? @"NSTickMarkLeft" : @"NSTickMarkAbove"];
+        //case NSTickMarkLeft:  return [NamedNumber namedNumberWithDouble:tickMarkPosition name:@"NSTickMarkLeft"];
+        //case NSTickMarkRight: return [NamedNumber namedNumberWithDouble:tickMarkPosition name:@"NSTickMarkRight"];
+        default:
+                return [FSNumber numberWithDouble:tickMarkPosition];
+        }
+}
 @end

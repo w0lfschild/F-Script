@@ -149,7 +149,7 @@
 
 @implementation FSObjectBrowserViewObjectHelper
 
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix enumBiDict:(CHBidirectionalDictionary*)enumBiDict notNil:(BOOL)notNil
 {
         @try {
                 if (!notNil || object) {
@@ -158,6 +158,7 @@
                         item.name = label;
                         item.valueType = valueType;
                         item.value = object;
+                        item.enumBiDict = enumBiDict;
                         [self.rootViewModelItem.mutableChildNodes addObject:item];
                 }
         }
@@ -166,8 +167,12 @@
                 NSLog(@"%@", exception);
         }
 }
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
+{
+        [self addObject:object valueType:valueType withLabel:label toMatrix:matrix enumBiDict:nil notNil:notNil];
+}
 #define ADD_ENUM(ENUM, OBJECT, LABEL) \
-        [self addObject:objectFrom ## ENUM(OBJECT) valueType:FS_ITEM_ENUM withLabel:(LABEL) toMatrix:m notNil:NO];
+        [self addObject:objectFrom ## ENUM(OBJECT) valueType:FS_ITEM_ENUM withLabel:(LABEL) toMatrix:m enumBiDict:FSObjectEnumInfo.optionsFor ## ENUM notNil:NO];
 
 #define ADD_OBJECT(OBJECT, LABEL)                                                                                                                                                           \
         @try {                                                                                                                                                                              \
@@ -821,7 +826,7 @@
                         ADD_ENUM(ImageScaling, [o imageScaling], @"Image scaling")
                         ADD_BOOL([o isTransparent], @"Is transparent")
                         ADD_OBJECT_NOT_NIL([o keyEquivalentFont], @"Key equivalent font")
-                        ADD_ENUM(KeyModifierMask, [o keyEquivalentModifierMask], @"Key equivalent modifier mask")
+                        ADD_ENUM(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, @"Key equivalent modifier mask")
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], @"Shows border only while mouse inside")
                         ADD_ENUM(CellStyleMask, [o showsStateBy], @"Shows state by")
                         ADD_OBJECT_NOT_NIL([o sound], @"Sound")
@@ -1293,7 +1298,7 @@
                 ADD_NUMBER([o keyCode], @"Key code")
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel)
                 ADD_POINT([o locationInWindow], @"Location in window")
-        ADD_ENUM(KeyModifierMask, [o modifierFlags], @"Modifier flags")
+        ADD_ENUM(EventModifierFlags, [o modifierFlags] & NSDeviceIndependentModifierFlagsMask, @"Modifier flags")
         if (type == NSTabletProximity || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletProximityEventSubtype)) {
                 ADD_NUMBER([o pointingDeviceID], @"Pointing device ID")
                 ADD_NUMBER([o pointingDeviceSerialNumber], @"Pointing device serial number")
@@ -1705,7 +1710,7 @@
         ADD_OBJECT([o deletedObjects], @"Deleted objects")
         ADD_BOOL([o hasChanges], @"Has changes")
         ADD_OBJECT([o insertedObjects], @"Inserted objects")
-        ADD_ENUM(MergePolicy, [o mergePolicy], @"Merge policy")
+        ADD_ENUM(MergePolicyMarker, [o mergePolicy], @"Merge policy")
         ADD_OBJECT([o persistentStoreCoordinator], @"Persistent store coordinator")
         ADD_BOOL([o propagatesDeletesAtEndOfEvent], @"Propagates deletes at end of event")
         ADD_OBJECT([o registeredObjects], @"Registered objects")
@@ -1767,7 +1772,7 @@
         ADD_BOOL([o isHighlighted], @"Is highlighted")
         ADD_BOOL([o isSeparatorItem], @"Is separatorItem")
         ADD_OBJECT([o keyEquivalent], @"Key equivalent")
-        ADD_ENUM(KeyModifierMask, [o keyEquivalentModifierMask], @"Key equivalent modifier mask")
+        ADD_ENUM(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, @"Key equivalent modifier mask")
         ADD_OBJECT([o menu], @"Menu")
         ADD_OBJECT_NOT_NIL([o mixedStateImage], @"Mixed state image")
         ADD_OBJECT_NOT_NIL([o offStateImage], @"Off state image")
@@ -2582,7 +2587,7 @@
                         ADD_BOOL([o isBordered], @"Is bordered")
                         ADD_BOOL([o isTransparent], @"Is transparent")
                         ADD_OBJECT([o keyEquivalent], @"Key equivalent")
-                        ADD_ENUM(KeyModifierMask, [o keyEquivalentModifierMask], @"Key equivalent modifier mask")
+                        ADD_ENUM(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, @"Key equivalent modifier mask")
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], @"Shows border only while mouse inside")
                         ADD_OBJECT_NOT_NIL([o sound], @"Sound")
                         ADD_ENUM(CellStateValue, [o state], @"State")

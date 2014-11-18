@@ -21,9 +21,12 @@ typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
   FS_ITEM_BOOL,
 };
 
+@class CHBidirectionalDictionary;
+
 @interface FSObjectInspectorViewModelItem : NSTreeNode
 @property (copy,nonatomic) NSString *name;
 @property (strong,nonatomic) id value;
 @property (assign,nonatomic) FSInspectorVMValueType valueType;
 @property (readonly,nonatomic) NSString *displayValue;
+@property (assign,nonatomic) CHBidirectionalDictionary *enumBiDict;
 @end

@@ -5,15 +5,18 @@
 #import "FSMiscTools.h"
 #import "FSObjectInspectorViewModelItem.h"
 #import "FSObjectInspectorViewController.h"
+#import "FSUtils.h"
 
-static NSPoint topLeftPoint = { 0, 0 }; // Used for cascading windows.
+static NSPoint sTopLeftPoint = { 0, 0 }; // Used for cascading windows.
+static BOOL sIsFirstWindow = YES;
 @interface FSDetailedObjectInspector ()
 @property (strong,readwrite,nonatomic) NSWindow *window;
 @property (strong,nonatomic) FSObjectInspectorViewController *viewController;
 @property (strong,nonatomic) FSObjectInspectorViewModelItem *rootViewModelItem;
 @end
 
-@implementation FSDetailedObjectInspector
+@implementation FSDetailedObjectInspector {
+}
 
 + (FSDetailedObjectInspector*)detailedObjectInspectorWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root
 {
@@ -38,8 +41,14 @@ static NSPoint topLeftPoint = { 0, 0 }; // Used for cascading windows.
                 objectInspectorViewController.rootViewModelItem = root;
                 self.viewController = objectInspectorViewController;
                 panel.contentView = objectInspectorViewController.view;
+                NSSize desiredSize = self.viewController.desiredSize;
+                [panel setFrame:[panel frameRectForContentRect:rectWithSize(desiredSize)] display:YES];
                 [self updateAction:nil];
-                topLeftPoint = [self.window cascadeTopLeftFromPoint:topLeftPoint];
+                sTopLeftPoint = [self.window cascadeTopLeftFromPoint:sTopLeftPoint];
+                if (sIsFirstWindow) {
+                        sIsFirstWindow = NO;
+                        sTopLeftPoint = [self.window cascadeTopLeftFromPoint:sTopLeftPoint];
+                }
                 [self.window makeKeyAndOrderFront:nil];
                 return self;
         }

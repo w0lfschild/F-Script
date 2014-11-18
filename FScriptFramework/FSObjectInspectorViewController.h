@@ -13,4 +13,5 @@
 @interface FSObjectInspectorViewController : NSViewController <NSOutlineViewDelegate>
 @property (assign) IBOutlet NSOutlineView *outlineView;
 @property (weak,nonatomic) FSObjectInspectorViewModelItem *rootViewModelItem;
+@property (readonly,nonatomic) NSSize desiredSize;
 @end

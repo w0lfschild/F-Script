@@ -15,11 +15,13 @@ typedef CGFloat NSStatusItemLength;
 typedef NSUInteger NSToolbarItemVisibilityPriority;
 typedef CGWindowLevelKey NSWindowLevel;
 typedef NSUInteger NSWindowMask;
+typedef id NSMergePolicyMarker;
+@class CHBidirectionalDictionary;
 
-#define BIMAP_CLASS_METHODS_DECL(_name) \
-+(id)objectFor ## _name :(NS ## _name)mask; \
-+(NSDictionary*)optionsFor ## _name ; \
-extern id objectFrom ## _name(NS ## _name _name);
+#define BIMAP_CLASS_METHODS_DECL(_name)                 \
+        +(id)objectFor##_name : (NS##_name)mask;        \
+        +(CHBidirectionalDictionary*)optionsFor##_name; \
+        extern id objectFrom##_name(NS##_name _name);
 
 @interface FSObjectEnumInfo : NSObject
 
@@ -73,8 +75,8 @@ BIMAP_CLASS_METHODS_DECL(LineBreakMode);
 BIMAP_CLASS_METHODS_DECL(LineCapStyle);
 BIMAP_CLASS_METHODS_DECL(LineJoinStyle);
 BIMAP_CLASS_METHODS_DECL(MatrixMode);
-id objectFromMergePolicy(id mergePolicy);
-id objectFromKeyModifierMask(NSUInteger mask);
+BIMAP_CLASS_METHODS_DECL(MergePolicyMarker);
+BIMAP_CLASS_METHODS_DECL(EventModifierFlags);
 BIMAP_CLASS_METHODS_DECL(PathStyle);
 BIMAP_CLASS_METHODS_DECL(PointingDeviceType);
 BIMAP_CLASS_METHODS_DECL(PopUpArrowPosition);
@@ -107,7 +109,6 @@ BIMAP_CLASS_METHODS_DECL(TextListOptions);
 BIMAP_CLASS_METHODS_DECL(TextStorageEditedOptions);
 BIMAP_CLASS_METHODS_DECL(TextTabType);
 BIMAP_CLASS_METHODS_DECL(TextTableLayoutAlgorithm);
-id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertical);
 BIMAP_CLASS_METHODS_DECL(TitlePosition);
 BIMAP_CLASS_METHODS_DECL(TokenStyle);
 BIMAP_CLASS_METHODS_DECL(ToolbarDisplayMode);
@@ -123,5 +124,6 @@ BIMAP_CLASS_METHODS_DECL(WindowLevel);
 BIMAP_CLASS_METHODS_DECL(WindowMask);
 BIMAP_CLASS_METHODS_DECL(WindowSharingType);
 BIMAP_CLASS_METHODS_DECL(WritingDirection);
+id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertical);
 
 @end
