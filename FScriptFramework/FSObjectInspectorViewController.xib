@@ -28,7 +28,7 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="Name" width="187" minWidth="40" maxWidth="1000" id="5Il-JH-2Tw">
+                                    <tableColumn identifier="Name" width="248" minWidth="40" maxWidth="1000" id="5Il-JH-2Tw">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -42,7 +42,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="Name" id="Cr4-YW-3HU">
-                                                <rect key="frame" x="1" y="1" width="187" height="19"/>
+                                                <rect key="frame" x="1" y="1" width="248" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="f2V-7e-qMA">
@@ -67,7 +67,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="Value" width="249" minWidth="40" maxWidth="1000" id="Aqg-nq-fCT">
+                                    <tableColumn identifier="Value" width="188" minWidth="40" maxWidth="1000" id="Aqg-nq-fCT">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -81,7 +81,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="ObjectInspectorReadOnlyView" id="Wxl-oh-fqz">
-                                                <rect key="frame" x="191" y="1" width="249" height="19"/>
+                                                <rect key="frame" x="252" y="1" width="188" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hiu-wg-PQp">
@@ -105,39 +105,39 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="ObjectInspectorNumberView" id="UeY-Xy-2wT">
-                                                <rect key="frame" x="191" y="22" width="249" height="19"/>
+                                                <rect key="frame" x="252" y="22" width="188" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xBq-YT-50U">
-                                                        <rect key="frame" x="0.0" y="2" width="84" height="14"/>
-                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Ilz-qu-XqK">
-                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="L6C-qz-C38"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <action selector="takeIntegerValueFrom:" target="mJO-CY-C0n" id="Rmi-Ha-G4I"/>
-                                                            <binding destination="UeY-Xy-2wT" name="value" keyPath="objectValue.numValue" id="7lk-sw-d4f"/>
-                                                        </connections>
-                                                    </textField>
                                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mJO-CY-C0n">
-                                                        <rect key="frame" x="88" y="-1" width="15" height="22"/>
+                                                        <rect key="frame" x="95" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="Mly-lG-LJh"/>
                                                     </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tTA-fV-c7W">
+                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="96" id="IAM-yi-Uh8"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="Snm-4g-5L0">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="c9m-7g-wkS"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <action selector="takeIntegerValueFrom:" target="mJO-CY-C0n" id="urA-Nz-d7V"/>
+                                                            <binding destination="UeY-Xy-2wT" name="value" keyPath="objectValue.numValue" id="mQz-Rv-0Zf"/>
+                                                        </connections>
+                                                    </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="centerY" secondItem="xBq-YT-50U" secondAttribute="centerY" constant="-0.5" id="2WS-EA-JyA"/>
-                                                    <constraint firstItem="xBq-YT-50U" firstAttribute="leading" secondItem="UeY-Xy-2wT" secondAttribute="leading" constant="2" id="GZX-Me-eb7"/>
-                                                    <constraint firstItem="mJO-CY-C0n" firstAttribute="leading" secondItem="UeY-Xy-2wT" secondAttribute="leading" constant="90" id="x1E-ZM-c9R"/>
-                                                    <constraint firstAttribute="centerY" secondItem="mJO-CY-C0n" secondAttribute="centerY" constant="0.5" id="yTy-av-usu"/>
+                                                    <constraint firstItem="mJO-CY-C0n" firstAttribute="leading" secondItem="tTA-fV-c7W" secondAttribute="trailing" constant="1" id="DgG-U1-wbo"/>
+                                                    <constraint firstItem="tTA-fV-c7W" firstAttribute="leading" secondItem="UeY-Xy-2wT" secondAttribute="leading" id="S0Y-3J-eY1"/>
+                                                    <constraint firstAttribute="centerY" secondItem="tTA-fV-c7W" secondAttribute="centerY" id="SzO-j7-u2g"/>
+                                                    <constraint firstAttribute="centerY" secondItem="mJO-CY-C0n" secondAttribute="centerY" id="yTy-av-usu"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outlet property="textField" destination="xBq-YT-50U" id="vSc-Qm-eCQ"/>
-                                                </connections>
                                             </tableCellView>
                                             <tableCellView identifier="ObjectInspectorEnumView" id="E5U-Ew-SC3">
-                                                <rect key="frame" x="191" y="43" width="249" height="19"/>
+                                                <rect key="frame" x="252" y="43" width="188" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Mf-CL-8wK">
@@ -206,7 +206,7 @@
             </constraints>
             <point key="canvasLocation" x="180" y="334.5"/>
         </customView>
-        <treeController objectClassName="FSObjectInspectorViewModelItem" editable="NO" childrenKeyPath="childNodes" leafKeyPath="isLeaf" id="AY2-hy-lL2">
+        <treeController objectClassName="FSObjectInspectorViewModelItem" childrenKeyPath="childNodes" leafKeyPath="isLeaf" id="AY2-hy-lL2">
             <connections>
                 <binding destination="-2" name="contentObject" keyPath="self.rootViewModelItem" id="Iiv-U1-70w"/>
             </connections>

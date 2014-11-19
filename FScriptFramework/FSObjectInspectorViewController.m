@@ -94,7 +94,7 @@
                         view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
                         break;
                 case FS_ITEM_BOOL:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
                         break;
 
                 default:
