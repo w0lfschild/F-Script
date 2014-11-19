@@ -11,6 +11,19 @@
 #import "FSNumber.h"
 #import "CHBidirectionalDictionary.h"
 
+@interface FSNamedInteger : NSObject
+@property NSInteger integer;
+@property NSString *name;
+@end
+@implementation FSNamedInteger
++(instancetype)integer:(NSInteger)num withName:(NSString*)name {
+        FSNamedInteger *n = [self new];
+        n.integer = num;
+        n.name = name.copy;
+        return n;
+}
+@end
+
 @implementation FSObjectInspectorViewModelItem
 
 -(NSString *)displayValue
@@ -51,8 +64,30 @@
         }
 
 }
+
+-(NSArray *)enumObjects
+{
+        NSMutableArray *objs = [NSMutableArray new];
+        for (NSNumber *num in self.enumBiDict.allKeys) {
+                [objs addObject:[FSNamedInteger integer:num.integerValue withName:self.enumBiDict[num]]];
+        }
+        return objs;
+}
+
+
+-(NSInteger)numValue
+{
+        return (NSUInteger)[self.value doubleValue];
+}
+
+-(void)setNumValue:(NSInteger)value
+{
+        self.value = [FSNumber numberWithDouble:value];
+}
+
 +(NSSet *)keyPathsForValuesAffectingDisplayValue
 {
         return [NSSet setWithObject:@"value"];
 }
+
 @end

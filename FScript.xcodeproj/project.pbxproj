@@ -2780,6 +2780,25 @@
 		ED83192D1A1BC2B500290EE2 /* FSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ED83191C1A1BC2B500290EE2 /* FSUtils.m */; };
 		ED83192E1A1BC2B500290EE2 /* FSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ED83191C1A1BC2B500290EE2 /* FSUtils.m */; };
 		ED83192F1A1BC2B500290EE2 /* FSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ED83191C1A1BC2B500290EE2 /* FSUtils.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED8319321A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319331A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319341A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319351A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319361A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319371A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319381A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED8319391A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED83193A1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */; };
+		ED83193B1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED83193C1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED83193D1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED83193E1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED83193F1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED8319401A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED8319411A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED8319421A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED8319431A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		ED8319441A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
 		EDC2C8DE1A1A943600942777 /* FSDetailedObjectInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */; };
 		EDC2C8DF1A1A943600942777 /* FSDetailedObjectInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */; };
 		EDC2C8E01A1A943600942777 /* FSDetailedObjectInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */; };
@@ -4189,7 +4208,9 @@
 		ED8222E51A19554F00C42C72 /* FSObjectEnumInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectEnumInfo.h; sourceTree = "<group>"; };
 		ED8222E61A19554F00C42C72 /* FSObjectEnumInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectEnumInfo.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED83191B1A1BC2B500290EE2 /* FSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.h; path = FSUtils.h; sourceTree = "<group>"; tabWidth = 8; };
-		ED83191C1A1BC2B500290EE2 /* FSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUtils.m; sourceTree = "<group>"; };
+		ED83191C1A1BC2B500290EE2 /* FSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSUtils.m; sourceTree = "<group>"; tabWidth = 8; };
+		ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSObjectInspectorViewController+NonArc.h"; sourceTree = "<group>"; };
+		ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = "FSObjectInspectorViewController+NonArc.m"; sourceTree = "<group>"; tabWidth = 8; };
 		EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDetailedObjectInspector.h; sourceTree = "<group>"; };
 		EDC2C8DD1A1A943600942777 /* FSDetailedObjectInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSDetailedObjectInspector.m; sourceTree = "<group>"; tabWidth = 8; };
 		EDC2C8EE1A1AA34D00942777 /* FSObjectInspectorBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorBackgroundView.h; sourceTree = "<group>"; };
@@ -5065,6 +5086,7 @@
 				0CD4E32500D7DFE17BE9C1BD /* FSObjectBrowserView.m */,
 				8F4E294C075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.h */,
 				8F4E294D075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.m */,
+				EDC2C8DB1A1A925800942777 /* Object Inspector */,
 				ED8222E51A19554F00C42C72 /* FSObjectEnumInfo.h */,
 				ED8222E61A19554F00C42C72 /* FSObjectEnumInfo.m */,
 				F5EBBE820321029601CA10C6 /* FSObjectFormatter.h */,
@@ -5121,7 +5143,6 @@
 				8FBB2FF00EEB3467007A3163 /* Number_fscript.h */,
 				8FBB2FF10EEB3467007A3163 /* Number.m */,
 				0CD4E38F00D7DFE17BE9C1BD /* NumberPrivate.h */,
-				EDC2C8DB1A1A925800942777 /* Object Inspector */,
 				F505648002DF417501FE0326 /* Pointer.h */,
 				F505647F02DF417501FE0326 /* Pointer.m */,
 				F5F856C002EB281C01F7E6F0 /* PointerPrivate.h */,
@@ -5332,6 +5353,8 @@
 				ED8222D51A194FD600C42C72 /* FSObjectInspectorViewModelItem.m */,
 				ED3004E51A1A86EF00675D94 /* FSObjectInspectorViewController.h */,
 				ED3004E61A1A86EF00675D94 /* FSObjectInspectorViewController.m */,
+				ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */,
+				ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */,
 				ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */,
 				EDC2C8EE1A1AA34D00942777 /* FSObjectInspectorBackgroundView.h */,
 				EDC2C8EF1A1AA34D00942777 /* FSObjectInspectorBackgroundView.m */,
@@ -5524,6 +5547,7 @@
 				8F95E3C908034A670030B65C /* FSPredicateTextView.h in Headers */,
 				8FE7E0EE082AD964008231E8 /* FSCoreDataSample.h in Headers */,
 				8F936BF5082E8DBA00A04EBF /* FSManagedObjectContextInspector.h in Headers */,
+				ED83193A1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				8F936C00082E8E6D00A04EBF /* FSNSManagedObjectContext.h in Headers */,
 				8F917E20095F5DE3000932D0 /* FSObjectBrowserSearchField.h in Headers */,
 				8F90A2F5096DB0660064F4BC /* FSBlockCompilationResult.h in Headers */,
@@ -5708,6 +5732,7 @@
 				8F8EA860077F79A000AC1C96 /* FSGenericPointerPrivate.h in Headers */,
 				8FE9AE35078071CC005B2CC4 /* FSObjectPointer.h in Headers */,
 				8FE9AE9207807269005B2CC4 /* FSObjectPointerPrivate.h in Headers */,
+				ED8319321A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				8F37AEC6078B7E900083565D /* FSManagedObjectContextInspector.h in Headers */,
 				8F86923E07F19BA8000D20A4 /* FSObjectBrowserNamedObjectWrapper.h in Headers */,
 				8F7F4FA007FB274C008E42F4 /* FSInspectorUniquier.h in Headers */,
@@ -5834,6 +5859,7 @@
 				8F6DA93D055FC71F0050409A /* DOTest.h in Headers */,
 				8F6DA93E055FC71F0050409A /* FScriptTextView.h in Headers */,
 				8F6DA93F055FC71F0050409A /* FSObjectBrowserArgumentPanel.h in Headers */,
+				ED8319331A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				8F6DA940055FC71F0050409A /* FSNSProtocolChecker.h in Headers */,
 				8F6DA941055FC71F0050409A /* FSObjectBrowserToolbar.h in Headers */,
 				8F6DA942055FC71F0050409A /* FSEvalCommand.h in Headers */,
@@ -6060,6 +6086,7 @@
 				BA223218189FA403002C5B6A /* FSGenericPointerPrivate.h in Headers */,
 				BA223219189FA403002C5B6A /* FSObjectPointer.h in Headers */,
 				BA22321A189FA403002C5B6A /* FSObjectPointerPrivate.h in Headers */,
+				ED8319341A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				BA22321B189FA403002C5B6A /* FSManagedObjectContextInspector.h in Headers */,
 				BA22321C189FA403002C5B6A /* FSObjectBrowserNamedObjectWrapper.h in Headers */,
 				BA22321D189FA403002C5B6A /* FSInspectorUniquier.h in Headers */,
@@ -6238,6 +6265,7 @@
 				BA2233D8189FA412002C5B6A /* FSGenericPointerPrivate.h in Headers */,
 				BA2233D9189FA412002C5B6A /* FSObjectPointer.h in Headers */,
 				BA2233DA189FA412002C5B6A /* FSObjectPointerPrivate.h in Headers */,
+				ED8319361A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				BA2233DB189FA412002C5B6A /* FSManagedObjectContextInspector.h in Headers */,
 				BA2233DC189FA412002C5B6A /* FSObjectBrowserNamedObjectWrapper.h in Headers */,
 				BA2233DD189FA412002C5B6A /* FSInspectorUniquier.h in Headers */,
@@ -6364,6 +6392,7 @@
 				BA223564189FA429002C5B6A /* DOTest.h in Headers */,
 				BA223565189FA429002C5B6A /* FScriptTextView.h in Headers */,
 				BA223566189FA429002C5B6A /* FSObjectBrowserArgumentPanel.h in Headers */,
+				ED8319351A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				BA223567189FA429002C5B6A /* FSNSProtocolChecker.h in Headers */,
 				BA223568189FA429002C5B6A /* FSObjectBrowserToolbar.h in Headers */,
 				BA223569189FA429002C5B6A /* FSEvalCommand.h in Headers */,
@@ -6538,6 +6567,7 @@
 				BA2236AC189FA431002C5B6A /* DOTest.h in Headers */,
 				BA2236AD189FA431002C5B6A /* FScriptTextView.h in Headers */,
 				BA2236AE189FA431002C5B6A /* FSObjectBrowserArgumentPanel.h in Headers */,
+				ED8319371A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				BA2236AF189FA431002C5B6A /* FSNSProtocolChecker.h in Headers */,
 				BA2236B0189FA431002C5B6A /* FSObjectBrowserToolbar.h in Headers */,
 				BA2236B1189FA431002C5B6A /* FSEvalCommand.h in Headers */,
@@ -6764,6 +6794,7 @@
 				EDC2C97D1A1AA50D00942777 /* FSGenericPointerPrivate.h in Headers */,
 				EDC2C97E1A1AA50D00942777 /* FSObjectPointer.h in Headers */,
 				EDC2C97F1A1AA50D00942777 /* FSObjectPointerPrivate.h in Headers */,
+				ED8319381A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				EDC2C9801A1AA50D00942777 /* FSManagedObjectContextInspector.h in Headers */,
 				EDC2C9811A1AA50D00942777 /* FSObjectBrowserNamedObjectWrapper.h in Headers */,
 				EDC2C9821A1AA50D00942777 /* FSInspectorUniquier.h in Headers */,
@@ -6890,6 +6921,7 @@
 				EDC2CB151A1AA52500942777 /* DOTest.h in Headers */,
 				EDC2CB161A1AA52500942777 /* FScriptTextView.h in Headers */,
 				EDC2CB171A1AA52500942777 /* FSObjectBrowserArgumentPanel.h in Headers */,
+				ED8319391A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				EDC2CB181A1AA52500942777 /* FSNSProtocolChecker.h in Headers */,
 				EDC2CB191A1AA52500942777 /* FSObjectBrowserToolbar.h in Headers */,
 				EDC2CB1A1A1AA52500942777 /* FSEvalCommand.h in Headers */,
@@ -7742,6 +7774,7 @@
 				8F0CBC3C0BDB94AD002B0AD7 /* FSNSValue.m in Sources */,
 				8F0CBC3D0BDB94AD002B0AD7 /* FSReplacementForCoderForNilInArray.m in Sources */,
 				8F0CBC3E0BDB94AD002B0AD7 /* FSNamedNumber.m in Sources */,
+				ED8319441A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				8F0CBC3F0BDB94AD002B0AD7 /* FSCollectionInspectorTableView.m in Sources */,
 				8F0CBC400BDB94AD002B0AD7 /* FSNSSet.m in Sources */,
 				8F0CBC410BDB94AD002B0AD7 /* FSAttributedStringInspector.m in Sources */,
@@ -7930,6 +7963,7 @@
 				8F8112F50D85E58200CB3407 /* FSCNCategory.m in Sources */,
 				8F59CA720D86DD0800D67A78 /* FSCNMessage.m in Sources */,
 				8F7223820D870C6A00394C99 /* FSCNSuper.m in Sources */,
+				ED8319431A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				8F2E34250D8DB61C00912543 /* FSCNUnaryMessage.m in Sources */,
 				8F2E34380D8DBF6A00912543 /* FSCNBinaryMessage.m in Sources */,
 				8F2E34410D8DBFE700912543 /* FSCNKeywordMessage.m in Sources */,
@@ -7993,6 +8027,7 @@
 				8F6DA889055FC70C0050409A /* CLIView.m in Sources */,
 				8F6DA88A055FC70C0050409A /* FSCompilationResult.m in Sources */,
 				ED3004EE1A1A86EF00675D94 /* FSObjectInspectorViewController.m in Sources */,
+				ED83193B1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				8F6DA88B055FC70C0050409A /* CompiledCodeNode.m in Sources */,
 				8F6DA88C055FC70C0050409A /* FSCompiler.m in Sources */,
 				8F6DA88D055FC70C0050409A /* FSConstantsInitialization.m in Sources */,
@@ -8217,6 +8252,7 @@
 				8F553BFA0585222700A92293 /* FSNSValue.m in Sources */,
 				8F7D7DC0058E32CD00F1B8A8 /* FSReplacementForCoderForNilInArray.m in Sources */,
 				8F0E3B83059F3DBB003F6CE9 /* FSNamedNumber.m in Sources */,
+				ED83193C1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				8F60217305A25CDC0004EFF1 /* FSCollectionInspectorTableView.m in Sources */,
 				8F60F24C05A9FE8B00985FEC /* FSNSSet.m in Sources */,
 				8FDCCD5305C09F8200747C0A /* FSAttributedStringInspector.m in Sources */,
@@ -8304,6 +8340,7 @@
 				BA223273189FA403002C5B6A /* CLIView.m in Sources */,
 				BA223274189FA403002C5B6A /* FSCompilationResult.m in Sources */,
 				ED3004F01A1A86EF00675D94 /* FSObjectInspectorViewController.m in Sources */,
+				ED83193D1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				BA223275189FA403002C5B6A /* CompiledCodeNode.m in Sources */,
 				BA223276189FA403002C5B6A /* FSCompiler.m in Sources */,
 				BA223277189FA403002C5B6A /* FSConstantsInitialization.m in Sources */,
@@ -8463,6 +8500,7 @@
 				BA223433189FA412002C5B6A /* CLIView.m in Sources */,
 				BA223434189FA412002C5B6A /* FSCompilationResult.m in Sources */,
 				ED3004F21A1A86EF00675D94 /* FSObjectInspectorViewController.m in Sources */,
+				ED83193F1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				BA223435189FA412002C5B6A /* CompiledCodeNode.m in Sources */,
 				BA223436189FA412002C5B6A /* FSCompiler.m in Sources */,
 				BA223437189FA412002C5B6A /* FSConstantsInitialization.m in Sources */,
@@ -8687,6 +8725,7 @@
 				BA223623189FA429002C5B6A /* FSNSValue.m in Sources */,
 				BA223624189FA429002C5B6A /* FSReplacementForCoderForNilInArray.m in Sources */,
 				BA223625189FA429002C5B6A /* FSNamedNumber.m in Sources */,
+				ED83193E1A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				BA223626189FA429002C5B6A /* FSCollectionInspectorTableView.m in Sources */,
 				BA223627189FA429002C5B6A /* FSNSSet.m in Sources */,
 				BA223628189FA429002C5B6A /* FSAttributedStringInspector.m in Sources */,
@@ -8839,6 +8878,7 @@
 				BA22376B189FA431002C5B6A /* FSNSValue.m in Sources */,
 				BA22376C189FA431002C5B6A /* FSReplacementForCoderForNilInArray.m in Sources */,
 				BA22376D189FA431002C5B6A /* FSNamedNumber.m in Sources */,
+				ED8319401A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				BA22376E189FA431002C5B6A /* FSCollectionInspectorTableView.m in Sources */,
 				BA22376F189FA431002C5B6A /* FSNSSet.m in Sources */,
 				BA223770189FA431002C5B6A /* FSAttributedStringInspector.m in Sources */,
@@ -8926,6 +8966,7 @@
 				EDC2C9DA1A1AA50D00942777 /* CLIView.m in Sources */,
 				EDC2C9DB1A1AA50D00942777 /* FSCompilationResult.m in Sources */,
 				EDC2C9DC1A1AA50D00942777 /* FSObjectInspectorViewController.m in Sources */,
+				ED8319411A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				EDC2C9DD1A1AA50D00942777 /* CompiledCodeNode.m in Sources */,
 				EDC2C9DE1A1AA50D00942777 /* FSCompiler.m in Sources */,
 				EDC2C9DF1A1AA50D00942777 /* FSConstantsInitialization.m in Sources */,
@@ -9150,6 +9191,7 @@
 				EDC2CBDE1A1AA52500942777 /* FSNSValue.m in Sources */,
 				EDC2CBDF1A1AA52500942777 /* FSReplacementForCoderForNilInArray.m in Sources */,
 				EDC2CBE01A1AA52500942777 /* FSNamedNumber.m in Sources */,
+				ED8319421A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				EDC2CBE11A1AA52500942777 /* FSCollectionInspectorTableView.m in Sources */,
 				EDC2CBE21A1AA52500942777 /* FSNSSet.m in Sources */,
 				EDC2CBE31A1AA52500942777 /* FSAttributedStringInspector.m in Sources */,

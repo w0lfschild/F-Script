@@ -29,4 +29,7 @@ typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
 @property (assign,nonatomic) FSInspectorVMValueType valueType;
 @property (readonly,nonatomic) NSString *displayValue;
 @property (assign,nonatomic) CHBidirectionalDictionary *enumBiDict;
+@property (readonly,nonatomic) NSArray *enumNames;
+@property (readonly,nonatomic) NSArray *enumValues;
+@property (nonatomic) NSInteger numValue;
 @end

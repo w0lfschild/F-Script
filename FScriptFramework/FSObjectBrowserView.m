@@ -43,217 +43,34 @@
 @end
 
 @implementation ArgumentsWindow
-- (BOOL)canBecomeKeyWindow
-{
-        return YES;
-}
+- (BOOL)canBecomeKeyWindow { return YES; }
 @end
 
 const int FSObjectBrowserBottomBarHeight = 22;
 
 static Class NSManagedObjectClass;
 
+static FSObjectBrowserCell* addRowToMatrix(NSMatrix* matrix);
+NSInteger FSCompareClassNamesForAlphabeticalOrder(NSString* className1, NSString* className2, void* context);
+static NSInteger FSCompareMethodsNamesForAlphabeticalOrder(NSString* m1, NSString* m2, void* context);
+static NSString* printStringForObjectBrowser(id object);
+static NSString* humanReadableFScriptTypeDescriptionFromEncodedObjCType(const char* ptr);
+static NSString* FScriptObjectTemplateForEncodedObjCType(const char* ptr);
 
-static FSObjectBrowserCell* addRowToMatrix(NSMatrix* matrix)
-{
-        // Since we reuse cells when filtering (because we use renewRows:columns:), we must
-        // ensure that they are correctly set-up when reused. This is the job of this function.
-
-        FSObjectBrowserCell* cell;
-
-        // For an unknown reason, the following does not correctly maintain the selection:
-        // ***********
-        // int numberOfRows = [matrix numberOfRows];
-        // [matrix renewRows:numberOfRows+1 columns:1];
-        // cell = [matrix cellAtRow:numberOfRows column:0];
-        // ***********
-        // We do the folowing instead:
-        // ***********
-        [matrix addRow];
-        cell = [matrix cellAtRow:[matrix numberOfRows] - 1 column:0];
-        // ***********
-
-        [cell setLeaf:NO];
-        [cell setEnabled:YES];
-        [cell setObjectValue:nil];
-        [cell setObjectBrowserCellType:FSOBUNKNOWN];
-        [cell setClassLabel:nil];
-        [cell setLabel:nil];
-        [cell setRepresentedObject:nil];
-        return cell;
-}
-
-
-NSInteger FSCompareClassNamesForAlphabeticalOrder(NSString* className1, NSString* className2, void* context)
-{
-        if ([className1 hasPrefix:@"%"] && ![className2 hasPrefix:@"%"])
-                return NSOrderedDescending;
-        else if ([className2 hasPrefix:@"%"] && ![className1 hasPrefix:@"%"])
-                return NSOrderedAscending;
-        else
-                return [className1 caseInsensitiveCompare:className2];
-}
-
-
-static NSInteger FSCompareMethodsNamesForAlphabeticalOrder(NSString* m1, NSString* m2, void* context)
-{
-        if ([m1 hasPrefix:@"_"] && ![m2 hasPrefix:@"_"])
-                return NSOrderedDescending;
-        else if ([m2 hasPrefix:@"_"] && ![m1 hasPrefix:@"_"])
-                return NSOrderedAscending;
-        else
-                return [m1 caseInsensitiveCompare:m2];
-}
-
-static NSString* printStringForObjectBrowser(id object)
-{
-        NSString* entityName;
-        NSString* result = nil;
-
-        @try {
-                if (NSManagedObjectClass && [object isKindOfClass:NSManagedObjectClass] && (entityName = [[object entity] name]) != nil) {
-                        result = [@"Managed object: " stringByAppendingString:entityName];
-                }
-        }
-        @catch (id exception)
-        {
-                result = [NSString stringWithFormat:@"*** Non printable object. The following exception was raised when "
-                                                    @"trying to get a textual representation of the object: %@",
-                                                    FSErrorMessageFromException(exception)];
-        }
-
-        if (!result) {
-                result = printStringLimited(object, 1000);
-                if ([result length] > 510)
-                        result = [[result substringWithRange:NSMakeRange(0, 500)] stringByAppendingString:@" ..."];
-        }
-
-        return result;
-}
-
-
-static NSString* humanReadableFScriptTypeDescriptionFromEncodedObjCType(const char* ptr)
-{
-        while (*ptr == 'r' || *ptr == 'n' || *ptr == 'N' || *ptr == 'o' || *ptr == 'O' || *ptr == 'R' || *ptr == 'V')
-                ptr++;
-
-        if (strcmp(ptr, @encode(id)) == 0)
-                return @"";
-        else if (strcmp(ptr, @encode(char)) == 0)
-                return @"";
-        else if (strcmp(ptr, @encode(int)) == 0)
-                return @"int";
-        else if (strcmp(ptr, @encode(short)) == 0)
-                return @"short";
-        else if (strcmp(ptr, @encode(long)) == 0)
-                return @"long";
-        else if (strcmp(ptr, @encode(long long)) == 0)
-                return @"long long";
-        else if (strcmp(ptr, @encode(unsigned char)) == 0)
-                return @"unsigned char";
-        else if (strcmp(ptr, @encode(unsigned short)) == 0)
-                return @"unsigned short";
-        else if (strcmp(ptr, @encode(unsigned int)) == 0)
-                return @"unsigned int";
-        else if (strcmp(ptr, @encode(unsigned long)) == 0)
-                return @"unsigned long";
-        else if (strcmp(ptr, @encode(unsigned long long)) == 0)
-                return @"unsigned long long";
-        else if (strcmp(ptr, @encode(float)) == 0)
-                return @"float";
-        else if (strcmp(ptr, @encode(double)) == 0)
-                return @"double";
-        else if (strcmp(ptr, @encode(char*)) == 0)
-                return @"pointer";
-        else if (strcmp(ptr, @encode(SEL)) == 0)
-                return @"SEL";
-        else if (strcmp(ptr, @encode(Class)) == 0)
-                return @"Class";
-        else if (strcmp(ptr, @encode(NSRange)) == 0)
-                return @"NSRange";
-        else if (strcmp(ptr, @encode(NSPoint)) == 0)
-                return @"NSPoint";
-        else if (strcmp(ptr, @encode(NSSize)) == 0)
-                return @"NSSize";
-        else if (strcmp(ptr, @encode(NSRect)) == 0)
-                return @"NSRect";
-        else if (strcmp(ptr, @encode(CGPoint)) == 0)
-                return @"CGPoint";
-        else if (strcmp(ptr, @encode(CGSize)) == 0)
-                return @"CGSize";
-        else if (strcmp(ptr, @encode(CGRect)) == 0)
-                return @"CGRect";
-        else if (strcmp(ptr, @encode(CGAffineTransform)) == 0)
-                return @"CGAffineTransform";
-        else if (strcmp(ptr, @encode(_Bool)) == 0)
-                return @"boolean";
-        else if (*ptr == '{') {
-                NSMutableString* structName = [NSMutableString string];
-                ptr++;
-                while (isalnum(*ptr) || *ptr == '_') {
-                        [structName appendString:[[[NSString alloc] initWithBytes:ptr length:1 encoding:NSASCIIStringEncoding] autorelease]];
-                        ptr++;
-                }
-                if (*ptr == '=' && ![structName isEqualToString:@""])
-                        return [@"struct " stringByAppendingString:structName];
-                else
-                        return @"";
-        }
-        else if (*ptr == '^') {
-                NSString* pointed = humanReadableFScriptTypeDescriptionFromEncodedObjCType(++ptr);
-                if ([pointed isEqualToString:@""])
-                        return @"pointer";
-                else
-                        return [@"pointer to " stringByAppendingString:pointed];
-        }
-        else
-                return @"";
-}
-
-static NSString* FScriptObjectTemplateForEncodedObjCType(const char* ptr)
-{
-        while (*ptr == 'r' || *ptr == 'n' || *ptr == 'N' || *ptr == 'o' || *ptr == 'O' || *ptr == 'R' || *ptr == 'V')
-                ptr++;
-        if (strcmp(ptr, @encode(SEL)) == 0)
-                return @"#selector";
-        else if (strcmp(ptr, @encode(NSRange)) == 0)
-                return @"NSValue rangeWithLocation:0 length:0";
-        else if (strcmp(ptr, @encode(NSPoint)) == 0)
-                return @"0<>0";
-        else if (strcmp(ptr, @encode(NSSize)) == 0)
-                return @"NSValue sizeWithWidth:0 height:0";
-        else if (strcmp(ptr, @encode(NSRect)) == 0)
-                return @"0<>0 extent:0<>0";
-        else if (strcmp(ptr, @encode(CGPoint)) == 0)
-                return @"0<>0";
-        else if (strcmp(ptr, @encode(CGSize)) == 0)
-                return @"NSValue sizeWithWidth:0 height:0";
-        else if (strcmp(ptr, @encode(CGRect)) == 0)
-                return @"0<>0 extent:0<>0";
-        //else if (strcmp(ptr,@encode(_Bool))               == 0) return @"";
-        else
-                return @"";
-}
 
 static NSMutableArray* customButtons = nil;
 
 @interface FSObjectBrowserView () // Methods declaration to let the compiler know
 @property (retain,nonatomic) NSMutableDictionary *columnToRootViewModelItem;
-
-- (void)fillMatrixForClassesBrowsing:(NSMatrix*)matrix;
-- (void)fillMatrixForWorkspaceBrowsing:(NSMatrix*)matrix;
-- (void)fillMatrix:(NSMatrix*)matrix withMethodsForObject:(id)object;
-- (void)filter;
-- (void)inspectAction:(id)sender;
-- (id)selectedObject;
-- (void)selectMethodNamed:(NSString*)methodName;
-- (void)selfAction:(id)sender;
-- (void)sendMessage:(SEL)selector withArguments:(FSArray*)arguments;
-- (void)setFilterString:(NSString*)theFilterString;
-- (void)setTitleOfLastColumn:(NSString*)title;
-- (id)validSelectedObject;
-
 @end
+
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - FSObjectBrowserView Implementation
+/*==================================================================================================
+ */
 
 
 @implementation FSObjectBrowserView
@@ -346,6 +163,56 @@ static NSMutableArray* customButtons = nil;
 {
         [self saveCustomButtonsSettings];
 }
+
+
+- (id)initWithFrame:(NSRect)frameRect
+{
+        self = [super initWithFrame:frameRect];
+        if (self) {
+                CGFloat baseWidth = NSWidth([self bounds]);
+                CGFloat baseHeight = NSHeight([self bounds]);
+                CGFloat fontSize;
+
+                fontSize = systemFontSize();
+                _columnToRootViewModelItem = [NSMutableDictionary new];
+
+                browser = [[NSBrowser alloc] initWithFrame:NSMakeRect(0, FSObjectBrowserBottomBarHeight, baseWidth, baseHeight - FSObjectBrowserBottomBarHeight)];
+                [browser setMatrixClass:FSObjectBrowserMatrix.class];
+          
+                [browser setCellClass:[FSObjectBrowserCell class]];
+                [browser setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+                [browser setHasHorizontalScroller:YES];
+                [browser setMinColumnWidth:145 + (fontSize * 6)];
+                [browser setTakesTitleFromPreviousColumn:NO];
+                [browser setTitled:NO];
+                [browser setTarget:self];
+                [browser setDoubleAction:@selector(doubleClickAction:)];
+                [[browser cellPrototype] setFont:[NSFont systemFontOfSize:fontSize]];
+                [browser setDelegate:self];
+                [browser setFocusRingType:NSFocusRingTypeNone];
+                [browser setAutohidesScroller:YES];
+
+                if ([browser respondsToSelector:@selector(setColumnResizingType:)])
+                        [browser setColumnResizingType:2];
+
+                if ([browser respondsToSelector:@selector(setColumnsAutosaveName:)])
+                        [browser setColumnsAutosaveName:@"Object browser columns autosave configuration"];
+
+                bottomBarTextDisplay = [[FSObjectBrowserBottomBarTextDisplay alloc] initWithFrame:NSMakeRect(0, 0, baseWidth, FSObjectBrowserBottomBarHeight)];
+
+                [self addSubview:browser];
+                [self addSubview:bottomBarTextDisplay];
+
+                browsingMode = FSBrowsingWorkspace;
+
+                filterString = @"";
+
+                matrixes = [[NSMutableSet alloc] init];
+        }
+        return self;
+}
+
+
 
 -(void)setRootViewModelObject:(FSObjectInspectorViewModelItem*)viewModel forColumn:(NSUInteger)column
 {
@@ -1276,53 +1143,6 @@ static NSMutableArray* customButtons = nil;
         return [filterString isEqualToString:@""];
 }
 
-- (id)initWithFrame:(NSRect)frameRect
-{
-        self = [super initWithFrame:frameRect];
-        if (self) {
-                CGFloat baseWidth = NSWidth([self bounds]);
-                CGFloat baseHeight = NSHeight([self bounds]);
-                CGFloat fontSize;
-
-                fontSize = systemFontSize();
-                _columnToRootViewModelItem = [NSMutableDictionary new];
-
-                browser = [[NSBrowser alloc] initWithFrame:NSMakeRect(0, FSObjectBrowserBottomBarHeight, baseWidth, baseHeight - FSObjectBrowserBottomBarHeight)];
-                [browser setMatrixClass:FSObjectBrowserMatrix.class];
-          
-                [browser setCellClass:[FSObjectBrowserCell class]];
-                [browser setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-                [browser setHasHorizontalScroller:YES];
-                [browser setMinColumnWidth:145 + (fontSize * 6)];
-                [browser setTakesTitleFromPreviousColumn:NO];
-                [browser setTitled:NO];
-                [browser setTarget:self];
-                [browser setDoubleAction:@selector(doubleClickAction:)];
-                [[browser cellPrototype] setFont:[NSFont systemFontOfSize:fontSize]];
-                [browser setDelegate:self];
-                [browser setFocusRingType:NSFocusRingTypeNone];
-                [browser setAutohidesScroller:YES];
-
-                if ([browser respondsToSelector:@selector(setColumnResizingType:)])
-                        [browser setColumnResizingType:2];
-
-                if ([browser respondsToSelector:@selector(setColumnsAutosaveName:)])
-                        [browser setColumnsAutosaveName:@"Object browser columns autosave configuration"];
-
-                bottomBarTextDisplay = [[FSObjectBrowserBottomBarTextDisplay alloc] initWithFrame:NSMakeRect(0, 0, baseWidth, FSObjectBrowserBottomBarHeight)];
-
-                [self addSubview:browser];
-                [self addSubview:bottomBarTextDisplay];
-
-                browsingMode = FSBrowsingWorkspace;
-
-                filterString = @"";
-
-                matrixes = [[NSMutableSet alloc] init];
-        }
-        return self;
-}
-
 - (void)inspectAction:(id)sender
 {
         inspect([self selectedObject], interpreter, [self rootViewModelForColumn:browser.selectedColumn]);
@@ -1778,3 +1598,184 @@ static NSMutableArray* customButtons = nil;
 }
 
 @end
+
+static FSObjectBrowserCell* addRowToMatrix(NSMatrix* matrix)
+{
+        // Since we reuse cells when filtering (because we use renewRows:columns:), we must
+        // ensure that they are correctly set-up when reused. This is the job of this function.
+
+        FSObjectBrowserCell* cell;
+
+        // For an unknown reason, the following does not correctly maintain the selection:
+        // ***********
+        // int numberOfRows = [matrix numberOfRows];
+        // [matrix renewRows:numberOfRows+1 columns:1];
+        // cell = [matrix cellAtRow:numberOfRows column:0];
+        // ***********
+        // We do the folowing instead:
+        // ***********
+        [matrix addRow];
+        cell = [matrix cellAtRow:[matrix numberOfRows] - 1 column:0];
+        // ***********
+
+        [cell setLeaf:NO];
+        [cell setEnabled:YES];
+        [cell setObjectValue:nil];
+        [cell setObjectBrowserCellType:FSOBUNKNOWN];
+        [cell setClassLabel:nil];
+        [cell setLabel:nil];
+        [cell setRepresentedObject:nil];
+        return cell;
+}
+
+
+NSInteger FSCompareClassNamesForAlphabeticalOrder(NSString* className1, NSString* className2, void* context)
+{
+        if ([className1 hasPrefix:@"%"] && ![className2 hasPrefix:@"%"])
+                return NSOrderedDescending;
+        else if ([className2 hasPrefix:@"%"] && ![className1 hasPrefix:@"%"])
+                return NSOrderedAscending;
+        else
+                return [className1 caseInsensitiveCompare:className2];
+}
+
+
+static NSInteger FSCompareMethodsNamesForAlphabeticalOrder(NSString* m1, NSString* m2, void* context)
+{
+        if ([m1 hasPrefix:@"_"] && ![m2 hasPrefix:@"_"])
+                return NSOrderedDescending;
+        else if ([m2 hasPrefix:@"_"] && ![m1 hasPrefix:@"_"])
+                return NSOrderedAscending;
+        else
+                return [m1 caseInsensitiveCompare:m2];
+}
+
+static NSString* printStringForObjectBrowser(id object)
+{
+        NSString* entityName;
+        NSString* result = nil;
+
+        @try {
+                if (NSManagedObjectClass && [object isKindOfClass:NSManagedObjectClass] && (entityName = [[object entity] name]) != nil) {
+                        result = [@"Managed object: " stringByAppendingString:entityName];
+                }
+        }
+        @catch (id exception)
+        {
+                result = [NSString stringWithFormat:@"*** Non printable object. The following exception was raised when "
+                                                    @"trying to get a textual representation of the object: %@",
+                                                    FSErrorMessageFromException(exception)];
+        }
+
+        if (!result) {
+                result = printStringLimited(object, 1000);
+                if ([result length] > 510)
+                        result = [[result substringWithRange:NSMakeRange(0, 500)] stringByAppendingString:@" ..."];
+        }
+
+        return result;
+}
+
+
+static NSString* humanReadableFScriptTypeDescriptionFromEncodedObjCType(const char* ptr)
+{
+        while (*ptr == 'r' || *ptr == 'n' || *ptr == 'N' || *ptr == 'o' || *ptr == 'O' || *ptr == 'R' || *ptr == 'V')
+                ptr++;
+
+        if (strcmp(ptr, @encode(id)) == 0)
+                return @"";
+        else if (strcmp(ptr, @encode(char)) == 0)
+                return @"";
+        else if (strcmp(ptr, @encode(int)) == 0)
+                return @"int";
+        else if (strcmp(ptr, @encode(short)) == 0)
+                return @"short";
+        else if (strcmp(ptr, @encode(long)) == 0)
+                return @"long";
+        else if (strcmp(ptr, @encode(long long)) == 0)
+                return @"long long";
+        else if (strcmp(ptr, @encode(unsigned char)) == 0)
+                return @"unsigned char";
+        else if (strcmp(ptr, @encode(unsigned short)) == 0)
+                return @"unsigned short";
+        else if (strcmp(ptr, @encode(unsigned int)) == 0)
+                return @"unsigned int";
+        else if (strcmp(ptr, @encode(unsigned long)) == 0)
+                return @"unsigned long";
+        else if (strcmp(ptr, @encode(unsigned long long)) == 0)
+                return @"unsigned long long";
+        else if (strcmp(ptr, @encode(float)) == 0)
+                return @"float";
+        else if (strcmp(ptr, @encode(double)) == 0)
+                return @"double";
+        else if (strcmp(ptr, @encode(char*)) == 0)
+                return @"pointer";
+        else if (strcmp(ptr, @encode(SEL)) == 0)
+                return @"SEL";
+        else if (strcmp(ptr, @encode(Class)) == 0)
+                return @"Class";
+        else if (strcmp(ptr, @encode(NSRange)) == 0)
+                return @"NSRange";
+        else if (strcmp(ptr, @encode(NSPoint)) == 0)
+                return @"NSPoint";
+        else if (strcmp(ptr, @encode(NSSize)) == 0)
+                return @"NSSize";
+        else if (strcmp(ptr, @encode(NSRect)) == 0)
+                return @"NSRect";
+        else if (strcmp(ptr, @encode(CGPoint)) == 0)
+                return @"CGPoint";
+        else if (strcmp(ptr, @encode(CGSize)) == 0)
+                return @"CGSize";
+        else if (strcmp(ptr, @encode(CGRect)) == 0)
+                return @"CGRect";
+        else if (strcmp(ptr, @encode(CGAffineTransform)) == 0)
+                return @"CGAffineTransform";
+        else if (strcmp(ptr, @encode(_Bool)) == 0)
+                return @"boolean";
+        else if (*ptr == '{') {
+                NSMutableString* structName = [NSMutableString string];
+                ptr++;
+                while (isalnum(*ptr) || *ptr == '_') {
+                        [structName appendString:[[[NSString alloc] initWithBytes:ptr length:1 encoding:NSASCIIStringEncoding] autorelease]];
+                        ptr++;
+                }
+                if (*ptr == '=' && ![structName isEqualToString:@""])
+                        return [@"struct " stringByAppendingString:structName];
+                else
+                        return @"";
+        }
+        else if (*ptr == '^') {
+                NSString* pointed = humanReadableFScriptTypeDescriptionFromEncodedObjCType(++ptr);
+                if ([pointed isEqualToString:@""])
+                        return @"pointer";
+                else
+                        return [@"pointer to " stringByAppendingString:pointed];
+        }
+        else
+                return @"";
+}
+
+static NSString* FScriptObjectTemplateForEncodedObjCType(const char* ptr)
+{
+        while (*ptr == 'r' || *ptr == 'n' || *ptr == 'N' || *ptr == 'o' || *ptr == 'O' || *ptr == 'R' || *ptr == 'V')
+                ptr++;
+        if (strcmp(ptr, @encode(SEL)) == 0)
+                return @"#selector";
+        else if (strcmp(ptr, @encode(NSRange)) == 0)
+                return @"NSValue rangeWithLocation:0 length:0";
+        else if (strcmp(ptr, @encode(NSPoint)) == 0)
+                return @"0<>0";
+        else if (strcmp(ptr, @encode(NSSize)) == 0)
+                return @"NSValue sizeWithWidth:0 height:0";
+        else if (strcmp(ptr, @encode(NSRect)) == 0)
+                return @"0<>0 extent:0<>0";
+        else if (strcmp(ptr, @encode(CGPoint)) == 0)
+                return @"0<>0";
+        else if (strcmp(ptr, @encode(CGSize)) == 0)
+                return @"NSValue sizeWithWidth:0 height:0";
+        else if (strcmp(ptr, @encode(CGRect)) == 0)
+                return @"0<>0 extent:0<>0";
+        //else if (strcmp(ptr,@encode(_Bool))               == 0) return @"";
+        else
+                return @"";
+}

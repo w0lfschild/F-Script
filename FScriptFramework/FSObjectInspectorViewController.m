@@ -7,6 +7,9 @@
 //
 
 #import "FSObjectInspectorViewController.h"
+#import "FSObjectInspectorViewController+NonArc.h"
+#import "FSObjectInspectorViewModelItem.h"
+#import <objc/objc.h>
 #import <AvailabilityMacros.h>
 
 @interface FSObjectInspectorViewController ()
@@ -37,13 +40,70 @@
 {
         NSScrollView* scrollView = self.outlineView.enclosingScrollView;
         NSSize scrollViewSize = [NSScrollView frameSizeForContentSize:self.outlineView.bounds.size
-                             horizontalScrollerClass:scrollView.horizontalScroller.class
-                               verticalScrollerClass:scrollView.verticalScroller.class
-                                          borderType:scrollView.borderType
-                                         controlSize:scrollView.horizontalScroller.controlSize
-                                       scrollerStyle:scrollView.scrollerStyle];
+                                              horizontalScrollerClass:scrollView.horizontalScroller.class
+                                                verticalScrollerClass:scrollView.verticalScroller.class
+                                                           borderType:scrollView.borderType
+                                                          controlSize:scrollView.horizontalScroller.controlSize
+                                                        scrollerStyle:scrollView.scrollerStyle];
         scrollViewSize.height += NSHeight(self.outlineView.headerView.bounds);
         return scrollViewSize;
 }
 
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - NSOutlineViewDelegate
+/*==================================================================================================
+ */
+
+- (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item
+{
+        if ([tableColumn.identifier isEqualToString:@"Name"]) {
+                return [self.outlineView makeViewWithIdentifier:@"Name" owner:self];
+        }
+        NSView *view = nil;
+        FSObjectInspectorViewModelItem* viewModel = [item representedObject];
+        if ([viewModel respondsToSelector:@selector(valueType)]) {
+                switch (viewModel.valueType) {
+                case FS_ITEM_HEADER:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_ENUM:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
+                        break;
+                case FS_ITEM_OPTIONS:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_NUMBER:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorNumberView" owner:self];
+                        break;
+                case FS_ITEM_SIZE:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_RECT:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_OBJECT:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_POINT:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_RANGE:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+                case FS_ITEM_BOOL:
+                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                        break;
+
+                default:
+                        break;
+                }
+        }
+        else {
+                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+        }
+        return view;
+}
 @end

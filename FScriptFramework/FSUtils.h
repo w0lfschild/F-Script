@@ -26,3 +26,5 @@ static inline NSSize addSizes(NSSize size1, NSSize size2)
 {
         return NSMakeSize(size1.width + size2.width, size1.height + size2.height);
 }
+@class FSInterpreterResult;
+BOOL checkInterpreterResult(FSInterpreterResult *result);
