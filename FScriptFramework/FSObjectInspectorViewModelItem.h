@@ -32,4 +32,6 @@ typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
 @property (readonly,nonatomic) NSArray *enumNames;
 @property (readonly,nonatomic) NSArray *enumValues;
 @property (nonatomic) NSInteger numValue;
+@property (nonatomic,copy) NSString *getter;
+@property (nonatomic,copy) NSString *setter;
 @end
