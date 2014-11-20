@@ -147,6 +147,31 @@
                                                     <constraint firstAttribute="centerY" secondItem="mJO-CY-C0n" secondAttribute="centerY" id="yTy-av-usu"/>
                                                 </constraints>
                                             </tableCellView>
+                                            <tableCellView identifier="ObjectInspectorStringView" id="4il-w8-Af3">
+                                                <rect key="frame" x="252" y="22" width="188" height="19"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUv-5e-WBJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="qWJ-P5-2xZ"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="yoE-Jw-6IS">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="4il-w8-Af3" name="value" keyPath="objectValue.value" id="03J-0D-mbM"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="UUv-5e-WBJ" secondAttribute="centerY" id="KhP-Cz-3MN"/>
+                                                    <constraint firstItem="UUv-5e-WBJ" firstAttribute="leading" secondItem="4il-w8-Af3" secondAttribute="leading" id="lGA-8e-PpE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UUv-5e-WBJ" secondAttribute="trailing" constant="3" id="s2c-89-m2p"/>
+                                                </constraints>
+                                            </tableCellView>
                                             <tableCellView identifier="ObjectInspectorEnumView" id="E5U-Ew-SC3">
                                                 <rect key="frame" x="252" y="43" width="188" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

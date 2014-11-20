@@ -206,6 +206,11 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 
 #define ADD_COLOR_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) if (OBJECT) { ADD_COLOR(OBJECT,GETTER,SETTER,LABEL); }
 
+#define ADD_STRING(OBJECT, GETTER, SETTER, LABEL) \
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, NSString.class, LABEL)
+
+#define ADD_STRING_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) if (OBJECT) { ADD_COLOR(OBJECT,GETTER,SETTER,LABEL); }
+
 #define ADD_BOOL(B, GETTER, SETTER, LABEL) \
         ADD_VALUE([FSBoolean booleanWithBool:(B)], FS_ITEM_BOOL, GETTER, SETTER, nil, nil, LABEL);
 
@@ -689,8 +694,8 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_OBJECT_NOT_NIL([o delegate], delegate, setDelegate, @"Delegate")
         ADD_OBJECT_NOT_NIL([o helpAnchor], helpAnchor, setHelpAnchor, @"Help anchor")
         ADD_OBJECT([o icon], icon, setIcon, @"Icon")
-        ADD_OBJECT([o informativeText], informativeText, setInformativeText, @"Informative text")
-        ADD_OBJECT([o messageText], messageText, setMessageText, @"Message text")
+        ADD_STRING([o informativeText], informativeText, setInformativeText, @"Informative text")
+        ADD_STRING([o messageText], messageText, setMessageText, @"Message text")
         ADD_BOOL([o showsHelp], showsHelp, setshowsHelp, @"Shows help")
         ADD_BOOL([o showsSuppressionButton], showsSuppressionButton, setshowsSuppressionButton, @"Shows suppression button")
         ADD_OBJECT([o suppressionButton], suppressionButton, setSuppressionButton, @"Suppression button")
@@ -805,7 +810,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         NSButtonCell* o = object;
                         ADD_CLASS_LABEL(@"NSButtonCell Info");
                         ADD_OBJECT_NOT_NIL([o alternateImage], alternateImage, setAlternateImage, @"Alternate image")
-                        ADD_OBJECT([o alternateTitle], alternateTitle, setAlternateTitle, @"Alternate title")
+                        ADD_STRING([o alternateTitle], alternateTitle, setAlternateTitle, @"Alternate title")
                         ADD_OBJECT([o attributedAlternateTitle], attributedAlternateTitle, setAttributedAlternateTitle, @"Attributed alternate title")
                         ADD_OBJECT([o attributedTitle], attributedTitle, setAttributedTitle, @"Attributed title")
                         ADD_COLOR([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
@@ -821,7 +826,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], showsBorderOnlyWhileMouseInside, setshowsBorderOnlyWhileMouseInside, @"Shows border only while mouse inside")
                         ADD_ENUM(CellStyleMask, [o showsStateBy], showsStateBy, setshowsStateBy, @"Shows state by")
                         ADD_OBJECT_NOT_NIL([o sound], sound, setSound, @"Sound")
-                        ADD_OBJECT([o title], title, setTitle, @"Title")
+                        ADD_STRING([o title], title, setTitle, @"Title")
                 }
                 else if ([object isKindOfClass:[NSDatePickerCell class]]) {
                         NSDatePickerCell* o = object;
@@ -846,7 +851,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_CLASS_LABEL(@"NSFormCell Info");
                         ADD_OBJECT([o attributedTitle], attributedTitle, setAttributedTitle, @"Attributed title")
                         ADD_OBJECT_NOT_NIL([o placeholderAttributedString], placeholderAttributedString, setPlaceholderAttributedString, @"Placeholder attributed string")
-                        ADD_OBJECT_NOT_NIL([o placeholderString], placeholderString, setPlaceholderString, @"Placeholder string")
+                        ADD_STRING_NOT_NIL([o placeholderString], placeholderString, setPlaceholderString, @"Placeholder string")
                         ADD_ENUM(TextAlignment, [o titleAlignment], titleAlignment, settitleAlignment, @"Title alignment")
                         ADD_ENUM(WritingDirection, [o titleBaseWritingDirection], titleBaseWritingDirection, settitleBaseWritingDirection, @"Title base writing direction")
                         ADD_OBJECT([o titleFont], titleFont, setTitleFont, @"Title font")
@@ -874,7 +879,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_OBJECTS([o pathComponentCells], @"Path component cells")
                         ADD_ENUM(PathStyle, [o pathStyle], pathStyle, setpathStyle, @"Path style")
                         ADD_OBJECT_NOT_NIL([o placeholderAttributedString], placeholderAttributedString, setPlaceholderAttributedString, @"Placeholder attributed string")
-                        ADD_OBJECT_NOT_NIL([o placeholderString], placeholderString, setPlaceholderString, @"Placeholder string")
+                        ADD_STRING_NOT_NIL([o placeholderString], placeholderString, setPlaceholderString, @"Placeholder string")
                         ADD_OBJECT_NOT_NIL([o URL], URL, setURL, @"URL")
                 }
                 else if ([object isKindOfClass:[NSSegmentedCell class]]) {
@@ -964,7 +969,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_ENUM(TextFieldBezelStyle, [o bezelStyle], bezelStyle, setbezelStyle, @"Bezel style")
                         ADD_BOOL([o drawsBackground], drawsBackground, setdrawsBackground, @"Draws background")
                         ADD_OBJECT_NOT_NIL([o placeholderAttributedString], placeholderAttributedString, setPlaceholderAttributedString, @"Placeholder attributed string")
-                        ADD_OBJECT_NOT_NIL([o placeholderString], placeholderString, setPlaceholderString, @"Placeholder string")
+                        ADD_STRING_NOT_NIL([o placeholderString], placeholderString, setPlaceholderString, @"Placeholder string")
                         ADD_COLOR([o textColor], textColor, setTextColor, @"Text color")
                 }
         }
@@ -1022,11 +1027,11 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_BOOL([o isScrollable], scrollable, setisScrollable, @"Is scrollable")
         ADD_BOOL([o isSelectable], selectable, setisSelectable, @"Is selectable")
         if ([[o keyEquivalent] length] != 0)
-                ADD_OBJECT([o keyEquivalent], keyEquivalent, setKeyEquivalent, @"Key equivalent")
+                ADD_STRING([o keyEquivalent], keyEquivalent, setKeyEquivalent, @"Key equivalent")
         ADD_ENUM(LineBreakMode, [o lineBreakMode], lineBreakMode, setlineBreakMode, @"Line break mode")
         ADD_OBJECT_NOT_NIL([o menu], menu, setMenu, @"Menu")
         if ([[o mnemonic] length] != 0)
-                ADD_OBJECT([o mnemonic], mnemonic, setMnemonic, @"Mnemonic")
+                ADD_STRING([o mnemonic], mnemonic, setMnemonic, @"Mnemonic")
         if ([o mnemonicLocation] != NSNotFound)
                 ADD_NUMBER([o mnemonicLocation], mnemonicLocation, setMnemonicLocation, @"Mnemonic location")
         ADD_ENUM(CellStateValue, [o nextState], nextState, setnextState, @"Next state")
@@ -1734,7 +1739,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_BOOL([o menuChangedMessagesEnabled], menuChangedMessagesEnabled, setmenuChangedMessagesEnabled, @"Menu changed messages enabled")
         ADD_BOOL([o showsStateColumn], showsStateColumn, setshowsStateColumn, @"Shows state column")
         ADD_OBJECT_NOT_NIL([o supermenu], supermenu, setSupermenu, @"Supermenu")
-        ADD_OBJECT([o title], title, setTitle, @"Title")
+        ADD_STRING([o title], title, setTitle, @"Title")
 }
 
 - (void)addNSMenuItem:(id)object
@@ -1763,7 +1768,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_OBJECT_NOT_NIL([o submenu], submenu, setSubmenu, @"Submenu")
         ADD_NUMBER([o tag], tag, setTag, @"Tag")
         ADD_OBJECT_NOT_NIL([o target], target, setTarget, @"Target")
-        ADD_OBJECT([o title], title, setTitle, @"Title")
+        ADD_STRING([o title], title, setTitle, @"Title")
         ADD_OBJECT_NOT_NIL([o toolTip], toolTip, setToolTip, @"Tool tip")
         ADD_OBJECT([o userKeyEquivalent], userKeyEquivalent, setUserKeyEquivalent, @"User key equivalent")
         ADD_OBJECT_NOT_NIL([o view], view, setView, @"View")
@@ -1947,7 +1952,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_OBJECT_NOT_NIL([o nibBundle], nibBundle, setNibBundle, @"Nib bundle")
                 ADD_OBJECT_NOT_NIL([o nibName], nibName, setNibName, @"Nib name")
                 ADD_OBJECT_NOT_NIL([o representedObject], representedObject, setRepresentedObject, @"Represented object")
-                ADD_OBJECT_NOT_NIL([o title], title, setTitle, @"Title")
+                ADD_STRING_NOT_NIL([o title], title, setTitle, @"Title")
                 ADD_OBJECT_NOT_NIL([o view], view, setView, @"View")
         }
         else if ([object isKindOfClass:[NSWindow class]]) {
@@ -2048,8 +2053,8 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_OBJECT_NOT_NIL([o menu], menu, setMenu, @"Menu")
         ADD_OBJECT([o statusBar], statusBar, setStatusBar, @"Status bar")
         ADD_OBJECT([o target], target, setTarget, @"Target")
-        ADD_OBJECT_NOT_NIL([o title], title, setTitle, @"Title")
-        ADD_OBJECT_NOT_NIL([o toolTip], toolTip, setToolTip, @"Tool tip")
+        ADD_STRING_NOT_NIL([o title], title, setTitle, @"Title")
+        ADD_STRING_NOT_NIL([o toolTip], toolTip, setToolTip, @"Tool tip")
         ADD_OBJECT_NOT_NIL([o view], view, setView, @"View")
 }
 
@@ -2217,11 +2222,11 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_BOOL([o groupsByEvent], groupsByEvent, setgroupsByEvent, @"Groups by event")
         ADD_BOOL([o isUndoRegistrationEnabled], undoRegistrationEnabled, setisUndoRegistrationEnabled, @"Is undo registration enabled")
         ADD_NUMBER([o levelsOfUndo], levelsOfUndo, setLevelsOfUndo, @"Levels of undo")
-        ADD_OBJECT_NOT_NIL([o redoActionName], redoActionName, setRedoActionName, @"Redo action name")
-        ADD_OBJECT_NOT_NIL([o redoMenuItemTitle], redoMenuItemTitle, setRedoMenuItemTitle, @"Redo menu item title")
+        ADD_STRING_NOT_NIL([o redoActionName], redoActionName, setRedoActionName, @"Redo action name")
+        ADD_STRING_NOT_NIL([o redoMenuItemTitle], redoMenuItemTitle, setRedoMenuItemTitle, @"Redo menu item title")
         ADD_OBJECTS([o runLoopModes], @"Run loop modes")
-        ADD_OBJECT_NOT_NIL([o undoActionName], undoActionName, setUndoActionName, @"Undo action name")
-        ADD_OBJECT_NOT_NIL([o undoMenuItemTitle], undoMenuItemTitle, setUndoMenuItemTitle, @"Undo menu item title")
+        ADD_STRING_NOT_NIL([o undoActionName], undoActionName, setUndoActionName, @"Undo action name")
+        ADD_STRING_NOT_NIL([o undoMenuItemTitle], undoMenuItemTitle, setUndoMenuItemTitle, @"Undo menu item title")
 }
 
 - (void)addNSATSTypesetter:(id)object
@@ -2260,7 +2265,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_NUMBER([o cornerRadius], cornerRadius, setCornerRadius, @"Corner radius")
                 ADD_COLOR([o fillColor], fillColor, setFillColor, @"Fill color")
                 ADD_BOOL([o isTransparent], transparent, setisTransparent, @"Is transparent")
-                ADD_OBJECT([o title], title, setTitle, @"Title")
+                ADD_STRING([o title], title, setTitle, @"Title")
                 ADD_OBJECT([o titleCell], titleCell, setTitleCell, @"Title cell")
                 ADD_OBJECT([o titleFont], titleFont, setTitleFont, @"Title font")
                 ADD_ENUM(TitlePosition, [o titlePosition], titlePosition, settitlePosition, @"Title position")
@@ -2492,7 +2497,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_BOOL([o postsFrameChangedNotifications], postsFrameChangedNotifications, setpostsFrameChangedNotifications, @"Posts frame changed notifications")
         ADD_OBJECT([o previousKeyView], previousKeyView, setPreviousKeyView, @"Previous key view")
         ADD_OBJECT([o previousValidKeyView], previousValidKeyView, setPreviousValidKeyView, @"Previous valid key view")
-        ADD_OBJECT([o printJobTitle], printJobTitle, setPrintJobTitle, @"Print job title")
+        ADD_STRING([o printJobTitle], printJobTitle, setPrintJobTitle, @"Print job title")
         ADD_OBJECTS([o registeredDraggedTypes], @"Registered dragged types")
         ADD_BOOL([o shouldDrawColor], shouldDrawColor, setshouldDrawColor, @"Should draw color")
         ADD_NUMBER([o tag], tag, setTag, @"Tag")
@@ -2547,6 +2552,8 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                          setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setLabel:newValue forSegment:i];}
                       withLabel:[NSString stringWithFormat:@"Label for segment %ld", (long)i]
                        toMatrix:m
+                     enumBiDict:nil
+                     valueClass:NSString.class
                          notNil:YES];
                 [self addObject:[o menuForSegment:i]
                       valueType:FS_ITEM_OBJECT
@@ -2573,6 +2580,8 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                                  setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedCell*)obj setToolTip:newValue forSegment:i];}
                               withLabel:[NSString stringWithFormat:@"ToolTip for segment %ld", (long)i]
                                toMatrix:m
+                             enumBiDict:nil
+                             valueClass:NSString.class
                                      notNil:YES];
                 }
                 if ([o widthForSegment:i] != 0) {
@@ -2643,7 +2652,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_CLASS_LABEL(@"NSButton Info");
                         ADD_BOOL([o allowsMixedState], allowsMixedState, setallowsMixedState, @"Allows mixed state")
                         ADD_OBJECT_NOT_NIL([o alternateImage], alternateImage, setAlternateImage, @"Alternate image")
-                        ADD_OBJECT([o alternateTitle], alternateTitle, setAlternateTitle, @"Alternate title")
+                        ADD_STRING([o alternateTitle], alternateTitle, setAlternateTitle, @"Alternate title")
                         ADD_OBJECT([o attributedAlternateTitle], attributedAlternateTitle, setAttributedAlternateTitle, @"Attributed alternate title")
                         ADD_OBJECT([o attributedTitle], attributedTitle, setAttributedTitle, @"Attributed title")
                         ADD_ENUM(BezelStyle, [o bezelStyle], bezelStyle, setbezelStyle, @"Bezel style")
@@ -2656,7 +2665,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], showsBorderOnlyWhileMouseInside, setshowsBorderOnlyWhileMouseInside, @"Shows border only while mouse inside")
                         ADD_OBJECT_NOT_NIL([o sound], sound, setSound, @"Sound")
                         ADD_ENUM(CellStateValue, [o state], state, setstate, @"State")
-                        ADD_OBJECT([o title], title, setTitle, @"Title")
+                        ADD_STRING([o title], title, setTitle, @"Title")
                 }
                 else if ([object isKindOfClass:[NSColorWell class]]) {
                         NSColorWell* o = object;
@@ -2812,7 +2821,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_NUMBER([o minValue], minValue, setMinValue, @"Min value")
                         ADD_NUMBER([o numberOfTickMarks], numberOfTickMarks, setNumberOfTickMarks, @"Number of tick marks")
                         ADD_OBJECT(objectFromTickMarkPosition([o tickMarkPosition], [(NSSlider*)o isVertical] == 1), tickMarkPosition, setTickMarkPosition, @"Tick mark position")
-                        ADD_OBJECT([o title], title, setTitle, @"title")
+                        ADD_STRING([o title], title, setTitle, @"title")
                 }
                 else if ([object isKindOfClass:[NSTableView class]]) {
                         if ([object isKindOfClass:[NSOutlineView class]]) {
@@ -2985,8 +2994,8 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                                 ADD_OBJECT([o filename], filename, setFilename, @"Filename")
                                 ADD_BOOL([o isExpanded], expanded, setisExpanded, @"Is expanded")
                                 ADD_BOOL([o isExtensionHidden], extensionHidden, setisExtensionHidden, @"Is extension hidden")
-                                ADD_OBJECT([o message], message, setMessage, @"Message")
-                                ADD_OBJECT([o nameFieldLabel], nameFieldLabel, setNameFieldLabel, @"nameFieldLabel")
+                                ADD_STRING([o message], message, setMessage, @"Message")
+                                ADD_STRING([o nameFieldLabel], nameFieldLabel, setNameFieldLabel, @"nameFieldLabel")
                                 ADD_OBJECT([o prompt], prompt, setPrompt, @"Prompt")
                                 ADD_BOOL([o treatsFilePackagesAsDirectories], treatsFilePackagesAsDirectories, settreatsFilePackagesAsDirectories, @"Treats file packages as directories")
                                 ADD_OBJECT([o URL], URL, setURL, @"URL")
@@ -3058,7 +3067,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_SIZE([o maxSize], @"Max size")
                 ADD_SIZE([o minSize], @"Min size")
                 ADD_OBJECT_NOT_NIL([o miniwindowImage], miniwindowImage, setMiniwindowImage, @"Miniwindow image")
-                ADD_OBJECT([o miniwindowTitle], miniwindowTitle, setMiniwindowTitle, @"Miniwindow title")
+                ADD_STRING([o miniwindowTitle], miniwindowTitle, setMiniwindowTitle, @"Miniwindow title")
                 ADD_OBJECT_NOT_NIL([o parentWindow], parentWindow, setParentWindow, @"Parent window")
                 ADD_ENUM(WindowBackingLocation, [o preferredBackingLocation], preferredBackingLocation, setpreferredBackingLocation, @"Preferred backing location")
                 ADD_BOOL([o preservesContentDuringLiveResize], preservesContentDuringLiveResize, setpreservesContentDuringLiveResize, @"Preserves content during live resize")
@@ -3070,7 +3079,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_BOOL([o showsResizeIndicator], showsResizeIndicator, setshowsResizeIndicator, @"Shows resize indicator")
                 ADD_BOOL([o showsToolbarButton], showsToolbarButton, setshowsToolbarButton, @"Shows toolbar button")
                 ADD_ENUM(WindowMask, [o styleMask], styleMask, setstyleMask, @"Style mask")
-                ADD_OBJECT([o title], title, setTitle, @"Title")
+                ADD_STRING([o title], title, setTitle, @"Title")
                 ADD_OBJECT_NOT_NIL([o toolbar], toolbar, setToolbar, @"Toolbar")
                 ADD_NUMBER([o userSpaceScaleFactor], userSpaceScaleFactor, setUserSpaceScaleFactor, @"User space scale factor")
                 ADD_BOOL([o viewsNeedDisplay], viewsNeedDisplay, setviewsNeedDisplay, @"Views need display")

@@ -113,6 +113,9 @@
         if (class == NSColor.class) {
                 return @"ObjectInspectorColorView";
         }
+        else if (class == NSString.class) {
+                return @"ObjectInspectorStringView";
+        }
         return @"ObjectInspectorReadOnlyView";
 }
 
