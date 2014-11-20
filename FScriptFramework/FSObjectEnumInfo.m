@@ -92,22 +92,25 @@
 // Define a lookup function 'objectTo<Enumeration>', for flag enumerations (can take a logical OR of enumeration values)
 #define OPTSTOOBJ(_name, ...)                                                                                                                                      \
         OPTSDICT(_name, __VA_ARGS__)                                                                                                                               \
-        id objectFrom##_name(NS##_name mask)                                                                                                                       \
+        id objectFrom##_name(NS##_name opts)                                                                                                                       \
         {                                                                                                                                                          \
-                if (_name##Mask == 0 || (mask & ~(_name##Mask))) {                                                                                                 \
-                        return [FSNumber numberWithDouble:mask];                                                                                                   \
-                }                                                                                                                                                  \
-                CHBidirectionalDictionary* dict = _name##Bimap();                                                                                                  \
-                NSMutableArray* result = [NSMutableArray array];                                                                                                   \
-                for (NSNumber * opt in dict.allKeys) {                                                                                                             \
-                        if (mask & opt.unsignedIntegerValue) {                                                                                                     \
-                                [result addObject:dict[opt]];                                                                                                      \
-                        }                                                                                                                                          \
-                }                                                                                                                                                  \
-                return result.count ? [FSNamedNumber namedNumberWithDouble:mask name:[result componentsJoinedByString:@" + "]] : [FSNumber numberWithDouble:mask]; \
+                return objectFromOptions(opts, _name##Bimap(), _name##Mask);                                                                                                  \
         }                                                                                                                                                          \
         BIMAP_CLASS_METHODS_DEFN(_name)
 
+id objectFromOptions(NSUInteger opts, CHBidirectionalDictionary *dict, NSUInteger mask)
+{                                                                                                                                                          
+        if (mask == 0 || (opts & ~mask)) {
+                return [FSNumber numberWithDouble:opts];                                                                                                   
+        }                                                                                                                                                  
+        NSMutableArray* result = [NSMutableArray array];
+        for (NSNumber * opt in dict.allKeys) {                                                                                                             
+                if (opts & opt.unsignedIntegerValue) {                                                                                                     
+                        [result addObject:dict[opt]];                                                                                                      
+                }                                                                                                                                          
+        }                                                                                                                                                  
+        return result.count ? [FSNamedNumber namedNumberWithDouble:opts name:[result componentsJoinedByString:@" + "]] : [FSNumber numberWithDouble:opts]; 
+}
 @implementation FSObjectEnumInfo
 
 ENUMTOOBJ(AnimationBlockingMode,

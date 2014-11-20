@@ -12,6 +12,7 @@
 #import <objc/objc.h>
 #import <AvailabilityMacros.h>
 
+
 @interface FSObjectInspectorViewController ()
 @property (nonatomic) BOOL hasAwoken;
 
@@ -48,7 +49,6 @@
         scrollViewSize.height += NSHeight(self.outlineView.headerView.bounds);
         return scrollViewSize;
 }
-
 /*
  *
  *
@@ -66,39 +66,40 @@
         FSObjectInspectorViewModelItem* viewModel = [item representedObject];
         if ([viewModel respondsToSelector:@selector(valueType)]) {
                 switch (viewModel.valueType) {
-                case FS_ITEM_HEADER:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_ENUM:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
-                        break;
-                case FS_ITEM_OPTIONS:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_NUMBER:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorNumberView" owner:self];
-                        break;
-                case FS_ITEM_SIZE:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_RECT:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_OBJECT:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_POINT:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_RANGE:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
-                        break;
-                case FS_ITEM_BOOL:
-                        view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
-                        break;
-
-                default:
-                        break;
+                        case FS_ITEM_HEADER:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                break;
+                        case FS_ITEM_ENUM:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
+                                break;
+                        case FS_ITEM_OPTIONS:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                break;
+                        case FS_ITEM_NUMBER:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorNumberView" owner:self];
+                                break;
+                        case FS_ITEM_SIZE:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                break;
+                        case FS_ITEM_RECT:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                break;
+                        case FS_ITEM_OBJECT:
+                                view = [self.outlineView makeViewWithIdentifier:[self _viewIdentifierForValueClass:viewModel.valueClass]
+                                                                          owner:self];
+                                break;
+                        case FS_ITEM_POINT:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                break;
+                        case FS_ITEM_RANGE:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                break;
+                        case FS_ITEM_BOOL:
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
+                                break;
+                                
+                        default:
+                                break;
                 }
         }
         else {
@@ -106,4 +107,33 @@
         }
         return view;
 }
+
+-(NSString*)_viewIdentifierForValueClass:(Class)class
+{
+        if (class == NSColor.class) {
+                return @"ObjectInspectorColorView";
+        }
+        return @"ObjectInspectorReadOnlyView";
+}
+
+-(IBAction)setColor:(id)sender
+{
+        NSColor *color = [(NSColorPanel*)sender color];
+        self.selectedViewModelItem.value = color;
+}
+
+-(void)showColorPanel:(id)sender
+{
+        NSInteger row = [self.outlineView rowForView:sender];
+        if (row >= 0) {
+                [NSColorPanel.sharedColorPanel orderFront:self];
+                NSColorPanel.sharedColorPanel.target = self;
+                NSColorPanel.sharedColorPanel.action = @selector(setColor:);
+                
+                self.selectedViewModelItem = [[self.outlineView itemAtRow:row] representedObject];
+                
+        }
+        
+}
+
 @end

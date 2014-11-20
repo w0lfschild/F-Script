@@ -9,6 +9,24 @@
 
 static NSPoint sTopLeftPoint = { 0, 0 }; // Used for cascading windows.
 static BOOL sIsFirstWindow = YES;
+static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
+
+@interface NSTreeNode (FSTraversal)
+-(void)fs_visitNodesWithBlock:(void(^)(NSTreeNode*node))block;
+@end
+@implementation NSTreeNode (FSTraversal)
+-(void)fs_visitNodesWithBlock:(void(^)(NSTreeNode*node))block
+{
+        assert(block && "block cannot be nil");
+        block(self);
+        for (NSTreeNode *child in self.childNodes) {
+                [child fs_visitNodesWithBlock:block];
+        }
+}
+@end
+
+
+
 @interface FSDetailedObjectInspector ()
 @property (strong,readwrite,nonatomic) NSWindow *window;
 @property (strong,nonatomic) FSObjectInspectorViewController *viewController;
@@ -56,6 +74,11 @@ static BOOL sIsFirstWindow = YES;
 }
 
 
+-(void)dealloc
+{
+        [self _unwatchItems];
+}
+
 - (void)updateAction:(id)sender
 {
         [self.window setTitle:[NSString stringWithFormat:@"Inspecting %@ at address %p", descriptionForFSMessage(self.inspectedObject), self.inspectedObject]];
@@ -67,5 +90,64 @@ static BOOL sIsFirstWindow = YES;
 {
 }
 
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - Properties
+/*==================================================================================================
+ */
+
+
+-(void)setRootViewModelItem:(FSObjectInspectorViewModelItem *)rootViewModelItem
+{
+        [self _unwatchItems];
+        _rootViewModelItem = rootViewModelItem;
+        [self _watchItems];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+        if (context == TREE_OBSERVATION_CONTEXT) {
+                NSLog(@"Value changed for %@. Change = %@", object, change);
+                id target = self.inspectedObject;
+                FSObjectInspectorViewModelItem *item = object;
+                if (item.setter) {
+                        if (item.valueType == FS_ITEM_OBJECT) {
+                                item.setter(target, item.value, item);
+                                NSLog(@"[%@ setValue:%@ forKey:%@",target,item.value,item.getter);
+                        }
+                        else {
+                                item.setter(target, @(item.numValue), item);
+                                NSLog(@"[%@ setValue:%@ forKey:%@",target,@(item.numValue),item.getter);
+                        }
+                }
+        }
+}
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - Utilities
+/*==================================================================================================
+ */
+
+
+-(void)_watchItems
+{
+        [self.rootViewModelItem fs_visitNodesWithBlock:^(NSTreeNode *node) {
+                [node addObserver:self
+                       forKeyPath:@"value"
+                          options:0
+                          context:TREE_OBSERVATION_CONTEXT];
+        }];
+}
+-(void)_unwatchItems
+{
+        [self.rootViewModelItem fs_visitNodesWithBlock:^(NSTreeNode *node) {
+                [node removeObserver:self
+                          forKeyPath:@"value" ];
+        }];
+}
 
 @end

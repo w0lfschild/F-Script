@@ -6,7 +6,7 @@
 @class FSObjectInspectorViewModelItem;
 
 @interface FSDetailedObjectInspector : NSObject <NSWindowDelegate>
-@property (weak,nonatomic) id inspectedObject;
+@property (strong,nonatomic) id inspectedObject;
 @property (readonly,nonatomic) NSWindow *window;
 + (FSDetailedObjectInspector *)detailedObjectInspectorWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root;
 - (FSDetailedObjectInspector *)initWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root;

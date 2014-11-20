@@ -21,7 +21,8 @@ typedef id NSMergePolicyMarker;
 #define BIMAP_CLASS_METHODS_DECL(_name)                 \
         +(id)objectFor##_name : (NS##_name)mask;        \
         +(CHBidirectionalDictionary*)optionsFor##_name; \
-        extern id objectFrom##_name(NS##_name _name);
+        extern id objectFrom##_name(NS##_name _name);   \
+        extern const NSUInteger _name##Mask ;
 
 @interface FSObjectEnumInfo : NSObject
 
@@ -127,3 +128,5 @@ BIMAP_CLASS_METHODS_DECL(WritingDirection);
 id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertical);
 
 @end
+
+id objectFromOptions(NSUInteger opts, CHBidirectionalDictionary *dict, NSUInteger mask);

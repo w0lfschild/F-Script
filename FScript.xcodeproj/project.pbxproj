@@ -2731,6 +2731,24 @@
 		ED3004F71A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */; };
 		ED3004F81A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */; };
 		ED3004F91A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */; };
+		ED3CB6411A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6421A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6431A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6441A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6451A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6461A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6471A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6481A1E5B3300771077 /* FSColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3CB63F1A1E5B3300771077 /* FSColorWell.h */; };
+		ED3CB6491A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB64A1A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB64B1A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB64C1A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB64D1A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB64E1A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB64F1A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; };
+		ED3CB6501A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED3CB6511A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED3CB6521A1E5B9100771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		ED8222D61A194FD600C42C72 /* FSObjectInspectorViewModelItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */; };
 		ED8222D71A194FD600C42C72 /* FSObjectInspectorViewModelItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */; };
 		ED8222D81A194FD600C42C72 /* FSObjectInspectorViewModelItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */; };
@@ -4203,6 +4221,8 @@
 		ED3004E51A1A86EF00675D94 /* FSObjectInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorViewController.h; sourceTree = "<group>"; };
 		ED3004E61A1A86EF00675D94 /* FSObjectInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorViewController.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectInspectorViewController.xib; sourceTree = "<group>"; };
+		ED3CB63F1A1E5B3300771077 /* FSColorWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSColorWell.h; sourceTree = "<group>"; };
+		ED3CB6401A1E5B3300771077 /* FSColorWell.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSColorWell.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorViewModelItem.h; sourceTree = "<group>"; };
 		ED8222D51A194FD600C42C72 /* FSObjectInspectorViewModelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorViewModelItem.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED8222E51A19554F00C42C72 /* FSObjectEnumInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectEnumInfo.h; sourceTree = "<group>"; };
@@ -5358,6 +5378,8 @@
 				ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */,
 				EDC2C8EE1A1AA34D00942777 /* FSObjectInspectorBackgroundView.h */,
 				EDC2C8EF1A1AA34D00942777 /* FSObjectInspectorBackgroundView.m */,
+				ED3CB63F1A1E5B3300771077 /* FSColorWell.h */,
+				ED3CB6401A1E5B3300771077 /* FSColorWell.m */,
 			);
 			name = "Object Inspector";
 			sourceTree = "<group>";
@@ -5456,6 +5478,7 @@
 				8F6DA5FB055FC6980050409A /* FSArchiver.h in Headers */,
 				8F6DA5FC055FC6980050409A /* FSFlight.h in Headers */,
 				8F6DA5FD055FC6980050409A /* FSBoolean.h in Headers */,
+				ED3CB6481A1E5B3300771077 /* FSColorWell.h in Headers */,
 				8F6DA5FE055FC6980050409A /* FSBooleanPrivate.h in Headers */,
 				8F6DA600055FC6980050409A /* FScriptFunctions.h in Headers */,
 				8F6DA601055FC6980050409A /* FSInterpreter.h in Headers */,
@@ -5649,6 +5672,7 @@
 				8F6DA819055FC70C0050409A /* FSInterpreterViewIBHeader.h in Headers */,
 				8F6DA81A055FC70C0050409A /* FSNSArray.h in Headers */,
 				8F6DA81B055FC70C0050409A /* FSNSArrayPrivate.h in Headers */,
+				ED3CB6411A1E5B3300771077 /* FSColorWell.h in Headers */,
 				8F6DA81C055FC70C0050409A /* FSNSDate.h in Headers */,
 				EDFB30101A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				8F6DA81D055FC70C0050409A /* FSNSDictionary.h in Headers */,
@@ -5890,6 +5914,7 @@
 				8F7D7DBF058E32CD00F1B8A8 /* FSReplacementForCoderForNilInArray.h in Headers */,
 				8F0E3B82059F3DBB003F6CE9 /* FSNamedNumber.h in Headers */,
 				EDFB30111A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
+				ED3CB6421A1E5B3300771077 /* FSColorWell.h in Headers */,
 				8F60217205A25CDC0004EFF1 /* FSCollectionInspectorTableView.h in Headers */,
 				8F60F24B05A9FE8B00985FEC /* FSNSSet.h in Headers */,
 				EDFB30021A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
@@ -6003,6 +6028,7 @@
 				BA2231CC189FA403002C5B6A /* FSInterpreterViewIBHeader.h in Headers */,
 				BA2231CD189FA403002C5B6A /* FSNSArray.h in Headers */,
 				BA2231CE189FA403002C5B6A /* FSNSArrayPrivate.h in Headers */,
+				ED3CB6431A1E5B3300771077 /* FSColorWell.h in Headers */,
 				BA2231CF189FA403002C5B6A /* FSNSDate.h in Headers */,
 				EDFB30121A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				BA2231D0189FA403002C5B6A /* FSNSDictionary.h in Headers */,
@@ -6182,6 +6208,7 @@
 				BA22338C189FA412002C5B6A /* FSInterpreterViewIBHeader.h in Headers */,
 				BA22338D189FA412002C5B6A /* FSNSArray.h in Headers */,
 				BA22338E189FA412002C5B6A /* FSNSArrayPrivate.h in Headers */,
+				ED3CB6451A1E5B3300771077 /* FSColorWell.h in Headers */,
 				BA22338F189FA412002C5B6A /* FSNSDate.h in Headers */,
 				EDFB30141A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
 				BA223390189FA412002C5B6A /* FSNSDictionary.h in Headers */,
@@ -6423,6 +6450,7 @@
 				BA223581189FA429002C5B6A /* FSReplacementForCoderForNilInArray.h in Headers */,
 				BA223582189FA429002C5B6A /* FSNamedNumber.h in Headers */,
 				EDFB30131A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
+				ED3CB6441A1E5B3300771077 /* FSColorWell.h in Headers */,
 				BA223583189FA429002C5B6A /* FSCollectionInspectorTableView.h in Headers */,
 				BA223584189FA429002C5B6A /* FSNSSet.h in Headers */,
 				EDFB30041A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
@@ -6598,6 +6626,7 @@
 				BA2236C9189FA431002C5B6A /* FSReplacementForCoderForNilInArray.h in Headers */,
 				BA2236CA189FA431002C5B6A /* FSNamedNumber.h in Headers */,
 				EDFB30151A188B4E002C8DD7 /* CHMutableDictionary.h in Headers */,
+				ED3CB6461A1E5B3300771077 /* FSColorWell.h in Headers */,
 				BA2236CB189FA431002C5B6A /* FSCollectionInspectorTableView.h in Headers */,
 				BA2236CC189FA431002C5B6A /* FSNSSet.h in Headers */,
 				EDFB30061A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
@@ -6711,6 +6740,7 @@
 				EDC2C92A1A1AA50D00942777 /* FSInterpreterViewIBHeader.h in Headers */,
 				EDC2C92B1A1AA50D00942777 /* FSNSArray.h in Headers */,
 				EDC2C92C1A1AA50D00942777 /* FSNSArrayPrivate.h in Headers */,
+				ED3CB6471A1E5B3300771077 /* FSColorWell.h in Headers */,
 				EDC2C92D1A1AA50D00942777 /* FSNSDate.h in Headers */,
 				EDC2C92E1A1AA50D00942777 /* CHMutableDictionary.h in Headers */,
 				EDC2C92F1A1AA50D00942777 /* FSNSDictionary.h in Headers */,
@@ -7722,6 +7752,7 @@
 				8F0CBC010BDB94AD002B0AD7 /* FSNSArray.m in Sources */,
 				ED8222F51A19554F00C42C72 /* FSObjectEnumInfo.m in Sources */,
 				8F0CBC020BDB94AD002B0AD7 /* FSNSDate.m in Sources */,
+				ED3CB6511A1E5B3300771077 /* FSColorWell.m in Sources */,
 				8F0CBC030BDB94AD002B0AD7 /* FSNSDictionary.m in Sources */,
 				8F0CBC040BDB94AD002B0AD7 /* FSNSMutableString.m in Sources */,
 				8F0CBC050BDB94AD002B0AD7 /* FSNSNumber.m in Sources */,
@@ -7914,6 +7945,7 @@
 				EDFB300E1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
 				8F6DA6B1055FC6980050409A /* FSObjectBrowserButtonsInspector.m in Sources */,
 				8F6DA6B2055FC6980050409A /* Pointer.m in Sources */,
+				ED3CB6501A1E5B3300771077 /* FSColorWell.m in Sources */,
 				8F6DA6B3055FC6980050409A /* FSIdentifierFormatter.m in Sources */,
 				8F6DA6B4055FC6980050409A /* FSObjectFormatter.m in Sources */,
 				8F6DA6B7055FC6980050409A /* FSKeyedUnarchiver.m in Sources */,
@@ -8089,6 +8121,7 @@
 				8F6DA8D4055FC70C0050409A /* FSConstantListBuilder.m in Sources */,
 				8F6DA8D5055FC70C0050409A /* FSImageInspector.m in Sources */,
 				8F6DA8D6055FC70C0050409A /* FSNSImage.m in Sources */,
+				ED3CB6491A1E5B3300771077 /* FSColorWell.m in Sources */,
 				EDC2C8E41A1A943600942777 /* FSDetailedObjectInspector.m in Sources */,
 				8F6DA8D7055FC70C0050409A /* FSObjectBrowserToolbarItem.m in Sources */,
 				8F6DA8D8055FC70C0050409A /* FSArrayEnumerator.m in Sources */,
@@ -8200,6 +8233,7 @@
 				8F6DA990055FC71F0050409A /* FSInterpreterResult.m in Sources */,
 				8F6DA991055FC71F0050409A /* FSInterpreterView.m in Sources */,
 				8F6DA992055FC71F0050409A /* FSNSArray.m in Sources */,
+				ED3CB64A1A1E5B3300771077 /* FSColorWell.m in Sources */,
 				8F6DA993055FC71F0050409A /* FSNSDate.m in Sources */,
 				8F6DA994055FC71F0050409A /* FSNSDictionary.m in Sources */,
 				EDFB30091A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
@@ -8402,6 +8436,7 @@
 				BA2232AB189FA403002C5B6A /* FSConstantListBuilder.m in Sources */,
 				BA2232AC189FA403002C5B6A /* FSImageInspector.m in Sources */,
 				BA2232AD189FA403002C5B6A /* FSNSImage.m in Sources */,
+				ED3CB64B1A1E5B3300771077 /* FSColorWell.m in Sources */,
 				EDC2C8E61A1A943600942777 /* FSDetailedObjectInspector.m in Sources */,
 				BA2232AE189FA403002C5B6A /* FSObjectBrowserToolbarItem.m in Sources */,
 				BA2232AF189FA403002C5B6A /* FSArrayEnumerator.m in Sources */,
@@ -8562,6 +8597,7 @@
 				BA22346B189FA412002C5B6A /* FSConstantListBuilder.m in Sources */,
 				BA22346C189FA412002C5B6A /* FSImageInspector.m in Sources */,
 				BA22346D189FA412002C5B6A /* FSNSImage.m in Sources */,
+				ED3CB64D1A1E5B3300771077 /* FSColorWell.m in Sources */,
 				EDC2C8E81A1A943600942777 /* FSDetailedObjectInspector.m in Sources */,
 				BA22346E189FA412002C5B6A /* FSObjectBrowserToolbarItem.m in Sources */,
 				BA22346F189FA412002C5B6A /* FSArrayEnumerator.m in Sources */,
@@ -8673,6 +8709,7 @@
 				BA2235F0189FA429002C5B6A /* FSInterpreterResult.m in Sources */,
 				BA2235F1189FA429002C5B6A /* FSInterpreterView.m in Sources */,
 				BA2235F2189FA429002C5B6A /* FSNSArray.m in Sources */,
+				ED3CB64C1A1E5B3300771077 /* FSColorWell.m in Sources */,
 				BA2235F3189FA429002C5B6A /* FSNSDate.m in Sources */,
 				BA2235F4189FA429002C5B6A /* FSNSDictionary.m in Sources */,
 				EDFB300B1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
@@ -8826,6 +8863,7 @@
 				BA223738189FA431002C5B6A /* FSInterpreterResult.m in Sources */,
 				BA223739189FA431002C5B6A /* FSInterpreterView.m in Sources */,
 				BA22373A189FA431002C5B6A /* FSNSArray.m in Sources */,
+				ED3CB64E1A1E5B3300771077 /* FSColorWell.m in Sources */,
 				BA22373B189FA431002C5B6A /* FSNSDate.m in Sources */,
 				BA22373C189FA431002C5B6A /* FSNSDictionary.m in Sources */,
 				EDFB300D1A188B4E002C8DD7 /* CHBidirectionalDictionary.m in Sources */,
@@ -9028,6 +9066,7 @@
 				EDC2CA171A1AA50D00942777 /* FSConstantListBuilder.m in Sources */,
 				EDC2CA181A1AA50D00942777 /* FSImageInspector.m in Sources */,
 				EDC2CA191A1AA50D00942777 /* FSNSImage.m in Sources */,
+				ED3CB64F1A1E5B3300771077 /* FSColorWell.m in Sources */,
 				EDC2CA1A1A1AA50D00942777 /* FSDetailedObjectInspector.m in Sources */,
 				EDC2CA1B1A1AA50D00942777 /* FSObjectBrowserToolbarItem.m in Sources */,
 				EDC2CA1C1A1AA50D00942777 /* FSArrayEnumerator.m in Sources */,
@@ -9139,6 +9178,7 @@
 				EDC2CBAA1A1AA52500942777 /* FSInterpreterResult.m in Sources */,
 				EDC2CBAB1A1AA52500942777 /* FSInterpreterView.m in Sources */,
 				EDC2CBAC1A1AA52500942777 /* FSNSArray.m in Sources */,
+				ED3CB6521A1E5B9100771077 /* FSColorWell.m in Sources */,
 				EDC2CBAD1A1AA52500942777 /* FSNSDate.m in Sources */,
 				EDC2CBAE1A1AA52500942777 /* FSNSDictionary.m in Sources */,
 				EDC2CBAF1A1AA52500942777 /* CHBidirectionalDictionary.m in Sources */,

@@ -19,9 +19,15 @@ typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
   FS_ITEM_POINT,
   FS_ITEM_RANGE,
   FS_ITEM_BOOL,
+  FS_ITEM_GROUP,
 };
 
+@class FSObjectInspectorViewModelItem;
 @class CHBidirectionalDictionary;
+
+typedef id(^FSGetterBlock)(id obj, FSObjectInspectorViewModelItem *item) ;
+typedef void(^FSSetterBlock)(id obj, id newValue, FSObjectInspectorViewModelItem *item);
+
 
 @interface FSObjectInspectorViewModelItem : NSTreeNode
 @property (copy,nonatomic) NSString *name;
@@ -32,6 +38,11 @@ typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
 @property (readonly,nonatomic) NSArray *enumNames;
 @property (readonly,nonatomic) NSArray *enumValues;
 @property (nonatomic) NSInteger numValue;
-@property (nonatomic,copy) NSString *getter;
-@property (nonatomic,copy) NSString *setter;
+@property (nonatomic,copy) FSGetterBlock getter;
+@property (nonatomic,copy) FSSetterBlock setter;
+@property (nonatomic) NSUInteger optsMask;
+@property (nonatomic) NSInteger minValue;
+@property (nonatomic) NSInteger maxValue;
+@property (nonatomic) Class valueClass;
+
 @end

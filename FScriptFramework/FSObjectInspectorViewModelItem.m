@@ -7,8 +7,10 @@
 //
 
 #import "FSObjectInspectorViewModelItem.h"
+#import "FSBoolean.h"
 #import "FSNamedNumber.h"
 #import "FSNumber.h"
+#import "FSObjectEnumInfo.h"
 #import "CHBidirectionalDictionary.h"
 
 @interface FSNamedInteger : NSObject
@@ -37,6 +39,16 @@ static NSArray *sBOOLEnum = nil;
         }
 }
 
+- (instancetype)init
+{
+        self = [super init];
+        if (self) {
+                self.minValue = NSIntegerMin;
+                self.maxValue = NSIntegerMax;
+        }
+        return self;
+}
+
 - (NSString*)displayValue
 {
         switch (self.valueType) {
@@ -59,7 +71,7 @@ static NSArray *sBOOLEnum = nil;
                 return NSStringFromRect([(NSValue*)self.value rectValue]);
                 break;
         case FS_ITEM_OBJECT:
-                return [self.value description];
+                return [[self.value description] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                 break;
         case FS_ITEM_POINT:
                 return NSStringFromPoint([(NSValue*)self.value pointValue]);
@@ -99,8 +111,31 @@ static NSArray *sBOOLEnum = nil;
 
 - (void)setNumValue:(NSInteger)value
 {
-        self.value = [FSNumber numberWithDouble:value];
+        switch (self.valueType) {
+                case FS_ITEM_ENUM:
+                        self.value = [FSNamedNumber namedNumberWithDouble:value name:self.enumBiDict[@(value)]] ?: [FSNumber numberWithDouble:value];
+                        break;
+                case FS_ITEM_OPTIONS:
+                        self.value = objectFromOptions(value, self.enumBiDict, self.optsMask);
+                        break;
+                case FS_ITEM_NUMBER:
+                        self.value = [FSNumber numberWithDouble:value];
+                        break;
+                case FS_ITEM_BOOL:
+                        self.value = [FSBoolean booleanWithBool:value];
+                        break;
+                        
+                case FS_ITEM_SIZE:
+                case FS_ITEM_OBJECT:
+                case FS_ITEM_RECT:
+                case FS_ITEM_POINT:
+                case FS_ITEM_RANGE:
+                case FS_ITEM_HEADER:
+                default:
+                        break;
+        }
 }
+
 
 + (NSSet*)keyPathsForValuesAffectingDisplayValue
 {
