@@ -55,6 +55,4 @@ const int FSObjectBrowserBottomBarHeight;
 - (id)selectedObject;
 - (void)setInterpreter:(FSInterpreter*)theInterpreter;
 - (void)setRootObject:(id)theRootObject;
-- (void)setRootViewModelObject:(id)viewModel forColumn:(NSUInteger)column;
--(FSObjectInspectorViewModelItem*)rootViewModelForColumn:(NSUInteger)column;
 @end

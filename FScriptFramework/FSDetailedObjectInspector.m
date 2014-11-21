@@ -3,8 +3,10 @@
 
 #import "FSDetailedObjectInspector.h"
 #import "FSMiscTools.h"
+#import "FSInterpreter.h"
 #import "FSObjectInspectorViewModelItem.h"
 #import "FSObjectInspectorViewController.h"
+#import "FSObjectBrowserViewObjectInfo.h"
 #import "FSUtils.h"
 
 static NSPoint sTopLeftPoint = { 0, 0 }; // Used for cascading windows.
@@ -36,15 +38,14 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
 @implementation FSDetailedObjectInspector {
 }
 
-+ (FSDetailedObjectInspector*)detailedObjectInspectorWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root
++ (FSDetailedObjectInspector*)detailedObjectInspectorWithObject:(id)object interpreter:(FSInterpreter*)interpreter
 {
-        return [[self alloc] initWithObject:object rootViewModelItem:root];
+        return [[self alloc] initWithObject:object interpreter:(FSInterpreter*)interpreter];
 }
 
-- (FSDetailedObjectInspector *)initWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root
+- (FSDetailedObjectInspector *)initWithObject:(id)object interpreter:(FSInterpreter*)interpreter
 {
         if ((self = [super init])) {
-                self.rootViewModelItem = root;
                 NSPanel* panel = [[NSPanel alloc] initWithContentRect:NSMakeRect(100.0, 100.0, 500.0, 300.0)
                                                             styleMask:(NSClosableWindowMask | NSTitledWindowMask | NSResizableWindowMask)
                                                               backing:NSBackingStoreBuffered
@@ -53,11 +54,14 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_10
                 panel.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
 #endif
+                self.interpreter = interpreter;
                 self.window = panel;
+                
                 _inspectedObject = object;
                 FSObjectInspectorViewController *objectInspectorViewController = [[FSObjectInspectorViewController alloc] initWithNibName:@"FSObjectInspectorViewController" bundle:nil];
-                objectInspectorViewController.rootViewModelItem = root;
                 self.viewController = objectInspectorViewController;
+                objectInspectorViewController.inspector = self;
+                [self refreshModel:self];
                 panel.contentView = objectInspectorViewController.view;
                 NSSize desiredSize = self.viewController.desiredSize;
                 [panel setFrame:[panel frameRectForContentRect:rectWithSize(desiredSize)] display:YES];
@@ -82,6 +86,18 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
 - (void)updateAction:(id)sender
 {
         [self.window setTitle:[NSString stringWithFormat:@"Inspecting %@ at address %p", descriptionForFSMessage(self.inspectedObject), self.inspectedObject]];
+}
+
+-(IBAction)refreshModel:(id)sender
+{
+        FSObjectBrowserViewObjectHelper *objectInfoHelper = [FSObjectBrowserViewObjectHelper new];
+         [objectInfoHelper populateModelWithObject:self.inspectedObject];
+        self.rootViewModelItem = objectInfoHelper.rootViewModelItem;
+        self.viewController.rootViewModelItem = self.rootViewModelItem;
+}
+- (IBAction)browseAction:(id)sender
+{
+        [self.interpreter browse:self.inspectedObject];
 }
 
 /////////////////// Window delegate callbacks

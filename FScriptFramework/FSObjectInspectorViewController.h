@@ -10,9 +10,11 @@
 
 @class FSObjectInspectorViewModelItem;
 @class FSInterpreter;
+@class FSDetailedObjectInspector;
 
 @interface FSObjectInspectorViewController : NSViewController <NSOutlineViewDelegate, NSPopoverDelegate>
 @property (assign) IBOutlet NSOutlineView *outlineView;
+@property (weak,nonatomic) FSDetailedObjectInspector *inspector;
 @property (weak,nonatomic) FSObjectInspectorViewModelItem *rootViewModelItem;
 @property (weak,nonatomic) FSObjectInspectorViewModelItem *selectedViewModelItem;
 @property (readonly,nonatomic) NSSize desiredSize;

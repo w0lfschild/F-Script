@@ -9,3 +9,9 @@
 - (void)fillMatrix:(NSMatrix*)m column:(NSUInteger)col withObject:(id)object;
    
 @end
+
+@interface FSObjectBrowserViewObjectHelper : NSObject
+@property (nonatomic, retain) FSObjectInspectorViewModelItem* rootViewModelItem;
+-(void)populateModelWithObject:(id)object;
+
+@end

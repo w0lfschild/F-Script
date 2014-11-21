@@ -10,6 +10,7 @@
 #import "FSObjectInspectorViewController+NonArc.h"
 #import "FSObjectInspectorViewModelItem.h"
 #import "FSObjectInspectorOptionsViewController.h"
+#import "FSDetailedObjectInspector.h"
 #import "FSNamedNumber.h"
 #import "FSObjectEnumInfo.h"
 #import "CHBidirectionalDictionary.h"
@@ -66,6 +67,9 @@
 
 
 @implementation FSObjectInspectorViewController
+{
+        CGFloat _scrollViewOffsetY;
+}
 
 - (void)viewDidLoad
 {
@@ -79,8 +83,9 @@
 {
         if (!self.hasAwoken) {
                 self.hasAwoken = YES;
-                [self.outlineView expandItem:nil expandChildren:YES];
-                NSLog(@"outline view size = %@", NSStringFromSize(self.outlineView.bounds.size));
+                [self expandAll:self];
+                NSScrollView* scrollView = self.outlineView.enclosingScrollView;
+                _scrollViewOffsetY = NSHeight(scrollView.superview.bounds) - NSHeight(scrollView.frame);
         }
 }
 
@@ -96,8 +101,31 @@
         if (self.outlineView.headerView) {
                 scrollViewSize.height += NSHeight(self.outlineView.headerView.bounds);
         }
+        scrollViewSize.height += _scrollViewOffsetY;
         return scrollViewSize;
 }
+-(void)dealloc
+{
+        [NSObject cancelPreviousPerformRequestsWithTarget:self ];
+}
+-(IBAction)expandAll:(id)sender
+{
+        [self.outlineView expandItem:nil expandChildren:YES];
+}
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - Properties
+/*==================================================================================================
+ */
+
+-(void)setRootViewModelItem:(FSObjectInspectorViewModelItem *)rootViewModelItem
+{
+        _rootViewModelItem = rootViewModelItem;
+        [self performSelector:@selector(expandAll:) withObject:self afterDelay:0.0];
+}
+
 /*
  *
  *
@@ -255,4 +283,24 @@
         self.selectedViewModelItem.value = objectFromOptions(newOpts, self.selectedViewModelItem.enumBiDict, self.selectedViewModelItem.optsMask);
 }
 
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - NSResponder
+/*==================================================================================================
+ */
+-(BOOL)acceptsFirstResponder
+{
+        return YES;
+}
+-(id)supplementalTargetForAction:(SEL)action sender:(id)sender
+{
+        if (action == @selector(refreshModel:)
+            || action == @selector(browseAction:))
+        {
+                return self.inspector;
+        }
+        return [super supplementalTargetForAction:action sender:sender];
+}
 @end

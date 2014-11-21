@@ -38,9 +38,9 @@
 #import "FSCNDictionary.h"
 #import "FSAssociation.h"
 
-static inline NSString *fs_setterForProperty(NSString*prop)
+static inline NSString* fs_setterForProperty(NSString* prop)
 {
-        NSString *setter = @"";
+        NSString* setter = @"";
         if (prop.length > 1) {
                 setter = [[@"set" stringByAppendingString:[prop substringToIndex:1].uppercaseString] stringByAppendingString:[prop substringFromIndex:1]];
         }
@@ -48,22 +48,11 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 setter = [prop uppercaseString];
         }
         return setter;
-        
 }
 
-@interface FSObjectBrowserViewObjectHelper : NSObject {
-        FSObjectBrowserCell* selectedCell;
-        NSString* selectedClassLabel;
-        NSString* selectedLabel;
-        id selectedObject;
-        NSString* classLabel;
-        NSMatrix* m;
-        FSObjectBrowserView* view;
-        NSMutableArray* baseClasses;
-}
+@interface FSObjectBrowserViewObjectHelper ()
 
 @property (nonatomic, retain) NSMutableArray* baseClasses;
-@property (nonatomic, retain) FSObjectInspectorViewModelItem* rootViewModelItem;
 @property (nonatomic, assign) FSObjectInspectorViewModelItem* currentViewModelItem;
 
 - (id)initWithObjectBrowserView:(FSObjectBrowserView*)view;
@@ -81,7 +70,6 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 
         [self addBlankRowToMatrix:m];
         [self fillMatrix:m withMethodsForObject:object];
-        [self setRootViewModelObject:objectHelper.rootViewModelItem forColumn:col];
 
         [m sizeToCells];
         //[m scrollCellToVisibleAtRow:[matrix selectedRow] column:0];
@@ -93,7 +81,16 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 @end
 
 
-@implementation FSObjectBrowserViewObjectHelper
+@implementation FSObjectBrowserViewObjectHelper {
+        FSObjectBrowserCell* selectedCell;
+        NSString* selectedClassLabel;
+        NSString* selectedLabel;
+        id selectedObject;
+        NSString* classLabel;
+        NSMatrix* m;
+        FSObjectBrowserView* view;
+        NSMutableArray* baseClasses;
+}
 
 - (id)init
 {
@@ -104,10 +101,6 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 {
         self = [super init];
         if (self) {
-
-                if (!theView) {
-                        return nil;
-                }
 
                 view = [[theView retain] autorelease];
                 self.rootViewModelItem = [FSObjectInspectorViewModelItem new];
@@ -123,33 +116,35 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         [_rootViewModelItem release];
         [super dealloc];
 }
--(void)addClassLabel:(NSString*)cLabel toMatrix:(NSMatrix *)matrix
+- (void)addClassLabel:(NSString*)cLabel toMatrix:(NSMatrix*)matrix
 {
         [view addClassLabel:cLabel toMatrix:matrix];
-        FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
+        FSObjectInspectorViewModelItem* item = [[FSObjectInspectorViewModelItem new] autorelease];
         item.valueType = FS_ITEM_HEADER;
         item.name = cLabel;
         [self.rootViewModelItem.mutableChildNodes addObject:item];
         self.currentViewModelItem = item;
 }
 
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix enumBiDict:(CHBidirectionalDictionary*)enumBiDict mask:(NSUInteger)mask valueClass:(Class)valueClass notNil:(BOOL)notNil
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label enumBiDict:(CHBidirectionalDictionary*)enumBiDict mask:(NSUInteger)mask valueClass:(Class)valueClass notNil:(BOOL)notNil
 {
         @try {
                 if (!notNil || object) {
-                        [view addObject:object withLabel:label toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];
-                        if (valueType != FS_ITEM_OBJECT || valueClass) {
-                                FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
-                                item.name = label;
-                                item.valueType = valueType;
-                                item.value = object;
-                                item.enumBiDict = enumBiDict;
-                                item.getter = getter;
-                                item.setter = setter;
-                                item.optsMask = mask;
-                                item.valueClass = valueClass ?: [object class];
-                                [self.currentViewModelItem.mutableChildNodes addObject:item];
+                        if (view) {
+                                [view addObject:object withLabel:label toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];
                         }
+                }
+                if (valueType != FS_ITEM_OBJECT || valueClass) {
+                        FSObjectInspectorViewModelItem* item = [[FSObjectInspectorViewModelItem new] autorelease];
+                        item.name = label;
+                        item.valueType = valueType;
+                        item.value = object;
+                        item.enumBiDict = enumBiDict;
+                        item.getter = getter;
+                        item.setter = setter;
+                        item.optsMask = mask;
+                        item.valueClass = valueClass ?: [object class];
+                        [self.currentViewModelItem.mutableChildNodes addObject:item];
                 }
         }
         @catch (id exception)
@@ -157,89 +152,82 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 NSLog(@"%@", exception);
         }
 }
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label notNil:(BOOL)notNil
 {
-        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label toMatrix:matrix enumBiDict:nil mask:0 valueClass:nil notNil:notNil];
+        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label enumBiDict:nil mask:0 valueClass:nil notNil:notNil];
 }
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label notNil:(BOOL)notNil
 {
-        [self addObject:object valueType:valueType getter:nil setter:nil withLabel:label toMatrix:matrix enumBiDict:nil mask:0 valueClass:(Class)nil notNil:notNil];
+        [self addObject:object valueType:valueType getter:nil setter:nil withLabel:label enumBiDict:nil mask:0 valueClass:(Class)nil notNil:notNil];
 }
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label
 {
-        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label toMatrix:matrix enumBiDict:nil mask:0 valueClass:nil notNil:NO];
+        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label enumBiDict:nil mask:0 valueClass:nil notNil:NO];
 }
 
--(void)addGroup:(NSString*)groupName
+- (void)addGroup:(NSString*)groupName
 {
-        FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
+        FSObjectInspectorViewModelItem* item = [[FSObjectInspectorViewModelItem new] autorelease];
         item.name = groupName;
         item.valueType = FS_ITEM_GROUP;
         [self.currentViewModelItem.mutableChildNodes addObject:item];
         self.currentViewModelItem = item;
 }
 
--(void)endGroup
+- (void)endGroup
 {
         self.currentViewModelItem = (FSObjectInspectorViewModelItem*)self.currentViewModelItem.parentNode;
 }
 
-#define START_GROUP(GROUP) [self addGroup:(@#GROUP)];
+#define START_GROUP(GROUP) [self addGroup:(@ #GROUP)];
 #define END_GROUP(GROUP) [self endGroup];
 
-#define ADD_VALUE(OBJECT, VALUE_TYPE, GETTER, SETTER, BIDICT, MASK, VALUE_CLASS, LABEL)                                                                                                                                                           \
-        @try {                                                                                                                                                                              \
-                [self addObject:(OBJECT) \
-                      valueType:VALUE_TYPE \
-                         getter:^(id obj, FSObjectInspectorViewModelItem *item) { return [obj valueForKey:@#GETTER]; } \
-                         setter:^(id obj, id newVal, FSObjectInspectorViewModelItem *item) { [obj setValue:newVal forKey:@#GETTER]; } \
-                      withLabel:(LABEL) \
-                       toMatrix:m \
-                     enumBiDict:BIDICT \
-                           mask:MASK \
-                     valueClass:VALUE_CLASS \
-                         notNil:NO]; \
-        }                                                                                                                                                                                   \
+#define ADD_VALUE(OBJECT, VALUE_TYPE, GETTER, SETTER, BIDICT, MASK, VALUE_CLASS, LABEL, NOT_NIL)                                                                                                                                                                                                                                                               \
+        @try {                                                                                                                                                                                                                                                                                                                                                 \
+                [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #GETTER]; } setter:^(id obj, id newVal, FSObjectInspectorViewModelItem* item) { [obj setValue:newVal forKey:@ #GETTER]; } withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
+        }                                                                                                                                                                                                                                                                                                                                                      \
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_ENUM(ENUM, OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(objectFrom ## ENUM(OBJECT), FS_ITEM_ENUM, GETTER, SETTER, FSObjectEnumInfo.optionsFor ## ENUM, 0, nil, LABEL);
+        ADD_VALUE(objectFrom##ENUM(OBJECT), FS_ITEM_ENUM, GETTER, SETTER, FSObjectEnumInfo.optionsFor##ENUM, 0, nil, LABEL, NO);
 
 #define ADD_OPTIONS(ENUM, OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(objectFrom ## ENUM(OBJECT), FS_ITEM_OPTIONS, GETTER, SETTER, FSObjectEnumInfo.optionsFor ## ENUM, ENUM ## Mask, nil, LABEL);
+        ADD_VALUE(objectFrom##ENUM(OBJECT), FS_ITEM_OPTIONS, GETTER, SETTER, FSObjectEnumInfo.optionsFor##ENUM, ENUM##Mask, nil, LABEL, NO);
 
-#define ADD_OBJECT(OBJECT, GETTER, SETTER, LABEL)                                                                                                                                                           \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, nil, 0, LABEL)
+#define ADD_OBJECT(OBJECT, GETTER, SETTER, LABEL) \
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, nil, 0, LABEL, NO)
 
 
-#define ADD_OBJECT_NOT_NIL(OBJECT, GETTER, SETTER, LABEL)                                                                                                                                                          \
-        if (OBJECT) { ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, nil,  LABEL); }
+#define ADD_OBJECT_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) \
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, nil, LABEL, YES);
 
 #define ADD_OBJECT_RO(OBJECT, LABEL) ADD_OBJECT(OBJECT, nil, nil, LABEL)
 #define ADD_OBJECT_RO_NOT_NIL(OBJECT, LABEL) ADD_OBJECT_NOT_NIL(OBJECT, nil, nil, LABEL)
 
 #define ADD_COLOR(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSColor.class, LABEL)
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSColor.class, LABEL, NO)
 
-#define ADD_COLOR_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) if (OBJECT) { ADD_COLOR(OBJECT,GETTER,SETTER,LABEL); }
+#define ADD_COLOR_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) \
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSColor.class, LABEL, YES)
 
 #define ADD_STRING(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSString.class, LABEL)
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSString.class, LABEL, NO)
 
-#define ADD_STRING_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) if (OBJECT) { ADD_COLOR(OBJECT,GETTER,SETTER,LABEL); }
+#define ADD_STRING_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) \
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSString.class, LABEL, YES)
 
 #define ADD_BOOL(B, GETTER, SETTER, LABEL) \
-        ADD_VALUE([FSBoolean booleanWithBool:(B)], FS_ITEM_BOOL, GETTER, SETTER, nil, 0, nil, LABEL);
+        ADD_VALUE([FSBoolean booleanWithBool:(B)], FS_ITEM_BOOL, GETTER, SETTER, nil, 0, nil, LABEL, NO);
 
 #define ADD_NUMBER(NUMBER, GETTER, SETTER, LABEL) \
-        ADD_VALUE([FSNumber numberWithDouble:(NUMBER)], FS_ITEM_NUMBER, GETTER, SETTER, nil, 0, nil, LABEL);
+        ADD_VALUE([FSNumber numberWithDouble:(NUMBER)], FS_ITEM_NUMBER, GETTER, SETTER, nil, 0, nil, LABEL, NO);
 
 #define ADD_DICTIONARY(OBJECTS, LABEL)                                                                                                                                                                   \
         @try {                                                                                                                                                                                           \
                 if ([(OBJECTS)count] <= 20)                                                                                                                                                              \
                         [view addDictionary:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                     \
-                        [self addObject:(OBJECTS) valueType:FS_ITEM_OBJECT withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                                 \
+                        [self addObject:(OBJECTS)valueType:FS_ITEM_OBJECT withLabel:(LABEL)notNil:NO];                                                                                                   \
         }                                                                                                                                                                                                \
         @catch (id exception) { NSLog(@"%@", exception); }
 
@@ -248,7 +236,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 if ([(OBJECTS)count] <= 20)                                                                                                                                                           \
                         [view addObjects:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                  \
-                        [self addObject:(OBJECTS)valueType:FS_ITEM_OBJECT withLabel:(LABEL)toMatrix:m notNil:NO];                                                                                                              \
+                        [self addObject:(OBJECTS)valueType:FS_ITEM_OBJECT withLabel:(LABEL)notNil:NO];                                                                                                \
         }                                                                                                                                                                                             \
         @catch (id exception) { NSLog(@"%@", exception); }
 
@@ -269,27 +257,31 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_SIZE(SIZE, LABEL) \
-        [self addObject:[NSValue valueWithSize:(SIZE)] valueType:FS_ITEM_SIZE withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithSize:(SIZE)] valueType:FS_ITEM_SIZE withLabel:(LABEL)notNil:NO];
 
 #define ADD_RECT(RECT, LABEL) \
-        [self addObject:[NSValue valueWithRect:(RECT)] valueType:FS_ITEM_RECT withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithRect:(RECT)] valueType:FS_ITEM_RECT withLabel:(LABEL)notNil:NO];
 
 #define ADD_POINT(POINT, LABEL) \
-        [self addObject:[NSValue valueWithPoint:(POINT)] valueType:FS_ITEM_POINT withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithPoint:(POINT)] valueType:FS_ITEM_POINT withLabel:(LABEL)notNil:NO];
 
-#define ADD_POINTER(POINTER, LABEL)                                                                                                                                                                                                                                                                                           \
-        @try {                                                                                                                                                                                                                                                                                                                \
-                if (POINTER == NULL)                                                                                                                                                                                                                                                                                          \
-                        ADD_OBJECT_RO(nil, LABEL) else [view addObject:[[[FSGenericPointer alloc] initWithCPointer:(POINTER)freeWhenDone:NO type:@encode(void)] autorelease] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
-        }                                                                                                                                                                                                                                                                                                                     \
+#define ADD_POINTER(POINTER, LABEL)                                                                                                                                                                                                                                                               \
+        @try {                                                                                                                                                                                                                                                                                    \
+                if (POINTER == NULL) {                                                                                                                                                                                                                                                            \
+                        ADD_OBJECT_RO(nil, LABEL)                                                                                                                                                                                                                                                 \
+                }                                                                                                                                                                                                                                                                                 \
+                else {                                                                                                                                                                                                                                                                            \
+                        [view addObject:[[[FSGenericPointer alloc] initWithCPointer:(POINTER)freeWhenDone:NO type:@encode(void)] autorelease] withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
+                }                                                                                                                                                                                                                                                                                 \
+        }                                                                                                                                                                                                                                                                                         \
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_RANGE(RANGE, LABEL) \
-        [self addObject:[NSValue valueWithRange:(RANGE)] valueType:FS_ITEM_RANGE withLabel:(LABEL)toMatrix:m notNil:NO];
+        [self addObject:[NSValue valueWithRange:(RANGE)] valueType:FS_ITEM_RANGE withLabel:(LABEL)notNil:NO];
 
-#define ADD_CLASS_LABEL(LABEL)                              \
-        {                                                   \
-                [self addClassLabel:(LABEL) toMatrix:m]; \
+#define ADD_CLASS_LABEL(LABEL)                          \
+        {                                               \
+                [self addClassLabel:(LABEL)toMatrix:m]; \
         }
 
 @synthesize baseClasses;
@@ -578,7 +570,13 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         }
                 }
         }
+        [self populateModelWithObject:object];
+}
 
+- (void)populateModelWithObject:(id)object
+{
+        // For each documented base class the object inherits from, populate the matrix with 'interesting' values
+        // declared as members of that base class
         for (Class baseClass in self.baseClasses) {
                 if ([object isKindOfClass:baseClass]) {
                         NSString* method = [NSString stringWithFormat:@"add%@:", [baseClass className]];
@@ -587,7 +585,6 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         NSAssert([self respondsToSelector:selector], @"Missing base class method");
 
                         [self performSelector:selector withObject:object];
-
                         break;
                 }
         }
@@ -907,7 +904,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_NUMBER([o selectedSegment], selectedSegment, setSelectedSegment, @"Selected segment")
                         ADD_ENUM(SegmentSwitchTracking, [o trackingMode], trackingMode, settrackingMode, @"Tracking mode")
 
-                        [self processSegmentedItem:o];
+                                            [self processSegmentedItem:o];
                 }
                 else if ([object isKindOfClass:[NSSliderCell class]]) {
                         NSSliderCell* o = object;
@@ -1059,7 +1056,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_ENUM(CellStateValue, [o state], state, setstate, @"State")
         ADD_NUMBER([o tag], tag, setTag, @"Tag")
         ADD_OBJECT_NOT_NIL([o target], target, setTarget, @"Target")
-                ADD_OPTIONS(CellType, [(NSCell*)o type], type, setType, @"Type")
+        ADD_OPTIONS(CellType, [(NSCell*)o type], type, setType, @"Type")
         ADD_BOOL([o wantsNotificationForMarkedText], wantsNotificationForMarkedText, setwantsNotificationForMarkedText, @"Wants notification for marked text")
         ADD_BOOL([o wraps], wraps, setwraps, @"Wraps")
 }
@@ -2526,95 +2523,101 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 }
 
 // Works for NSSegmentedControl and NSSegmentedCell
--(void)processSegmentedItem:(id)segmentedItem
+- (void)processSegmentedItem:(id)segmentedItem
 {
-        NSSegmentedCell *o = segmentedItem;
+        NSSegmentedCell* o = segmentedItem;
         NSUInteger segmentCount = o.segmentCount;
         for (NSInteger i = 0; i < segmentCount; i++) {
                 [self addGroup:[NSString stringWithFormat:@"Segment %lu", i]];
                 [self addObject:[o imageForSegment:i]
-                      valueType:FS_ITEM_OBJECT
-                         getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return [(NSSegmentedControl*)obj imageForSegment:i]; }
-                         setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setImage:newValue forSegment:i];}
-                      withLabel:[NSString stringWithFormat:@"Image for segment %ld", (long)i]
-                       toMatrix:m
-                         notNil:YES];
+                                    valueType:FS_ITEM_OBJECT
+                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedControl*)obj imageForSegment:i];
+                                    }
+                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setImage:newValue forSegment:i];
+                                    }
+                                    withLabel:[NSString stringWithFormat:@"Image for segment %ld", (long)i]
+                                    notNil:YES];
                 if ([o respondsToSelector:@selector(imageScalingForSegment:)]) {
                         [self addObject:objectFromImageScaling([o imageScalingForSegment:i])
-                              valueType:FS_ITEM_ENUM
-                                 getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return @([(NSSegmentedCell*)obj imageScalingForSegment:i]); }
-                                 setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedCell*)obj setImageScaling:[newValue integerValue] forSegment:i];}
-                              withLabel:[NSString stringWithFormat:@"Image scaling for segment %ld", (long)i]
-                               toMatrix:m
-                         enumBiDict:FSObjectEnumInfo.optionsForImageScaling
-                               mask:0
-                             valueClass:nil
-                                     notNil:NO];
+                                            valueType:FS_ITEM_ENUM
+                                            getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedCell*)obj imageScalingForSegment:i]);
+                                            }
+                                            setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedCell*)obj setImageScaling:[newValue integerValue] forSegment:i];
+                                            }
+                                            withLabel:[NSString stringWithFormat:@"Image scaling for segment %ld", (long)i]
+                                            enumBiDict:FSObjectEnumInfo.optionsForImageScaling
+                                            mask:0
+                                            valueClass:nil
+                                            notNil:NO];
                 }
                 [self addObject:[FSBoolean booleanWithBool:[o isEnabledForSegment:i]]
-                      valueType:FS_ITEM_BOOL
-                         getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return @([(NSSegmentedControl*)obj isEnabledForSegment:i]); }
-                         setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setEnabled:[newValue boolValue] forSegment:i];}
-                      withLabel:[NSString stringWithFormat:@"Is enabled for segment %ld", (long)i]
-                       toMatrix:m ];
+                                    valueType:FS_ITEM_BOOL
+                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedControl*)obj isEnabledForSegment:i]);
+                                    }
+                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setEnabled:[newValue boolValue] forSegment:i];
+                                    }
+                                    withLabel:[NSString stringWithFormat:@"Is enabled for segment %ld", (long)i]];
                 [self addObject:[FSBoolean booleanWithBool:[o isSelectedForSegment:i]]
-                      valueType:FS_ITEM_BOOL
-                         getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return @([(NSSegmentedControl*)obj isSelectedForSegment:i]); }
-                         setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setSelected:[newValue boolValue] forSegment:i];}
-                      withLabel:[NSString stringWithFormat:@"Is selected for segment %ld", (long)i]
-                       toMatrix:m ];
+                                    valueType:FS_ITEM_BOOL
+                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedControl*)obj isSelectedForSegment:i]);
+                                    }
+                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setSelected:[newValue boolValue] forSegment:i];
+                                    }
+                                    withLabel:[NSString stringWithFormat:@"Is selected for segment %ld", (long)i]];
                 [self addObject:[o labelForSegment:i]
-                      valueType:FS_ITEM_OBJECT
-                         getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return [(NSSegmentedControl*)obj labelForSegment:i]; }
-                         setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setLabel:newValue forSegment:i];}
-                      withLabel:[NSString stringWithFormat:@"Label for segment %ld", (long)i]
-                       toMatrix:m
-                     enumBiDict:nil
-                           mask:0
-                     valueClass:NSString.class
-                         notNil:YES];
+                                    valueType:FS_ITEM_OBJECT
+                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedControl*)obj labelForSegment:i];
+                                    }
+                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setLabel:newValue forSegment:i];
+                                    }
+                                    withLabel:[NSString stringWithFormat:@"Label for segment %ld", (long)i]
+                                    enumBiDict:nil
+                                    mask:0
+                                    valueClass:NSString.class
+                                    notNil:YES];
                 [self addObject:[o menuForSegment:i]
-                      valueType:FS_ITEM_OBJECT
-                         getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return [(NSSegmentedControl*)obj menuForSegment:i]; }
-                         setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setMenu:newValue forSegment:i];}
-                      withLabel:[NSString stringWithFormat:@"Menu for segment %ld", (long)i]
-                       toMatrix:m
-                         notNil:YES];
+                                    valueType:FS_ITEM_OBJECT
+                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedControl*)obj menuForSegment:i];
+                                    }
+                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setMenu:newValue forSegment:i];
+                                    }
+                                    withLabel:[NSString stringWithFormat:@"Menu for segment %ld", (long)i]
+                                    notNil:YES];
                 if ([o respondsToSelector:@selector(tagForSegment:)]) {
                         [self addObject:[FSNumber numberWithDouble:[o tagForSegment:i]]
-                              valueType:FS_ITEM_NUMBER
-                                 getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return @([(NSSegmentedCell*)obj tagForSegment:i]); }
-                                 setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedCell*)obj setTag:[newValue integerValue] forSegment:i];}
-                              withLabel:[NSString stringWithFormat:@"Tag for segment %ld", (long)i]
-                               toMatrix:m
-                         enumBiDict:FSObjectEnumInfo.optionsForImageScaling
-                               mask:0
-                             valueClass:nil
-                                     notNil:NO];
+                                            valueType:FS_ITEM_NUMBER
+                                            getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedCell*)obj tagForSegment:i]);
+                                            }
+                                            setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedCell*)obj setTag:[newValue integerValue] forSegment:i];
+                                            }
+                                            withLabel:[NSString stringWithFormat:@"Tag for segment %ld", (long)i]
+                                            enumBiDict:FSObjectEnumInfo.optionsForImageScaling
+                                            mask:0
+                                            valueClass:nil
+                                            notNil:NO];
                 }
                 if ([o respondsToSelector:@selector(toolTipForSegment:)]) {
                         [self addObject:[o toolTipForSegment:i]
-                              valueType:FS_ITEM_OBJECT
-                                 getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return [(NSSegmentedCell*)obj toolTipForSegment:i]; }
-                                 setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedCell*)obj setToolTip:newValue forSegment:i];}
-                              withLabel:[NSString stringWithFormat:@"ToolTip for segment %ld", (long)i]
-                               toMatrix:m
-                             enumBiDict:nil
-                               mask:0
-                             valueClass:NSString.class
-                                     notNil:YES];
+                                            valueType:FS_ITEM_OBJECT
+                                            getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedCell*)obj toolTipForSegment:i];
+                                            }
+                                            setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedCell*)obj setToolTip:newValue forSegment:i];
+                                            }
+                                            withLabel:[NSString stringWithFormat:@"ToolTip for segment %ld", (long)i]
+                                            enumBiDict:nil
+                                            mask:0
+                                            valueClass:NSString.class
+                                            notNil:YES];
                 }
-                if ([o widthForSegment:i] != 0) {
-                        [self addObject:[FSNumber numberWithDouble:[o widthForSegment:i]]
-                              valueType:FS_ITEM_NUMBER
-                                 getter:^id(id obj, FSObjectInspectorViewModelItem *item) { return @([(NSSegmentedControl*)obj widthForSegment:i]); }
-                                 setter:^(id obj, id newValue, FSObjectInspectorViewModelItem *item) { [(NSSegmentedControl*)obj setWidth:[newValue floatValue] forSegment:i];}
-                              withLabel:[NSString stringWithFormat:@"Width for segment %ld", (long)i]
-                               toMatrix:m ];
-                }
+                [self addObject:[FSNumber numberWithDouble:[o widthForSegment:i]]
+                                    valueType:FS_ITEM_NUMBER
+                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedControl*)obj widthForSegment:i]);
+                                    }
+                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setWidth:[newValue floatValue] forSegment:i];
+                                    }
+                                    withLabel:[NSString stringWithFormat:@"Width for segment %ld", (long)i]];
                 [self endGroup];
         }
-        
 }
 
 - (void)processNSControl:(id)object
@@ -2828,7 +2831,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 
                         ADD_NUMBER(segmentCount, segmentCount, setSegmentCount, @"Segment count")
                         ADD_NUMBER([o selectedSegment], selectedSegment, setSelectedSegment, @"Selected segment")
-                        [self processSegmentedItem:o];
+                                            [self processSegmentedItem:o];
                 }
                 else if ([object isKindOfClass:[NSSlider class]]) {
                         NSSlider* o = object;

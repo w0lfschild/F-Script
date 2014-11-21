@@ -4,14 +4,19 @@
 #import <AppKit/AppKit.h>
 
 @class FSObjectInspectorViewModelItem;
+@class FSInterpreter;
 
 @interface FSDetailedObjectInspector : NSObject <NSWindowDelegate>
 @property (strong,nonatomic) id inspectedObject;
 @property (readonly,nonatomic) NSWindow *window;
-+ (FSDetailedObjectInspector *)detailedObjectInspectorWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root;
-- (FSDetailedObjectInspector *)initWithObject:(id)object rootViewModelItem:(FSObjectInspectorViewModelItem*)root;
+@property (strong,nonatomic) FSInterpreter* interpreter;
+
++ (FSDetailedObjectInspector*)detailedObjectInspectorWithObject:(id)object interpreter:(FSInterpreter*)interpreter;
+- (FSDetailedObjectInspector *)initWithObject:(id)object interpreter:(FSInterpreter*)interpreter;
 - (void)updateAction:(id)sender;
 
 - (void)windowWillClose:(NSNotification *)aNotification;
+-(IBAction)refreshModel:(id)sender;
+- (IBAction)browseAction:(id)sender;
 
 @end

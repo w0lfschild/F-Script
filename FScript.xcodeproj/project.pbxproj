@@ -3066,8 +3066,6 @@
 		EDC2C9AC1A1AA50D00942777 /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		EDC2C9AD1A1AA50D00942777 /* FSWorksWhenModalWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5EDA00109B384A003A2F4C /* FSWorksWhenModalWindow.h */; };
 		EDC2C9AE1A1AA50D00942777 /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; };
-		EDC2C9B01A1AA50D00942777 /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
-		EDC2C9B11A1AA50D00942777 /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
 		EDC2C9B21A1AA50D00942777 /* FSObjectBrowserButtonsInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */; };
 		EDC2C9B31A1AA50D00942777 /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
 		EDC2C9B41A1AA50D00942777 /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
@@ -7650,8 +7648,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDC2C9B01A1AA50D00942777 /* FSTest2.app in Resources */,
-				EDC2C9B11A1AA50D00942777 /* FSTest1.app in Resources */,
 				EDC2C9B21A1AA50D00942777 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				EDC2C9B31A1AA50D00942777 /* FSCollectionInspector.nib in Resources */,
 				EDC2C9B41A1AA50D00942777 /* blockInspector.nib in Resources */,

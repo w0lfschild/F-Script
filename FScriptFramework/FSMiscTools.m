@@ -336,17 +336,20 @@ void inspect(id object, FSInterpreter *interpreter, id argument)
         [object inspectWithSystem:[interpreter objectForIdentifier:@"sys" found:NULL]];
       else if ([object respondsToSelector:@selector(inspect)])
         [object inspect];
-      else if (argument) {
-        FSDetailedObjectInspector *inspector = [FSDetailedObjectInspector detailedObjectInspectorWithObject:object rootViewModelItem:argument];
+      else {
+        FSDetailedObjectInspector *inspector = [FSDetailedObjectInspector detailedObjectInspectorWithObject:object
+                                                                                                 interpreter:interpreter];
         [NSNotificationCenter.defaultCenter addObserver:FSInspectorRepository.class
                                                selector:@selector(removeInspector:)
                                                    name:NSWindowWillCloseNotification
                                                  object:inspector.window ];
         [FSInspectorRepository addInspector:inspector];
       }
+      /*
       else {
         [FSGenericObjectInspector genericObjectInspectorWithObject:object];
       }
+       */
     }
   }    
 }

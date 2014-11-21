@@ -60,10 +60,6 @@ static NSString* FScriptObjectTemplateForEncodedObjCType(const char* ptr);
 
 static NSMutableArray* customButtons = nil;
 
-@interface FSObjectBrowserView () // Methods declaration to let the compiler know
-@property (retain,nonatomic) NSMutableDictionary *columnToRootViewModelItem;
-@end
-
 /*
  *
  *
@@ -174,7 +170,6 @@ static NSMutableArray* customButtons = nil;
                 CGFloat fontSize;
 
                 fontSize = systemFontSize();
-                _columnToRootViewModelItem = [NSMutableDictionary new];
 
                 browser = [[NSBrowser alloc] initWithFrame:NSMakeRect(0, FSObjectBrowserBottomBarHeight, baseWidth, baseHeight - FSObjectBrowserBottomBarHeight)];
                 [browser setMatrixClass:FSObjectBrowserMatrix.class];
@@ -213,16 +208,6 @@ static NSMutableArray* customButtons = nil;
 }
 
 
-
--(void)setRootViewModelObject:(FSObjectInspectorViewModelItem*)viewModel forColumn:(NSUInteger)column
-{
-        self.columnToRootViewModelItem[@(column)] = viewModel;
-}
-
--(FSObjectInspectorViewModelItem*)rootViewModelForColumn:(NSUInteger)column
-{
-        return [[self.columnToRootViewModelItem[@(column)] retain]autorelease];
-}
 
 - (void)addBindingForObject:(id)object withName:(NSString*)name toMatrix:(NSMatrix*)matrix classLabel:(NSString*)classLabel selectedClassLabel:(NSString*)selectedClassLabel selectedLabel:(NSString*)selectedLabel selectedObject:(id)selectedObject
 {
@@ -836,7 +821,6 @@ static NSMutableArray* customButtons = nil;
 {
         // NSLog(@"FSObjectBrowserView dealloc");
 
-        [_columnToRootViewModelItem release];
         [matrixes release];
         [rootObject release];
         [interpreter release];
@@ -1145,7 +1129,7 @@ static NSMutableArray* customButtons = nil;
 
 - (void)inspectAction:(id)sender
 {
-        inspect([self selectedObject], interpreter, [self rootViewModelForColumn:browser.selectedColumn]);
+        inspect([self selectedObject], interpreter, nil);
 }
 
 - (void)menuWillSendAction:(NSNotification*)notification;

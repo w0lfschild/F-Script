@@ -13,7 +13,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY" customClass="FSObjectInspectorBackgroundView">
-            <rect key="frame" x="0.0" y="0.0" width="444" height="333"/>
+            <rect key="frame" x="0.0" y="0.0" width="444" height="353"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WI6-dr-2zT">
@@ -309,21 +309,47 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="333" id="h3J-Bk-iDb"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="299" id="jyl-jB-N1J"/>
                     </constraints>
-                    <scroller key="horizontalScroller" hidden="YES" appearanceType="vibrantLight" verticalHuggingPriority="750" horizontal="YES" id="wgE-Z3-KS5">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="wgE-Z3-KS5">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" appearanceType="vibrantLight" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Zko-ci-Mm9">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Zko-ci-Mm9">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bLs-w5-Ggd">
+                    <rect key="frame" x="380" y="332" width="64" height="22"/>
+                    <buttonCell key="cell" type="smallSquare" title="Refresh" bezelStyle="smallSquare" image="NSRefreshTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wzc-Dn-gdt">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="refreshModel:" target="-1" id="Slb-Ne-gtg"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3hL-X3-wcA">
+                    <rect key="frame" x="314" y="332" width="66" height="22"/>
+                    <buttonCell key="cell" type="smallSquare" title="Browse" bezelStyle="smallSquare" image="NSRevealFreestandingTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xei-9H-upA">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="browseAction:" target="-1" id="4aB-P4-b2j"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="WI6-dr-2zT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2hP-KY-n2h"/>
-                <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SZp-rB-N2Y"/>
+                <constraint firstItem="bLs-w5-Ggd" firstAttribute="leading" secondItem="3hL-X3-wcA" secondAttribute="trailing" id="9SD-2T-jem"/>
+                <constraint firstItem="3hL-X3-wcA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="CIf-7a-05L"/>
+                <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="3hL-X3-wcA" secondAttribute="bottom" id="Eyu-Ko-iQX"/>
+                <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="SZp-rB-N2Y"/>
                 <constraint firstAttribute="bottom" secondItem="WI6-dr-2zT" secondAttribute="bottom" id="a1L-Wq-tUV"/>
+                <constraint firstItem="bLs-w5-Ggd" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="rU6-94-CRE"/>
+                <constraint firstAttribute="trailing" secondItem="bLs-w5-Ggd" secondAttribute="trailing" id="uVF-kr-ACt"/>
                 <constraint firstAttribute="trailing" secondItem="WI6-dr-2zT" secondAttribute="trailing" id="v3E-tm-OdR"/>
+                <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="bLs-w5-Ggd" secondAttribute="bottom" id="yX7-M5-IwL"/>
             </constraints>
             <point key="canvasLocation" x="180" y="334.5"/>
         </customView>
@@ -334,4 +360,8 @@
         </treeController>
         <userDefaultsController representsSharedInstance="YES" id="jVJ-Hx-jRz"/>
     </objects>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSRevealFreestandingTemplate" width="14" height="14"/>
+    </resources>
 </document>
