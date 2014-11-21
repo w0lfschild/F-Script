@@ -123,20 +123,33 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         [_rootViewModelItem release];
         [super dealloc];
 }
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix enumBiDict:(CHBidirectionalDictionary*)enumBiDict valueClass:(Class)valueClass notNil:(BOOL)notNil
+-(void)addClassLabel:(NSString*)cLabel toMatrix:(NSMatrix *)matrix
+{
+        [view addClassLabel:cLabel toMatrix:matrix];
+        FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
+        item.valueType = FS_ITEM_HEADER;
+        item.name = cLabel;
+        [self.rootViewModelItem.mutableChildNodes addObject:item];
+        self.currentViewModelItem = item;
+}
+
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix enumBiDict:(CHBidirectionalDictionary*)enumBiDict mask:(NSUInteger)mask valueClass:(Class)valueClass notNil:(BOOL)notNil
 {
         @try {
                 if (!notNil || object) {
                         [view addObject:object withLabel:label toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];
-                        FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
-                        item.name = label;
-                        item.valueType = valueType;
-                        item.value = object;
-                        item.enumBiDict = enumBiDict;
-                        item.getter = getter;
-                        item.setter = setter;
-                        item.valueClass = valueClass ?: [object class];
-                        [self.currentViewModelItem.mutableChildNodes addObject:item];
+                        if (valueType != FS_ITEM_OBJECT || valueClass) {
+                                FSObjectInspectorViewModelItem *item = [[FSObjectInspectorViewModelItem new] autorelease];
+                                item.name = label;
+                                item.valueType = valueType;
+                                item.value = object;
+                                item.enumBiDict = enumBiDict;
+                                item.getter = getter;
+                                item.setter = setter;
+                                item.optsMask = mask;
+                                item.valueClass = valueClass ?: [object class];
+                                [self.currentViewModelItem.mutableChildNodes addObject:item];
+                        }
                 }
         }
         @catch (id exception)
@@ -146,15 +159,15 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 }
 - (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
 {
-        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label toMatrix:matrix enumBiDict:nil valueClass:nil notNil:notNil];
+        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label toMatrix:matrix enumBiDict:nil mask:0 valueClass:nil notNil:notNil];
 }
 - (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix notNil:(BOOL)notNil
 {
-        [self addObject:object valueType:valueType getter:nil setter:nil withLabel:label toMatrix:matrix enumBiDict:nil valueClass:(Class)nil notNil:notNil];
+        [self addObject:object valueType:valueType getter:nil setter:nil withLabel:label toMatrix:matrix enumBiDict:nil mask:0 valueClass:(Class)nil notNil:notNil];
 }
 - (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label toMatrix:(NSMatrix*)matrix
 {
-        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label toMatrix:matrix enumBiDict:nil valueClass:nil notNil:NO];
+        [self addObject:object valueType:valueType getter:getter setter:setter withLabel:label toMatrix:matrix enumBiDict:nil mask:0 valueClass:nil notNil:NO];
 }
 
 -(void)addGroup:(NSString*)groupName
@@ -174,7 +187,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 #define START_GROUP(GROUP) [self addGroup:(@#GROUP)];
 #define END_GROUP(GROUP) [self endGroup];
 
-#define ADD_VALUE(OBJECT, VALUE_TYPE, GETTER, SETTER, BIDICT, VALUE_CLASS, LABEL)                                                                                                                                                           \
+#define ADD_VALUE(OBJECT, VALUE_TYPE, GETTER, SETTER, BIDICT, MASK, VALUE_CLASS, LABEL)                                                                                                                                                           \
         @try {                                                                                                                                                                              \
                 [self addObject:(OBJECT) \
                       valueType:VALUE_TYPE \
@@ -183,39 +196,43 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                       withLabel:(LABEL) \
                        toMatrix:m \
                      enumBiDict:BIDICT \
+                           mask:MASK \
                      valueClass:VALUE_CLASS \
                          notNil:NO]; \
         }                                                                                                                                                                                   \
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_ENUM(ENUM, OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(objectFrom ## ENUM(OBJECT), FS_ITEM_ENUM, GETTER, SETTER, FSObjectEnumInfo.optionsFor ## ENUM, nil, LABEL);
+        ADD_VALUE(objectFrom ## ENUM(OBJECT), FS_ITEM_ENUM, GETTER, SETTER, FSObjectEnumInfo.optionsFor ## ENUM, 0, nil, LABEL);
+
+#define ADD_OPTIONS(ENUM, OBJECT, GETTER, SETTER, LABEL) \
+        ADD_VALUE(objectFrom ## ENUM(OBJECT), FS_ITEM_OPTIONS, GETTER, SETTER, FSObjectEnumInfo.optionsFor ## ENUM, ENUM ## Mask, nil, LABEL);
 
 #define ADD_OBJECT(OBJECT, GETTER, SETTER, LABEL)                                                                                                                                                           \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, nil, LABEL)
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, nil, 0, LABEL)
 
 
 #define ADD_OBJECT_NOT_NIL(OBJECT, GETTER, SETTER, LABEL)                                                                                                                                                          \
-        if (OBJECT) { ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, nil, LABEL); }
+        if (OBJECT) { ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, nil,  LABEL); }
 
 #define ADD_OBJECT_RO(OBJECT, LABEL) ADD_OBJECT(OBJECT, nil, nil, LABEL)
 #define ADD_OBJECT_RO_NOT_NIL(OBJECT, LABEL) ADD_OBJECT_NOT_NIL(OBJECT, nil, nil, LABEL)
 
 #define ADD_COLOR(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, NSColor.class, LABEL)
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSColor.class, LABEL)
 
 #define ADD_COLOR_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) if (OBJECT) { ADD_COLOR(OBJECT,GETTER,SETTER,LABEL); }
 
 #define ADD_STRING(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, NSString.class, LABEL)
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSString.class, LABEL)
 
 #define ADD_STRING_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) if (OBJECT) { ADD_COLOR(OBJECT,GETTER,SETTER,LABEL); }
 
 #define ADD_BOOL(B, GETTER, SETTER, LABEL) \
-        ADD_VALUE([FSBoolean booleanWithBool:(B)], FS_ITEM_BOOL, GETTER, SETTER, nil, nil, LABEL);
+        ADD_VALUE([FSBoolean booleanWithBool:(B)], FS_ITEM_BOOL, GETTER, SETTER, nil, 0, nil, LABEL);
 
 #define ADD_NUMBER(NUMBER, GETTER, SETTER, LABEL) \
-        ADD_VALUE([FSNumber numberWithDouble:(NUMBER)], FS_ITEM_NUMBER, GETTER, SETTER, nil, nil, LABEL);
+        ADD_VALUE([FSNumber numberWithDouble:(NUMBER)], FS_ITEM_NUMBER, GETTER, SETTER, nil, 0, nil, LABEL);
 
 #define ADD_DICTIONARY(OBJECTS, LABEL)                                                                                                                                                                   \
         @try {                                                                                                                                                                                           \
@@ -272,8 +289,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 
 #define ADD_CLASS_LABEL(LABEL)                              \
         {                                                   \
-                classLabel = (LABEL);                       \
-                [view addClassLabel:classLabel toMatrix:m]; \
+                [self addClassLabel:(LABEL) toMatrix:m]; \
         }
 
 @synthesize baseClasses;
@@ -743,7 +759,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         //ADD_OBJECT(          [o attributeRuns]                      ,@"Attribute runs")
                         ADD_NUMBER([o changeInLength], changeInLength, setChangeInLength, @"Change in length")
                         ADD_OBJECT_NOT_NIL([o delegate], delegate, setDelegate, @"Delegate")
-                        ADD_ENUM(TextStorageEditedOptions, [o editedMask], editedMask, seteditedMask, @"Edited mask")
+                        ADD_OPTIONS(TextStorageEditedOptions, [o editedMask], editedMask, seteditedMask, @"Edited mask")
                         ADD_RANGE([o editedRange], @"Edited range")
                         ADD_BOOL([o fixesAttributesLazily], fixesAttributesLazily, setfixesAttributesLazily, @"Fixes attributes lazily")
                         ADD_OBJECT([o font], font, setFont, @"Font")
@@ -816,15 +832,15 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_COLOR([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
                         ADD_ENUM(BezelStyle, [o bezelStyle], bezelStyle, setbezelStyle, @"Bezel style")
                         ADD_ENUM(GradientType, [o gradientType], gradientType, setgradientType, @"Gradient type")
-                        ADD_ENUM(CellStyleMask, [o highlightsBy], highlightsBy, sethighlightsBy, @"Highlights by")
+                        ADD_OPTIONS(CellStyleMask, [o highlightsBy], highlightsBy, sethighlightsBy, @"Highlights by")
                         ADD_BOOL([o imageDimsWhenDisabled], imageDimsWhenDisabled, setimageDimsWhenDisabled, @"Image dims when disabled")
                         ADD_ENUM(CellImagePosition, [o imagePosition], imagePosition, setimagePosition, @"Image position")
                         ADD_ENUM(ImageScaling, [o imageScaling], imageScaling, setimageScaling, @"Image scaling")
                         ADD_BOOL([o isTransparent], transparent, setisTransparent, @"Is transparent")
                         ADD_OBJECT_NOT_NIL([o keyEquivalentFont], keyEquivalentFont, setKeyEquivalentFont, @"Key equivalent font")
-                        ADD_ENUM(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
+                        ADD_OPTIONS(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], showsBorderOnlyWhileMouseInside, setshowsBorderOnlyWhileMouseInside, @"Shows border only while mouse inside")
-                        ADD_ENUM(CellStyleMask, [o showsStateBy], showsStateBy, setshowsStateBy, @"Shows state by")
+                        ADD_OPTIONS(CellStyleMask, [o showsStateBy], showsStateBy, setshowsStateBy, @"Shows state by")
                         ADD_OBJECT_NOT_NIL([o sound], sound, setSound, @"Sound")
                         ADD_STRING([o title], title, setTitle, @"Title")
                 }
@@ -833,7 +849,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_CLASS_LABEL(@"NSDatePickerCell Info");
                         ADD_COLOR([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
                         ADD_OBJECT([o calendar], calendar, setCalendar, @"Calendar")
-                        ADD_ENUM(DatePickerElementFlags, [o datePickerElements], datePickerElements, setdatePickerElements, @"Date picker elements")
+                        ADD_OPTIONS(DatePickerElementFlags, [o datePickerElements], datePickerElements, setdatePickerElements, @"Date picker elements")
                         ADD_ENUM(DatePickerMode, [o datePickerMode], datePickerMode, setdatePickerMode, @"Date picker mode")
                         ADD_ENUM(DatePickerStyle, [o datePickerStyle], datePickerStyle, setdatePickerStyle, @"Date picker style")
                         ADD_OBJECT([o dateValue], dateValue, setDateValue, @"Date value")
@@ -1043,7 +1059,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_ENUM(CellStateValue, [o state], state, setstate, @"State")
         ADD_NUMBER([o tag], tag, setTag, @"Tag")
         ADD_OBJECT_NOT_NIL([o target], target, setTarget, @"Target")
-                ADD_ENUM(CellType, [(NSCell*)o type], type, setType, @"Type")
+                ADD_OPTIONS(CellType, [(NSCell*)o type], type, setType, @"Type")
         ADD_BOOL([o wantsNotificationForMarkedText], wantsNotificationForMarkedText, setwantsNotificationForMarkedText, @"Wants notification for marked text")
         ADD_BOOL([o wraps], wraps, setwraps, @"Wraps")
 }
@@ -1248,7 +1264,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_NUMBER([o absoluteX], absoluteX, setAbsoluteX, @"Absolute x")
                 ADD_NUMBER([o absoluteY], absoluteY, setAbsoluteY, @"Absolute y")
                 ADD_NUMBER([o absoluteZ], absoluteZ, setAbsoluteZ, @"Absolute z")
-                ADD_ENUM(EventButtonMask, [o buttonMask], buttonMask, setbuttonMask, @"Button mask")
+                ADD_OPTIONS(EventButtonMask, [o buttonMask], buttonMask, setbuttonMask, @"Button mask")
         }
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp)
                 ADD_NUMBER([o buttonNumber], buttonNumber, setButtonNumber, @"Button number")
@@ -1284,7 +1300,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_NUMBER([o keyCode], keyCode, setKeyCode, @"Key code")
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel)
                 ADD_POINT([o locationInWindow], @"Location in window")
-        ADD_ENUM(EventModifierFlags, [o modifierFlags] & NSDeviceIndependentModifierFlagsMask, modifierFlags, setModifierFlags, @"Modifier flags")
+        ADD_OPTIONS(EventModifierFlags, [o modifierFlags] & NSDeviceIndependentModifierFlagsMask, modifierFlags, setModifierFlags, @"Modifier flags")
         if (type == NSTabletProximity || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletProximityEventSubtype)) {
                 ADD_NUMBER([o pointingDeviceID], pointingDeviceID, setPointingDeviceID, @"Pointing device ID")
                 ADD_NUMBER([o pointingDeviceSerialNumber], pointingDeviceSerialNumber, setPointingDeviceSerialNumber, @"Pointing device serial number")
@@ -1594,7 +1610,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         if ([object isKindOfClass:[NSBitmapImageRep class]]) {
                 NSBitmapImageRep* o = object;
                 ADD_CLASS_LABEL(@"NSBitmapImageRep Info");
-                ADD_ENUM(BitmapFormat, [o bitmapFormat], bitmapFormat, setbitmapFormat, @"Bitmap format")
+                ADD_OPTIONS(BitmapFormat, [o bitmapFormat], bitmapFormat, setbitmapFormat, @"Bitmap format")
                 ADD_NUMBER([o bitsPerPixel], bitsPerPixel, setBitsPerPixel, @"Bits per pixel")
                 ADD_NUMBER([o bytesPerPlane], bytesPerPlane, setBytesPerPlane, @"Bytes per plane")
                 ADD_NUMBER([o bytesPerRow], bytesPerRow, setBytesPerRow, @"Bytes per row")
@@ -1677,7 +1693,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_OBJECT([o glyphGenerator], glyphGenerator, setGlyphGenerator, @"Glyph generator")
         ADD_BOOL([o hasNonContiguousLayout], hasNonContiguousLayout, sethasNonContiguousLayout, @"Has non contiguous layout")
         ADD_NUMBER([o hyphenationFactor], hyphenationFactor, setHyphenationFactor, @"Hyphenation factor")
-        ADD_ENUM(GlyphStorageLayoutOptions, [o layoutOptions], layoutOptions, setlayoutOptions, @"Layout options")
+        ADD_OPTIONS(GlyphStorageLayoutOptions, [o layoutOptions], layoutOptions, setlayoutOptions, @"Layout options")
         ADD_BOOL([o showsControlCharacters], showsControlCharacters, setshowsControlCharacters, @"Shows control characters")
         ADD_BOOL([o showsInvisibleCharacters], showsInvisibleCharacters, setshowsInvisibleCharacters, @"Shows invisible characters")
         ADD_OBJECTS([o textContainers], @"Text containers")
@@ -1696,7 +1712,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_OBJECT([o deletedObjects], deletedObjects, setDeletedObjects, @"Deleted objects")
         ADD_BOOL([o hasChanges], hasChanges, sethasChanges, @"Has changes")
         ADD_OBJECT([o insertedObjects], insertedObjects, setInsertedObjects, @"Inserted objects")
-        ADD_ENUM(MergePolicyMarker, [o mergePolicy], mergePolicy, setmergePolicy, @"Merge policy")
+        ADD_OPTIONS(MergePolicyMarker, [o mergePolicy], mergePolicy, setmergePolicy, @"Merge policy")
         ADD_OBJECT([o persistentStoreCoordinator], persistentStoreCoordinator, setPersistentStoreCoordinator, @"Persistent store coordinator")
         ADD_BOOL([o propagatesDeletesAtEndOfEvent], propagatesDeletesAtEndOfEvent, setpropagatesDeletesAtEndOfEvent, @"Propagates deletes at end of event")
         ADD_OBJECT([o registeredObjects], registeredObjects, setRegisteredObjects, @"Registered objects")
@@ -1758,7 +1774,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_BOOL([o isHighlighted], highlighted, setisHighlighted, @"Is highlighted")
         ADD_BOOL([o isSeparatorItem], separatorItem, setisSeparatorItem, @"Is separatorItem")
         ADD_OBJECT([o keyEquivalent], keyEquivalent, setKeyEquivalent, @"Key equivalent")
-        ADD_ENUM(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
+        ADD_OPTIONS(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
         ADD_OBJECT([o menu], menu, setMenu, @"Menu")
         ADD_OBJECT_NOT_NIL([o mixedStateImage], mixedStateImage, setMixedStateImage, @"Mixed state image")
         ADD_OBJECT_NOT_NIL([o offStateImage], offStateImage, setOffStateImage, @"Off state image")
@@ -1857,7 +1873,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_OBJECTS([o leftExpressions], @"Left expressions")
         ADD_ENUM(ComparisonPredicateModifier, [o modifier], modifier, setmodifier, @"Modifier")
         ADD_OBJECTS([o operators], @"Operators")
-        ADD_ENUM(ComparisonPredicateOptions, [o options], options, setoptions, @"Options")
+        ADD_OPTIONS(ComparisonPredicateOptions, [o options], options, setoptions, @"Options")
         ADD_ENUM(AttributeType, [o rightExpressionAttributeType], rightExpressionAttributeType, setrightExpressionAttributeType, @"Right expression attribute type")
         ADD_OBJECTS([o rightExpressions], @"Right expressions")
         ADD_OBJECTS([o templateViews], @"Template views")
@@ -2083,7 +2099,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
         ADD_BOOL([o isHidden], hidden, setisHidden, @"Is hidden")
         ADD_NUMBER([o maxWidth], maxWidth, setMaxWidth, @"Max width")
         ADD_NUMBER([o minWidth], minWidth, setMinWidth, @"Min width")
-        ADD_ENUM(TableColumnResizingOptions, [o resizingMask], resizingMask, setresizingMask, @"Resizing mask")
+        ADD_OPTIONS(TableColumnResizingOptions, [o resizingMask], resizingMask, setresizingMask, @"Resizing mask")
         ADD_OBJECT_NOT_NIL([o sortDescriptorPrototype], sortDescriptorPrototype, setSortDescriptorPrototype, @"Sort descriptor prototype")
         ADD_OBJECT([o tableView], tableView, setTableView, @"Table view")
         ADD_NUMBER([o width], width, setWidth, @"Width")
@@ -2142,7 +2158,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 {
         NSTextList* o = object;
         ADD_CLASS_LABEL(@"NSTextList Info");
-        ADD_ENUM(TextListOptions, [o listOptions], listOptions, setlistOptions, @"List options")
+        ADD_OPTIONS(TextListOptions, [o listOptions], listOptions, setlistOptions, @"List options")
         ADD_OBJECT([o markerFormat], markerFormat, setMarkerFormat, @"Marker format")
 }
 
@@ -2208,7 +2224,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 {
         NSTrackingArea* o = object;
         ADD_CLASS_LABEL(@"NSTrackingArea Info");
-        ADD_ENUM(TrackingAreaOptions, [o options], options, setoptions, @"Options")
+        ADD_OPTIONS(TrackingAreaOptions, [o options], options, setoptions, @"Options")
         ADD_OBJECT([o owner], owner, setOwner, @"Owner")
         ADD_RECT([o rect], @"Rect")
         ADD_DICTIONARY([o userInfo], @"User info")
@@ -2465,7 +2481,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
 
         NSView* o = object;
         ADD_CLASS_LABEL(@"NSView Info");
-        ADD_ENUM(AutoresizingMaskOptions, [o autoresizingMask], autoresizingMask, setautoresizingMask, @"Autoresizing mask")
+        ADD_OPTIONS(AutoresizingMaskOptions, [o autoresizingMask], autoresizingMask, setautoresizingMask, @"Autoresizing mask")
         ADD_BOOL([o autoresizesSubviews], autoresizesSubviews, setautoresizesSubviews, @"Autoresizes subviews")
         ADD_RECT([o bounds], @"Bounds")
         ADD_NUMBER([o boundsRotation], boundsRotation, setBoundsRotation, @"Bounds rotation")
@@ -2531,6 +2547,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                               withLabel:[NSString stringWithFormat:@"Image scaling for segment %ld", (long)i]
                                toMatrix:m
                          enumBiDict:FSObjectEnumInfo.optionsForImageScaling
+                               mask:0
                              valueClass:nil
                                      notNil:NO];
                 }
@@ -2553,6 +2570,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                       withLabel:[NSString stringWithFormat:@"Label for segment %ld", (long)i]
                        toMatrix:m
                      enumBiDict:nil
+                           mask:0
                      valueClass:NSString.class
                          notNil:YES];
                 [self addObject:[o menuForSegment:i]
@@ -2570,6 +2588,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                               withLabel:[NSString stringWithFormat:@"Tag for segment %ld", (long)i]
                                toMatrix:m
                          enumBiDict:FSObjectEnumInfo.optionsForImageScaling
+                               mask:0
                              valueClass:nil
                                      notNil:NO];
                 }
@@ -2581,6 +2600,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                               withLabel:[NSString stringWithFormat:@"ToolTip for segment %ld", (long)i]
                                toMatrix:m
                              enumBiDict:nil
+                               mask:0
                              valueClass:NSString.class
                                      notNil:YES];
                 }
@@ -2661,7 +2681,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_BOOL([o isBordered], bordered, setisBordered, @"Is bordered")
                         ADD_BOOL([o isTransparent], transparent, setisTransparent, @"Is transparent")
                         ADD_OBJECT([o keyEquivalent], keyEquivalent, setKeyEquivalent, @"Key equivalent")
-                        ADD_ENUM(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
+                        ADD_OPTIONS(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
                         ADD_BOOL([o showsBorderOnlyWhileMouseInside], showsBorderOnlyWhileMouseInside, setshowsBorderOnlyWhileMouseInside, @"Shows border only while mouse inside")
                         ADD_OBJECT_NOT_NIL([o sound], sound, setSound, @"Sound")
                         ADD_ENUM(CellStateValue, [o state], state, setstate, @"State")
@@ -2679,7 +2699,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_CLASS_LABEL(@"NSDatePicker Info");
                         ADD_COLOR([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
                         ADD_OBJECT([o calendar], calendar, setCalendar, @"Calendar")
-                        ADD_ENUM(DatePickerElementFlags, [o datePickerElements], datePickerElements, setdatePickerElements, @"Date picker elements")
+                        ADD_OPTIONS(DatePickerElementFlags, [o datePickerElements], datePickerElements, setdatePickerElements, @"Date picker elements")
                         ADD_ENUM(DatePickerMode, [o datePickerMode], datePickerMode, setdatePickerMode, @"Date picker mode")
                         ADD_ENUM(DatePickerStyle, [o datePickerStyle], datePickerStyle, setdatePickerStyle, @"Date picker style")
                         ADD_OBJECT([o dateValue], dateValue, setDateValue, @"Date value")
@@ -2851,7 +2871,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                         ADD_OBJECT([o delegate], delegate, setDelegate, @"Delegate")
                         ADD_SEL([o doubleAction], @"Double action")
                         ADD_COLOR([o gridColor], gridColor, setGridColor, @"Grid color")
-                        ADD_ENUM(TableViewGridLineStyle, [o gridStyleMask], gridStyleMask, setgridStyleMask, @"Grid style mask")
+                        ADD_OPTIONS(TableViewGridLineStyle, [o gridStyleMask], gridStyleMask, setgridStyleMask, @"Grid style mask")
                         ADD_OBJECT([o headerView], headerView, setHeaderView, @"Header view")
                         ADD_OBJECT_NOT_NIL([o highlightedTableColumn], highlightedTableColumn, setHighlightedTableColumn, @"Highlighted table column")
                         ADD_SIZE([o intercellSpacing], @"Intercell spacing")
@@ -3078,7 +3098,7 @@ static inline NSString *fs_setterForProperty(NSString*prop)
                 ADD_ENUM(WindowSharingType, [o sharingType], sharingType, setsharingType, @"Sharing type")
                 ADD_BOOL([o showsResizeIndicator], showsResizeIndicator, setshowsResizeIndicator, @"Shows resize indicator")
                 ADD_BOOL([o showsToolbarButton], showsToolbarButton, setshowsToolbarButton, @"Shows toolbar button")
-                ADD_ENUM(WindowMask, [o styleMask], styleMask, setstyleMask, @"Style mask")
+                ADD_OPTIONS(WindowMask, [o styleMask], styleMask, setstyleMask, @"Style mask")
                 ADD_STRING([o title], title, setTitle, @"Title")
                 ADD_OBJECT_NOT_NIL([o toolbar], toolbar, setToolbar, @"Toolbar")
                 ADD_NUMBER([o userSpaceScaleFactor], userSpaceScaleFactor, setUserSpaceScaleFactor, @"User space scale factor")

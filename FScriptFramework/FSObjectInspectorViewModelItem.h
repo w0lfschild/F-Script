@@ -44,5 +44,4 @@ typedef void(^FSSetterBlock)(id obj, id newValue, FSObjectInspectorViewModelItem
 @property (nonatomic) NSInteger minValue;
 @property (nonatomic) NSInteger maxValue;
 @property (nonatomic) Class valueClass;
-
 @end

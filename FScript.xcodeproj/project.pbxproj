@@ -2817,6 +2817,54 @@
 		ED8319421A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
 		ED8319431A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
 		ED8319441A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		EDA6AC401A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC411A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC421A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC431A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC441A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC451A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC461A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC471A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC481A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
+		EDA6AC491A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		EDA6AC4A1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC4B1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC4C1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC4D1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC4E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC4F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC501A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC511A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; };
+		EDA6AC521A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		EDA6AC561A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC571A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC581A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC591A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC5A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC5B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC5C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC5D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC5E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */; };
+		EDA6AC5F1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		EDA6AC601A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC611A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC621A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC631A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC641A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC651A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC661A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC671A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; };
+		EDA6AC681A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		EDA6AC691A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC6A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC6B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC6C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC6D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC6E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC6F1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC701A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC711A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
+		EDA6AC721A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */; };
 		EDC2C8DE1A1A943600942777 /* FSDetailedObjectInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */; };
 		EDC2C8DF1A1A943600942777 /* FSDetailedObjectInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */; };
 		EDC2C8E01A1A943600942777 /* FSDetailedObjectInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */; };
@@ -3761,20 +3809,6 @@
 			remoteGlobalIDString = 8F6DA5DE055FC6980050409A;
 			remoteInfo = FSTest2;
 		};
-		EDC2C9011A1AA50D00942777 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F6DA6D8055FC6C80050409A;
-			remoteInfo = FSTest1;
-		};
-		EDC2C9031A1AA50D00942777 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F6DA5DE055FC6980050409A;
-			remoteInfo = FSTest2;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -4231,6 +4265,11 @@
 		ED83191C1A1BC2B500290EE2 /* FSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSUtils.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSObjectInspectorViewController+NonArc.h"; sourceTree = "<group>"; };
 		ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = "FSObjectInspectorViewController+NonArc.m"; sourceTree = "<group>"; tabWidth = 8; };
+		EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorOutlineView.h; sourceTree = "<group>"; };
+		EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorOutlineView.m; sourceTree = "<group>"; };
+		EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorOptionsViewController.h; sourceTree = "<group>"; };
+		EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorOptionsViewController.m; sourceTree = "<group>"; };
+		EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectInspectorOptionsViewController.xib; sourceTree = "<group>"; };
 		EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDetailedObjectInspector.h; sourceTree = "<group>"; };
 		EDC2C8DD1A1A943600942777 /* FSDetailedObjectInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSDetailedObjectInspector.m; sourceTree = "<group>"; tabWidth = 8; };
 		EDC2C8EE1A1AA34D00942777 /* FSObjectInspectorBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorBackgroundView.h; sourceTree = "<group>"; };
@@ -5380,6 +5419,11 @@
 				EDC2C8EF1A1AA34D00942777 /* FSObjectInspectorBackgroundView.m */,
 				ED3CB63F1A1E5B3300771077 /* FSColorWell.h */,
 				ED3CB6401A1E5B3300771077 /* FSColorWell.m */,
+				EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */,
+				EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */,
+				EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */,
+				EDA6AC541A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m */,
+				EDA6AC551A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib */,
 			);
 			name = "Object Inspector";
 			sourceTree = "<group>";
@@ -5483,6 +5527,7 @@
 				8F6DA600055FC6980050409A /* FScriptFunctions.h in Headers */,
 				8F6DA601055FC6980050409A /* FSInterpreter.h in Headers */,
 				8F6DA602055FC6980050409A /* FSInterpreterView.h in Headers */,
+				EDA6AC5E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				8F6DA603055FC6980050409A /* FSInterpreterViewIBHeader.h in Headers */,
 				8F6DA604055FC6980050409A /* FSNSArray.h in Headers */,
 				8F6DA605055FC6980050409A /* FSNSDictionary.h in Headers */,
@@ -5549,6 +5594,7 @@
 				8F60217605A25CDC0004EFF1 /* FSCollectionInspectorTableView.h in Headers */,
 				8F60F24D05A9FE8B00985FEC /* FSNSSet.h in Headers */,
 				8FDCCD5605C09F8200747C0A /* FSAttributedStringInspector.h in Headers */,
+				EDA6AC481A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				8FDCCDC705C0A23100747C0A /* FSNSAttributedString.h in Headers */,
 				8F71F72605C43A7D00C34794 /* FSInterpreterViewPrivate.h in Headers */,
 				8F0B670105C5639E0099180D /* FScriptMenuItem.h in Headers */,
@@ -5763,6 +5809,7 @@
 				8F95E3C708034A670030B65C /* FSPredicateTextView.h in Headers */,
 				8FE7E0EA082AD964008231E8 /* FSCoreDataSample.h in Headers */,
 				8F936BFA082E8E5000A04EBF /* FSNSManagedObjectContext.h in Headers */,
+				EDA6AC561A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				8F917E28095F5DE5000932D0 /* FSObjectBrowserSearchField.h in Headers */,
 				8F90A2F7096DB0660064F4BC /* FSBlockCompilationResult.h in Headers */,
 				8FD7D4A80975B377009B2685 /* FSReturnSignal.h in Headers */,
@@ -5775,6 +5822,7 @@
 				8F4822090D2C317700754A4E /* FSTestObjCClass2.h in Headers */,
 				8F8112F60D85E58200CB3407 /* FSCNCategory.h in Headers */,
 				8F59CA750D86DD0800D67A78 /* FSCNMessage.h in Headers */,
+				EDA6AC401A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				8F7223830D870C6A00394C99 /* FSCNSuper.h in Headers */,
 				8F2E34220D8DB61C00912543 /* FSCNUnaryMessage.h in Headers */,
 				8F2E34350D8DBF6A00912543 /* FSCNBinaryMessage.h in Headers */,
@@ -5920,6 +5968,7 @@
 				EDFB30021A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				8FDCCD5205C09F8200747C0A /* FSAttributedStringInspector.h in Headers */,
 				8FDCCDC305C0A23000747C0A /* FSNSAttributedString.h in Headers */,
+				EDA6AC571A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				8F71F72405C43A7D00C34794 /* FSInterpreterViewPrivate.h in Headers */,
 				8F0B66FF05C5639E0099180D /* FScriptMenuItem.h in Headers */,
 				8F658B2F05C9694F0040FB24 /* FSNSFont.h in Headers */,
@@ -5939,6 +5988,7 @@
 				8F95E3C308034A670030B65C /* FSPredicateTextView.h in Headers */,
 				8FE7E0EC082AD964008231E8 /* FSCoreDataSample.h in Headers */,
 				8F936BF1082E8DA400A04EBF /* FSManagedObjectContextInspector.h in Headers */,
+				EDA6AC411A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				EDC2C8F11A1AA34D00942777 /* FSObjectInspectorBackgroundView.h in Headers */,
 				8F936BFD082E8E5C00A04EBF /* FSNSManagedObjectContext.h in Headers */,
 				8F917E2C095F5DE7000932D0 /* FSObjectBrowserSearchField.h in Headers */,
@@ -6119,6 +6169,7 @@
 				BA22321E189FA403002C5B6A /* FSPredicateTextView.h in Headers */,
 				BA22321F189FA403002C5B6A /* FSCoreDataSample.h in Headers */,
 				BA223220189FA403002C5B6A /* FSNSManagedObjectContext.h in Headers */,
+				EDA6AC581A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				BA223221189FA403002C5B6A /* FSObjectBrowserSearchField.h in Headers */,
 				BA223222189FA403002C5B6A /* FSBlockCompilationResult.h in Headers */,
 				BA223223189FA403002C5B6A /* FSReturnSignal.h in Headers */,
@@ -6131,6 +6182,7 @@
 				BA22322A189FA403002C5B6A /* FSTestObjCClass2.h in Headers */,
 				BA22322B189FA403002C5B6A /* FSCNCategory.h in Headers */,
 				BA22322C189FA403002C5B6A /* FSCNMessage.h in Headers */,
+				EDA6AC421A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				BA22322D189FA403002C5B6A /* FSCNSuper.h in Headers */,
 				BA22322E189FA403002C5B6A /* FSCNUnaryMessage.h in Headers */,
 				BA22322F189FA403002C5B6A /* FSCNBinaryMessage.h in Headers */,
@@ -6299,6 +6351,7 @@
 				BA2233DE189FA412002C5B6A /* FSPredicateTextView.h in Headers */,
 				BA2233DF189FA412002C5B6A /* FSCoreDataSample.h in Headers */,
 				BA2233E0189FA412002C5B6A /* FSNSManagedObjectContext.h in Headers */,
+				EDA6AC5A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				BA2233E1189FA412002C5B6A /* FSObjectBrowserSearchField.h in Headers */,
 				BA2233E2189FA412002C5B6A /* FSBlockCompilationResult.h in Headers */,
 				BA2233E3189FA412002C5B6A /* FSReturnSignal.h in Headers */,
@@ -6311,6 +6364,7 @@
 				BA2233EA189FA412002C5B6A /* FSTestObjCClass2.h in Headers */,
 				BA2233EB189FA412002C5B6A /* FSCNCategory.h in Headers */,
 				BA2233EC189FA412002C5B6A /* FSCNMessage.h in Headers */,
+				EDA6AC441A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				BA2233ED189FA412002C5B6A /* FSCNSuper.h in Headers */,
 				BA2233EE189FA412002C5B6A /* FSCNUnaryMessage.h in Headers */,
 				BA2233EF189FA412002C5B6A /* FSCNBinaryMessage.h in Headers */,
@@ -6456,6 +6510,7 @@
 				EDFB30041A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				BA223585189FA429002C5B6A /* FSAttributedStringInspector.h in Headers */,
 				BA223586189FA429002C5B6A /* FSNSAttributedString.h in Headers */,
+				EDA6AC591A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				BA223587189FA429002C5B6A /* FSInterpreterViewPrivate.h in Headers */,
 				BA223588189FA429002C5B6A /* FScriptMenuItem.h in Headers */,
 				BA223589189FA429002C5B6A /* FSNSFont.h in Headers */,
@@ -6475,6 +6530,7 @@
 				BA223597189FA429002C5B6A /* FSPredicateTextView.h in Headers */,
 				BA223598189FA429002C5B6A /* FSCoreDataSample.h in Headers */,
 				BA223599189FA429002C5B6A /* FSManagedObjectContextInspector.h in Headers */,
+				EDA6AC431A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				EDC2C8F31A1AA34D00942777 /* FSObjectInspectorBackgroundView.h in Headers */,
 				BA22359A189FA429002C5B6A /* FSNSManagedObjectContext.h in Headers */,
 				BA22359B189FA429002C5B6A /* FSObjectBrowserSearchField.h in Headers */,
@@ -6632,6 +6688,7 @@
 				EDFB30061A188B4E002C8DD7 /* CHBidirectionalDictionary.h in Headers */,
 				BA2236CD189FA431002C5B6A /* FSAttributedStringInspector.h in Headers */,
 				BA2236CE189FA431002C5B6A /* FSNSAttributedString.h in Headers */,
+				EDA6AC5B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				BA2236CF189FA431002C5B6A /* FSInterpreterViewPrivate.h in Headers */,
 				BA2236D0189FA431002C5B6A /* FScriptMenuItem.h in Headers */,
 				BA2236D1189FA431002C5B6A /* FSNSFont.h in Headers */,
@@ -6651,6 +6708,7 @@
 				BA2236DF189FA431002C5B6A /* FSPredicateTextView.h in Headers */,
 				BA2236E0189FA431002C5B6A /* FSCoreDataSample.h in Headers */,
 				BA2236E1189FA431002C5B6A /* FSManagedObjectContextInspector.h in Headers */,
+				EDA6AC451A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				EDC2C8F51A1AA34D00942777 /* FSObjectInspectorBackgroundView.h in Headers */,
 				BA2236E2189FA431002C5B6A /* FSNSManagedObjectContext.h in Headers */,
 				BA2236E3189FA431002C5B6A /* FSObjectBrowserSearchField.h in Headers */,
@@ -6831,6 +6889,7 @@
 				EDC2C9831A1AA50D00942777 /* FSPredicateTextView.h in Headers */,
 				EDC2C9841A1AA50D00942777 /* FSCoreDataSample.h in Headers */,
 				EDC2C9851A1AA50D00942777 /* FSNSManagedObjectContext.h in Headers */,
+				EDA6AC5C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				EDC2C9861A1AA50D00942777 /* FSObjectBrowserSearchField.h in Headers */,
 				EDC2C9871A1AA50D00942777 /* FSBlockCompilationResult.h in Headers */,
 				EDC2C9881A1AA50D00942777 /* FSReturnSignal.h in Headers */,
@@ -6843,6 +6902,7 @@
 				EDC2C98F1A1AA50D00942777 /* FSTestObjCClass2.h in Headers */,
 				EDC2C9901A1AA50D00942777 /* FSCNCategory.h in Headers */,
 				EDC2C9911A1AA50D00942777 /* FSCNMessage.h in Headers */,
+				EDA6AC461A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				EDC2C9921A1AA50D00942777 /* FSCNSuper.h in Headers */,
 				EDC2C9931A1AA50D00942777 /* FSCNUnaryMessage.h in Headers */,
 				EDC2C9941A1AA50D00942777 /* FSCNBinaryMessage.h in Headers */,
@@ -6890,6 +6950,7 @@
 				EDC2CAD91A1AA52500942777 /* FSObjectBrowser.h in Headers */,
 				EDC2CADA1A1AA52500942777 /* FSObjectBrowserCell.h in Headers */,
 				EDC2CADB1A1AA52500942777 /* FSObjectInspectorViewModelItem.h in Headers */,
+				EDA6AC471A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */,
 				EDC2CADC1A1AA52500942777 /* FSBlock.h in Headers */,
 				EDC2CADD1A1AA52500942777 /* BlockInspector.h in Headers */,
 				EDC2CADE1A1AA52500942777 /* BlockPrivate.h in Headers */,
@@ -7020,6 +7081,7 @@
 				EDC2CB591A1AA52500942777 /* FSTestObjCClass2.h in Headers */,
 				EDC2CB5A1A1AA52500942777 /* FSCNCategory.h in Headers */,
 				EDC2CB5B1A1AA52500942777 /* FSCNMessage.h in Headers */,
+				EDA6AC5D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				EDC2CB5C1A1AA52500942777 /* FSCNSuper.h in Headers */,
 				EDC2CB5D1A1AA52500942777 /* FSCNUnaryMessage.h in Headers */,
 				EDC2CB5E1A1AA52500942777 /* FSCNBinaryMessage.h in Headers */,
@@ -7247,8 +7309,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EDC2C9001A1AA50D00942777 /* PBXTargetDependency */,
-				EDC2C9021A1AA50D00942777 /* PBXTargetDependency */,
 			);
 			name = "F-Script 10.10";
 			productName = fs;
@@ -7342,6 +7402,7 @@
 				EDE508D919DD4D310012F16A /* FSConsole.xib in Resources */,
 				8F6597B60C37F061006CDCA0 /* FScriptMenuItem.png in Resources */,
 				8F6631D20C4A270000FA798A /* FSMovieInspector.nib in Resources */,
+				EDA6AC721A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				EDFB2FFA1A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				8FE3DC9B0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
 			);
@@ -7358,6 +7419,7 @@
 				8F6DA655055FC6980050409A /* KTest.txt in Resources */,
 				8F6DA656055FC6980050409A /* license.txt in Resources */,
 				EDFB2FF91A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
+				EDA6AC711A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8F6DA657055FC6980050409A /* genObjInspector.nib in Resources */,
 				8F6DA658055FC6980050409A /* fs.scriptSuite in Resources */,
 				8F6DA659055FC6980050409A /* fs.scriptTerminology in Resources */,
@@ -7410,6 +7472,7 @@
 				EDE508DB19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F2D067105CED9B9007EA81B /* run.tiff in Resources */,
 				8F56036805CF22660044FA65 /* build.tiff in Resources */,
+				EDA6AC691A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8FA8EFA007739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
 				8FCA6B88078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib in Resources */,
 				8F6631D40C4A270200FA798A /* FSMovieInspector.nib in Resources */,
@@ -7443,6 +7506,7 @@
 				EDFB2FF41A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				8FA8EF9F07739FD4001BEC7B /* FSCollectionInspectorView.nib in Resources */,
 				8F936BEF082E8D9F00A04EBF /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA6AC6A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8F6631D50C4A270200FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9D0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
 			);
@@ -7475,6 +7539,7 @@
 				EDE508DD19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22325E189FA403002C5B6A /* run.tiff in Resources */,
 				BA22325F189FA403002C5B6A /* build.tiff in Resources */,
+				EDA6AC6B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA223260189FA403002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA223261189FA403002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
 				BA223262189FA403002C5B6A /* FSMovieInspector.nib in Resources */,
@@ -7510,6 +7575,7 @@
 				EDE508DF19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22341E189FA412002C5B6A /* run.tiff in Resources */,
 				BA22341F189FA412002C5B6A /* build.tiff in Resources */,
+				EDA6AC6D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA223420189FA412002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA223421189FA412002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
 				BA223422189FA412002C5B6A /* FSMovieInspector.nib in Resources */,
@@ -7543,6 +7609,7 @@
 				EDFB2FF61A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				BA2235D4189FA429002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA2235D5189FA429002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA6AC6C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA2235D6189FA429002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA2235D7189FA429002C5B6A /* FSTestClasses.txt in Resources */,
 			);
@@ -7573,6 +7640,7 @@
 				EDFB2FF81A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				BA22371C189FA431002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA22371D189FA431002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA6AC6E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA22371E189FA431002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA22371F189FA431002C5B6A /* FSTestClasses.txt in Resources */,
 			);
@@ -7605,6 +7673,7 @@
 				EDC2C9C41A1AA50D00942777 /* FScriptPreferences.xib in Resources */,
 				EDC2C9C51A1AA50D00942777 /* run.tiff in Resources */,
 				EDC2C9C61A1AA50D00942777 /* build.tiff in Resources */,
+				EDA6AC6F1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				EDC2C9C71A1AA50D00942777 /* FSCollectionInspectorView.nib in Resources */,
 				EDC2C9C81A1AA50D00942777 /* FSManagedObjectContextInspector.nib in Resources */,
 				EDC2C9C91A1AA50D00942777 /* FSMovieInspector.nib in Resources */,
@@ -7638,6 +7707,7 @@
 				EDC2CB8A1A1AA52500942777 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				EDC2CB8B1A1AA52500942777 /* FSCollectionInspectorView.nib in Resources */,
 				EDC2CB8C1A1AA52500942777 /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA6AC701A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				EDC2CB8D1A1AA52500942777 /* FSMovieInspector.nib in Resources */,
 				EDC2CB8E1A1AA52500942777 /* FSTestClasses.txt in Resources */,
 			);
@@ -7818,6 +7888,7 @@
 				8F0CBC480BDB94AD002B0AD7 /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				8F0CBC490BDB94AD002B0AD7 /* FSCollectionInspectorView.m in Sources */,
 				EDFB302D1A188B4E002C8DD7 /* Util.m in Sources */,
+				EDA6AC521A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				8F0CBC4A0BDB94AD002B0AD7 /* ArrayRepFetchRequest.m in Sources */,
 				8F0CBC4B0BDB94AD002B0AD7 /* FSPointer.m in Sources */,
 				8F0CBC4C0BDB94AD002B0AD7 /* FSGenericPointer.m in Sources */,
@@ -7851,6 +7922,7 @@
 				8F747DAF0DA03AE200148342 /* FSCNPrecomputedObject.m in Sources */,
 				8F747DBE0DA0467100148342 /* FSCNArray.m in Sources */,
 				8FAE79AC0DA0ED5D00CB6E14 /* FSCNBlock.m in Sources */,
+				EDA6AC681A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				8FAE79F30DA109C500CB6E14 /* FSCNAssignment.m in Sources */,
 				8F45CBBF0DA813F200AFA8C8 /* FSCNMethod.m in Sources */,
 				8FD0A3140DD7276000E47459 /* FSCNReturn.m in Sources */,
@@ -7922,6 +7994,7 @@
 				8F6DA68E055FC6980050409A /* FSUnarchiver.m in Sources */,
 				8F6DA68F055FC6980050409A /* FSGenericObjectInspector.m in Sources */,
 				8F6DA690055FC6980050409A /* KTestManager.m in Sources */,
+				EDA6AC671A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				8F6DA691055FC6980050409A /* MessagePatternCodeNode.m in Sources */,
 				8F6DA692055FC6980050409A /* FSMiscTools.m in Sources */,
 				8F6DA693055FC6980050409A /* FSMsgContext.m in Sources */,
@@ -7997,6 +8070,7 @@
 				8F7223820D870C6A00394C99 /* FSCNSuper.m in Sources */,
 				ED8319431A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */,
 				8F2E34250D8DB61C00912543 /* FSCNUnaryMessage.m in Sources */,
+				EDA6AC511A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				8F2E34380D8DBF6A00912543 /* FSCNBinaryMessage.m in Sources */,
 				8F2E34410D8DBFE700912543 /* FSCNKeywordMessage.m in Sources */,
 				EDC2C8ED1A1A99F600942777 /* FSObjectInspectorViewController.m in Sources */,
@@ -8168,6 +8242,7 @@
 				8F48220A0D2C317700754A4E /* FSTestObjCClass2.m in Sources */,
 				8F8112F70D85E58200CB3407 /* FSCNCategory.m in Sources */,
 				8F59CA760D86DD0800D67A78 /* FSCNMessage.m in Sources */,
+				EDA6AC5F1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				8F7223840D870C6A00394C99 /* FSCNSuper.m in Sources */,
 				8F2E34230D8DB61C00912543 /* FSCNUnaryMessage.m in Sources */,
 				8F2E34360D8DBF6A00912543 /* FSCNBinaryMessage.m in Sources */,
@@ -8176,6 +8251,7 @@
 				8F8F58670D9FE6AA00ED0FED /* FSCNStatementList.m in Sources */,
 				8F747DAE0DA03AE200148342 /* FSCNPrecomputedObject.m in Sources */,
 				8F747DBD0DA0467100148342 /* FSCNArray.m in Sources */,
+				EDA6AC491A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				8FAE79B20DA0ED5D00CB6E14 /* FSCNBlock.m in Sources */,
 				8FAE79F90DA109C500CB6E14 /* FSCNAssignment.m in Sources */,
 				8F45CBC30DA813F200AFA8C8 /* FSCNMethod.m in Sources */,
@@ -8299,6 +8375,7 @@
 				8F4E294F075B8E5600F8DCDB /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				8FA8EDEC07735B3B001BEC7B /* FSCollectionInspectorView.m in Sources */,
 				8FBC289F077B7D5200F9B4A2 /* ArrayRepFetchRequest.m in Sources */,
+				EDA6AC4A1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				EDFB30181A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				8F8EA731077F6A5200AC1C96 /* FSPointer.m in Sources */,
 				8F8EA7A1077F6C9300AC1C96 /* FSGenericPointer.m in Sources */,
@@ -8332,6 +8409,7 @@
 				8F747DB90DA0467100148342 /* FSCNArray.m in Sources */,
 				8FAE79AE0DA0ED5D00CB6E14 /* FSCNBlock.m in Sources */,
 				8FAE79F50DA109C500CB6E14 /* FSCNAssignment.m in Sources */,
+				EDA6AC601A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				ED3004EF1A1A86EF00675D94 /* FSObjectInspectorViewController.m in Sources */,
 				8F45CBC10DA813F200AFA8C8 /* FSCNMethod.m in Sources */,
 				8FD0A3160DD7276000E47459 /* FSCNReturn.m in Sources */,
@@ -8483,6 +8561,7 @@
 				BA2232D6189FA403002C5B6A /* FSTestObjCClass2.m in Sources */,
 				BA2232D7189FA403002C5B6A /* FSCNCategory.m in Sources */,
 				BA2232D8189FA403002C5B6A /* FSCNMessage.m in Sources */,
+				EDA6AC611A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				BA2232D9189FA403002C5B6A /* FSCNSuper.m in Sources */,
 				BA2232DA189FA403002C5B6A /* FSCNUnaryMessage.m in Sources */,
 				BA2232DB189FA403002C5B6A /* FSCNBinaryMessage.m in Sources */,
@@ -8491,6 +8570,7 @@
 				BA2232DE189FA403002C5B6A /* FSCNStatementList.m in Sources */,
 				BA2232DF189FA403002C5B6A /* FSCNPrecomputedObject.m in Sources */,
 				BA2232E0189FA403002C5B6A /* FSCNArray.m in Sources */,
+				EDA6AC4B1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				BA2232E1189FA403002C5B6A /* FSCNBlock.m in Sources */,
 				BA2232E2189FA403002C5B6A /* FSCNAssignment.m in Sources */,
 				BA2232E3189FA403002C5B6A /* FSCNMethod.m in Sources */,
@@ -8644,6 +8724,7 @@
 				BA223496189FA412002C5B6A /* FSTestObjCClass2.m in Sources */,
 				BA223497189FA412002C5B6A /* FSCNCategory.m in Sources */,
 				BA223498189FA412002C5B6A /* FSCNMessage.m in Sources */,
+				EDA6AC631A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				BA223499189FA412002C5B6A /* FSCNSuper.m in Sources */,
 				BA22349A189FA412002C5B6A /* FSCNUnaryMessage.m in Sources */,
 				BA22349B189FA412002C5B6A /* FSCNBinaryMessage.m in Sources */,
@@ -8652,6 +8733,7 @@
 				BA22349E189FA412002C5B6A /* FSCNStatementList.m in Sources */,
 				BA22349F189FA412002C5B6A /* FSCNPrecomputedObject.m in Sources */,
 				BA2234A0189FA412002C5B6A /* FSCNArray.m in Sources */,
+				EDA6AC4D1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				BA2234A1189FA412002C5B6A /* FSCNBlock.m in Sources */,
 				BA2234A2189FA412002C5B6A /* FSCNAssignment.m in Sources */,
 				BA2234A3189FA412002C5B6A /* FSCNMethod.m in Sources */,
@@ -8775,6 +8857,7 @@
 				BA22362E189FA429002C5B6A /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				BA22362F189FA429002C5B6A /* FSCollectionInspectorView.m in Sources */,
 				BA223630189FA429002C5B6A /* ArrayRepFetchRequest.m in Sources */,
+				EDA6AC4C1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				EDFB301A1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				BA223631189FA429002C5B6A /* FSPointer.m in Sources */,
 				BA223632189FA429002C5B6A /* FSGenericPointer.m in Sources */,
@@ -8808,6 +8891,7 @@
 				BA22364D189FA429002C5B6A /* FSCNArray.m in Sources */,
 				BA22364E189FA429002C5B6A /* FSCNBlock.m in Sources */,
 				BA22364F189FA429002C5B6A /* FSCNAssignment.m in Sources */,
+				EDA6AC621A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				ED3004F11A1A86EF00675D94 /* FSObjectInspectorViewController.m in Sources */,
 				BA223650189FA429002C5B6A /* FSCNMethod.m in Sources */,
 				BA223651189FA429002C5B6A /* FSCNReturn.m in Sources */,
@@ -8929,6 +9013,7 @@
 				BA223776189FA431002C5B6A /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				BA223777189FA431002C5B6A /* FSCollectionInspectorView.m in Sources */,
 				BA223778189FA431002C5B6A /* ArrayRepFetchRequest.m in Sources */,
+				EDA6AC4E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				EDFB301C1A188B4E002C8DD7 /* CHMutableDictionary.m in Sources */,
 				BA223779189FA432002C5B6A /* FSPointer.m in Sources */,
 				BA22377A189FA432002C5B6A /* FSGenericPointer.m in Sources */,
@@ -8962,6 +9047,7 @@
 				BA223795189FA432002C5B6A /* FSCNArray.m in Sources */,
 				BA223796189FA432002C5B6A /* FSCNBlock.m in Sources */,
 				BA223797189FA432002C5B6A /* FSCNAssignment.m in Sources */,
+				EDA6AC641A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				ED3004F31A1A86EF00675D94 /* FSObjectInspectorViewController.m in Sources */,
 				BA223798189FA432002C5B6A /* FSCNMethod.m in Sources */,
 				BA223799189FA432002C5B6A /* FSCNReturn.m in Sources */,
@@ -9113,6 +9199,7 @@
 				EDC2CA451A1AA50D00942777 /* FSTestObjCClass2.m in Sources */,
 				EDC2CA461A1AA50D00942777 /* FSCNCategory.m in Sources */,
 				EDC2CA471A1AA50D00942777 /* FSCNMessage.m in Sources */,
+				EDA6AC651A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				EDC2CA481A1AA50D00942777 /* FSCNSuper.m in Sources */,
 				EDC2CA491A1AA50D00942777 /* FSCNUnaryMessage.m in Sources */,
 				EDC2CA4A1A1AA50D00942777 /* FSCNBinaryMessage.m in Sources */,
@@ -9121,6 +9208,7 @@
 				EDC2CA4D1A1AA50D00942777 /* FSCNStatementList.m in Sources */,
 				EDC2CA4E1A1AA50D00942777 /* FSCNPrecomputedObject.m in Sources */,
 				EDC2CA4F1A1AA50D00942777 /* FSCNArray.m in Sources */,
+				EDA6AC4F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				EDC2CA501A1AA50D00942777 /* FSCNBlock.m in Sources */,
 				EDC2CA511A1AA50D00942777 /* FSCNAssignment.m in Sources */,
 				EDC2CA521A1AA50D00942777 /* FSCNMethod.m in Sources */,
@@ -9244,6 +9332,7 @@
 				EDC2CBE91A1AA52500942777 /* FSObjectBrowserViewObjectInfo.m in Sources */,
 				EDC2CBEA1A1AA52500942777 /* FSCollectionInspectorView.m in Sources */,
 				EDC2CBEB1A1AA52500942777 /* ArrayRepFetchRequest.m in Sources */,
+				EDA6AC501A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m in Sources */,
 				EDC2CBEC1A1AA52500942777 /* CHMutableDictionary.m in Sources */,
 				EDC2CBED1A1AA52500942777 /* FSPointer.m in Sources */,
 				EDC2CBEE1A1AA52500942777 /* FSGenericPointer.m in Sources */,
@@ -9277,6 +9366,7 @@
 				EDC2CC0A1A1AA52500942777 /* FSCNArray.m in Sources */,
 				EDC2CC0B1A1AA52500942777 /* FSCNBlock.m in Sources */,
 				EDC2CC0C1A1AA52500942777 /* FSCNAssignment.m in Sources */,
+				EDA6AC661A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
 				EDC2CC0D1A1AA52500942777 /* FSObjectInspectorViewController.m in Sources */,
 				EDC2CC0E1A1AA52500942777 /* FSCNMethod.m in Sources */,
 				EDC2CC0F1A1AA52500942777 /* FSCNReturn.m in Sources */,
@@ -9336,16 +9426,6 @@
 			isa = PBXTargetDependency;
 			target = 8F6DA5DE055FC6980050409A /* FSTest2 */;
 			targetProxy = BA223366189FA412002C5B6A /* PBXContainerItemProxy */;
-		};
-		EDC2C9001A1AA50D00942777 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F6DA6D8055FC6C80050409A /* FSTest1 */;
-			targetProxy = EDC2C9011A1AA50D00942777 /* PBXContainerItemProxy */;
-		};
-		EDC2C9021A1AA50D00942777 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F6DA5DE055FC6980050409A /* FSTest2 */;
-			targetProxy = EDC2C9031A1AA50D00942777 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

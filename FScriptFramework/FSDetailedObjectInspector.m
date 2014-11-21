@@ -112,15 +112,20 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
                 NSLog(@"Value changed for %@. Change = %@", object, change);
                 id target = self.inspectedObject;
                 FSObjectInspectorViewModelItem *item = object;
-                if (item.setter) {
-                        if (item.valueType == FS_ITEM_OBJECT) {
-                                item.setter(target, item.value, item);
-                                NSLog(@"[%@ setValue:%@ forKey:%@",target,item.value,item.getter);
+                @try {
+                        if (item.setter) {
+                                if (item.valueType == FS_ITEM_OBJECT) {
+                                        item.setter(target, item.value, item);
+                                        NSLog(@"[%@ setValue:%@ forKey:%@",target,item.value,item.getter);
+                                }
+                                else {
+                                        item.setter(target, @(item.numValue), item);
+                                        NSLog(@"[%@ setValue:%@ forKey:%@",target,@(item.numValue),item.getter);
+                                }
                         }
-                        else {
-                                item.setter(target, @(item.numValue), item);
-                                NSLog(@"[%@ setValue:%@ forKey:%@",target,@(item.numValue),item.getter);
-                        }
+                }
+                @catch(NSException *e) {
+                        NSLog(@"Exception when setting value for key %@ on %@: %@", keyPath, target, e);
                 }
         }
 }

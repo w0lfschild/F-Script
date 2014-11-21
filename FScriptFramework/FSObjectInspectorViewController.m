@@ -9,14 +9,61 @@
 #import "FSObjectInspectorViewController.h"
 #import "FSObjectInspectorViewController+NonArc.h"
 #import "FSObjectInspectorViewModelItem.h"
+#import "FSObjectInspectorOptionsViewController.h"
+#import "FSNamedNumber.h"
+#import "FSObjectEnumInfo.h"
+#import "CHBidirectionalDictionary.h"
 #import <objc/objc.h>
 #import <AvailabilityMacros.h>
 
-
 @interface FSObjectInspectorViewController ()
 @property (nonatomic) BOOL hasAwoken;
-
+@property (nonatomic,strong) NSPopover *optionsPopover;
 @end
+
+@interface FSObjectInspectorOption : NSObject
+@property (copy,nonatomic) NSString *name;
+@property (nonatomic) BOOL state;
+@property (nonatomic) NSUInteger value;
+@end
+@implementation FSObjectInspectorOption
++(FSObjectInspectorOption*)optionWithName:(NSString*)name value:(NSUInteger)value state:(BOOL)on
+{
+        FSObjectInspectorOption *opt = [FSObjectInspectorOption new];
+        opt.name = name;
+        opt.state = on;
+        opt.value = value;
+        return opt;
+}
+
++(NSArray *)arrayFromOptions:(NSUInteger) opts dict:(CHBidirectionalDictionary *)dict mask:(NSUInteger) mask
+{
+        NSMutableArray* result = [NSMutableArray array];
+        for (NSNumber * opt in dict.allKeys) {                                                                                                             
+                [result addObject:[FSObjectInspectorOption optionWithName:(NSString*)dict[opt] value:opt.unsignedIntegerValue state:(opts & opt.unsignedIntegerValue)]];
+        }
+        return result;
+}
++(NSUInteger)optionsFromArray:(NSArray /*of FSObjectInspectorOption */ *) opts dict:(CHBidirectionalDictionary *)dict mask:(NSUInteger) mask
+{
+        NSUInteger result = 0;
+        for (FSObjectInspectorOption *opt in opts) {
+                if (opt.state) {
+                        result |= opt.value;
+                }
+        }
+        return result;
+}
+@end
+
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - FSObjectInspectorViewController Implementation
+/*==================================================================================================
+ */
+
 
 @implementation FSObjectInspectorViewController
 
@@ -46,7 +93,9 @@
                                                            borderType:scrollView.borderType
                                                           controlSize:scrollView.horizontalScroller.controlSize
                                                         scrollerStyle:scrollView.scrollerStyle];
-        scrollViewSize.height += NSHeight(self.outlineView.headerView.bounds);
+        if (self.outlineView.headerView) {
+                scrollViewSize.height += NSHeight(self.outlineView.headerView.bounds);
+        }
         return scrollViewSize;
 }
 /*
@@ -67,13 +116,13 @@
         if ([viewModel respondsToSelector:@selector(valueType)]) {
                 switch (viewModel.valueType) {
                         case FS_ITEM_HEADER:
-                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                view = [self.outlineView makeViewWithIdentifier:@"Header" owner:self];
                                 break;
                         case FS_ITEM_ENUM:
                                 view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorEnumView" owner:self];
                                 break;
                         case FS_ITEM_OPTIONS:
-                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorOptionsView" owner:self];
                                 break;
                         case FS_ITEM_NUMBER:
                                 view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorNumberView" owner:self];
@@ -108,6 +157,26 @@
         return view;
 }
 
+-(BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
+{
+        FSInspectorVMValueType vmType = ((FSObjectInspectorViewModelItem*)[item representedObject]).valueType;
+        return  vmType == FS_ITEM_HEADER;
+}
+
+-(BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
+{
+        FSInspectorVMValueType valueType = [(FSObjectInspectorViewModelItem*)[item representedObject] valueType] ;
+        return (valueType != FS_ITEM_HEADER && valueType != FS_ITEM_GROUP);
+}
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - Utilities
+/*==================================================================================================
+ */
+
+
 -(NSString*)_viewIdentifierForValueClass:(Class)class
 {
         if (class == NSColor.class) {
@@ -137,6 +206,53 @@
                 
         }
         
+}
+
+-(FSObjectInspectorOptionsViewController*)optionsViewController
+{
+        return (FSObjectInspectorOptionsViewController*)self.optionsPopover.contentViewController;
+}
+-(NSPopover*)optionsPopover
+{
+        if (_optionsPopover == nil) {
+                _optionsPopover = [NSPopover new];
+                _optionsPopover.behavior = NSPopoverBehaviorTransient;
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_10
+                _optionsPopover.appearance = [NSAppearance appearanceNamed:NSAppearanceNameLightContent];
+#else
+                _optionsPopover.appearance = NSPopoverAppearanceHUD;
+#endif
+                _optionsPopover.contentViewController = [FSObjectInspectorOptionsViewController new];
+                _optionsPopover.delegate = self;
+        }
+        return _optionsPopover;
+}
+
+-(IBAction)showOptionsPopover:(id)sender
+{
+        NSInteger row = [self.outlineView rowForView:sender];
+        if (row >= 0) {
+                NSRect senderFrame = [sender frame];
+                FSObjectInspectorViewModelItem *clickedItem = [[self.outlineView itemAtRow:row] representedObject];
+                self.selectedViewModelItem = clickedItem;
+                NSArray *optionItems = [FSObjectInspectorOption arrayFromOptions:clickedItem.numValue dict:clickedItem.enumBiDict mask:clickedItem.optsMask];
+                self.optionsViewController.optionItems = optionItems;
+                [self.optionsPopover showRelativeToRect:senderFrame ofView:sender preferredEdge:NSMaxYEdge];
+        }
+}
+/*
+ *
+ *
+ *================================================================================================*/
+#pragma mark - NSPopoverDelegate
+/*==================================================================================================
+ */
+
+-(void)popoverDidClose:(NSNotification *)notification
+{
+        
+        NSUInteger newOpts = [FSObjectInspectorOption optionsFromArray:self.optionsViewController.optionItems dict:self.selectedViewModelItem.enumBiDict mask:self.selectedViewModelItem.optsMask];
+        self.selectedViewModelItem.value = objectFromOptions(newOpts, self.selectedViewModelItem.enumBiDict, self.selectedViewModelItem.optsMask);
 }
 
 @end

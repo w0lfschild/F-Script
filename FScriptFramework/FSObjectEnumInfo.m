@@ -14,6 +14,9 @@
 #import "CHBidirectionalDictionary.h"
 #import "metamacros.h"
 
+const NSUInteger CellTypeMask = NSUIntegerMax;
+const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
+
 #define _BIDICT(_idx, _enum)              \
         @(_enum)                          \
             : @metamacro_stringify(_enum) \
@@ -111,6 +114,7 @@ id objectFromOptions(NSUInteger opts, CHBidirectionalDictionary *dict, NSUIntege
         }                                                                                                                                                  
         return result.count ? [FSNamedNumber namedNumberWithDouble:opts name:[result componentsJoinedByString:@" + "]] : [FSNumber numberWithDouble:opts]; 
 }
+
 @implementation FSObjectEnumInfo
 
 ENUMTOOBJ(AnimationBlockingMode,

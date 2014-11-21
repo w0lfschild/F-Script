@@ -24,6 +24,9 @@ typedef id NSMergePolicyMarker;
         extern id objectFrom##_name(NS##_name _name);   \
         extern const NSUInteger _name##Mask ;
 
+extern const NSUInteger CellTypeMask;
+extern const NSUInteger MergePolicyMarkerMask;
+
 @interface FSObjectEnumInfo : NSObject
 
 BIMAP_CLASS_METHODS_DECL(AlertStyle);

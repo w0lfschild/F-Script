@@ -11,7 +11,7 @@
 @class FSObjectInspectorViewModelItem;
 @class FSInterpreter;
 
-@interface FSObjectInspectorViewController : NSViewController <NSOutlineViewDelegate>
+@interface FSObjectInspectorViewController : NSViewController <NSOutlineViewDelegate, NSPopoverDelegate>
 @property (assign) IBOutlet NSOutlineView *outlineView;
 @property (weak,nonatomic) FSObjectInspectorViewModelItem *rootViewModelItem;
 @property (weak,nonatomic) FSObjectInspectorViewModelItem *selectedViewModelItem;
@@ -19,4 +19,5 @@
 @property (strong,nonatomic) FSInterpreter *interpreter;
 
 -(IBAction)showColorPanel:(id)sender;
+-(IBAction)showOptionsPopover:(id)sender;
 @end
