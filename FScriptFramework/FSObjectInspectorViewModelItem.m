@@ -13,6 +13,8 @@
 #import "FSObjectEnumInfo.h"
 #import "CHBidirectionalDictionary.h"
 
+static void *FLOAT_CHANGED_CTX = &FLOAT_CHANGED_CTX;
+
 @interface FSNamedInteger : NSObject
 @property NSInteger integer;
 @property NSString* name;
@@ -45,8 +47,74 @@ static NSArray *sBOOLEnum = nil;
         if (self) {
                 self.minValue = NSIntegerMin;
                 self.maxValue = NSIntegerMax;
+                [self addObserver:self
+                       forKeyPath:@"float1"
+                          options:nil
+                          context:&FLOAT_CHANGED_CTX
+                 ];
+                [self addObserver:self
+                       forKeyPath:@"float2"
+                          options:nil
+                          context:&FLOAT_CHANGED_CTX
+                 ];
+                [self addObserver:self
+                       forKeyPath:@"float3"
+                          options:nil
+                          context:&FLOAT_CHANGED_CTX
+                 ];
+                [self addObserver:self
+                       forKeyPath:@"float4"
+                          options:nil
+                          context:&FLOAT_CHANGED_CTX
+                 ];
         }
         return self;
+}
+
+- (void)dealloc
+{
+        [self removeObserver:self forKeyPath:@"float1"];
+        [self removeObserver:self forKeyPath:@"float2"];
+        [self removeObserver:self forKeyPath:@"float3"];
+        [self removeObserver:self forKeyPath:@"float4"];
+}
+
+-(void)setValue:(id)value
+{
+        _value = value;
+        NSValue *val = value;
+        switch (self.valueType) {
+                case FS_ITEM_SIZE: {
+                        NSSize sz = val.sizeValue;
+                        _float1 = sz.width;
+                        _float2 = sz.height;
+                }
+                        break;
+                case FS_ITEM_RECT: {
+                        NSRect rect = val.rectValue;
+                        _float1 = rect.origin.x;
+                        _float2 = rect.origin.y;
+                        _float3 = rect.size.width;
+                        _float4 = rect.size.height;
+                }
+                        break;
+                case FS_ITEM_POINT: {
+                        NSPoint point = val.pointValue;
+                        _float1 = point.x;
+                        _float2 = point.y;
+                }
+                        break;
+                case FS_ITEM_RANGE: {
+                        NSRange rng = val.rangeValue;
+                        _float1 = rng.location;
+                        _float2 = rng.length;
+                        
+                }
+                        break;
+                default:
+                        break;
+        }
+        
 }
 
 - (NSString*)displayValue
@@ -85,6 +153,7 @@ static NSArray *sBOOLEnum = nil;
         default:
                 break;
         }
+        return @"";
 }
 
 - (NSArray*)enumObjects
@@ -124,18 +193,41 @@ static NSArray *sBOOLEnum = nil;
                 case FS_ITEM_BOOL:
                         self.value = [FSBoolean booleanWithBool:value];
                         break;
-                        
-                case FS_ITEM_SIZE:
-                case FS_ITEM_OBJECT:
-                case FS_ITEM_RECT:
-                case FS_ITEM_POINT:
-                case FS_ITEM_RANGE:
-                case FS_ITEM_HEADER:
                 default:
                         break;
         }
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+        if (context == FLOAT_CHANGED_CTX) {
+                [self refreshValue];
+        }
+}
+
+// A 'floatX' has changed: update our aggregate value
+-(void)refreshValue
+{
+        [self willChangeValueForKey:@"value"];
+        switch (self.valueType) {
+                case FS_ITEM_SIZE:
+                        _value = [NSValue valueWithSize:NSMakeSize(self.float1, self.float2)];
+                        break;
+                case FS_ITEM_RECT:
+                        _value = [NSValue valueWithRect:NSMakeRect(self.float1, self.float2, self.float3, self.float4)];
+                        break;
+                case FS_ITEM_POINT:
+                        _value = [NSValue valueWithPoint:NSMakePoint(self.float1, self.float2)];
+                        break;
+                case FS_ITEM_RANGE:
+                        _value = [NSValue valueWithRange:NSMakeRange(self.float1, self.float2)];
+                        break;
+                default:
+                        break;
+        }
+        [self didChangeValueForKey:@"value"];
+        
+}
 
 + (NSSet*)keyPathsForValuesAffectingDisplayValue
 {

@@ -13,11 +13,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY" customClass="FSObjectInspectorBackgroundView">
-            <rect key="frame" x="0.0" y="0.0" width="444" height="353"/>
+            <rect key="frame" x="0.0" y="0.0" width="572" height="353"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WI6-dr-2zT">
-                    <rect key="frame" x="0.0" y="0.0" width="444" height="333"/>
+                    <rect key="frame" x="0.0" y="0.0" width="572" height="333"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="sJN-Oz-0uX">
                         <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="Value" width="188" minWidth="40" maxWidth="1000" id="Aqg-nq-fCT">
+                                    <tableColumn identifier="Value" width="316" minWidth="40" maxWidth="1000" id="Aqg-nq-fCT">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -123,7 +123,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="ObjectInspectorReadOnlyView" id="Wxl-oh-fqz">
-                                                <rect key="frame" x="252" y="1" width="188" height="19"/>
+                                                <rect key="frame" x="252" y="0.0" width="316" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hiu-wg-PQp">
@@ -148,7 +148,7 @@
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="ObjectInspectorOptionsView" id="qoQ-BZ-X6n">
-                                                <rect key="frame" x="252" y="1" width="188" height="19"/>
+                                                <rect key="frame" x="252" y="19" width="316" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="czH-QY-uDW">
@@ -172,7 +172,7 @@
                                                 </constraints>
                                             </tableCellView>
                                             <tableCellView identifier="ObjectInspectorNumberView" id="UeY-Xy-2wT">
-                                                <rect key="frame" x="252" y="22" width="188" height="19"/>
+                                                <rect key="frame" x="252" y="38" width="316" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mJO-CY-C0n">
@@ -212,12 +212,224 @@
                                                     <constraint firstAttribute="centerY" secondItem="mJO-CY-C0n" secondAttribute="centerY" id="yTy-av-usu"/>
                                                 </constraints>
                                             </tableCellView>
+                                            <tableCellView identifier="ObjectInspectorSizeView" id="CD1-rO-ztD">
+                                                <rect key="frame" x="252" y="57" width="316" height="19"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H5a-bO-Iyc">
+                                                        <rect key="frame" x="57" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="BEg-ST-fE5"/>
+                                                        <connections>
+                                                            <binding destination="CD1-rO-ztD" name="maxValue" keyPath="objectValue.maxValue" id="dMV-4D-UVV"/>
+                                                            <binding destination="CD1-rO-ztD" name="minValue" keyPath="objectValue.minValue" previousBinding="dMV-4D-UVV" id="YVb-lm-qh8"/>
+                                                            <binding destination="CD1-rO-ztD" name="value" keyPath="objectValue.float1" previousBinding="YVb-lm-qh8" id="fLF-uf-RWv">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FTV-Vo-tr6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="58" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="749" constant="58" id="GUJ-uh-2qn"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="y4c-oJ-Aot">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ijQ-mo-Asx"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="CD1-rO-ztD" name="value" keyPath="objectValue.float1" id="jY8-iZ-b6z"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N78-jb-sXC">
+                                                        <rect key="frame" x="135" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="tfA-oZ-5IR"/>
+                                                        <connections>
+                                                            <binding destination="CD1-rO-ztD" name="maxValue" keyPath="objectValue.maxValue" id="ye2-1C-KaK"/>
+                                                            <binding destination="CD1-rO-ztD" name="minValue" keyPath="objectValue.minValue" previousBinding="ye2-1C-KaK" id="GV7-Kr-Z8d"/>
+                                                            <binding destination="CD1-rO-ztD" name="value" keyPath="objectValue.float2" previousBinding="GV7-Kr-Z8d" id="HWN-Y7-hHa">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bcM-8R-viy">
+                                                        <rect key="frame" x="78" y="0.0" width="58" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="749" constant="58" id="4vO-p9-yQj"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="AmN-zk-YxD">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="2Ps-Qp-fde"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="CD1-rO-ztD" name="value" keyPath="objectValue.float2" id="Y2c-ae-21p"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="FTV-Vo-tr6" firstAttribute="leading" secondItem="CD1-rO-ztD" secondAttribute="leading" id="64o-Sc-VQA"/>
+                                                    <constraint firstAttribute="centerY" secondItem="bcM-8R-viy" secondAttribute="centerY" id="6UJ-AG-Qg7"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H5a-bO-Iyc" secondAttribute="trailing" constant="4" id="7qf-zi-Q6y"/>
+                                                    <constraint firstItem="H5a-bO-Iyc" firstAttribute="leading" secondItem="CD1-rO-ztD" secondAttribute="leading" constant="59" id="CFg-9w-Ysu"/>
+                                                    <constraint firstAttribute="centerY" secondItem="N78-jb-sXC" secondAttribute="centerY" id="F34-tC-a5g"/>
+                                                    <constraint firstAttribute="centerY" secondItem="H5a-bO-Iyc" secondAttribute="centerY" id="MSA-jO-Ze9"/>
+                                                    <constraint firstAttribute="centerY" secondItem="FTV-Vo-tr6" secondAttribute="centerY" id="QS1-af-7LV"/>
+                                                    <constraint firstItem="H5a-bO-Iyc" firstAttribute="leading" secondItem="FTV-Vo-tr6" secondAttribute="trailing" constant="1" id="fMb-LA-G7H"/>
+                                                    <constraint firstItem="bcM-8R-viy" firstAttribute="leading" secondItem="H5a-bO-Iyc" secondAttribute="trailing" constant="8" id="sWr-TN-S99"/>
+                                                    <constraint firstItem="N78-jb-sXC" firstAttribute="leading" secondItem="bcM-8R-viy" secondAttribute="trailing" constant="1" id="xo3-JT-Kk1"/>
+                                                </constraints>
+                                            </tableCellView>
+                                            <tableCellView identifier="ObjectInspectorRectView" id="n5F-eM-NTd">
+                                                <rect key="frame" x="252" y="76" width="316" height="19"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BN-Jj-AHi">
+                                                        <rect key="frame" x="57" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="4NX-Er-l7B"/>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="dS1-WT-Ung"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="dS1-WT-Ung" id="oOB-rR-PES"/>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float1" previousBinding="oOB-rR-PES" id="h5K-Mp-LRz">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-wX-YOt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="58" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="749" constant="58" id="hzJ-S1-uIU"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="yaM-Im-qMI">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ZCl-SB-vec"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float1" id="7br-8T-IyL"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ewl-iT-Q8R">
+                                                        <rect key="frame" x="135" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="WY4-bN-1EY"/>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="Dzz-Dx-mJc"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="Dzz-Dx-mJc" id="XQr-lZ-ZHo"/>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float2" previousBinding="XQr-lZ-ZHo" id="AsP-Ew-ygU">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-e8-gxI">
+                                                        <rect key="frame" x="78" y="0.0" width="58" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="749" constant="58" id="Lgg-hv-6Ry"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="cBM-zm-sYI">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="w4V-GV-hf6"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float2" id="2C4-o9-EXm"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3f2-5O-KUs">
+                                                        <rect key="frame" x="213" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="XA8-J3-93f"/>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="eSg-o4-6KM"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="eSg-o4-6KM" id="55q-jw-qlr"/>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float3" previousBinding="55q-jw-qlr" id="6YX-8T-jMN">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3M-pl-yBt">
+                                                        <rect key="frame" x="156" y="0.0" width="58" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="749" constant="58" id="Ykf-cv-a8j"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="yA7-2H-qQ2">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="xBR-AZ-rf8"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float3" id="Ror-p1-ygv"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-kp-ccc">
+                                                        <rect key="frame" x="291" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="Lue-Mh-Abp"/>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="K2z-Cq-17W"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="K2z-Cq-17W" id="X7L-Xg-jCf"/>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float4" previousBinding="X7L-Xg-jCf" id="L4E-yt-thJ">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-hK-frv">
+                                                        <rect key="frame" x="234" y="0.0" width="58" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="749" constant="58" id="5Hs-AT-rQb"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="qYm-8T-af0">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="C4d-4o-JXS"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float4" id="a9T-CM-4Uy"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="ygq-hK-frv" secondAttribute="centerY" id="2Kh-MX-YOs"/>
+                                                    <constraint firstItem="u1a-e8-gxI" firstAttribute="leading" secondItem="0BN-Jj-AHi" secondAttribute="trailing" constant="8" id="2hu-vJ-km9"/>
+                                                    <constraint firstItem="Ewl-iT-Q8R" firstAttribute="leading" secondItem="u1a-e8-gxI" secondAttribute="trailing" constant="1" id="42t-EK-ya7"/>
+                                                    <constraint firstAttribute="centerY" secondItem="3f2-5O-KUs" secondAttribute="centerY" id="5cD-3w-HDb"/>
+                                                    <constraint firstItem="ygq-hK-frv" firstAttribute="leading" secondItem="3f2-5O-KUs" secondAttribute="trailing" constant="8" id="ESe-Vx-fc5"/>
+                                                    <constraint firstAttribute="centerY" secondItem="Ewl-iT-Q8R" secondAttribute="centerY" id="GVN-X5-Rp3"/>
+                                                    <constraint firstAttribute="centerY" secondItem="Jcu-kp-ccc" secondAttribute="centerY" id="Hlv-Ij-JKt"/>
+                                                    <constraint firstItem="jXf-wX-YOt" firstAttribute="leading" secondItem="n5F-eM-NTd" secondAttribute="leading" id="JiQ-tf-uQf"/>
+                                                    <constraint firstAttribute="centerY" secondItem="u1a-e8-gxI" secondAttribute="centerY" id="Krr-IC-MTL"/>
+                                                    <constraint firstItem="0BN-Jj-AHi" firstAttribute="leading" secondItem="n5F-eM-NTd" secondAttribute="leading" constant="59" id="N1I-Yf-C9v"/>
+                                                    <constraint firstAttribute="centerY" secondItem="0BN-Jj-AHi" secondAttribute="centerY" id="ONt-kd-spG"/>
+                                                    <constraint firstAttribute="centerY" secondItem="jXf-wX-YOt" secondAttribute="centerY" id="PAC-N5-VaJ"/>
+                                                    <constraint firstAttribute="centerY" secondItem="O3M-pl-yBt" secondAttribute="centerY" id="Vvc-xt-b3W"/>
+                                                    <constraint firstItem="3f2-5O-KUs" firstAttribute="leading" secondItem="O3M-pl-yBt" secondAttribute="trailing" constant="1" id="WxW-Re-dgn"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0BN-Jj-AHi" secondAttribute="trailing" constant="4" id="gIR-RH-122"/>
+                                                    <constraint firstItem="0BN-Jj-AHi" firstAttribute="leading" secondItem="jXf-wX-YOt" secondAttribute="trailing" constant="1" id="pTZ-Sr-9dL"/>
+                                                    <constraint firstItem="Jcu-kp-ccc" firstAttribute="leading" secondItem="ygq-hK-frv" secondAttribute="trailing" constant="1" id="qyX-VQ-IbP"/>
+                                                    <constraint firstItem="O3M-pl-yBt" firstAttribute="leading" secondItem="Ewl-iT-Q8R" secondAttribute="trailing" constant="8" id="v3r-eu-hGm"/>
+                                                </constraints>
+                                            </tableCellView>
                                             <tableCellView identifier="ObjectInspectorStringView" id="4il-w8-Af3">
-                                                <rect key="frame" x="252" y="22" width="188" height="19"/>
+                                                <rect key="frame" x="252" y="95" width="316" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUv-5e-WBJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="313" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="qWJ-P5-2xZ"/>
                                                         </constraints>
@@ -238,7 +450,7 @@
                                                 </constraints>
                                             </tableCellView>
                                             <tableCellView identifier="ObjectInspectorEnumView" id="E5U-Ew-SC3">
-                                                <rect key="frame" x="252" y="43" width="188" height="19"/>
+                                                <rect key="frame" x="252" y="114" width="316" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Mf-CL-8wK">
@@ -272,7 +484,7 @@
                                                 </constraints>
                                             </tableCellView>
                                             <tableCellView identifier="ObjectInspectorColorView" id="vZX-22-vH5">
-                                                <rect key="frame" x="252" y="43" width="188" height="19"/>
+                                                <rect key="frame" x="252" y="133" width="316" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <colorWell bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg1-YW-pBr" customClass="FSColorWell">
@@ -319,7 +531,7 @@
                     </scroller>
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bLs-w5-Ggd">
-                    <rect key="frame" x="380" y="332" width="64" height="22"/>
+                    <rect key="frame" x="508" y="332" width="64" height="22"/>
                     <buttonCell key="cell" type="smallSquare" title="Refresh" bezelStyle="smallSquare" image="NSRefreshTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wzc-Dn-gdt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
@@ -329,7 +541,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3hL-X3-wcA">
-                    <rect key="frame" x="314" y="332" width="66" height="22"/>
+                    <rect key="frame" x="442" y="332" width="66" height="22"/>
                     <buttonCell key="cell" type="smallSquare" title="Browse" bezelStyle="smallSquare" image="NSRevealFreestandingTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xei-9H-upA">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
@@ -351,7 +563,7 @@
                 <constraint firstAttribute="trailing" secondItem="WI6-dr-2zT" secondAttribute="trailing" id="v3E-tm-OdR"/>
                 <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="bLs-w5-Ggd" secondAttribute="bottom" id="yX7-M5-IwL"/>
             </constraints>
-            <point key="canvasLocation" x="180" y="334.5"/>
+            <point key="canvasLocation" x="244" y="334.5"/>
         </customView>
         <treeController objectClassName="FSObjectInspectorViewModelItem" childrenKeyPath="childNodes" leafKeyPath="isLeaf" id="AY2-hy-lL2">
             <connections>

@@ -130,7 +130,12 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
                 FSObjectInspectorViewModelItem *item = object;
                 @try {
                         if (item.setter) {
-                                if (item.valueType == FS_ITEM_OBJECT) {
+                                if (item.valueType == FS_ITEM_OBJECT
+                                    || item.valueType == FS_ITEM_RECT
+                                    || item.valueType == FS_ITEM_SIZE
+                                    || item.valueType == FS_ITEM_RANGE
+                                    || item.valueType == FS_ITEM_POINT
+                                    ) {
                                         item.setter(target, item.value, item);
                                         NSLog(@"[%@ setValue:%@ forKey:%@",target,item.value,item.getter);
                                 }

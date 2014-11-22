@@ -156,10 +156,10 @@
                                 view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorNumberView" owner:self];
                                 break;
                         case FS_ITEM_SIZE:
-                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorSizeView" owner:self];
                                 break;
                         case FS_ITEM_RECT:
-                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorReadOnlyView" owner:self];
+                                view = [self.outlineView makeViewWithIdentifier:@"ObjectInspectorRectView" owner:self];
                                 break;
                         case FS_ITEM_OBJECT:
                                 view = [self.outlineView makeViewWithIdentifier:[self _viewIdentifierForValueClass:viewModel.valueClass]
