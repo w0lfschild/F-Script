@@ -184,7 +184,12 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 
 #define ADD_VALUE(OBJECT, VALUE_TYPE, GETTER, SETTER, BIDICT, MASK, VALUE_CLASS, LABEL, NOT_NIL)                                                                                                                                                                                                                                                               \
         @try {                                                                                                                                                                                                                                                                                                                                                 \
-                [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #GETTER]; } setter:^(id obj, id newVal, FSObjectInspectorViewModelItem* item) { [obj setValue:newVal forKey:@ #GETTER]; } withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
+                if (#SETTER[0] != '-') { \
+                        [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #GETTER]; } setter:^(id obj, id newVal, FSObjectInspectorViewModelItem* item) { [obj setValue:newVal forKey:@ #GETTER]; } withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
+                } \
+                else { \
+                        [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #GETTER]; } setter:nil withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
+                } \
         }                                                                                                                                                                                                                                                                                                                                                      \
         @catch (id exception) { NSLog(@"%@", exception); }
 
@@ -355,14 +360,14 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 [view addPropertyLabel:@"Attributes" toMatrix:m];
                 for (NSUInteger i = 0, count = [attributeKeys count]; i < count; i++) {
                         NSString* key = [attributeKeys objectAtIndex:i];
-                        ADD_OBJECT([o valueForKey:key], key, fs_setterForProperty(key), key)
+                        ADD_OBJECT([o valueForKey:key], key, - , key)
                 }
 
                 NSArray* relationshipKeys = [[[[o entity] relationshipsByName] allKeys] sortedArrayUsingSelector:@selector(compare:)];
                 [view addPropertyLabel:@"Relationships" toMatrix:m];
                 for (NSUInteger i = 0, count = [relationshipKeys count]; i < count; i++) {
                         NSString* key = [relationshipKeys objectAtIndex:i];
-                        ADD_OBJECT([o valueForKey:key], key, fs_setterForProperty(key), key)
+                        ADD_OBJECT([o valueForKey:key], key, - , key)
                 }
 
                 ADD_CLASS_LABEL(@"NSManagedObject Info");
@@ -1919,6 +1924,10 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 - (void)addNSResponder:(id)object
 {
         if ([object isKindOfClass:[NSApplication class]]) {
+                
+                #pragma mark ► NSApplication
+                //--------------------------------------------------------------------------------
+                
                 NSApplication* o = object;
                 ADD_CLASS_LABEL(@"NSApplication Info")
                 ADD_OBJECT_NOT_NIL([o applicationIconImage], applicationIconImage, setApplicationIconImage, @"Application icon image")
@@ -1941,6 +1950,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_OBJECT_NOT_NIL([o windowsMenu], windowsMenu, setWindowsMenu, @"Windows menu")
         }
         else if ([object isKindOfClass:[NSDrawer class]]) {
+                
+                
+                #pragma mark ► NSDrawer
+                //--------------------------------------------------------------------------------
+
                 NSDrawer* o = object;
                 ADD_CLASS_LABEL(@"NSDrawer Info");
                 ADD_SIZE([o contentSize], contentSize, setContentSize, @"Content size")
@@ -1960,6 +1974,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
         }
 
         if ([object isKindOfClass:[NSViewController class]]) {
+                
+                
+                #pragma mark ► NSViewController
+                //--------------------------------------------------------------------------------
+
                 NSViewController* o = object;
                 ADD_CLASS_LABEL(@"NSViewController Info")
                 ADD_OBJECT_NOT_NIL([o nibBundle], nibBundle, setNibBundle, @"Nib bundle")
@@ -1972,6 +1991,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 [self processNSWindow:object];
         }
         else if ([object isKindOfClass:[NSWindowController class]]) {
+                
+                
+                #pragma mark ► NSWindowController
+                //--------------------------------------------------------------------------------
+
                 NSWindowController* o = object;
                 ADD_CLASS_LABEL(@"NSWindowController Info");
                 ADD_OBJECT([o document], document, setDocument, @"Document")
@@ -2266,6 +2290,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 {
 
         if ([object isKindOfClass:[NSBox class]]) {
+                
+                
+                #pragma mark ► NSBox
+                //--------------------------------------------------------------------------------
+
                 NSBox* o = object;
                 ADD_CLASS_LABEL(@"NSBox Info");
                 ADD_COLOR([o borderColor], borderColor, setBorderColor, @"Border color")
@@ -2285,6 +2314,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_RECT([o titleRect], titleRect, setTitleRect, @"Title rect")
         }
         if ([object isKindOfClass:[NSCollectionView class]]) {
+                
+                
+                #pragma mark ► NSCollectionView
+                //--------------------------------------------------------------------------------
+
                 NSCollectionView* o = object;
                 ADD_CLASS_LABEL(@"NSCollectionView Info");
                 ADD_BOOL([o allowsMultipleSelection], allowsMultipleSelection, setallowsMultipleSelection, @"Allows multiple selection")
@@ -2303,6 +2337,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 [self processNSControl:object];
         }
         else if ([object isKindOfClass:[NSClipView class]]) {
+                
+                
+                #pragma mark ► NSClipView
+                //--------------------------------------------------------------------------------
+
                 NSClipView* o = object;
                 ADD_CLASS_LABEL(@"NSClipView Info");
                 ADD_COLOR([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
@@ -2314,12 +2353,22 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_BOOL([o drawsBackground], drawsBackground, setdrawsBackground, @"Draws background")
         }
         else if ([object isKindOfClass:[NSOpenGLView class]]) {
+                
+                
+                #pragma mark ► NSOpenGLView
+                //--------------------------------------------------------------------------------
+
                 NSOpenGLView* o = object;
                 ADD_CLASS_LABEL(@"NSOpenGLView Info");
                 ADD_OBJECT([o openGLContext], openGLContext, setOpenGLContext, @"OpenGL context")
                 ADD_OBJECT([o pixelFormat], pixelFormat, setPixelFormat, @"Pixel format")
         }
         else if ([object isKindOfClass:[NSProgressIndicator class]]) {
+                
+                
+                #pragma mark ► NSProgressIndicator
+                //--------------------------------------------------------------------------------
+
                 NSProgressIndicator* o = object;
                 ADD_CLASS_LABEL(@"NSProgressIndicator Info");
                 ADD_ENUM(ControlSize, [o controlSize], controlSize, setcontrolSize, @"Control size")
@@ -2336,6 +2385,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_BOOL([o usesThreadedAnimation], usesThreadedAnimation, setusesThreadedAnimation, @"Uses threaded animation")
         }
         else if ([object isKindOfClass:[NSRulerView class]]) {
+                
+                
+                #pragma mark ► NSRulerView
+                //--------------------------------------------------------------------------------
+
                 NSRulerView* o = object;
                 ADD_CLASS_LABEL(@"NSRulerView Info");
                 ADD_OBJECT_NOT_NIL([o accessoryView], accessoryView, setAccessoryView, @"Accessory view")
@@ -2353,6 +2407,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_OBJECT([o scrollView], scrollView, setScrollView, @"ScrollView")
         }
         else if ([object isKindOfClass:[NSScrollView class]]) {
+                
+                
+                #pragma mark ► NSScrollView
+                //--------------------------------------------------------------------------------
+
                 NSScrollView* o = object;
                 ADD_CLASS_LABEL(@"NSScrollView Info");
                 ADD_BOOL([o autohidesScrollers], autohidesScrollers, setautohidesScrollers, @"Autohides scrollers")
@@ -2382,6 +2441,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_OBJECT([o verticalScroller], verticalScroller, setVerticalScroller, @"Vertical scroller")
         }
         else if ([object isKindOfClass:[NSSplitView class]]) {
+                
+                
+                #pragma mark ► NSSplitView
+                //--------------------------------------------------------------------------------
+
                 NSSplitView* o = object;
                 ADD_CLASS_LABEL(@"NSSplitView Info");
                 ADD_OBJECT_NOT_NIL([o delegate], delegate, setDelegate, @"Delegate")
@@ -2390,6 +2454,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_OBJECT_NOT_NIL([o autosaveName], autosaveName, setAutosaveName, @"Autosave name")
         }
         else if ([object isKindOfClass:[NSTabView class]]) {
+                
+                
+                #pragma mark ► NSTabView
+                //--------------------------------------------------------------------------------
+
                 NSTabView* o = object;
                 ADD_CLASS_LABEL(@"NSTabView Info");
                 ADD_BOOL([o allowsTruncatedLabels], allowsTruncatedLabels, setallowsTruncatedLabels, @"Allows truncated labels")
@@ -2405,11 +2474,21 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_ENUM(TabViewType, [o tabViewType], tabViewType, settabViewType, @"Tab view type")
         }
         else if ([object isKindOfClass:[NSTableHeaderView class]]) {
+                
+                
+                #pragma mark ► NSTableHeaderView
+                //--------------------------------------------------------------------------------
+
                 NSTableHeaderView* o = object;
                 ADD_CLASS_LABEL(@"NSTableHeaderView Info");
                 ADD_OBJECT([o tableView], tableView, setTableView, @"Table view")
         }
         else if ([object isKindOfClass:[NSText class]]) {
+                
+                
+                #pragma mark ► NSTextView
+                //--------------------------------------------------------------------------------
+
                 if ([object isKindOfClass:[NSTextView class]]) {
                         NSTextView* o = object;
                         ADD_CLASS_LABEL(@"NSTextView Info");
@@ -2452,6 +2531,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_OBJECT([o writablePasteboardTypes], writablePasteboardTypes, setWritablePasteboardTypes, @"Writable pasteboard types")
                 }
 
+                
+                
+                #pragma mark ► NSText
+                //--------------------------------------------------------------------------------
+
                 NSText* o = object;
                 ADD_CLASS_LABEL(@"NSText Info");
                 ADD_ENUM(TextAlignment, [o alignment], alignment, setalignment, @"Alignment")
@@ -2476,8 +2560,19 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 ADD_BOOL([o usesFontPanel], usesFontPanel, setusesFontPanel, @"Uses font panel")
         }
 
+        
+        
+        #pragma mark ► NSView
+        //--------------------------------------------------------------------------------
+
         NSView* o = object;
         ADD_CLASS_LABEL(@"NSView Info");
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_6
+        ADD_BOOL([o acceptsTouchEvents], acceptsTouchEvents, setAcceptsTouchEvents, @"Autoresizes subviews")
+#endif
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_10
+        ADD_BOOL([o allowsVibrancy], allowsVibrancy, setAllowsVibrancy, @"Allows vibrancy")
+#endif
         ADD_OPTIONS(AutoresizingMaskOptions, [o autoresizingMask], autoresizingMask, setautoresizingMask, @"Autoresizing mask")
         ADD_BOOL([o autoresizesSubviews], autoresizesSubviews, setautoresizesSubviews, @"Autoresizes subviews")
         ADD_RECT([o bounds], bounds, setBounds, @"Bounds")
@@ -2624,6 +2719,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 {
         {
                 if ([object isKindOfClass:[NSBrowser class]]) {
+                        
+                        
+                        #pragma mark ► NSBrowser
+                        //--------------------------------------------------------------------------------
+
                         NSBrowser* o = object;
                         ADD_CLASS_LABEL(@"NSBrowser Info");
                         ADD_BOOL([o allowsBranchSelection], allowsBranchSelection, setallowsBranchSelection, @"Allows branch selection")
@@ -2659,6 +2759,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 }
                 else if ([object isKindOfClass:[NSButton class]]) {
                         if ([object isKindOfClass:[NSPopUpButton class]]) {
+                                
+                                
+                                #pragma mark ► NSPopUpButton
+                                //--------------------------------------------------------------------------------
+
                                 NSPopUpButton* o = object;
                                 ADD_CLASS_LABEL(@"NSPopUpButton Info");
                                 ADD_BOOL([o autoenablesItems], autoenablesItems, setautoenablesItems, @"Autoenables Items")
@@ -2670,6 +2775,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                                 ADD_BOOL([o pullsDown], pullsDown, setpullsDown, @"Pulls down")
                                 ADD_OBJECT([o selectedItem], selectedItem, setSelectedItem, @"Selected item")
                         }
+
+                        
+                        
+                        #pragma mark ► NSButton
+                        //--------------------------------------------------------------------------------
 
                         NSButton* o = object;
                         ADD_CLASS_LABEL(@"NSButton Info");
@@ -2691,6 +2801,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_STRING([o title], title, setTitle, @"Title")
                 }
                 else if ([object isKindOfClass:[NSColorWell class]]) {
+                        
+                        
+                        #pragma mark ► NSColorWell
+                        //--------------------------------------------------------------------------------
+
                         NSColorWell* o = object;
                         ADD_CLASS_LABEL(@"NSColorWell Info");
                         ADD_COLOR([o color], color, setColor, @"Color")
@@ -2698,6 +2813,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_BOOL([o isBordered], bordered, setisBordered, @"Is bordered")
                 }
                 else if ([object isKindOfClass:[NSDatePicker class]]) {
+                        
+                        
+                        #pragma mark ► NSDatePicker
+                        //--------------------------------------------------------------------------------
+
                         NSDatePicker* o = object;
                         ADD_CLASS_LABEL(@"NSDatePicker Info");
                         ADD_COLOR([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
@@ -2718,6 +2838,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_OBJECT([o timeZone], timeZone, setTimeZone, @"Time zone")
                 }
                 else if ([object isKindOfClass:[NSImageView class]]) {
+                        
+                        
+                        #pragma mark ► NSImageView
+                        //--------------------------------------------------------------------------------
+
                         NSImageView* o = object;
                         ADD_CLASS_LABEL(@"NSImageView Info");
                         ADD_BOOL([o allowsCutCopyPaste], allowsCutCopyPaste, setallowsCutCopyPaste, @"Allows cut copy paste")
@@ -2729,6 +2854,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_BOOL([o isEditable], editable, setisEditable, @"Is editable")
                 }
                 else if ([object isKindOfClass:[NSLevelIndicator class]]) {
+                        
+                        
+                        #pragma mark ► NSLevelIndicator
+                        //--------------------------------------------------------------------------------
+
                         NSLevelIndicator* o = object;
                         ADD_CLASS_LABEL(@"NSLevelIndicator Info");
                         ADD_NUMBER([o criticalValue], criticalValue, setCriticalValue, @"Critical value")
@@ -2740,6 +2870,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_NUMBER([o warningValue], warningValue, setWarningValue, @"Warning value")
                 }
                 else if ([object isKindOfClass:[NSMatrix class]]) {
+                        
+                        
+                        #pragma mark ► NSMatrix
+                        //--------------------------------------------------------------------------------
+
                         NSMatrix* o = object;
                         ADD_CLASS_LABEL(@"NSMatrix Info");
                         ADD_BOOL([o allowsEmptySelection], allowsEmptySelection, setallowsEmptySelection, @"Allows empty selection")
@@ -2779,6 +2914,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_BOOL([o tabKeyTraversesCells], tabKeyTraversesCells, settabKeyTraversesCells, @"Tab key traverses cells")
                 }
                 else if ([object isKindOfClass:[NSPathControl class]]) {
+                        
+                        
+                        #pragma mark ► NSPathControl
+                        //--------------------------------------------------------------------------------
+
                         NSPathControl* o = object;
                         ADD_CLASS_LABEL(@"NSPathControl Info");
                         ADD_COLOR_NOT_NIL([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
@@ -2790,10 +2930,20 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 }
                 else if ([object isKindOfClass:[NSRuleEditor class]]) {
                         if ([object isKindOfClass:[NSPredicateEditor class]]) {
+                                
+                                
+                                #pragma mark ► NSPredicateEditor
+                                //--------------------------------------------------------------------------------
+
                                 NSPredicateEditor* o = object;
                                 ADD_CLASS_LABEL(@"NSPredicateEditor Info");
                                 ADD_OBJECTS([o rowTemplates], @"Row templates")
                         }
+
+                        
+                        
+                        #pragma mark ► NSRuleEditor
+                        //--------------------------------------------------------------------------------
 
                         NSRuleEditor* o = object;
                         ADD_CLASS_LABEL(@"NSRuleEditor Info");
@@ -2814,6 +2964,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_OBJECT_NOT_NIL([o subrowsKeyPath], subrowsKeyPath, setSubrowsKeyPath, @"Subrows key path")
                 }
                 else if ([object isKindOfClass:[NSScroller class]]) {
+                        
+                        
+                        #pragma mark ► NSScroller
+                        //--------------------------------------------------------------------------------
+
                         NSScroller* o = object;
                         ADD_CLASS_LABEL(@"NSScroller Info");
                         ADD_ENUM(ScrollArrowPosition, [o arrowsPosition], arrowsPosition, setarrowsPosition, @"Arrows position")
@@ -2825,6 +2980,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_ENUM(UsableScrollerParts, [o usableParts], usableParts, setusableParts, @"Usable parts")
                 }
                 else if ([object isKindOfClass:[NSSegmentedControl class]]) {
+                        
+                        
+                        #pragma mark ► NSSegmentedControl
+                        //--------------------------------------------------------------------------------
+
                         NSSegmentedControl* o = object;
                         NSInteger segmentCount = [o segmentCount];
                         ADD_CLASS_LABEL(@"NSSegmentedControl Info");
@@ -2834,6 +2994,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                                             [self processSegmentedItem:o];
                 }
                 else if ([object isKindOfClass:[NSSlider class]]) {
+                        
+                        
+                        #pragma mark ► NSSlider
+                        //--------------------------------------------------------------------------------
+
                         NSSlider* o = object;
                         ADD_CLASS_LABEL(@"NSSlider Info");
                         ADD_BOOL([o allowsTickMarkValuesOnly], allowsTickMarkValuesOnly, setallowsTickMarkValuesOnly, @"Allows tick mark values only")
@@ -2848,6 +3013,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 }
                 else if ([object isKindOfClass:[NSTableView class]]) {
                         if ([object isKindOfClass:[NSOutlineView class]]) {
+                                
+                                
+                                #pragma mark ► NSOutlineView
+                                //--------------------------------------------------------------------------------
+
                                 NSOutlineView* o = object;
                                 ADD_CLASS_LABEL(@"NSOutlineView Info");
                                 ADD_BOOL([o autoresizesOutlineColumn], autoresizesOutlineColumn, setautoresizesOutlineColumn, @"Autoresizes outline column")
@@ -2856,6 +3026,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                                 ADD_NUMBER([o indentationPerLevel], indentationPerLevel, setIndentationPerLevel, @"Indentation per level")
                                 ADD_OBJECT([o outlineTableColumn], outlineTableColumn, setOutlineTableColumn, @"Outline table column")
                         }
+
+                        
+                        
+                        #pragma mark ► NSTableView
+                        //--------------------------------------------------------------------------------
 
                         NSTableView* o = object;
                         ADD_CLASS_LABEL(@"NSTableView Info");
@@ -2894,6 +3069,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_BOOL([o verticalMotionCanBeginDrag], verticalMotionCanBeginDrag, setverticalMotionCanBeginDrag, @"Vertical motion can begin drag")
                 }
                 else if ([object isKindOfClass:[NSStepper class]]) {
+                        
+                        
+                        #pragma mark ► NSStepper
+                        //--------------------------------------------------------------------------------
+
                         NSStepper* o = object;
                         ADD_CLASS_LABEL(@"NSStepper Info");
                         ADD_BOOL([o autorepeat], autorepeat, setautorepeat, @"Autorepeat")
@@ -2904,6 +3084,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 }
                 else if ([object isKindOfClass:[NSTextField class]]) {
                         if ([object isKindOfClass:[NSComboBox class]]) {
+                                
+                                
+                                #pragma mark ► NSComboBox
+                                //--------------------------------------------------------------------------------
+
                                 NSComboBox* o = object;
                                 ADD_CLASS_LABEL(@"NSComboBox Info");
                                 if ([o usesDataSource])
@@ -2922,6 +3107,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                                 ADD_BOOL([o usesDataSource], usesDataSource, setusesDataSource, @"Uses data source")
                         }
                         else if ([object isKindOfClass:[NSSearchField class]]) {
+                                
+                                
+                                #pragma mark ► NSSearchField
+                                //--------------------------------------------------------------------------------
+
                                 NSSearchField* o = object;
                                 if ([[o recentSearches] count] != 0 || [o recentsAutosaveName] != nil)
                                         ADD_CLASS_LABEL(@"NSSearchField Info");
@@ -2929,12 +3119,22 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                                 ADD_OBJECT_NOT_NIL([o recentsAutosaveName], recentsAutosaveName, setRecentsAutosaveName, @"Recents autosave name")
                         }
                         else if ([object isKindOfClass:[NSTokenField class]]) {
+                                
+                                
+                                #pragma mark ► NSTokenField
+                                //--------------------------------------------------------------------------------
+
                                 NSTokenField* o = object;
                                 ADD_CLASS_LABEL(@"NSTokenField Info");
                                 ADD_NUMBER([o completionDelay], completionDelay, setCompletionDelay, @"Completion delay")
                                 ADD_OBJECT([o tokenizingCharacterSet], tokenizingCharacterSet, setTokenizingCharacterSet, @"Tokenizing character set")
                                 ADD_ENUM(TokenStyle, [o tokenStyle], tokenStyle, settokenStyle, @"Token style")
                         }
+
+                        
+                        
+                        #pragma mark ► NSTextField
+                        //--------------------------------------------------------------------------------
 
                         NSTextField* o = object;
                         ADD_CLASS_LABEL(@"NSTextField Info");
@@ -2950,6 +3150,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                         ADD_BOOL([o isSelectable], selectable, setisSelectable, @"Is selectable")
                         ADD_COLOR([o textColor], textColor, setTextColor, @"Text color")
                 }
+
+                
+                
+                #pragma mark ► NSControl
+                //--------------------------------------------------------------------------------
 
                 NSControl* o = object;
                 ADD_CLASS_LABEL(@"NSControl Info");
