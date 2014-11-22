@@ -14,9 +14,14 @@
 
 @implementation FSObjectInspectorOptionsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do view setup here.
+-(NSString *)nibName
+{
+  return @"FSObjectInspectorOptionsViewController";
+}
+
+-(NSBundle *)nibBundle
+{
+  return [NSBundle bundleForClass:self.class];
 }
 
 @end

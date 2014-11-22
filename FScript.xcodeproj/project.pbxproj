@@ -4217,7 +4217,7 @@
 		EDC2C8EF1A1AA34D00942777 /* FSObjectInspectorBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorBackgroundView.m; sourceTree = "<group>"; };
 		EDC2CACD1A1AA50D00942777 /* F-Script.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "F-Script.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC2CACE1A1AA50F00942777 /* F-Script 10.9 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "F-Script 10.9 copy-Info.plist"; path = "/Volumes/Macintosh SSD/Users/ant/Development/GitProjects/F-Script/F-Script 10.9 copy-Info.plist"; sourceTree = "<absolute>"; };
-		EDC2CC271A1AA52500942777 /* FScriptFramework 10.10.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "FScriptFramework 10.10.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC2CC271A1AA52500942777 /* FScript.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FScript.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC2CC281A1AA52700942777 /* FScriptFramework 10.9 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FScriptFramework 10.9 copy-Info.plist"; path = "/Volumes/Macintosh SSD/Users/ant/Development/GitProjects/F-Script/FScriptFramework 10.9 copy-Info.plist"; sourceTree = "<absolute>"; };
 		EDE508D119DD4D310012F16A /* FSConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSConsole.xib; sourceTree = "<group>"; };
 		EDE508DA19DD4FDC0012F16A /* FScriptPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FScriptPreferences.xib; sourceTree = "<group>"; };
@@ -4817,7 +4817,7 @@
 				BA223668189FA429002C5B6A /* FScriptFramework.framework */,
 				BA2237B0189FA432002C5B6A /* FScript.framework */,
 				EDC2CACD1A1AA50D00942777 /* F-Script.app */,
-				EDC2CC271A1AA52500942777 /* FScriptFramework 10.10.framework */,
+				EDC2CC271A1AA52500942777 /* FScript.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -7226,7 +7226,7 @@
 			name = "FScriptFramework 10.10";
 			productInstallPath = "";
 			productName = FScript;
-			productReference = EDC2CC271A1AA52500942777 /* FScriptFramework 10.10.framework */;
+			productReference = EDC2CC271A1AA52500942777 /* FScript.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -10081,7 +10081,7 @@
 				OTHER_LIBTOOL_FLAGS = "$(value) ";
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
-				PRODUCT_NAME = "FScriptFramework 10.10";
+				PRODUCT_NAME = FScript;
 				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -10116,7 +10116,7 @@
 				OTHER_LIBTOOL_FLAGS = "$(value) ";
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
-				PRODUCT_NAME = "FScriptFramework 10.10";
+				PRODUCT_NAME = FScript;
 				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;

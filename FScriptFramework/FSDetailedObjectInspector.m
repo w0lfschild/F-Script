@@ -58,7 +58,7 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
                 self.window = panel;
                 
                 _inspectedObject = object;
-                FSObjectInspectorViewController *objectInspectorViewController = [[FSObjectInspectorViewController alloc] initWithNibName:@"FSObjectInspectorViewController" bundle:nil];
+                FSObjectInspectorViewController *objectInspectorViewController = [[FSObjectInspectorViewController alloc] initWithNibName:@"FSObjectInspectorViewController" bundle:[NSBundle bundleForClass:self.class]];
                 self.viewController = objectInspectorViewController;
                 objectInspectorViewController.inspector = self;
                 [self refreshModel:self];
