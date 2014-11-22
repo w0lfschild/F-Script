@@ -15,6 +15,7 @@
 #import <Cocoa/Cocoa.h>
 #import "FSCollectionInspector.h"
 #import "FSDetailedObjectInspector.h"
+#import "FSObjectBrowserViewObjectInfo.h"
 #import "FSGenericObjectInspector.h"
 #import "FSInterpreter.h"
 //#import "FScript.h"
@@ -322,36 +323,43 @@ void inspect(id object, FSInterpreter *interpreter, id argument)
   {
     @try  // An exception may occur if the object is invalid (e.g. an invalid proxy)
     {
-        [object respondsToSelector:@selector(inspect)];
+      [object respondsToSelector:@selector(inspect)];
     }
     @catch (id exception)
     {
       error= YES;
       [FSGenericObjectInspector genericObjectInspectorWithObject:object];
     }
-
+    
     if (!error)
-    {  
+    {
       if ([object respondsToSelector:@selector(inspectWithSystem:)])
         [object inspectWithSystem:[interpreter objectForIdentifier:@"sys" found:NULL]];
       else if ([object respondsToSelector:@selector(inspect)])
         [object inspect];
       else {
-        FSDetailedObjectInspector *inspector = [FSDetailedObjectInspector detailedObjectInspectorWithObject:object
-                                                                                                 interpreter:interpreter];
-        [NSNotificationCenter.defaultCenter addObserver:FSInspectorRepository.class
-                                               selector:@selector(removeInspector:)
-                                                   name:NSWindowWillCloseNotification
-                                                 object:inspector.window ];
-        [FSInspectorRepository addInspector:inspector];
+        BOOL knownBaseClass = NO;
+        for (Class cls in [FSObjectBrowserViewObjectHelper baseClasses]){
+          if ([object isKindOfClass:cls]) {
+            knownBaseClass = YES;
+            break;
+          }
+        }
+        if (knownBaseClass) {
+          FSDetailedObjectInspector *inspector = [FSDetailedObjectInspector detailedObjectInspectorWithObject:object
+                                                                                                  interpreter:interpreter];
+          [NSNotificationCenter.defaultCenter addObserver:FSInspectorRepository.class
+                                                 selector:@selector(removeInspector:)
+                                                     name:NSWindowWillCloseNotification
+                                                   object:inspector.window ];
+          [FSInspectorRepository addInspector:inspector];
+        }
+        else {
+          [FSGenericObjectInspector genericObjectInspectorWithObject:object];
+        }
       }
-      /*
-      else {
-        [FSGenericObjectInspector genericObjectInspectorWithObject:object];
-      }
-       */
     }
-  }    
+  }
 }
 
 void inspectCollection(id collection, FSSystem *system, NSArray *blocks)  // Factorize some code that would be duplicated in each collection class otherwise

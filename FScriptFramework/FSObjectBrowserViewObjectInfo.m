@@ -52,7 +52,6 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 
 @interface FSObjectBrowserViewObjectHelper ()
 
-@property (nonatomic, retain) NSMutableArray* baseClasses;
 @property (nonatomic, assign) FSObjectInspectorViewModelItem* currentViewModelItem;
 
 - (id)initWithObjectBrowserView:(FSObjectBrowserView*)view;
@@ -89,7 +88,6 @@ static inline NSString* fs_setterForProperty(NSString* prop)
         NSString* classLabel;
         NSMatrix* m;
         FSObjectBrowserView* view;
-        NSMutableArray* baseClasses;
 }
 
 - (id)init
@@ -112,7 +110,6 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 
 - (void)dealloc
 {
-        [baseClasses release];
         [_rootViewModelItem release];
         [super dealloc];
 }
@@ -289,7 +286,6 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                 [self addClassLabel:(LABEL)toMatrix:m]; \
         }
 
-@synthesize baseClasses;
 
 
 - (void)fillMatrix:(NSMatrix*)theMatrix withObject:(id)object
@@ -582,7 +578,7 @@ static inline NSString* fs_setterForProperty(NSString* prop)
 {
         // For each documented base class the object inherits from, populate the matrix with 'interesting' values
         // declared as members of that base class
-        for (Class baseClass in self.baseClasses) {
+        for (Class baseClass in FSObjectBrowserViewObjectHelper.baseClasses) {
                 if ([object isKindOfClass:baseClass]) {
                         NSString* method = [NSString stringWithFormat:@"add%@:", [baseClass className]];
                         SEL selector = NSSelectorFromString(method);
@@ -595,10 +591,11 @@ static inline NSString* fs_setterForProperty(NSString* prop)
         }
 }
 
-- (NSMutableArray*)baseClasses
++ (NSArray*)baseClasses
 {
-        if (!baseClasses) {
-                baseClasses = [[NSMutableArray alloc] initWithObjects:
+        static NSArray *sBaseClasses = nil;
+        if (!sBaseClasses) {
+                sBaseClasses = [[NSArray alloc] initWithObjects:
                                                                           [FSGenericPointer class],
                                                                           [FSObjectPointer class],
                                                                           [NSAffineTransform class],
@@ -664,7 +661,7 @@ static inline NSString* fs_setterForProperty(NSString* prop)
                                                                           [NSATSTypesetter class],
                                                                           nil];
         }
-        return baseClasses;
+        return sBaseClasses;
 }
 - (void)addFSGenericPointer:(id)object
 {
@@ -2579,8 +2576,14 @@ static inline NSString* fs_setterForProperty(NSString* prop)
         ADD_NUMBER([o boundsRotation], boundsRotation, setBoundsRotation, @"Bounds rotation")
         ADD_BOOL([o canBecomeKeyView], canBecomeKeyView, setcanBecomeKeyView, @"Can become key view")
         ADD_BOOL([o canDraw], canDraw, setcanDraw, @"Can draw")
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_6
+        ADD_BOOL([o canDrawConcurrently], canDrawConcurrently, setCanDrawConcurrently, @"Can draw concurrently")
+#endif
         ADD_OBJECT_NOT_NIL([o enclosingMenuItem], enclosingMenuItem, setEnclosingMenuItem, @"Enclosing menu item")
         ADD_OBJECT_NOT_NIL([o enclosingScrollView], enclosingScrollView, setEnclosingScrollView, @"Enclosing scroll view")
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_7
+        ADD_RECT([o focusRingMaskBounds], focusRingMaskBounds, setFocusRingMaskBounds, @"Focus ring mask bounds")
+#endif
         ADD_RECT([o frame], frame, setFrame, @"Frame")
         ADD_NUMBER([o frameRotation], frameRotation, setFrameRotation, @"Frame rotation")
         ADD_ENUM(FocusRingType, [o focusRingType], focusRingType, setfocusRingType, @"Focus ring type")
@@ -2610,6 +2613,9 @@ static inline NSString* fs_setterForProperty(NSString* prop)
         ADD_BOOL([o shouldDrawColor], shouldDrawColor, setshouldDrawColor, @"Should draw color")
         ADD_NUMBER([o tag], tag, setTag, @"Tag")
         ADD_OBJECTS([o trackingAreas], @"Tracking areas")
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_7
+        ADD_BOOL([o translatesAutoresizingMaskIntoConstraints],translatesAutoresizingMaskIntoConstraints, setTranslatesAutoresizingMaskIntoConstraints, @"Translates auto-resizing mask into constraints")
+#endif
         ADD_RECT([o visibleRect], visibleRect, setVisibleRect, @"Visible rect")
         ADD_BOOL([o wantsDefaultClipping], wantsDefaultClipping, setwantsDefaultClipping, @"Wants default clipping")
         ADD_BOOL([o wantsLayer], wantsLayer, setwantsLayer, @"Wants layer")

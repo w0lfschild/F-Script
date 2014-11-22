@@ -12,6 +12,7 @@
 
 @interface FSObjectBrowserViewObjectHelper : NSObject
 @property (nonatomic, retain) FSObjectInspectorViewModelItem* rootViewModelItem;
++ (NSArray*)baseClasses;
 -(void)populateModelWithObject:(id)object;
 
 @end
