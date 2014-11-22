@@ -11,7 +11,6 @@
 #import "FSNamedNumber.h"
 #import "FSNumber.h"
 #import "FSObjectEnumInfo.h"
-#import "CHBidirectionalDictionary.h"
 
 static void *FLOAT_CHANGED_CTX = &FLOAT_CHANGED_CTX;
 

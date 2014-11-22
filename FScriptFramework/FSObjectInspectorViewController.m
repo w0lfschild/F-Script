@@ -13,7 +13,6 @@
 #import "FSDetailedObjectInspector.h"
 #import "FSNamedNumber.h"
 #import "FSObjectEnumInfo.h"
-#import "CHBidirectionalDictionary.h"
 #import <objc/objc.h>
 #import <AvailabilityMacros.h>
 
@@ -37,7 +36,7 @@
         return opt;
 }
 
-+(NSArray *)arrayFromOptions:(NSUInteger) opts dict:(CHBidirectionalDictionary *)dict mask:(NSUInteger) mask
++(NSArray *)arrayFromOptions:(NSUInteger) opts dict:(NSMutableDictionary *)dict mask:(NSUInteger) mask
 {
         NSMutableArray* result = [NSMutableArray array];
         for (NSNumber * opt in dict.allKeys) {                                                                                                             
@@ -45,7 +44,7 @@
         }
         return result;
 }
-+(NSUInteger)optionsFromArray:(NSArray /*of FSObjectInspectorOption */ *) opts dict:(CHBidirectionalDictionary *)dict mask:(NSUInteger) mask
++(NSUInteger)optionsFromArray:(NSArray /*of FSObjectInspectorOption */ *) opts dict:(NSMutableDictionary *)dict mask:(NSUInteger) mask
 {
         NSUInteger result = 0;
         for (FSObjectInspectorOption *opt in opts) {

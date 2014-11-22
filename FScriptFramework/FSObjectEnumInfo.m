@@ -11,7 +11,6 @@
 #import "FSNumber.h"
 #import "FSObjectBrowserNamedObjectWrapper.h"
 
-#import "CHBidirectionalDictionary.h"
 #import "metamacros.h"
 
 const NSUInteger CellTypeMask = NSUIntegerMax;
@@ -23,11 +22,11 @@ const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
             ,
 
 #define _BIDICT_LEADER(_name)                                   \
-        static inline CHBidirectionalDictionary* _name##Bimap() \
+        static inline NSMutableDictionary* _name##Bimap() \
         {                                                       \
-                static CHBidirectionalDictionary* dict = nil;   \
+                static NSMutableDictionary* dict = nil;   \
                 if (!dict) {                                    \
-                        dict = [CHBidirectionalDictionary new]; \
+                        dict = [NSMutableDictionary new]; \
                         [dict addEntriesFromDictionary:
 
 
@@ -55,7 +54,7 @@ const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
 
 #define BIMAP_CLASS_METHODS_DEFN(_name)                                             \
         +(id)objectFor##_name : (NS##_name)mask { return objectFrom##_name(mask); } \
-        +(CHBidirectionalDictionary*)optionsFor##_name { return (_name##Bimap()); }
+        +(NSMutableDictionary*)optionsFor##_name { return (_name##Bimap()); }
 
 #define _FS_NUMBER_WRAPPER(_name) \
         lookup ? [FSNamedNumber namedNumberWithDouble:(double)value name:lookup] : [FSNumber numberWithDouble:value]
@@ -65,7 +64,7 @@ const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
 #define ENUM_FUNC(_name, _lookup, _boxed_value)                   \
         id objectFrom##_name(NS##_name value)                     \
         {                                                         \
-                CHBidirectionalDictionary* dict = _name##Bimap(); \
+                NSMutableDictionary* dict = _name##Bimap(); \
                 id lookup = dict[_boxed_value];                   \
                 return _lookup;                                   \
         }
@@ -101,7 +100,7 @@ const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
         }                                                                                                                                                          \
         BIMAP_CLASS_METHODS_DEFN(_name)
 
-id objectFromOptions(NSUInteger opts, CHBidirectionalDictionary *dict, NSUInteger mask)
+id objectFromOptions(NSUInteger opts, NSMutableDictionary *dict, NSUInteger mask)
 {                                                                                                                                                          
         if (mask == 0 || (opts & ~mask)) {
                 return [FSNumber numberWithDouble:opts];                                                                                                   

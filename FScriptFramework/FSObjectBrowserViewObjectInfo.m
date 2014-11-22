@@ -126,7 +126,7 @@ static inline NSString* fs_setterForProperty(NSString* prop)
         self.currentViewModelItem = item;
 }
 
-- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label enumBiDict:(CHBidirectionalDictionary*)enumBiDict mask:(NSUInteger)mask valueClass:(Class)valueClass notNil:(BOOL)notNil
+- (void)addObject:(id)object valueType:(FSInspectorVMValueType)valueType getter:(FSGetterBlock)getter setter:(FSSetterBlock)setter withLabel:(NSString*)label enumBiDict:(NSMutableDictionary*)enumBiDict mask:(NSUInteger)mask valueClass:(Class)valueClass notNil:(BOOL)notNil
 {
         @try {
                 if (!notNil || object) {

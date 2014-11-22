@@ -16,11 +16,11 @@ typedef NSUInteger NSToolbarItemVisibilityPriority;
 typedef CGWindowLevelKey NSWindowLevel;
 typedef NSUInteger NSWindowMask;
 typedef id NSMergePolicyMarker;
-@class CHBidirectionalDictionary;
+@class NSMutableDictionary;
 
 #define BIMAP_CLASS_METHODS_DECL(_name)                 \
         +(id)objectFor##_name : (NS##_name)mask;        \
-        +(CHBidirectionalDictionary*)optionsFor##_name; \
+        +(NSMutableDictionary*)optionsFor##_name; \
         extern id objectFrom##_name(NS##_name _name);   \
         extern const NSUInteger _name##Mask ;
 
@@ -132,4 +132,4 @@ id objectFromTickMarkPosition(NSTickMarkPosition tickMarkPosition, BOOL isVertic
 
 @end
 
-id objectFromOptions(NSUInteger opts, CHBidirectionalDictionary *dict, NSUInteger mask);
+id objectFromOptions(NSUInteger opts, NSMutableDictionary *dict, NSUInteger mask);

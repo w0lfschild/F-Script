@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, FSInspectorVMValueType) {
 };
 
 @class FSObjectInspectorViewModelItem;
-@class CHBidirectionalDictionary;
+@class NSMutableDictionary;
 
 typedef id(^FSGetterBlock)(id obj, FSObjectInspectorViewModelItem *item) ;
 typedef void(^FSSetterBlock)(id obj, id newValue, FSObjectInspectorViewModelItem *item);
@@ -34,7 +34,7 @@ typedef void(^FSSetterBlock)(id obj, id newValue, FSObjectInspectorViewModelItem
 @property (strong,nonatomic) id value;
 @property (assign,nonatomic) FSInspectorVMValueType valueType;
 @property (readonly,nonatomic) NSString *displayValue;
-@property (assign,nonatomic) CHBidirectionalDictionary *enumBiDict;
+@property (assign,nonatomic) NSMutableDictionary *enumBiDict;
 @property (readonly,nonatomic) NSArray *enumNames;
 @property (readonly,nonatomic) NSArray *enumValues;
 @property (nonatomic) NSInteger numValue;
