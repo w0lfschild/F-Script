@@ -209,85 +209,102 @@ labelFromPropertyName(NSString* propertyName)
 #define START_GROUP(GROUP) [self addGroup:(@ #GROUP)];
 #define END_GROUP(GROUP) [self endGroup];
 
-#define ADD_VALUE(OBJECT, VALUE_TYPE, GETTER, SETTER, BIDICT, MASK, VALUE_CLASS, LABEL, NOT_NIL)                                                                                                                                                                                                                                                               \
+#define ADD_VALUE(OBJECT, VALUE_TYPE, PROPERTY, BIDICT, MASK, VALUE_CLASS, LABEL, NOT_NIL)                                                                                                                                                                                                                                                               \
         @try {                                                                                                                                                                                                                                                                                                                                                 \
-                if (#SETTER[0] != '-') { \
-                        [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #GETTER]; } setter:^(id obj, id newVal, FSObjectInspectorViewModelItem* item) { [obj setValue:newVal forKey:@ #GETTER]; } withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
+                if (#PROPERTY[0] != '-') { \
+                        [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #PROPERTY]; } setter:^(id obj, id newVal, FSObjectInspectorViewModelItem* item) { [obj setValue:newVal forKey:@ #PROPERTY]; } withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
                 } \
                 else { \
-                        [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #GETTER]; } setter:nil withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
+                        [self addObject:(OBJECT)valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem* item) { return [obj valueForKey:@ #PROPERTY]; } setter:nil withLabel:(LABEL)enumBiDict:BIDICT mask:MASK valueClass:VALUE_CLASS notNil:NOT_NIL]; \
                 } \
         }                                                                                                                                                                                                                                                                                                                                                      \
         @catch (id exception) { NSLog(@"%@", exception); }
 
-#define ADD_ENUM(OBJECT, GETTER, ENUM) \
-        ADD_VALUE(objectFrom##ENUM([OBJECT GETTER]), FS_ITEM_ENUM, GETTER, GETTER, FSObjectEnumInfo.optionsFor##ENUM, 0, nil, labelFromPropertyName(@#GETTER), NO);
+#define ADD_VALUE_GETSET(OBJECT, VALUE_TYPE, GETTER, SETTER, LABEL, NOT_NIL) \
+        [self addObject:(OBJECT) valueType:VALUE_TYPE getter:^(id obj, FSObjectInspectorViewModelItem *item)GETTER setter:^(id obj, id val, FSObjectInspectorViewModelItem *item)SETTER withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:NOT_NIL];
 
-#define ADD_OPTIONS(OBJECT, GETTER, ENUM) \
-        ADD_VALUE(objectFrom##ENUM([OBJECT GETTER]), FS_ITEM_OPTIONS, GETTER, GETTER, FSObjectEnumInfo.optionsFor##ENUM, ENUM##Mask, nil, labelFromPropertyName(@#GETTER), NO);
+#define ADD_ENUM(OBJECT, PROPERTY, ENUM) \
+        ADD_VALUE(objectFrom##ENUM([OBJECT PROPERTY]), FS_ITEM_ENUM, PROPERTY, FSObjectEnumInfo.optionsFor##ENUM, 0, nil, labelFromPropertyName(@#PROPERTY), NO);
 
-#define ADD_SIZE(OBJECT, GETTER) \
-        ADD_VALUE([NSValue valueWithSize:[OBJECT GETTER], FS_ITEM_SIZE, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO)
+#define ADD_OPTIONS(OBJECT, PROPERTY, ENUM) \
+        ADD_VALUE(objectFrom##ENUM([OBJECT PROPERTY]), FS_ITEM_OPTIONS, PROPERTY, FSObjectEnumInfo.optionsFor##ENUM, ENUM##Mask, nil, labelFromPropertyName(@#PROPERTY), NO);
 
-#define ADD_RECT(OBJECT, GETTER) \
-        ADD_VALUE([NSValue valueWithRect:[OBJECT GETTER], FS_ITEM_RECT, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO)
+#define ADD_SIZE(OBJECT, PROPERTY) \
+        ADD_VALUE([NSValue valueWithSize:[OBJECT PROPERTY]], FS_ITEM_SIZE, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
+
+#define ADD_RECT(OBJECT, PROPERTY) \
+        ADD_VALUE([NSValue valueWithRect:[OBJECT PROPERTY]], FS_ITEM_RECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
 
 
-#define ADD_POINT(OBJECT, GETTER) \
-        ADD_VALUE([NSValue valueWithPoint:[OBJECT GETTER], FS_ITEM_POINT, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO)
+#define ADD_POINT(OBJECT, PROPERTY) \
+        ADD_VALUE([NSValue valueWithPoint:[OBJECT PROPERTY]], FS_ITEM_POINT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
 
 
-#define ADD_RANGE(OBJECT, GETTER) \
-        ADD_VALUE([NSValue valueWithRange:[OBJECT GETTER], FS_ITEM_RANGE, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO)
+#define ADD_RANGE(OBJECT, PROPERTY) \
+        ADD_VALUE([NSValue valueWithRange:[OBJECT PROPERTY]], FS_ITEM_RANGE, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
 
-#define ADD_OBJECT(OBJECT, GETTER) \
-        ADD_VALUE([OBJECT GETTER], FS_ITEM_OBJECT, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO)
-#define ADD_OBJECT_NOT_NIL(OBJECT, GETTER) \
-        ADD_VALUE([OBJECT GETTER], FS_ITEM_OBJECT, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), YES)
-#define ADD_OBJECT_RO(OBJECT, LABEL) ADD_OBJECT2((OBJECT), nil, nil, LABEL)
+#define ADD_OBJECT(OBJECT, PROPERTY) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
+#define ADD_OBJECT_NOT_NIL(OBJECT, PROPERTY) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), YES)
+#define ADD_OBJECT_RO(OBJECT, LABEL) \
+        [self addObject:(OBJECT) valueType:FS_ITEM_OBJECT getter:nil setter:nil withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:NO];
+#define ADD_OBJECT_GETSET(OBJECT, GETTER, SETTER, LABEL) \
+{ \
+        FSGetterBlock getBlock = ^(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
+        ADD_VALUE_GETSET(getBlock(OBJECT,nil), FS_ITEM_OBJECT, GETTER, SETTER, LABEL, NO); \
+}
+
 #define ADD_OBJECT_RO_NOT_NIL(OBJECT, LABEL) ADD_OBJECT_NOT_NIL(OBJECT, nil, nil, LABEL) \
-        ADD_VALUE((OBJECT), FS_ITEM_OBJECT, nil, nil, nil, nil, 0, LABEL, YES)
+        [self addObject:(OBJECT) valueType:FS_ITEM_OBJECT getter:nil setter:nil withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:YES];
 
 
-#define ADD_COLOR(OBJECT, GETTER) \
-        ADD_VALUE([OBJECT GETTER], FS_ITEM_OBJECT, GETTER, GETTER, nil, 0, NSColor.class, labelFromPropertyName(@#GETTER), NO)
+#define ADD_COLOR(OBJECT, PROPERTY) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, NSColor.class, labelFromPropertyName(@#PROPERTY), NO)
 
-#define ADD_COLOR_NOT_NIL(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE([OBJECT GETTER], FS_ITEM_OBJECT, GETTER, GETTER, nil, 0, NSColor.class, labelFromPropertyName(@#GETTER), YES)
+#define ADD_COLOR_NOT_NIL(OBJECT, PROPERTY) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, NSColor.class, labelFromPropertyName(@#PROPERTY), YES)
 
-#define ADD_STRING(OBJECT, GETTER) \
-        ADD_VALUE([OBJECT GETTER], FS_ITEM_OBJECT, GETTER, GETTER, nil, 0, NSString.class, labelFromPropertyName(@#GETTER), NO)
+#define ADD_STRING(OBJECT, PROPERTY) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, NSString.class, labelFromPropertyName(@#PROPERTY), NO)
 
-#define ADD_STRING_NOT_NIL(OBJECT, GETTER) \
-        ADD_VALUE([OBJECT GETTER], FS_ITEM_OBJECT, GETTER, GETTER, nil, 0, NSString.class, labelFromPropertyName(@#GETTER), YES)
+#define ADD_STRING_NOT_NIL(OBJECT, PROPERTY) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, NSString.class, labelFromPropertyName(@#PROPERTY), YES)
 
-#define ADD_BOOL(OBJECT, GETTER) \
-        ADD_VALUE([FSBoolean booleanWithBool:[OBJECT GETTER]], FS_ITEM_BOOL, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO);
+#define ADD_BOOL(OBJECT, PROPERTY) \
+        ADD_VALUE([FSBoolean booleanWithBool:[OBJECT PROPERTY]], FS_ITEM_BOOL, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO);
 
-#define ADD_NUMBER(OBJECT, GETTER) \
-        ADD_VALUE([FSNumber numberWithDouble:([OBJECT GETTER)], FS_ITEM_NUMBER, GETTER, GETTER, nil, 0, nil, labelFromPropertyName(@#GETTER), NO)
+#define ADD_NUMBER(OBJECT, PROPERTY) \
+        ADD_VALUE([FSNumber numberWithDouble:[OBJECT PROPERTY]], FS_ITEM_NUMBER, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
+#define ADD_NUMBER_GETSET(OBJECT, GETTER, SETTER, LABEL) \
+{ \
+        FSGetterBlock getBlock = ^(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
+        ADD_VALUE_GETSET(getBlock(OBJECT,nil), FS_ITEM_NUMBER, GETTER, SETTER, LABEL, NO); \
+}
 
 #define ADD_DICTIONARY(OBJECTS, LABEL)                                                                                                                                                                   \
         @try {                                                                                                                                                                                           \
-                if ([(OBJECTS)count] <= 20)                                                                                                                                                              \
-                        [view addDictionary:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
+                NSDictionary *objs = [OBJECTS LABEL]; \
+                if (objs.count <= 20)                                                                                                                                                              \
+                        [view addDictionary:objs withLabel:labelFromPropertyName(@#LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                     \
-                        [self addObject:(OBJECTS)valueType:FS_ITEM_OBJECT withLabel:(LABEL)notNil:NO];                                                                                                   \
+                        [self addObject:objs valueType:FS_ITEM_OBJECT withLabel:labelFromPropertyName(@#LABEL)notNil:NO];                                                                                                   \
         }                                                                                                                                                                                                \
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_OBJECTS(OBJECTS, LABEL)                                                                                                                                                                   \
         @try {                                                                                                                                                                                        \
-                if ([(OBJECTS)count] <= 20)                                                                                                                                                           \
-                        [view addObjects:(OBJECTS)withLabel:(LABEL)toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
+                NSArray *objs = [OBJECTS LABEL]; \
+                if (objs.count <= 20)                                                                                                                                                           \
+                        [view addObjects:objs withLabel:labelFromPropertyName(@#LABEL) toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject]; \
                 else                                                                                                                                                                                  \
-                        [self addObject:(OBJECTS)valueType:FS_ITEM_OBJECT withLabel:(LABEL)notNil:NO];                                                                                                \
+                        [self addObject:(OBJECTS) valueType:FS_ITEM_OBJECT withLabel:labelFromPropertyName(@#LABEL) notNil:NO];                                                                                                \
         }                                                                                                                                                                                             \
         @catch (id exception) { NSLog(@"%@", exception); }
 
 #define ADD_SEL(S, LABEL)                                                                                                                                                                                                                       \
         @try {                                                                                                                                                                                                                                  \
-                [view addObject:[FSBlock blockWithSelector:(S)] withLabel:(LABEL)toMatrix:m leaf:YES classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject indentationLevel:0]; \
+                [view addObject:[FSBlock blockWithSelector:@selector(S)] withLabel:labelFromPropertyName(@#LABEL)toMatrix:m leaf:YES classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject indentationLevel:0]; \
         }                                                                                                                                                                                                                                       \
         @catch (id exception) { NSLog(@"%@", exception); }
 
@@ -318,20 +335,20 @@ labelFromPropertyName(NSString* propertyName)
         }
 
 
-#define ADD_SIZE2(SIZE, GETTER, SETTER, LABEL) \
-        ADD_VALUE([NSValue valueWithSize:(SIZE)], FS_ITEM_SIZE, GETTER, SETTER, nil, nil, 0, LABEL, NO)
-#define ADD_RECT2(RECT,GETTER, SETTER, LABEL) \
-        ADD_VALUE([NSValue valueWithRect:(RECT)], FS_ITEM_RECT, GETTER, SETTER, nil, nil, 0, LABEL, NO)
-#define ADD_POINT2(POINT,GETTER, SETTER, LABEL) \
-        ADD_VALUE([NSValue valueWithPoint:(POINT)], FS_ITEM_POINT, GETTER, SETTER, nil, nil, 0, LABEL, NO)
-#define ADD_RANGE2(RANGE, GETTER, SETTER,LABEL) \
-        ADD_VALUE([NSValue valueWithRange:(RANGE)], FS_ITEM_RANGE, GETTER, SETTER, nil, nil, 0, LABEL, NO)
-#define ADD_OBJECT2(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE((OBJECT), FS_ITEM_OBJECT, GETTER, SETTER, nil, nil, 0, LABEL, NO)
-#define ADD_COLOR2(OBJECT, GETTER, SETTER, LABEL) \
-        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, GETTER, SETTER, nil, 0, NSColor.class, LABEL, NO)
-#define ADD_NUMBER2(NUMBER, GETTER, SETTER, LABEL) \
-        ADD_VALUE([FSNumber numberWithDouble:(NUMBER)], FS_ITEM_NUMBER, GETTER, SETTER, nil, 0, nil, LABEL, NO);
+#define ADD_SIZE2(SIZE, PROPERTY, LABEL) \
+        ADD_VALUE([NSValue valueWithSize:(SIZE)], FS_ITEM_SIZE, PROPERTY, nil, nil, 0, LABEL, NO)
+#define ADD_RECT2(RECT,PROPERTY, LABEL) \
+        ADD_VALUE([NSValue valueWithRect:(RECT)], FS_ITEM_RECT, PROPERTY, nil, nil, 0, LABEL, NO)
+#define ADD_POINT2(POINT,PROPERTY, LABEL) \
+        ADD_VALUE([NSValue valueWithPoint:(POINT)], FS_ITEM_POINT, PROPERTY, nil, nil, 0, LABEL, NO)
+#define ADD_RANGE2(RANGE, PROPERTY,LABEL) \
+        ADD_VALUE([NSValue valueWithRange:(RANGE)], FS_ITEM_RANGE, PROPERTY, nil, nil, 0, LABEL, NO)
+#define ADD_OBJECT2(OBJECT, PROPERTY, LABEL) \
+        ADD_VALUE((OBJECT), FS_ITEM_OBJECT, PROPERTY, nil, nil, 0, LABEL, NO)
+#define ADD_COLOR2(OBJECT, PROPERTY, LABEL) \
+        ADD_VALUE(OBJECT, FS_ITEM_OBJECT, PROPERTY, nil, 0, NSColor.class, LABEL, NO)
+#define ADD_NUMBER2(NUMBER, PROPERTY, LABEL) \
+        ADD_VALUE([FSNumber numberWithDouble:(NUMBER)], FS_ITEM_NUMBER, PROPERTY, nil, 0, nil, LABEL, NO);
 
 - (void)fillMatrix:(NSMatrix*)theMatrix withObject:(id)object
 {
@@ -401,14 +418,14 @@ labelFromPropertyName(NSString* propertyName)
                 [view addPropertyLabel:@"Attributes" toMatrix:m];
                 for (NSUInteger i = 0, count = [attributeKeys count]; i < count; i++) {
                         NSString* key = [attributeKeys objectAtIndex:i];
-                        ADD_OBJECT2([o valueForKey:key], key, - , key)
+                        ADD_OBJECT2([o valueForKey:key], key, key)
                 }
 
                 NSArray* relationshipKeys = [[[[o entity] relationshipsByName] allKeys] sortedArrayUsingSelector:@selector(compare:)];
                 [view addPropertyLabel:@"Relationships" toMatrix:m];
                 for (NSUInteger i = 0, count = [relationshipKeys count]; i < count; i++) {
                         NSString* key = [relationshipKeys objectAtIndex:i];
-                        ADD_OBJECT2([o valueForKey:key], key, - , key)
+                        ADD_OBJECT2([o valueForKey:key], key, key)
                 }
 
                 ADD_CLASS_LABEL(@"NSManagedObject Info");
@@ -740,14 +757,13 @@ labelFromPropertyName(NSString* propertyName)
 - (void)addNSAffineTransform:(id)object
 {
         NSAffineTransform* o = object;
-        NSAffineTransformStruct s = [o transformStruct];
         ADD_CLASS_LABEL(@"NSAffineTransform Info");
-        ADD_NUMBER(s, m11)
-        ADD_NUMBER(s,m12)
-        ADD_NUMBER(s,m21)
-        ADD_NUMBER(s,m22)
-        ADD_NUMBER(s,tX)
-        ADD_NUMBER(s,tY)
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m11]; }, { ;}, @"m11")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m12]; }, { ;}, @"m12")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m21]; }, { ;}, @"m21")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m22]; }, { ;}, @"m22")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.tX]; }, { ;}, @"tX")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.tY]; }, { ;}, @"tY")
 }
 
 - (void)addNSAlert:(id)object
@@ -888,7 +904,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_ENUM(o, imageScaling, ImageScaling)
                         ADD_BOOL(o, isTransparent)
                         ADD_OBJECT_NOT_NIL(o, keyEquivalentFont)
-                        ADD_OPTIONS( [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
+                        ADD_OPTIONS( o, keyEquivalentModifierMask, EventModifierFlags)
                         ADD_BOOL(o, showsBorderOnlyWhileMouseInside)
                         ADD_OPTIONS(o, showsStateBy, CellStyleMask)
                         ADD_OBJECT_NOT_NIL(o, sound)
@@ -939,7 +955,7 @@ labelFromPropertyName(NSString* propertyName)
                         NSPathCell* o = object;
                         ADD_CLASS_LABEL(@"NSPathCell Info");
                         ADD_OBJECTS(o, allowedTypes)
-                        ADD_COLOR_NOT_NIL([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
+                        ADD_COLOR_NOT_NIL(o, backgroundColor)
                         ADD_OBJECT(o, delegate)
                         ADD_SEL(o, doubleAction)
                         ADD_OBJECTS(o, pathComponentCells)
@@ -950,7 +966,6 @@ labelFromPropertyName(NSString* propertyName)
                 }
                 else if ([object isKindOfClass:[NSSegmentedCell class]]) {
                         NSSegmentedCell* o = object;
-                        NSInteger segmentCount = [o segmentCount];
                         ADD_CLASS_LABEL(@"NSSegmentedCell Info");
 
                         ADD_NUMBER(o, segmentCount)
@@ -1352,7 +1367,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_NUMBER(o, keyCode)
         if (type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel)
                 ADD_POINT(o, locationInWindow)
-        ADD_OPTIONS(EventModifierFlags, [o modifierFlags] & NSDeviceIndependentModifierFlagsMask, modifierFlags, setModifierFlags, @"Modifier flags")
+        ADD_OPTIONS(o, modifierFlags, EventModifierFlags)
         if (type == NSTabletProximity || ((type == NSLeftMouseDown || type == NSLeftMouseUp || type == NSRightMouseDown || type == NSRightMouseUp || type == NSOtherMouseDown || type == NSOtherMouseUp || type == NSMouseMoved || type == NSLeftMouseDragged || type == NSRightMouseDragged || type == NSOtherMouseDragged || type == NSScrollWheel) && [object subtype] == NSTabletProximityEventSubtype)) {
                 ADD_NUMBER(o, pointingDeviceID)
                 ADD_NUMBER(o, pointingDeviceSerialNumber)
@@ -1398,6 +1413,7 @@ labelFromPropertyName(NSString* propertyName)
 - (void)addNSExpression:(id)object
 {
         ADD_CLASS_LABEL(@"NSExpression Info");
+        NSExpression *o = object;
 
         @try { ADD_OBJECTS(o, arguments); } @catch (id exception) {}
         @try { ADD_OBJECT(o, collection); } @catch (id exception) {}
@@ -1575,15 +1591,20 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_NUMBER(o, bitsPerPixel)
                 ADD_NUMBER(o, bytesPerPlane)
                 ADD_NUMBER(o, bytesPerRow)
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageColorSyncProfileData], @"ColorSync profile data")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageCompressionFactor], @"Compression factor")
+                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageColorSyncProfileData]; }, { [obj setProperty:NSImageColorSyncProfileData withValue:val ];}, @"ColorSync profile data")
+                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageCompressionFactor]; }, { [obj setProperty:NSImageCompressionFactor withValue:val ];}, @"Compression factor")
                 {
-                        id compressionMethod = [o valueForProperty:NSImageCompressionMethod];
-                        if ([compressionMethod isKindOfClass:[NSNumber class]])
-                                ADD_ENUM(TIFFCompression, [[o valueForProperty:NSImageCompressionMethod] longValue], imageCompressionMethod, setImageCompressionMethod, @"Compression method")
+                        //TODO
+                        //id compressionMethod = [o valueForProperty:NSImageCompressionMethod];
+                        //       if ([compressionMethod isKindOfClass:[NSNumber class]])
+                //                ADD_ENUM(TIFFCompression, [[o valueForProperty:NSImageCompressionMethod] longValue], imageCompressionMethod, setImageCompressionMethod, @"Compression method")
                 }
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageCurrentFrame], @"Current frame")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageCurrentFrameDuration], @"Current frame duration")
+                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageCurrentFrame]; }, { [obj setProperty:NSImageCurrentFrame withValue:val ];}, @"Current frame")
+                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageCurrentFrameDuration]; }, { [obj setProperty:NSImageCurrentFrameDuration withValue:val ];}, @"Current frame duration")
+                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageDitherTransparency]; }, { [obj setProperty:NSImageDitherTransparency withValue:val ];}, @"Dither transparency")
+                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageEXIFData]; }, { [obj setProperty:NSImageEXIFData withValue:val ];}, @"EXIF data")
+                // TODO
+#if 0
                 ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageDitherTransparency], @"Dither transparency")
                 ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageEXIFData], @"EXIF data")
                 ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageFallbackBackgroundColor], @"Fallback background color")
@@ -1596,6 +1617,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageProgressive], @"Progressive")
                 ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageRGBColorTable], @"RGB color table")
                 ADD_NUMBER(o, samplesPerPixel)
+#endif
         }
         else if ([object isKindOfClass:[NSCIImageRep class]]) {
                 NSCIImageRep* o = object;
@@ -1701,7 +1723,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_OBJECTS(o, configurations)
         ADD_DICTIONARY(o, entitiesByName)
         ADD_DICTIONARY(o, fetchRequestTemplatesByName)
-        ADD_OBJECTS([[o versionIdentifiers] allObjects], @"Version identifiers")
+        //TODO: ADD_OBJECTS([[o versionIdentifiers] allObjects], @"Version identifiers")
 }
 
 - (void)addNSMenu:(id)object
@@ -1735,7 +1757,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_BOOL(o, isHighlighted)
         ADD_BOOL(o, isSeparatorItem)
         ADD_OBJECT(o, keyEquivalent)
-        ADD_OPTIONS(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
+        ADD_OPTIONS(o, keyEquivalentModifierMask, EventModifierFlags)
         ADD_OBJECT(o, menu)
         ADD_OBJECT_NOT_NIL(o, mixedStateImage)
         ADD_OBJECT_NOT_NIL(o, offStateImage)
@@ -1995,7 +2017,7 @@ labelFromPropertyName(NSString* propertyName)
         NSRulerMarker* o = object;
         ADD_CLASS_LABEL(@"NSRulerMarker Info");
         ADD_OBJECT(o, image)
-        ADD_POINT([o imageOrigin], imageOrigin, setImageOrigin, @"Image origin")
+        ADD_POINT(o, imageOrigin)
         ADD_RECT(o, imageRectInRuler)
         ADD_BOOL(o, isDragging)
         ADD_BOOL(o, isMovable)
@@ -2467,7 +2489,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_OBJECT_NOT_NIL(o, layoutManager)
                         ADD_DICTIONARY(o, linkTextAttributes)
                         ADD_DICTIONARY(o, markedTextAttributes)
-                        ADD_RANGE([o rangeForUserCompletion], rangeForUserCompletion, setRangeForUserCompletion, @"Range for user completion")
+                        ADD_RANGE(o, rangeForUserCompletion)
                         ADD_OBJECTS(o, rangesForUserCharacterAttributeChange)
                         ADD_OBJECTS(o, rangesForUserParagraphAttributeChange)
                         ADD_OBJECTS(o, rangesForUserTextChange)
@@ -2481,7 +2503,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_NUMBER(o, spellCheckerDocumentTag)
                         ADD_OBJECT(o, textContainer)
                         ADD_SIZE(o, textContainerInset)
-                        ADD_POINT([o textContainerOrigin], textContainerOrigin, setTextContainerOrigin, @"Text container origin")
+                        ADD_POINT(o, textContainerOrigin)
                         ADD_OBJECT(o, textStorage)
                         ADD_DICTIONARY(o, typingAttributes)
                         ADD_BOOL(o, usesFindPanel)
@@ -2513,9 +2535,9 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_BOOL(o, isVerticallyResizable)
                 ADD_SIZE(o, maxSize)
                 ADD_SIZE(o, minSize)
-                ADD_RANGE([o selectedRange], selectedRange, setSelectedRange, @"Selected range")
+                ADD_RANGE(o, selectedRange)
                 ADD_OBJECT(o, string)
-                ADD_COLOR_NOT_NIL([o textColor], textColor, setTextColor, @"Text color")
+                ADD_COLOR_NOT_NIL(o, textColor)
                 ADD_BOOL(o, usesFontPanel)
         }
 
@@ -2762,7 +2784,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_BOOL(o, isBordered)
                         ADD_BOOL(o, isTransparent)
                         ADD_OBJECT(o, keyEquivalent)
-                        ADD_OPTIONS(EventModifierFlags, [o keyEquivalentModifierMask] & NSDeviceIndependentModifierFlagsMask, keyEquivalentModifierMask, setKeyEquivalentModifierMask, @"Key equivalent modifier mask")
+                        ADD_OPTIONS(o, keyEquivalentModifierMask, EventModifierFlags)
                         ADD_BOOL(o, showsBorderOnlyWhileMouseInside)
                         ADD_OBJECT_NOT_NIL(o, sound)
                         ADD_ENUM(o, state, CellStateValue)
@@ -2872,7 +2894,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_BOOL(o, isAutoscroll)
                         ADD_BOOL(o, isSelectionByRect)
                         ADD_OBJECT(o, keyCell)
-                        ADD_ENUM(MatrixMode, [(NSMatrix*)o mode], mode, setMode, @"Mode")
+                        ADD_ENUM(o, mode, MatrixMode)
                         ADD_NUMBER(o, numberOfColumns)
                         ADD_NUMBER(o, numberOfRows)
                         ADD_OBJECT(o, prototype)
@@ -2889,7 +2911,7 @@ labelFromPropertyName(NSString* propertyName)
 
                         NSPathControl* o = object;
                         ADD_CLASS_LABEL(@"NSPathControl Info");
-                        ADD_COLOR_NOT_NIL([o backgroundColor], backgroundColor, setBackgroundColor, @"Background color")
+                        ADD_COLOR_NOT_NIL(o, backgroundColor)
                         ADD_OBJECT(o, delegate)
                         ADD_SEL(o, doubleAction)
                         ADD_OBJECTS(o, pathComponentCells)
@@ -2954,10 +2976,9 @@ labelFromPropertyName(NSString* propertyName)
                         //--------------------------------------------------------------------------------
 
                         NSSegmentedControl* o = object;
-                        NSInteger segmentCount = [o segmentCount];
                         ADD_CLASS_LABEL(@"NSSegmentedControl Info");
 
-                        ADD_NUMBER(segmentCount, segmentCount, setSegmentCount, @"Segment count")
+                        ADD_NUMBER(o, segmentCount)
                         ADD_NUMBER(o, selectedSegment)
                                             [self processSegmentedItem:o];
                 }
@@ -2971,8 +2992,10 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_CLASS_LABEL(@"NSSlider Info");
                         ADD_BOOL(o, allowsTickMarkValuesOnly)
                         ADD_NUMBER(o, altIncrementValue)
-                        ADD_NUMBER([(NSSlider*)o isVertical], vertical, setVertical:, @"Is vertical")
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_10
+                        ADD_BOOL(o, isVertical)
                         ADD_NUMBER(o, knobThickness)
+#endif
                         ADD_NUMBER(o, maxValue)
                         ADD_NUMBER(o, minValue)
                         ADD_NUMBER(o, numberOfTickMarks)
