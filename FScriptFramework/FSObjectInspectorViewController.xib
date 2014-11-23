@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C68m" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
@@ -220,13 +220,13 @@
                                                         <rect key="frame" x="57" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="BEg-ST-fE5"/>
                                                         <connections>
-                                                            <binding destination="CD1-rO-ztD" name="maxValue" keyPath="objectValue.maxValue" id="dMV-4D-UVV"/>
-                                                            <binding destination="CD1-rO-ztD" name="minValue" keyPath="objectValue.minValue" previousBinding="dMV-4D-UVV" id="YVb-lm-qh8"/>
                                                             <binding destination="CD1-rO-ztD" name="value" keyPath="objectValue.float1" previousBinding="YVb-lm-qh8" id="fLF-uf-RWv">
                                                                 <dictionary key="options">
                                                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="CD1-rO-ztD" name="maxValue" keyPath="objectValue.maxValue" id="dMV-4D-UVV"/>
+                                                            <binding destination="CD1-rO-ztD" name="minValue" keyPath="objectValue.minValue" previousBinding="dMV-4D-UVV" id="YVb-lm-qh8"/>
                                                         </connections>
                                                     </stepper>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FTV-Vo-tr6">
@@ -248,13 +248,13 @@
                                                         <rect key="frame" x="135" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="tfA-oZ-5IR"/>
                                                         <connections>
-                                                            <binding destination="CD1-rO-ztD" name="maxValue" keyPath="objectValue.maxValue" id="ye2-1C-KaK"/>
-                                                            <binding destination="CD1-rO-ztD" name="minValue" keyPath="objectValue.minValue" previousBinding="ye2-1C-KaK" id="GV7-Kr-Z8d"/>
                                                             <binding destination="CD1-rO-ztD" name="value" keyPath="objectValue.float2" previousBinding="GV7-Kr-Z8d" id="HWN-Y7-hHa">
                                                                 <dictionary key="options">
                                                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="CD1-rO-ztD" name="maxValue" keyPath="objectValue.maxValue" id="ye2-1C-KaK"/>
+                                                            <binding destination="CD1-rO-ztD" name="minValue" keyPath="objectValue.minValue" previousBinding="ye2-1C-KaK" id="GV7-Kr-Z8d"/>
                                                         </connections>
                                                     </stepper>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bcM-8R-viy">
@@ -294,13 +294,13 @@
                                                         <rect key="frame" x="57" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="4NX-Er-l7B"/>
                                                         <connections>
-                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="dS1-WT-Ung"/>
-                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="dS1-WT-Ung" id="oOB-rR-PES"/>
                                                             <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float1" previousBinding="oOB-rR-PES" id="h5K-Mp-LRz">
                                                                 <dictionary key="options">
                                                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="dS1-WT-Ung"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="dS1-WT-Ung" id="oOB-rR-PES"/>
                                                         </connections>
                                                     </stepper>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-wX-YOt">
@@ -322,13 +322,13 @@
                                                         <rect key="frame" x="135" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="WY4-bN-1EY"/>
                                                         <connections>
-                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="Dzz-Dx-mJc"/>
-                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="Dzz-Dx-mJc" id="XQr-lZ-ZHo"/>
                                                             <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float2" previousBinding="XQr-lZ-ZHo" id="AsP-Ew-ygU">
                                                                 <dictionary key="options">
                                                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="Dzz-Dx-mJc"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="Dzz-Dx-mJc" id="XQr-lZ-ZHo"/>
                                                         </connections>
                                                     </stepper>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-e8-gxI">
@@ -350,13 +350,13 @@
                                                         <rect key="frame" x="213" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="XA8-J3-93f"/>
                                                         <connections>
-                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="eSg-o4-6KM"/>
-                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="eSg-o4-6KM" id="55q-jw-qlr"/>
                                                             <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float3" previousBinding="55q-jw-qlr" id="6YX-8T-jMN">
                                                                 <dictionary key="options">
                                                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="eSg-o4-6KM"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="eSg-o4-6KM" id="55q-jw-qlr"/>
                                                         </connections>
                                                     </stepper>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3M-pl-yBt">
@@ -378,13 +378,13 @@
                                                         <rect key="frame" x="291" y="-2" width="15" height="22"/>
                                                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="Lue-Mh-Abp"/>
                                                         <connections>
-                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="K2z-Cq-17W"/>
-                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="K2z-Cq-17W" id="X7L-Xg-jCf"/>
                                                             <binding destination="n5F-eM-NTd" name="value" keyPath="objectValue.float4" previousBinding="X7L-Xg-jCf" id="L4E-yt-thJ">
                                                                 <dictionary key="options">
                                                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="n5F-eM-NTd" name="maxValue" keyPath="objectValue.maxValue" id="K2z-Cq-17W"/>
+                                                            <binding destination="n5F-eM-NTd" name="minValue" keyPath="objectValue.minValue" previousBinding="K2z-Cq-17W" id="X7L-Xg-jCf"/>
                                                         </connections>
                                                     </stepper>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-hK-frv">

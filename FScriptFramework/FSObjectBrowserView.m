@@ -706,6 +706,12 @@ static NSMutableArray* customButtons = nil;
                         [self sendMessageTo:selectedObject selectorString:selectedString arguments:(FSArray*)[NSArray array] column:column putResultInMatrix:matrix];
                 }
                 else {
+                        
+                        
+                        #pragma mark ► Send Message with Arguments from Form
+                        //--------------------------------------------------------------------------------
+
+                        // Create a form to fill in the arguments of a message, with action 'sendMessageAction:'
                         NSInteger i;
                         NSInteger baseWidth = 530;
                         NSInteger baseHeight = nbarg * (userFixedPitchFontSize() + 17) + 75;
@@ -1453,6 +1459,8 @@ static NSMutableArray* customButtons = nil;
         //[browser tile];
 }
 
+// Called from the 'send message' form
+// Gets the arguments entered into the form, and then calls sendMessageTo:selectorString:arguments:column:putResultsInMatrix:
 - (void)sendMessageAction:(id)sender
 {
         NSString* selectedString = [[browser selectedCell] stringValue];

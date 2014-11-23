@@ -91,6 +91,7 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
 -(IBAction)refreshModel:(id)sender
 {
         FSObjectBrowserViewObjectHelper *objectInfoHelper = [FSObjectBrowserViewObjectHelper new];
+        [objectInfoHelper introspectPropertiesOfObject:self.inspectedObject];
          [objectInfoHelper populateModelWithObject:self.inspectedObject];
         self.rootViewModelItem = objectInfoHelper.rootViewModelItem;
         self.viewController.rootViewModelItem = self.rootViewModelItem;

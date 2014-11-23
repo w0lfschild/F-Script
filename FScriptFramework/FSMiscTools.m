@@ -232,15 +232,21 @@ ffi_type *ffiTypeFromFSEncodedType(char fsEncodedType)
   return NULL;
 }
 
+// Return the main type in a type encoding. This is the type code from the Objective-C Runtime Programming guide,
+// but with FScript-specific types for structures that have special FScript type representations.
+// i.e., NSRange, NSPoint, NSSize, NSRect, CGPoint, CGSize, CGRect and CGAffineTransform
 char FSEncode(const char *foundationEncodeStyleStr)
 {
   // NSLog(@"FSEncode called with \"%s\"", foundationEncodeStyleStr);
   
   const char *ptr = foundationEncodeStyleStr;
 
+  // Skip protocol type qualifiers (const', 'in', 'inout', etc.)
   while (*ptr == 'r' || *ptr == 'n' || *ptr == 'N' || *ptr == 'o' || *ptr == 'O' || *ptr == 'R' || *ptr == 'V')
     ptr++;
   
+  // Found a struct type '{<name>=...}'. If '<name> matches a struct with a type FScript has a special representation
+  // for, return a type-code specific to FScript.
   if (*ptr == '{') 
   {
     // NSLog([NSString stringWithFormat:@"ptr = %s",ptr]);

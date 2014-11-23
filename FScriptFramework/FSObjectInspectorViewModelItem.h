@@ -37,7 +37,7 @@ typedef void(^FSSetterBlock)(id obj, id newValue, FSObjectInspectorViewModelItem
 @property (assign,nonatomic) NSMutableDictionary *enumBiDict;
 @property (readonly,nonatomic) NSArray *enumNames;
 @property (readonly,nonatomic) NSArray *enumValues;
-@property (nonatomic) NSInteger numValue;
+@property (nonatomic) double numValue;
 @property (nonatomic,copy) FSGetterBlock getter;
 @property (nonatomic,copy) FSSetterBlock setter;
 @property (nonatomic) NSUInteger optsMask;

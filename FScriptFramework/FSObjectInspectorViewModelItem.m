@@ -172,12 +172,12 @@ static NSArray *sBOOLEnum = nil;
 }
 
 
-- (NSInteger)numValue
+- (double)numValue
 {
-        return (NSUInteger)[self.value doubleValue];
+        return [self.value doubleValue];
 }
 
-- (void)setNumValue:(NSInteger)value
+- (void)setNumValue:(double)value
 {
         switch (self.valueType) {
                 case FS_ITEM_ENUM:
