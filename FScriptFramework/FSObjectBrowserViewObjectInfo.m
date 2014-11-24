@@ -38,6 +38,7 @@
 #import "FSCNDictionary.h"
 #import "FSAssociation.h"
 
+#import "metamacrosorig.h"
 static inline NSString* fs_setterForProperty(NSString* prop)
 {
         NSString* setter = @"";
@@ -243,16 +244,30 @@ labelFromPropertyName(NSString* propertyName)
 #define ADD_RANGE(OBJECT, PROPERTY) \
         ADD_VALUE([NSValue valueWithRange:[OBJECT PROPERTY]], FS_ITEM_RANGE, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
 
-#define ADD_OBJECT(OBJECT, PROPERTY) \
+#define _ADD_OBJECT2(OBJECT, PROPERTY) \
         ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
+#define _ADD_OBJECT3(OBJECT, PROPERTY, VALUE_CLASS) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, VALUE_CLASS, labelFromPropertyName(@#PROPERTY), NO)
+#define _ADD_OBJECT4(OBJECT, PROPERTY, VALUE_CLASS, NOT_NIL) \
+        ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, VALUE_CLASS, labelFromPropertyName(@#PROPERTY), NOT_NIL)
+#define ADD_OBJECT(...) \
+   metamacro_if_eq(2, metamacro_argcount(__VA_ARGS__))(_ADD_OBJECT2(__VA_ARGS__))( \
+        metamacro_if_eq(3, metamacro_argcount(__VA_ARGS__))(_ADD_OBJECT3(__VA_ARGS__)) ( \
+                _ADD_OBJECT4(__VA_ARGS__) \
+        ))
+
+
+
 #define ADD_OBJECT_NOT_NIL(OBJECT, PROPERTY) \
         ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), YES)
 #define ADD_OBJECT_RO(OBJECT, LABEL) \
         [self addObject:(OBJECT) valueType:FS_ITEM_OBJECT getter:nil setter:nil withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:NO];
-#define ADD_OBJECT_GETSET(OBJECT, GETTER, SETTER, LABEL) \
+
+#define ADD_OBJECT_GETSET(OBJECT, GETTER, SETTER, VALUE_CLASS, LABEL, NOT_NIL) \
 { \
-        FSGetterBlock getBlock = ^(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
-        ADD_VALUE_GETSET(getBlock(OBJECT,nil), FS_ITEM_OBJECT, GETTER, SETTER, LABEL, NO); \
+        FSGetterBlock getBlock = ^id(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
+        FSSetterBlock setBlock = ^void(id obj, id val, FSObjectInspectorViewModelItem *item) SETTER; \
+        [self addObject:getBlock(OBJECT,nil) valueType:FS_ITEM_OBJECT getter:getBlock setter:setBlock withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:VALUE_CLASS notNil:NOT_NIL]; \
 }
 
 #define ADD_OBJECT_RO_NOT_NIL(OBJECT, LABEL) ADD_OBJECT_NOT_NIL(OBJECT, nil, nil, LABEL) \
@@ -276,12 +291,32 @@ labelFromPropertyName(NSString* propertyName)
 
 #define ADD_NUMBER(OBJECT, PROPERTY) \
         ADD_VALUE([FSNumber numberWithDouble:[OBJECT PROPERTY]], FS_ITEM_NUMBER, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
+
 #define ADD_NUMBER_GETSET(OBJECT, GETTER, SETTER, LABEL) \
 { \
-        FSGetterBlock getBlock = ^(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
-        ADD_VALUE_GETSET(getBlock(OBJECT,nil), FS_ITEM_NUMBER, GETTER, SETTER, LABEL, NO); \
+        double (^getBlock)(id,FSObjectInspectorViewModelItem*) = ^double(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
+        FSGetterBlock wrappedGetBlock = ^id(id obj, FSObjectInspectorViewModelItem *item) { \
+                return [FSNumber numberWithDouble:getBlock(obj,item)]; \
+        }; \
+        void(^setBlock)(id,double,FSObjectInspectorViewModelItem*) = ^(id obj, double val, FSObjectInspectorViewModelItem *item) SETTER; \
+        FSSetterBlock wrappedSetBlock = ^(id obj, id val, FSObjectInspectorViewModelItem *item) { \
+                setBlock(obj, [val doubleValue], item); \
+        }; \
+        [self addObject:wrappedGetBlock(OBJECT,nil) valueType:FS_ITEM_NUMBER getter:wrappedGetBlock setter:wrappedSetBlock withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:NO]; \
 }
 
+#define ADD_BOOL_GETSET(OBJECT, GETTER, SETTER, LABEL) \
+{ \
+        BOOL (^getBlock)(id,FSObjectInspectorViewModelItem*) = ^BOOL(id obj, FSObjectInspectorViewModelItem *item) GETTER; \
+        FSGetterBlock wrappedGetBlock = ^id(id obj, FSObjectInspectorViewModelItem *item) { \
+                return [FSBoolean booleanWithBool:getBlock(obj,item)]; \
+        }; \
+        void(^setBlock)(id,BOOL,FSObjectInspectorViewModelItem*) = ^(id obj, BOOL val, FSObjectInspectorViewModelItem *item) SETTER; \
+        FSSetterBlock wrappedSetBlock = ^(id obj, id val, FSObjectInspectorViewModelItem *item) { \
+                setBlock(obj, [True isEqual:val], item); \
+        }; \
+        [self addObject:wrappedGetBlock(OBJECT,nil) valueType:FS_ITEM_BOOL getter:wrappedGetBlock setter:wrappedSetBlock withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:NO]; \
+}
 #define ADD_DICTIONARY(OBJECTS, LABEL)                                                                                                                                                                   \
         @try {                                                                                                                                                                                           \
                 NSDictionary *objs = [OBJECTS LABEL]; \
@@ -352,7 +387,6 @@ labelFromPropertyName(NSString* propertyName)
 
 - (void)fillMatrix:(NSMatrix*)theMatrix withObject:(id)object
 {
-
         [object retain]; // (1) To be sure object will not be deallocated as a side effect of the removing of rows
 
         m = theMatrix;
@@ -758,12 +792,12 @@ labelFromPropertyName(NSString* propertyName)
 {
         NSAffineTransform* o = object;
         ADD_CLASS_LABEL(@"NSAffineTransform Info");
-        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m11]; }, { ;}, @"m11")
-        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m12]; }, { ;}, @"m12")
-        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m21]; }, { ;}, @"m21")
-        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.m22]; }, { ;}, @"m22")
-        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.tX]; }, { ;}, @"tX")
-        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return [FSNumber numberWithDouble:o.transformStruct.tY]; }, { ;}, @"tY")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return o.transformStruct.m11; }, { ; }, @"m11")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return o.transformStruct.m12; }, { ;}, @"m12")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return o.transformStruct.m21; }, { ;}, @"m21")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return o.transformStruct.m22; }, { ;}, @"m22")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return o.transformStruct.tX; }, { ;}, @"tX")
+        ADD_NUMBER_GETSET(o, {NSAffineTransform *o = obj; return o.transformStruct.tY; }, { ;}, @"tY")
 }
 
 - (void)addNSAlert:(id)object
@@ -1591,33 +1625,67 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_NUMBER(o, bitsPerPixel)
                 ADD_NUMBER(o, bytesPerPlane)
                 ADD_NUMBER(o, bytesPerRow)
-                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageColorSyncProfileData]; }, { [obj setProperty:NSImageColorSyncProfileData withValue:val ];}, @"ColorSync profile data")
-                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageCompressionFactor]; }, { [obj setProperty:NSImageCompressionFactor withValue:val ];}, @"Compression factor")
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageColorSyncProfileData]; },
+                                  { [obj setProperty:NSImageColorSyncProfileData withValue:val ];},
+                                  nil, @"ColorSync profile data", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageCompressionFactor]; },
+                                  { [obj setProperty:NSImageCompressionFactor withValue:val ];},
+                                  nil, @"Compression factor", YES)
                 {
                         //TODO
                         //id compressionMethod = [o valueForProperty:NSImageCompressionMethod];
                         //       if ([compressionMethod isKindOfClass:[NSNumber class]])
                 //                ADD_ENUM(TIFFCompression, [[o valueForProperty:NSImageCompressionMethod] longValue], imageCompressionMethod, setImageCompressionMethod, @"Compression method")
                 }
-                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageCurrentFrame]; }, { [obj setProperty:NSImageCurrentFrame withValue:val ];}, @"Current frame")
-                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageCurrentFrameDuration]; }, { [obj setProperty:NSImageCurrentFrameDuration withValue:val ];}, @"Current frame duration")
-                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageDitherTransparency]; }, { [obj setProperty:NSImageDitherTransparency withValue:val ];}, @"Dither transparency")
-                ADD_OBJECT_GETSET(o, { return [obj valueForProperty:NSImageEXIFData]; }, { [obj setProperty:NSImageEXIFData withValue:val ];}, @"EXIF data")
-                // TODO
-#if 0
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageDitherTransparency], @"Dither transparency")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageEXIFData], @"EXIF data")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageFallbackBackgroundColor], @"Fallback background color")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageFrameCount], @"Frame count")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageGamma], @"Gamma")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageInterlaced], @"Interlaced")
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageCurrentFrame]; },
+                                  { [obj setProperty:NSImageCurrentFrame withValue:val ];},
+                                  nil, @"Current frame", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageCurrentFrameDuration]; },
+                                  { [obj setProperty:NSImageCurrentFrameDuration withValue:val ];},
+                                  nil, @"Current frame duration", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageDitherTransparency]; },
+                                  { [obj setProperty:NSImageDitherTransparency withValue:val ];},
+                                  nil, @"Dither transparency", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageEXIFData]; },
+                                  { [obj setProperty:NSImageEXIFData withValue:val ];},
+                                  nil, @"EXIF data", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageFallbackBackgroundColor]; },
+                                  { [obj setProperty:NSImageFallbackBackgroundColor withValue:val ];},
+                                  nil, @"Fallback background color", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageFrameCount]; },
+                                  { [obj setProperty:NSImageFrameCount withValue:val ];},
+                                  nil, @"Frame count", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageGamma]; },
+                                  { [obj setProperty:NSImageGamma withValue:val ];},
+                                  nil, @"Gamma", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageInterlaced]; },
+                                  { [obj setProperty:NSImageInterlaced withValue:val ];},
+                                  nil, @"Interlaced", YES)
                 ADD_BOOL(o, isPlanar)
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageLoopCount], @"Loop count")
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageLoopCount]; },
+                                  { [obj setProperty:NSImageLoopCount withValue:val ];},
+                                  nil, @"Loop count", YES)
                 ADD_NUMBER(o, numberOfPlanes)
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageProgressive], @"Progressive")
-                ADD_OBJECT_RO_NOT_NIL([o valueForProperty:NSImageRGBColorTable], @"RGB color table")
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageProgressive]; },
+                                  { [obj setProperty:NSImageProgressive withValue:val ];},
+                                  nil, @"Progressive", YES)
+                ADD_OBJECT_GETSET(o,
+                                  { return [obj valueForProperty:NSImageRGBColorTable]; },
+                                  { [obj setProperty:NSImageRGBColorTable withValue:val ];},
+                                  nil, @"RGB color table", YES)
                 ADD_NUMBER(o, samplesPerPixel)
-#endif
         }
         else if ([object isKindOfClass:[NSCIImageRep class]]) {
                 NSCIImageRep* o = object;
@@ -2604,7 +2672,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_BOOL(o, wantsDefaultClipping)
         ADD_BOOL(o, wantsLayer)
         ADD_NUMBER(o, widthAdjustLimit)
-        ADD_OBJECT(o, window)
+        ADD_OBJECT(o, window, NSWindow.class)
 }
 
 // Works for NSSegmentedControl and NSSegmentedCell
@@ -2614,14 +2682,9 @@ labelFromPropertyName(NSString* propertyName)
         NSUInteger segmentCount = o.segmentCount;
         for (NSInteger i = 0; i < segmentCount; i++) {
                 [self addGroup:[NSString stringWithFormat:@"Segment %lu", i]];
-                [self addObject:[o imageForSegment:i]
-                                    valueType:FS_ITEM_OBJECT
-                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedControl*)obj imageForSegment:i];
-                                    }
-                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setImage:newValue forSegment:i];
-                                    }
-                                    withLabel:[NSString stringWithFormat:@"Image for segment %ld", (long)i]
-                                    notNil:YES];
+                ADD_OBJECT_GETSET(o, { return [(NSSegmentedControl*)obj imageForSegment:i]; }
+                                   , { [(NSSegmentedControl*)obj setImage:val forSegment:i]; }
+                                   ,nil, ([NSString stringWithFormat:@"Image for segment %ld", (long)i]), YES );
                 if ([o respondsToSelector:@selector(imageScalingForSegment:)]) {
                         [self addObject:objectFromImageScaling([o imageScalingForSegment:i])
                                             valueType:FS_ITEM_ENUM
@@ -2635,72 +2698,35 @@ labelFromPropertyName(NSString* propertyName)
                                             valueClass:nil
                                             notNil:NO];
                 }
-                [self addObject:[FSBoolean booleanWithBool:[o isEnabledForSegment:i]]
-                                    valueType:FS_ITEM_BOOL
-                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedControl*)obj isEnabledForSegment:i]);
-                                    }
-                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setEnabled:[newValue boolValue] forSegment:i];
-                                    }
-                                    withLabel:[NSString stringWithFormat:@"Is enabled for segment %ld", (long)i]];
-                [self addObject:[FSBoolean booleanWithBool:[o isSelectedForSegment:i]]
-                                    valueType:FS_ITEM_BOOL
-                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedControl*)obj isSelectedForSegment:i]);
-                                    }
-                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setSelected:[newValue boolValue] forSegment:i];
-                                    }
-                                    withLabel:[NSString stringWithFormat:@"Is selected for segment %ld", (long)i]];
-                [self addObject:[o labelForSegment:i]
-                                    valueType:FS_ITEM_OBJECT
-                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedControl*)obj labelForSegment:i];
-                                    }
-                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setLabel:newValue forSegment:i];
-                                    }
-                                    withLabel:[NSString stringWithFormat:@"Label for segment %ld", (long)i]
-                                    enumBiDict:nil
-                                    mask:0
-                                    valueClass:NSString.class
-                                    notNil:YES];
-                [self addObject:[o menuForSegment:i]
-                                    valueType:FS_ITEM_OBJECT
-                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedControl*)obj menuForSegment:i];
-                                    }
-                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setMenu:newValue forSegment:i];
-                                    }
-                                    withLabel:[NSString stringWithFormat:@"Menu for segment %ld", (long)i]
-                                    notNil:YES];
+                ADD_BOOL_GETSET(o,
+                                { return [(NSSegmentedControl*)obj isEnabledForSegment:i]; },
+                                { [(NSSegmentedControl*)obj setEnabled:val forSegment:i]; },
+                                ([NSString stringWithFormat:@"Is enabled for segment %ld", (long)i]));
+                ADD_BOOL_GETSET(o,
+                                { return [(NSSegmentedControl*)obj isSelectedForSegment:i]; },
+                                { [(NSSegmentedControl*)obj setSelected:val forSegment:i]; },
+                                ([NSString stringWithFormat:@"Is selected for segment %ld", (long)i]));
+                ADD_OBJECT_GETSET(o, { return [(NSSegmentedControl*)obj labelForSegment:i]; }
+                                   , { [(NSSegmentedControl*)obj setLabel:val forSegment:i]; }
+                                  , NSString.class, ([NSString stringWithFormat:@"Label for segment %ld", (long)i]), YES );
+                ADD_OBJECT_GETSET(o, { return [(NSSegmentedControl*)obj menuForSegment:i]; }
+                                   , { [(NSSegmentedControl*)obj setMenu:val forSegment:i]; }
+                                  , nil, ([NSString stringWithFormat:@"Menu for segment %ld", (long)i]), YES );
                 if ([o respondsToSelector:@selector(tagForSegment:)]) {
-                        [self addObject:[FSNumber numberWithDouble:[o tagForSegment:i]]
-                                            valueType:FS_ITEM_NUMBER
-                                            getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedCell*)obj tagForSegment:i]);
-                                            }
-                                            setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedCell*)obj setTag:[newValue integerValue] forSegment:i];
-                                            }
-                                            withLabel:[NSString stringWithFormat:@"Tag for segment %ld", (long)i]
-                                            enumBiDict:FSObjectEnumInfo.optionsForImageScaling
-                                            mask:0
-                                            valueClass:nil
-                                            notNil:NO];
+                        ADD_NUMBER_GETSET(o
+                                          , { return [(NSSegmentedCell*)obj tagForSegment:i]; }
+                                          , { [(NSSegmentedCell*)obj setTag:val forSegment:i]; }
+                                          , ([NSString stringWithFormat:@"Tag for segment %ld", (long)i]))
                 }
                 if ([o respondsToSelector:@selector(toolTipForSegment:)]) {
-                        [self addObject:[o toolTipForSegment:i]
-                                            valueType:FS_ITEM_OBJECT
-                                            getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return [(NSSegmentedCell*)obj toolTipForSegment:i];
-                                            }
-                                            setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedCell*)obj setToolTip:newValue forSegment:i];
-                                            }
-                                            withLabel:[NSString stringWithFormat:@"ToolTip for segment %ld", (long)i]
-                                            enumBiDict:nil
-                                            mask:0
-                                            valueClass:NSString.class
-                                            notNil:YES];
+                        ADD_OBJECT_GETSET(o, { return [(NSSegmentedCell*)obj toolTipForSegment:i]; }
+                                           , { [(NSSegmentedCell*)obj setToolTip:val forSegment:i]; }
+                                          , NSString.class, ([NSString stringWithFormat:@"ToolTip for segment %ld", (long)i]), YES );
                 }
-                [self addObject:[FSNumber numberWithDouble:[o widthForSegment:i]]
-                                    valueType:FS_ITEM_NUMBER
-                                    getter:^id(id obj, FSObjectInspectorViewModelItem* item) { return @([(NSSegmentedControl*)obj widthForSegment:i]);
-                                    }
-                                    setter:^(id obj, id newValue, FSObjectInspectorViewModelItem* item) { [(NSSegmentedControl*)obj setWidth:[newValue floatValue] forSegment:i];
-                                    }
-                                    withLabel:[NSString stringWithFormat:@"Width for segment %ld", (long)i]];
+                ADD_NUMBER_GETSET(o
+                                  , { return [(NSSegmentedCell*)obj widthForSegment:i]; }
+                                  , { [(NSSegmentedCell*)obj setWidth:val forSegment:i]; }
+                                  , ([NSString stringWithFormat:@"Width for segment %ld", (long)i]))
                 [self endGroup];
         }
 }

@@ -22,4 +22,5 @@
 
 -(IBAction)showColorPanel:(id)sender;
 -(IBAction)showOptionsPopover:(id)sender;
+-(IBAction)inspectAction:(id)sender;
 @end

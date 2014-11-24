@@ -4193,6 +4193,7 @@
 		E2DBA329161CA6600035A675 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E2DBA32B161CA6660035A675 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		E2DBA32D161CA7180035A675 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ED051F431A234DB6000284E2 /* metamacrosorig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacrosorig.h; sourceTree = "<group>"; };
 		ED3004E51A1A86EF00675D94 /* FSObjectInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorViewController.h; sourceTree = "<group>"; };
 		ED3004E61A1A86EF00675D94 /* FSObjectInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorViewController.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectInspectorViewController.xib; sourceTree = "<group>"; };
@@ -5327,6 +5328,7 @@
 		EDC2C8DB1A1A925800942777 /* Object Inspector */ = {
 			isa = PBXGroup;
 			children = (
+				ED051F431A234DB6000284E2 /* metamacrosorig.h */,
 				EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */,
 				EDC2C8DD1A1A943600942777 /* FSDetailedObjectInspector.m */,
 				ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */,

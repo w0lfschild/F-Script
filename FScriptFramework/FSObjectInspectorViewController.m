@@ -12,6 +12,7 @@
 #import "FSObjectInspectorOptionsViewController.h"
 #import "FSDetailedObjectInspector.h"
 #import "FSNamedNumber.h"
+#import "FSMiscTools.h"
 #import "FSObjectEnumInfo.h"
 #import <objc/objc.h>
 #import <AvailabilityMacros.h>
@@ -85,6 +86,8 @@
                 [self expandAll:self];
                 NSScrollView* scrollView = self.outlineView.enclosingScrollView;
                 _scrollViewOffsetY = NSHeight(scrollView.superview.bounds) - NSHeight(scrollView.frame);
+                self.outlineView.doubleAction = @selector(inspectAction:);
+                self.outlineView.target = self;
         }
 }
 
@@ -233,6 +236,16 @@
                 
         }
         
+}
+-(IBAction)inspectAction:(id)sender
+{
+        NSInteger row = [self.outlineView selectedRow];
+        if (row >= 0) {
+                FSObjectInspectorViewModelItem *item = [[self.outlineView itemAtRow:row] representedObject];
+                if (item.valueType == FS_ITEM_OBJECT && item.valueClass != nil) {
+                        inspect(item.value, self.interpreter, nil);
+                }
+        }
 }
 
 -(FSObjectInspectorOptionsViewController*)optionsViewController
