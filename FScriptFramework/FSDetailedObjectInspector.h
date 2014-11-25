@@ -13,7 +13,6 @@
 
 + (FSDetailedObjectInspector*)detailedObjectInspectorWithObject:(id)object interpreter:(FSInterpreter*)interpreter;
 - (FSDetailedObjectInspector *)initWithObject:(id)object interpreter:(FSInterpreter*)interpreter;
-- (void)updateAction:(id)sender;
 
 - (void)windowWillClose:(NSNotification *)aNotification;
 -(IBAction)refreshModel:(id)sender;

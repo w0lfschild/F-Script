@@ -40,9 +40,14 @@ static NSArray *sBOOLEnum = nil;
         }
 }
 
-- (instancetype)init
+-(id)representedObject
 {
-        self = [super init];
+        return [super representedObject] ?: self.value;
+}
+
+- (instancetype)initWithRepresentedObject:(id)modelObject
+{
+        self = [super initWithRepresentedObject:modelObject];
         if (self) {
                 self.minValue = NSIntegerMin;
                 self.maxValue = NSIntegerMax;
@@ -69,6 +74,7 @@ static NSArray *sBOOLEnum = nil;
         }
         return self;
 }
+
 
 - (void)dealloc
 {

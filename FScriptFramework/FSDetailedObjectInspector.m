@@ -65,7 +65,6 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
                 panel.contentView = objectInspectorViewController.view;
                 NSSize desiredSize = self.viewController.desiredSize;
                 [panel setFrame:[panel frameRectForContentRect:rectWithSize(desiredSize)] display:YES];
-                [self updateAction:nil];
                 sTopLeftPoint = [self.window cascadeTopLeftFromPoint:sTopLeftPoint];
                 if (sIsFirstWindow) {
                         sIsFirstWindow = NO;
@@ -80,16 +79,14 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
 
 -(void)dealloc
 {
+        //NSLog(@"Dealloc %@",self);
         [self _unwatchItems];
 }
 
-- (void)updateAction:(id)sender
-{
-        [self.window setTitle:[NSString stringWithFormat:@"Inspecting %@ at address %p", descriptionForFSMessage(self.inspectedObject), self.inspectedObject]];
-}
 
 -(IBAction)refreshModel:(id)sender
 {
+        [self.window setTitle:[NSString stringWithFormat:@"Inspecting %@ at address %p", descriptionForFSMessage(self.inspectedObject), self.inspectedObject]];
         FSObjectBrowserViewObjectHelper *objectInfoHelper = [FSObjectBrowserViewObjectHelper new];
         [objectInfoHelper introspectPropertiesOfObject:self.inspectedObject];
          [objectInfoHelper populateModelWithObject:self.inspectedObject];

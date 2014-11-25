@@ -2817,6 +2817,26 @@
 		ED8319421A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
 		ED8319431A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
 		ED8319441A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */; };
+		EDA22BE01A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE11A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE21A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE31A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE41A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE51A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE61A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE71A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE81A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BE91A24C28D0093DB91 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDE1A24C28D0093DB91 /* view.png */; };
+		EDA22BEA1A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BEB1A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BEC1A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BED1A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BEE1A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BEF1A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BF01A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BF11A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BF21A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
+		EDA22BF31A24C28D0093DB91 /* window.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA22BDF1A24C28D0093DB91 /* window.png */; };
 		EDA6AC401A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
 		EDA6AC411A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
 		EDA6AC421A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */; };
@@ -4207,6 +4227,8 @@
 		ED83191C1A1BC2B500290EE2 /* FSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSUtils.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED8319301A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSObjectInspectorViewController+NonArc.h"; sourceTree = "<group>"; };
 		ED8319311A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = "FSObjectInspectorViewController+NonArc.m"; sourceTree = "<group>"; tabWidth = 8; };
+		EDA22BDE1A24C28D0093DB91 /* view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = view.png; path = Resources/view.png; sourceTree = "<group>"; };
+		EDA22BDF1A24C28D0093DB91 /* window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = window.png; path = Resources/window.png; sourceTree = "<group>"; };
 		EDA6AC3E1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorOutlineView.h; sourceTree = "<group>"; };
 		EDA6AC3F1A1F407C001CD1F2 /* FSObjectInspectorOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorOutlineView.m; sourceTree = "<group>"; };
 		EDA6AC531A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorOptionsViewController.h; sourceTree = "<group>"; };
@@ -5328,6 +5350,8 @@
 		EDC2C8DB1A1A925800942777 /* Object Inspector */ = {
 			isa = PBXGroup;
 			children = (
+				EDA22BDE1A24C28D0093DB91 /* view.png */,
+				EDA22BDF1A24C28D0093DB91 /* window.png */,
 				ED051F431A234DB6000284E2 /* metamacrosorig.h */,
 				EDC2C8DC1A1A943600942777 /* FSDetailedObjectInspector.h */,
 				EDC2C8DD1A1A943600942777 /* FSDetailedObjectInspector.m */,
@@ -7292,8 +7316,10 @@
 				8F913FDF0BDB92FC001685EA /* Info.plist in Resources */,
 				8F913FE00BDB92FC001685EA /* version.plist in Resources */,
 				EDE508E219DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
+				EDA22BF31A24C28D0093DB91 /* window.png in Resources */,
 				8FB524190C2205C20028B297 /* FScriptIBPluginInspector.nib in Resources */,
 				8FB5241A0C2205C20028B297 /* FScriptIBPluginLibrary.nib in Resources */,
+				EDA22BE91A24C28D0093DB91 /* view.png in Resources */,
 				8F38D0FA0C36AD13002512EE /* FScript.framework in Resources */,
 				EDE508D919DD4D310012F16A /* FSConsole.xib in Resources */,
 				8F6597B60C37F061006CDCA0 /* FScriptMenuItem.png in Resources */,
@@ -7321,6 +7347,7 @@
 				8F6DA659055FC6980050409A /* fs.scriptTerminology in Resources */,
 				EDE508D819DD4D310012F16A /* FSConsole.xib in Resources */,
 				8F6DA65D055FC6980050409A /* FSImageInspector.nib in Resources */,
+				EDA22BE81A24C28D0093DB91 /* view.png in Resources */,
 				EDE508E119DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F6DA65F055FC6980050409A /* ArrayTableView.nib in Resources */,
 				8FDCCD7E05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
@@ -7328,6 +7355,7 @@
 				8F56036705CF22660044FA65 /* build.tiff in Resources */,
 				8FA8EFA307739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
 				8F936BF7082E8DC300A04EBF /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA22BF21A24C28D0093DB91 /* window.png in Resources */,
 				8F6631D30C4A270100FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9A0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
 			);
@@ -7367,10 +7395,12 @@
 				8FDCCD7C05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
 				EDE508DB19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F2D067105CED9B9007EA81B /* run.tiff in Resources */,
+				EDA22BEA1A24C28D0093DB91 /* window.png in Resources */,
 				8F56036805CF22660044FA65 /* build.tiff in Resources */,
 				EDA6AC691A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8FA8EFA007739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
 				8FCA6B88078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA22BE01A24C28D0093DB91 /* view.png in Resources */,
 				8F6631D40C4A270200FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9C0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
 				8F9636490F8DF86600A70F39 /* DemoAssistant.xib in Resources */,
@@ -7397,10 +7427,12 @@
 				8F6DA974055FC71F0050409A /* ArrayTableView.nib in Resources */,
 				8F6DA975055FC71F0050409A /* constantsDictionary in Resources */,
 				8FDCCD7B05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
+				EDA22BE11A24C28D0093DB91 /* view.png in Resources */,
 				8F2D067005CED9B9007EA81B /* run.tiff in Resources */,
 				8F56036905CF22660044FA65 /* build.tiff in Resources */,
 				EDFB2FF41A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				8FA8EF9F07739FD4001BEC7B /* FSCollectionInspectorView.nib in Resources */,
+				EDA22BEB1A24C28D0093DB91 /* window.png in Resources */,
 				8F936BEF082E8D9F00A04EBF /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC6A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8F6631D50C4A270200FA798A /* FSMovieInspector.nib in Resources */,
@@ -7434,10 +7466,12 @@
 				BA22325B189FA403002C5B6A /* FSAttributedStringInspector.nib in Resources */,
 				EDE508DD19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22325E189FA403002C5B6A /* run.tiff in Resources */,
+				EDA22BEC1A24C28D0093DB91 /* window.png in Resources */,
 				BA22325F189FA403002C5B6A /* build.tiff in Resources */,
 				EDA6AC6B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA223260189FA403002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA223261189FA403002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA22BE21A24C28D0093DB91 /* view.png in Resources */,
 				BA223262189FA403002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA223263189FA403002C5B6A /* FSTestClasses.txt in Resources */,
 				BA223264189FA403002C5B6A /* DemoAssistant.xib in Resources */,
@@ -7470,10 +7504,12 @@
 				BA22341B189FA412002C5B6A /* FSAttributedStringInspector.nib in Resources */,
 				EDE508DF19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22341E189FA412002C5B6A /* run.tiff in Resources */,
+				EDA22BEE1A24C28D0093DB91 /* window.png in Resources */,
 				BA22341F189FA412002C5B6A /* build.tiff in Resources */,
 				EDA6AC6D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA223420189FA412002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA223421189FA412002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
+				EDA22BE41A24C28D0093DB91 /* view.png in Resources */,
 				BA223422189FA412002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA223423189FA412002C5B6A /* FSTestClasses.txt in Resources */,
 				BA223424189FA412002C5B6A /* DemoAssistant.xib in Resources */,
@@ -7500,10 +7536,12 @@
 				BA2235CD189FA429002C5B6A /* ArrayTableView.nib in Resources */,
 				BA2235CE189FA429002C5B6A /* constantsDictionary in Resources */,
 				BA2235CF189FA429002C5B6A /* FSAttributedStringInspector.nib in Resources */,
+				EDA22BE31A24C28D0093DB91 /* view.png in Resources */,
 				BA2235D2189FA429002C5B6A /* run.tiff in Resources */,
 				BA2235D3189FA429002C5B6A /* build.tiff in Resources */,
 				EDFB2FF61A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				BA2235D4189FA429002C5B6A /* FSCollectionInspectorView.nib in Resources */,
+				EDA22BED1A24C28D0093DB91 /* window.png in Resources */,
 				BA2235D5189FA429002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC6C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA2235D6189FA429002C5B6A /* FSMovieInspector.nib in Resources */,
@@ -7531,10 +7569,12 @@
 				BA223715189FA431002C5B6A /* ArrayTableView.nib in Resources */,
 				BA223716189FA431002C5B6A /* constantsDictionary in Resources */,
 				BA223717189FA431002C5B6A /* FSAttributedStringInspector.nib in Resources */,
+				EDA22BE51A24C28D0093DB91 /* view.png in Resources */,
 				BA22371A189FA431002C5B6A /* run.tiff in Resources */,
 				BA22371B189FA431002C5B6A /* build.tiff in Resources */,
 				EDFB2FF81A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				BA22371C189FA431002C5B6A /* FSCollectionInspectorView.nib in Resources */,
+				EDA22BEF1A24C28D0093DB91 /* window.png in Resources */,
 				BA22371D189FA431002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC6E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA22371E189FA431002C5B6A /* FSMovieInspector.nib in Resources */,
@@ -7550,6 +7590,7 @@
 				EDC2C9B31A1AA50D00942777 /* FSCollectionInspector.nib in Resources */,
 				EDC2C9B41A1AA50D00942777 /* blockInspector.nib in Resources */,
 				EDC2C9B51A1AA50D00942777 /* FlightTutorial.txt in Resources */,
+				EDA22BF01A24C28D0093DB91 /* window.png in Resources */,
 				EDC2C9B61A1AA50D00942777 /* genObjInspector.nib in Resources */,
 				EDC2C9B71A1AA50D00942777 /* FSConsole.xib in Resources */,
 				EDC2C9B81A1AA50D00942777 /* KTest.txt in Resources */,
@@ -7560,6 +7601,7 @@
 				EDC2C9BD1A1AA50D00942777 /* fs.scriptSuite in Resources */,
 				EDC2C9BE1A1AA50D00942777 /* fs.scriptTerminology in Resources */,
 				EDC2C9BF1A1AA50D00942777 /* FSImageInspector.nib in Resources */,
+				EDA22BE61A24C28D0093DB91 /* view.png in Resources */,
 				EDC2C9C01A1AA50D00942777 /* ArrayTableView.nib in Resources */,
 				EDC2C9C11A1AA50D00942777 /* constantsDictionary in Resources */,
 				EDC2C9C21A1AA50D00942777 /* FSObjectInspectorViewController.xib in Resources */,
@@ -7596,10 +7638,12 @@
 				EDC2CB851A1AA52500942777 /* ArrayTableView.nib in Resources */,
 				EDC2CB861A1AA52500942777 /* constantsDictionary in Resources */,
 				EDC2CB871A1AA52500942777 /* FSAttributedStringInspector.nib in Resources */,
+				EDA22BE71A24C28D0093DB91 /* view.png in Resources */,
 				EDC2CB881A1AA52500942777 /* run.tiff in Resources */,
 				EDC2CB891A1AA52500942777 /* build.tiff in Resources */,
 				EDC2CB8A1A1AA52500942777 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				EDC2CB8B1A1AA52500942777 /* FSCollectionInspectorView.nib in Resources */,
+				EDA22BF11A24C28D0093DB91 /* window.png in Resources */,
 				EDC2CB8C1A1AA52500942777 /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC701A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				EDC2CB8D1A1AA52500942777 /* FSMovieInspector.nib in Resources */,

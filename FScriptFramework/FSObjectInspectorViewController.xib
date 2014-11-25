@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="outlineView" destination="tex-M1-tuX" id="cx6-s8-0o1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="viewPathControl" destination="bub-Qh-7Ye" id="rtx-2d-3WJ"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -550,15 +551,34 @@
                         <action selector="browseAction:" target="-1" id="4aB-P4-b2j"/>
                     </connections>
                 </button>
+                <pathControl verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bub-Qh-7Ye">
+                    <rect key="frame" x="0.0" y="334" width="104" height="18"/>
+                    <pathCell key="cell" controlSize="mini" selectable="YES" editable="YES" alignment="left" id="drn-zl-bRf">
+                        <font key="font" metaFont="miniSystem"/>
+                        <url key="url" string="file:///"/>
+                        <color key="backgroundColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
+                    </pathCell>
+                    <connections>
+                        <action selector="viewPathClicked:" target="-2" id="HYP-ji-iG4"/>
+                        <binding destination="-2" name="hidden" keyPath="self.viewPathMenu" id="kUW-zJ-eIP">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSIsNil</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </pathControl>
             </subviews>
             <constraints>
                 <constraint firstItem="WI6-dr-2zT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2hP-KY-n2h"/>
                 <constraint firstItem="bLs-w5-Ggd" firstAttribute="leading" secondItem="3hL-X3-wcA" secondAttribute="trailing" id="9SD-2T-jem"/>
                 <constraint firstItem="3hL-X3-wcA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="CIf-7a-05L"/>
                 <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="3hL-X3-wcA" secondAttribute="bottom" id="Eyu-Ko-iQX"/>
+                <constraint firstItem="bub-Qh-7Ye" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="1" id="G8L-hf-OAl"/>
                 <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="SZp-rB-N2Y"/>
+                <constraint firstItem="3hL-X3-wcA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bub-Qh-7Ye" secondAttribute="trailing" constant="3" id="TGT-B7-JLv"/>
                 <constraint firstAttribute="bottom" secondItem="WI6-dr-2zT" secondAttribute="bottom" id="a1L-Wq-tUV"/>
                 <constraint firstItem="bLs-w5-Ggd" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="rU6-94-CRE"/>
+                <constraint firstItem="bub-Qh-7Ye" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="sE3-nI-wWA"/>
                 <constraint firstAttribute="trailing" secondItem="bLs-w5-Ggd" secondAttribute="trailing" id="uVF-kr-ACt"/>
                 <constraint firstAttribute="trailing" secondItem="WI6-dr-2zT" secondAttribute="trailing" id="v3E-tm-OdR"/>
                 <constraint firstItem="WI6-dr-2zT" firstAttribute="top" secondItem="bLs-w5-Ggd" secondAttribute="bottom" id="yX7-M5-IwL"/>

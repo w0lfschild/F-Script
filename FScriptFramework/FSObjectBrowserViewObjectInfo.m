@@ -39,17 +39,6 @@
 #import "FSAssociation.h"
 
 #import "metamacrosorig.h"
-static inline NSString* fs_setterForProperty(NSString* prop)
-{
-        NSString* setter = @"";
-        if (prop.length > 1) {
-                setter = [[@"set" stringByAppendingString:[prop substringToIndex:1].uppercaseString] stringByAppendingString:[prop substringFromIndex:1]];
-        }
-        else if (prop.length == 1) {
-                setter = [prop uppercaseString];
-        }
-        return setter;
-}
 
 NSString*
 labelFromPropertyName(NSString* propertyName)
@@ -132,8 +121,6 @@ labelFromPropertyName(NSString* propertyName)
         if (self) {
 
                 view = [[theView retain] autorelease];
-                self.rootViewModelItem = [FSObjectInspectorViewModelItem new];
-                self.currentViewModelItem = self.rootViewModelItem;
         }
 
         return self;
@@ -162,7 +149,7 @@ labelFromPropertyName(NSString* propertyName)
                                 [view addObject:object withLabel:label toMatrix:m classLabel:classLabel selectedClassLabel:selectedClassLabel selectedLabel:selectedLabel selectedObject:selectedObject];
                         }
                 }
-                if (valueType != FS_ITEM_OBJECT || valueClass) {
+                if (self.rootViewModelItem && valueType != FS_ITEM_OBJECT || valueClass) {
                         FSObjectInspectorViewModelItem* item = [[FSObjectInspectorViewModelItem new] autorelease];
                         item.name = label;
                         item.valueType = valueType;
@@ -260,8 +247,19 @@ labelFromPropertyName(NSString* propertyName)
 
 #define ADD_OBJECT_NOT_NIL(OBJECT, PROPERTY) \
         ADD_VALUE([OBJECT PROPERTY], FS_ITEM_OBJECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), YES)
-#define ADD_OBJECT_RO(OBJECT, LABEL) \
+
+#define _ADD_OBJECT_RO2(OBJECT, LABEL) \
         [self addObject:(OBJECT) valueType:FS_ITEM_OBJECT getter:nil setter:nil withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:nil notNil:NO];
+#define _ADD_OBJECT_RO3(OBJECT, LABEL, VALUE_CLASS) \
+        [self addObject:(OBJECT) valueType:FS_ITEM_OBJECT getter:nil setter:nil withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:VALUE_CLASS notNil:NO];
+#define _ADD_OBJECT_RO4(OBJECT, LABEL, VALUE_CLASS, NOT_NIL) \
+        [self addObject:(OBJECT) valueType:FS_ITEM_OBJECT getter:nil setter:nil withLabel:(LABEL) enumBiDict:nil mask:0 valueClass:VALUE_CLASS notNil:NOT_NIL];
+
+#define ADD_OBJECT_RO(...) \
+   metamacro_if_eq(2, metamacro_argcount(__VA_ARGS__))(_ADD_OBJECT_RO2(__VA_ARGS__))( \
+        metamacro_if_eq(3, metamacro_argcount(__VA_ARGS__))(_ADD_OBJECT_RO3(__VA_ARGS__)) ( \
+                _ADD_OBJECT_RO4(__VA_ARGS__) \
+        ))
 
 #define ADD_OBJECT_GETSET(OBJECT, GETTER, SETTER, VALUE_CLASS, LABEL, NOT_NIL) \
 { \
@@ -630,8 +628,20 @@ labelFromPropertyName(NSString* propertyName)
         [self populateModelWithObject:object];
 }
 
+-(void)_resetRootNodeWithObject:(id)object
+{
+        self.rootViewModelItem = [FSObjectInspectorViewModelItem treeNodeWithRepresentedObject:object];
+        self.currentViewModelItem = self.rootViewModelItem;
+        self.rootViewModelItem.value = object;
+}
+
 - (void)populateModelWithObject:(id)object
 {
+        [self _resetRootNodeWithObject:object];
+        if (!view && [object isKindOfClass:NSView.class]) {
+                self.rootViewModelItem.valueClass = NSView.class;
+                [self populateModelWithAssociatedViews:object];
+        }
         // For each documented base class the object inherits from, populate the matrix with 'interesting' values
         // declared as members of that base class
         for (Class baseClass in FSObjectBrowserViewObjectHelper.baseClasses) {
@@ -644,6 +654,23 @@ labelFromPropertyName(NSString* propertyName)
                         [self performSelector:selector withObject:object];
                         break;
                 }
+        }
+}
+
+-(void)populateModelWithAssociatedViews:(id)object
+{
+        NSView* o = object;
+
+        ADD_OBJECT(o, superview, NSView.class, YES);
+        
+        if (o.subviews.count) {
+                [self addGroup:@"Subviews"];
+                NSUInteger idx = 0;
+                for (NSView *subview in o.subviews) {
+                        ADD_OBJECT_RO(subview, ([NSString stringWithFormat:@"Subviews[%lu]",idx]), NSView.class)
+                        ++idx;
+                }
+                [self endGroup];
         }
 }
 
@@ -807,7 +834,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_OBJECT(o, accessoryView)
         ADD_ENUM(o, alertStyle, AlertStyle)
         ADD_OBJECTS(o, buttons)
-        ADD_OBJECT_NOT_NIL(o, delegate)
+        ADD_OBJECT(o, delegate, NSObject.class, YES)
         ADD_OBJECT_NOT_NIL(o, helpAnchor)
         ADD_OBJECT(o, icon)
         ADD_STRING(o, informativeText)
@@ -835,7 +862,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_ENUM(o, animationCurve, AnimationCurve)
         ADD_NUMBER(o, currentProgress)
         ADD_NUMBER(o, currentValue)
-        ADD_OBJECT(o, delegate)
+        ADD_OBJECT(o, delegate, NSObject.class, YES)
         ADD_NUMBER(o, duration)
         ADD_NUMBER(o, frameRate)
         ADD_BOOL(o, isAnimating)
@@ -858,7 +885,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_CLASS_LABEL(@"NSTextStorage Info");
                         //ADD_OBJECT(          [o attributeRuns]                      ,@"Attribute runs")
                         ADD_NUMBER(o, changeInLength)
-                        ADD_OBJECT_NOT_NIL(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_OPTIONS(o, editedMask, TextStorageEditedOptions)
                         ADD_RANGE(o, editedRange)
                         ADD_BOOL(o, fixesAttributesLazily)
@@ -953,7 +980,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_ENUM(o, datePickerMode, DatePickerMode)
                         ADD_ENUM(o, datePickerStyle, DatePickerStyle)
                         ADD_OBJECT(o, dateValue)
-                        ADD_OBJECT_NOT_NIL(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_BOOL(o, drawsBackground)
                         ADD_OBJECT_NOT_NIL(o, locale)
                         ADD_OBJECT(o, maxDate)
@@ -990,7 +1017,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_CLASS_LABEL(@"NSPathCell Info");
                         ADD_OBJECTS(o, allowedTypes)
                         ADD_COLOR_NOT_NIL(o, backgroundColor)
-                        ADD_OBJECT(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class)
                         ADD_SEL(o, doubleAction)
                         ADD_OBJECTS(o, pathComponentCells)
                         ADD_ENUM(o, pathStyle, PathStyle)
@@ -1074,7 +1101,7 @@ labelFromPropertyName(NSString* propertyName)
                                 NSTokenField* o = object;
                                 ADD_CLASS_LABEL(@"NSTokenField Info");
                                 ADD_NUMBER(o, completionDelay)
-                                ADD_OBJECT_NOT_NIL(o, delegate)
+                                ADD_OBJECT(o, delegate, NSObject.class, YES)
                                 ADD_OBJECT(o, tokenizingCharacterSet)
                                 ADD_ENUM(o, tokenStyle, TokenStyle)
                         }
@@ -1546,7 +1573,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_OBJECTS(o, availableFontFamilies)
         ADD_OBJECTS(o, availableFonts)
         ADD_OBJECTS(o, collectionNames)
-        ADD_OBJECT_NOT_NIL(o, delegate)
+        ADD_OBJECT(o, delegate, NSObject.class, YES)
         ADD_BOOL(o, isEnabled)
         ADD_BOOL(o, isMultiple)
         ADD_OBJECT(o, selectedFont)
@@ -1601,7 +1628,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_COLOR(o, backgroundColor)
         ADD_BOOL(o, cacheDepthMatchesImageDepth)
         ADD_ENUM(o, cacheMode, ImageCacheMode)
-        ADD_OBJECT_NOT_NIL(o, delegate)
+        ADD_OBJECT(o, delegate, NSObject.class, YES)
         ADD_BOOL(o, isCachedSeparately)
         ADD_BOOL(o, isDataRetained)
         ADD_BOOL(o, isFlipped)
@@ -1799,7 +1826,7 @@ labelFromPropertyName(NSString* propertyName)
         NSMenu* o = object;
         ADD_CLASS_LABEL(@"NSMenu Info");
         ADD_BOOL(o, autoenablesItems)
-        ADD_OBJECT_NOT_NIL(o, delegate)
+        ADD_OBJECT(o, delegate, NSObject.class, YES)
         ADD_OBJECT_NOT_NIL(o, highlightedItem)
         ADD_BOOL(o, isTornOff)
         ADD_OBJECTS(o, itemArray)
@@ -1982,7 +2009,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_OBJECT_NOT_NIL(o, applicationIconImage)
                 ADD_OBJECT_NOT_NIL(o, context)
                 ADD_OBJECT_NOT_NIL(o, currentEvent)
-                ADD_OBJECT_NOT_NIL(o, delegate)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
                 ADD_OBJECT_NOT_NIL(o, dockTile)
                 ADD_BOOL(o, isActive)
                 ADD_BOOL(o, isHidden)
@@ -2008,7 +2035,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_CLASS_LABEL(@"NSDrawer Info");
                 ADD_SIZE(o, contentSize)
                 ADD_OBJECT(o, contentView)
-                ADD_OBJECT(o, delegate)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
                 ADD_ENUM(o, edge, RectEdge)
                 ADD_NUMBER(o, leadingOffset)
                 ADD_SIZE(o, maxContentSize)
@@ -2250,7 +2277,7 @@ labelFromPropertyName(NSString* propertyName)
         ADD_BOOL(o, autosavesConfiguration)
         ADD_DICTIONARY(o, configurationDictionary)
         ADD_BOOL(o, customizationPaletteIsRunning)
-        ADD_OBJECT(o, delegate)
+        ADD_OBJECT(o, delegate, NSObject.class, YES)
         ADD_ENUM(o, displayMode, ToolbarDisplayMode)
         ADD_OBJECT(o, identifier)
         ADD_BOOL(o, isVisible)
@@ -2497,7 +2524,7 @@ labelFromPropertyName(NSString* propertyName)
 
                 NSSplitView* o = object;
                 ADD_CLASS_LABEL(@"NSSplitView Info");
-                ADD_OBJECT_NOT_NIL(o, delegate)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
                 ADD_NUMBER(o, dividerThickness)
                 ADD_BOOL(o, isVertical)
                 ADD_OBJECT_NOT_NIL(o, autosaveName)
@@ -2514,7 +2541,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_RECT(o, contentRect)
                 ADD_ENUM(o, controlSize, ControlSize)
                 ADD_ENUM(o, controlTint, ControlTint)
-                ADD_OBJECT(o, delegate)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
                 ADD_BOOL(o, drawsBackground)
                 ADD_OBJECT(o, font)
                 ADD_SIZE(o, minimumSize)
@@ -2590,7 +2617,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_ENUM(o, alignment, TextAlignment)
                 ADD_COLOR(o, backgroundColor)
                 ADD_ENUM(o, baseWritingDirection, WritingDirection)
-                ADD_OBJECT_NOT_NIL(o, delegate)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
                 ADD_BOOL(o, drawsBackground)
                 ADD_OBJECT(o, font)
                 ADD_BOOL(o, importsGraphics)
@@ -2750,7 +2777,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_OBJECT(o, cellPrototype)
                         ADD_ENUM(o, columnResizingType, BrowserColumnResizingType)
                         ADD_OBJECT(o, columnsAutosaveName)
-                        ADD_OBJECT(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_SEL(o, doubleAction)
                         ADD_NUMBER(o, firstVisibleColumn)
                         ADD_BOOL(o, hasHorizontalScroller)
@@ -2842,7 +2869,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_ENUM(o, datePickerMode, DatePickerMode)
                         ADD_ENUM(o, datePickerStyle, DatePickerStyle)
                         ADD_OBJECT(o, dateValue)
-                        ADD_OBJECT_NOT_NIL(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_BOOL(o, drawsBackground)
                         ADD_BOOL(o, isBezeled)
                         ADD_BOOL(o, isBordered)
@@ -2912,7 +2939,7 @@ labelFromPropertyName(NSString* propertyName)
                                 }
                         }
 
-                        ADD_OBJECT(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_SEL(o, doubleAction)
                         ADD_BOOL(o, drawsBackground)
                         ADD_BOOL(o, drawsCellBackground)
@@ -2938,7 +2965,7 @@ labelFromPropertyName(NSString* propertyName)
                         NSPathControl* o = object;
                         ADD_CLASS_LABEL(@"NSPathControl Info");
                         ADD_COLOR_NOT_NIL(o, backgroundColor)
-                        ADD_OBJECT(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_SEL(o, doubleAction)
                         ADD_OBJECTS(o, pathComponentCells)
                         ADD_ENUM(o, pathStyle, PathStyle)
@@ -2965,7 +2992,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_CLASS_LABEL(@"NSRuleEditor Info");
                         ADD_BOOL(o, canRemoveAllRows)
                         ADD_OBJECT_NOT_NIL(o, criteriaKeyPath)
-                        ADD_OBJECT(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_OBJECT_NOT_NIL(o, displayValuesKeyPath)
                         ADD_DICTIONARY(o, formattingDictionary)
                         ADD_OBJECT_NOT_NIL(o, formattingStringsFilename)
@@ -3063,7 +3090,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_ENUM(o, columnAutoresizingStyle, TableViewColumnAutoresizingStyle)
                         ADD_OBJECT(o, cornerView)
                         ADD_OBJECT(o, dataSource)
-                        ADD_OBJECT(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_SEL(o, doubleAction)
                         ADD_COLOR(o, gridColor)
                         ADD_OPTIONS(o, gridStyleMask, TableViewGridLineStyle)
@@ -3158,7 +3185,7 @@ labelFromPropertyName(NSString* propertyName)
                         ADD_BOOL(o, allowsEditingTextAttributes)
                         ADD_COLOR(o, backgroundColor)
                         ADD_ENUM(o, bezelStyle, TextFieldBezelStyle)
-                        ADD_OBJECT_NOT_NIL(o, delegate)
+                        ADD_OBJECT(o, delegate, NSObject.class, YES)
                         ADD_BOOL(o, drawsBackground)
                         ADD_BOOL(o, importsGraphics)
                         ADD_BOOL(o, isBezeled)
@@ -3234,7 +3261,7 @@ labelFromPropertyName(NSString* propertyName)
                                 ADD_BOOL(o, allowsOtherFileTypes)
                                 ADD_BOOL(o, canCreateDirectories)
                                 ADD_BOOL(o, canSelectHiddenExtension)
-                                ADD_OBJECT_NOT_NIL(o, delegate)
+                                ADD_OBJECT(o, delegate, NSObject.class, YES)
                                 ADD_OBJECT(o, directory)
                                 ADD_OBJECT(o, filename)
                                 ADD_BOOL(o, isExpanded)
@@ -3279,7 +3306,7 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_OBJECT(o, contentView)
                 ADD_OBJECT_NOT_NIL(o, deepestScreen)
                 ADD_OBJECT(o, defaultButtonCell)
-                ADD_OBJECT(o, delegate)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
                 ADD_NUMBER(o, depthLimit)
                 ADD_DICTIONARY(o, deviceDescription)
                 ADD_BOOL(o, displaysWhenScreenProfileChanges)
