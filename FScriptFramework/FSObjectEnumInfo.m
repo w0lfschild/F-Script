@@ -16,6 +16,9 @@
 const NSUInteger CellTypeMask = NSUIntegerMax;
 const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
 
+#define _ENUMDICT(_idx, _enum)              \
+        @{ @(_enum) : @metamacro_stringify(_enum) },
+
 #define _BIDICT(_idx, _enum)              \
         @(_enum)                          \
             : @metamacro_stringify(_enum) \
@@ -27,21 +30,22 @@ const NSUInteger MergePolicyMarkerMask = NSUIntegerMax;
                 static NSMutableDictionary* dict = nil;   \
                 if (!dict) {                                    \
                         dict = [NSMutableDictionary new]; \
-                        [dict addEntriesFromDictionary:
 
 
 #define BIDICT(_name, ...)                                            \
         _BIDICT_LEADER(_name)                                         \
-                        @{ metamacro_foreach(_BIDICT, ,__VA_ARGS__) } \
-                        ];                                            \
-        }                                                             \
+                        NSArray * enumItems = @[ metamacro_foreach(_ENUMDICT, ,__VA_ARGS__) ] ; \
+                        for (NSDictionary *enumDict in enumItems) { \
+                                NSNumber *key = enumDict.allKeys.firstObject; NSString *val = enumDict.allValues.firstObject; \
+                                if (dict[key]) { dict[key] = [ NSString stringWithFormat:@"%@ / %@", dict[key], val ]; } else { dict[key] = val; } \
+                        } \
+                }                                                             \
         return dict;                                                  \
         }
 
 #define BIDICT_LIT(_name, _dict) \
         _BIDICT_LEADER(_name)    \
-                        _dict    \
-                        ];       \
+                [dict addEntriesFromDictionary:_dict ];       \
         }                        \
         return dict;             \
         }
@@ -484,6 +488,23 @@ OPTSTOOBJ(GlyphStorageLayoutOptions,
           NSShowInvisibleGlyphs,
           NSWantsBidiLevels);
 
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_7
+ENUMTOOBJ(LayoutAttribute,
+          NSLayoutAttributeNotAnAttribute,
+          NSLayoutAttributeLeft,
+          NSLayoutAttributeRight,
+          NSLayoutAttributeTop,
+          NSLayoutAttributeBottom,
+          NSLayoutAttributeLeading,
+          NSLayoutAttributeTrailing,
+          NSLayoutAttributeWidth,
+          NSLayoutAttributeHeight,
+          NSLayoutAttributeCenterX,
+          NSLayoutAttributeCenterY,
+          NSLayoutAttributeBaseline
+          );
+
+#endif
 
 ENUMTOOBJ(LevelIndicatorStyle,
           NSRelevancyLevelIndicatorStyle,
@@ -636,6 +657,16 @@ ENUMTOOBJ(SliderType,
           NSLinearSlider,
           NSCircularSlider);
 
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_9
+ENUMTOOBJ(StackViewGravity,
+          NSStackViewGravityTop,
+          NSStackViewGravityLeading,
+          NSStackViewGravityCenter,
+          NSStackViewGravityBottom,
+          NSStackViewGravityTrailing
+          );
+
+#endif
 
 ENUMTOOBJ(StatusItemLength,
           NSVariableStatusItemLength,
@@ -807,6 +838,13 @@ ENUMTOOBJ(UsableScrollerParts,
           NSNoScrollerParts,
           NSOnlyScrollerArrows,
           NSAllScrollerParts);
+
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_9
+ENUMTOOBJ(UserInterfaceLayoutOrientation,
+          NSUserInterfaceLayoutOrientationHorizontal,
+          NSUserInterfaceLayoutOrientationVertical
+          );
+#endif
 
 
 ENUMTOOBJ(WindingRule,

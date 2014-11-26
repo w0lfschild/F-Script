@@ -221,8 +221,14 @@ labelFromPropertyName(NSString* propertyName)
         ADD_VALUE([NSValue valueWithSize:[OBJECT PROPERTY]], FS_ITEM_SIZE, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
 
 #define ADD_RECT(OBJECT, PROPERTY) \
-        ADD_VALUE([NSValue valueWithRect:[OBJECT PROPERTY]], FS_ITEM_RECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
+        ADD_VALUE([NSValue valueWithRect:(NSRect)[OBJECT PROPERTY]], FS_ITEM_RECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
 
+#define ADD_EDGE_INSETS(OBJECT, PROPERTY) \
+{ \
+        NSEdgeInsets _insets = [OBJECT PROPERTY]; \
+        NSRect _rect = NSMakeRect(_insets.top, _insets.left, _insets.bottom, _insets.right); \
+        ADD_VALUE([NSValue valueWithRect:_rect], FS_ITEM_RECT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO) \
+}
 
 #define ADD_POINT(OBJECT, PROPERTY) \
         ADD_VALUE([NSValue valueWithPoint:[OBJECT PROPERTY]], FS_ITEM_POINT, PROPERTY, nil, 0, nil, labelFromPropertyName(@#PROPERTY), NO)
@@ -2529,6 +2535,25 @@ labelFromPropertyName(NSString* propertyName)
                 ADD_BOOL(o, isVertical)
                 ADD_OBJECT_NOT_NIL(o, autosaveName)
         }
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_9
+        else if ([object isKindOfClass:[NSStackView class]]) {
+                
+                
+                #pragma mark ► NSStackView
+                //--------------------------------------------------------------------------------
+
+                NSStackView* o = object;
+                ADD_CLASS_LABEL(@"NSStackView Info");
+                ADD_ENUM(o, alignment, LayoutAttribute)
+                ADD_ENUM(o, orientation, UserInterfaceLayoutOrientation)
+                ADD_NUMBER(o, spacing)
+                ADD_OBJECT(o, delegate, NSObject.class, YES)
+                ADD_BOOL(o, hasEqualSpacing)
+                ADD_OBJECTS(o, views)
+                ADD_OBJECTS(o, detachedViews)
+        }
+        
+#endif
         else if ([object isKindOfClass:[NSTabView class]]) {
                 
                 

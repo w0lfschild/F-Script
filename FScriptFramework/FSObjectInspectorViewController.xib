@@ -195,7 +195,7 @@
                                                             <constraint firstAttribute="width" priority="749" constant="96" id="IAM-yi-Uh8"/>
                                                         </constraints>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="Snm-4g-5L0">
-                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="c9m-7g-wkS"/>
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" usesGroupingSeparator="NO" lenient="YES" minimumIntegerDigits="0" maximumIntegerDigits="42" id="c9m-7g-wkS"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

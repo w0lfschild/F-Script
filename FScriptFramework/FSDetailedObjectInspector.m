@@ -61,6 +61,7 @@ static void *TREE_OBSERVATION_CONTEXT = &TREE_OBSERVATION_CONTEXT;
                 FSObjectInspectorViewController *objectInspectorViewController = [[FSObjectInspectorViewController alloc] initWithNibName:@"FSObjectInspectorViewController" bundle:[NSBundle bundleForClass:self.class]];
                 self.viewController = objectInspectorViewController;
                 objectInspectorViewController.inspector = self;
+                objectInspectorViewController.interpreter = self.interpreter;
                 [self refreshModel:self];
                 panel.contentView = objectInspectorViewController.view;
                 NSSize desiredSize = self.viewController.desiredSize;
