@@ -1761,6 +1761,8 @@ static NSString* FScriptObjectTemplateForEncodedObjCType(const char* ptr)
                 return @"NSValue sizeWithWidth:0 height:0";
         else if (strcmp(ptr, @encode(NSRect)) == 0)
                 return @"0<>0 extent:0<>0";
+        else if (strcmp(ptr, @encode(NSEdgeInsets)) == 0)
+                return @"NSValue edgeInsetsWithTop:0 left:0 bottom:0 right:0";
         else if (strcmp(ptr, @encode(CGPoint)) == 0)
                 return @"0<>0";
         else if (strcmp(ptr, @encode(CGSize)) == 0)

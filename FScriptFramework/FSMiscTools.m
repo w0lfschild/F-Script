@@ -30,7 +30,7 @@
 
 @class _NSZombie, NSFault, NSRTFD;
 
-static ffi_type ffi_type_NSRange, ffi_type_NSPoint, ffi_type_NSRect, ffi_type_NSSize, ffi_type_CGAffineTransform;
+static ffi_type ffi_type_NSRange, ffi_type_NSPoint, ffi_type_NSRect, ffi_type_NSSize, ffi_type_CGAffineTransform, ffi_type_NSEdgeInsets;
 
 void __attribute__ ((constructor)) initializeFFITypes(void)
 {
@@ -86,6 +86,18 @@ void __attribute__ ((constructor)) initializeFFITypes(void)
   ffi_type_NSRect.elements[0] = &ffi_type_NSPoint;
   ffi_type_NSRect.elements[1] = &ffi_type_NSSize;
   ffi_type_NSRect.elements[2] = NULL;
+  
+  
+  //////////////////////////// Define ffi_type_NSEdgeInsets
+  ffi_type_NSEdgeInsets.size = 0;
+  ffi_type_NSEdgeInsets.alignment = 0;
+  ffi_type_NSEdgeInsets.type = FFI_TYPE_STRUCT;
+  ffi_type_NSEdgeInsets.elements = malloc(5 * sizeof(ffi_type*));
+  ffi_type_NSEdgeInsets.elements[0] = &ffi_type_double;
+  ffi_type_NSEdgeInsets.elements[1] = &ffi_type_double;
+  ffi_type_NSEdgeInsets.elements[2] = &ffi_type_double;
+  ffi_type_NSEdgeInsets.elements[3] = &ffi_type_double;
+  ffi_type_NSEdgeInsets.elements[4] = NULL;
   
   //////////////////////////// Define ffi_type_CGAffineTransform
   ffi_type_CGAffineTransform.size = 0;                    
@@ -220,7 +232,8 @@ ffi_type *ffiTypeFromFSEncodedType(char fsEncodedType)
     case fscode_NSRect            :  
     case fscode_CGRect            : return &ffi_type_NSRect; 
     case fscode_NSSize            : 
-    case fscode_CGSize            : return &ffi_type_NSSize; 
+    case fscode_CGSize            : return &ffi_type_NSSize;
+    case fscode_NSEdgeInsets      : return &ffi_type_NSEdgeInsets;
     case fscode_CGAffineTransform : return &ffi_type_CGAffineTransform;
     case 'B'           : // No ffi_type defined yet for _Bool (Mac OS X 10.5.4), so we handle it ourselves
       if      (sizeof(_Bool) == 4) return &ffi_type_uint32; 
@@ -258,6 +271,7 @@ char FSEncode(const char *foundationEncodeStyleStr)
     else if  (strcmp(ptr,@encode(NSPoint))            == 0 || strncmp(ptr,"{_NSPoint="         , 10) == 0) return fscode_NSPoint;
     else if  (strcmp(ptr,@encode(NSSize))             == 0 || strncmp(ptr,"{_NSSize="          ,  9) == 0) return fscode_NSSize;
     else if  (strcmp(ptr,@encode(NSRect))             == 0 || strncmp(ptr,"{_NSRect="          ,  9) == 0) return fscode_NSRect;
+    else if  (strcmp(ptr,@encode(NSEdgeInsets))       == 0 || strncmp(ptr,"{_NSEdgeInsets="    , 15) == 0) return fscode_NSEdgeInsets;
     else if  (strcmp(ptr,@encode(CGPoint))            == 0 || strncmp(ptr,"{CGPoint="          ,  9) == 0) return fscode_CGPoint;
     else if  (strcmp(ptr,@encode(CGSize))             == 0 || strncmp(ptr,"{CGSize="           ,  8) == 0) return fscode_CGSize;
     else if  (strcmp(ptr,@encode(CGRect))             == 0 || strncmp(ptr,"{CGRect="           ,  8) == 0) return fscode_CGRect;
