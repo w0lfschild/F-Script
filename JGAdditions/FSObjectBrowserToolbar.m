@@ -247,7 +247,7 @@
   // Required delegate method   Returns the ordered list of items to be shown in the toolbar by default
   // If during the toolbar's initialization, no overriding values are found in the user defaults, or if the
   // user chooses to revert to the default items self set will be used
-  return [NSArray arrayWithObjects: @"Workspace", @"Classes", @"Select View", @"Name", @"Inspect", @"Browse", @"Refresh", @"Filter", nil];
+  return [NSArray arrayWithObjects: @"Filter", @"Workspace", @"Classes", @"Select View", @"Name", @"Inspect", @"Browse", @"Refresh", nil];
 }
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar 

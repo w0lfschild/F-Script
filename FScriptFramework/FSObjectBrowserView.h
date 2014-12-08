@@ -53,6 +53,7 @@ const int FSObjectBrowserBottomBarHeight;
 - (BOOL)hasEmptyFilterString;
 - (id)initWithFrame:(NSRect)frameRect;
 - (id)selectedObject;
-- (void)setInterpreter:(FSInterpreter*)theInterpreter;
-- (void)setRootObject:(id)theRootObject;
+@property (retain,nonatomic) IBOutlet FSInterpreter *interpreter;
+@property (retain,nonatomic) IBOutlet id rootObject;
+
 @end

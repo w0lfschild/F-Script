@@ -70,6 +70,8 @@ static NSMutableArray* customButtons = nil;
 
 
 @implementation FSObjectBrowserView
+@synthesize interpreter;
+@synthesize rootObject;
 
 + (NSArray*)customButtons
 {
@@ -160,49 +162,63 @@ static NSMutableArray* customButtons = nil;
         [self saveCustomButtonsSettings];
 }
 
+-(void)_setup
+{
+        CGFloat baseWidth = NSWidth([self bounds]);
+        CGFloat baseHeight = NSHeight([self bounds]);
+        CGFloat fontSize;
+        
+        fontSize = systemFontSize();
+        
+        browser = [[NSBrowser alloc] initWithFrame:NSMakeRect(0, FSObjectBrowserBottomBarHeight, baseWidth, baseHeight - FSObjectBrowserBottomBarHeight)];
+        [browser setMatrixClass:FSObjectBrowserMatrix.class];
+        
+        [browser setCellClass:[FSObjectBrowserCell class]];
+        [browser setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+        [browser setHasHorizontalScroller:YES];
+        [browser setMinColumnWidth:145 + (fontSize * 6)];
+        [browser setTakesTitleFromPreviousColumn:NO];
+        [browser setTitled:NO];
+        [browser setTarget:self];
+        [browser setDoubleAction:@selector(doubleClickAction:)];
+        [[browser cellPrototype] setFont:[NSFont systemFontOfSize:fontSize]];
+        [browser setDelegate:self];
+        [browser setFocusRingType:NSFocusRingTypeNone];
+        [browser setAutohidesScroller:YES];
+        [browser setAllowsTypeSelect:NO];
+        
+        if ([browser respondsToSelector:@selector(setColumnResizingType:)])
+                [browser setColumnResizingType:2];
+        
+        if ([browser respondsToSelector:@selector(setColumnsAutosaveName:)])
+                [browser setColumnsAutosaveName:@"Object browser columns autosave configuration"];
+        
+        bottomBarTextDisplay = [[FSObjectBrowserBottomBarTextDisplay alloc] initWithFrame:NSMakeRect(0, 0, baseWidth, FSObjectBrowserBottomBarHeight)];
+        
+        [self addSubview:browser];
+        [self addSubview:bottomBarTextDisplay];
+        
+        browsingMode = FSBrowsingWorkspace;
+        
+        filterString = @"";
+        
+        matrixes = [[NSMutableSet alloc] init];
+}
 
 - (id)initWithFrame:(NSRect)frameRect
 {
         self = [super initWithFrame:frameRect];
         if (self) {
-                CGFloat baseWidth = NSWidth([self bounds]);
-                CGFloat baseHeight = NSHeight([self bounds]);
-                CGFloat fontSize;
+                [self _setup];
+        }
+        return self;
+}
 
-                fontSize = systemFontSize();
-
-                browser = [[NSBrowser alloc] initWithFrame:NSMakeRect(0, FSObjectBrowserBottomBarHeight, baseWidth, baseHeight - FSObjectBrowserBottomBarHeight)];
-                [browser setMatrixClass:FSObjectBrowserMatrix.class];
-          
-                [browser setCellClass:[FSObjectBrowserCell class]];
-                [browser setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-                [browser setHasHorizontalScroller:YES];
-                [browser setMinColumnWidth:145 + (fontSize * 6)];
-                [browser setTakesTitleFromPreviousColumn:NO];
-                [browser setTitled:NO];
-                [browser setTarget:self];
-                [browser setDoubleAction:@selector(doubleClickAction:)];
-                [[browser cellPrototype] setFont:[NSFont systemFontOfSize:fontSize]];
-                [browser setDelegate:self];
-                [browser setFocusRingType:NSFocusRingTypeNone];
-                [browser setAutohidesScroller:YES];
-
-                if ([browser respondsToSelector:@selector(setColumnResizingType:)])
-                        [browser setColumnResizingType:2];
-
-                if ([browser respondsToSelector:@selector(setColumnsAutosaveName:)])
-                        [browser setColumnsAutosaveName:@"Object browser columns autosave configuration"];
-
-                bottomBarTextDisplay = [[FSObjectBrowserBottomBarTextDisplay alloc] initWithFrame:NSMakeRect(0, 0, baseWidth, FSObjectBrowserBottomBarHeight)];
-
-                [self addSubview:browser];
-                [self addSubview:bottomBarTextDisplay];
-
-                browsingMode = FSBrowsingWorkspace;
-
-                filterString = @"";
-
-                matrixes = [[NSMutableSet alloc] init];
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+        self = [super initWithCoder:coder];
+        if (self) {
+                [self _setup];
         }
         return self;
 }

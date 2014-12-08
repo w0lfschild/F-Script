@@ -18,7 +18,7 @@
 		8F0CBBEA0BDB94AD002B0AD7 /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		8F0CBBEB0BDB94AD002B0AD7 /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		8F0CBBEC0BDB94AD002B0AD7 /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		8F0CBBED0BDB94AD002B0AD7 /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		8F0CBBED0BDB94AD002B0AD7 /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8F0CBBEE0BDB94AD002B0AD7 /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		8F0CBBEF0BDB94AD002B0AD7 /* FSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */; };
 		8F0CBBF00BDB94AD002B0AD7 /* BlockInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */; };
@@ -412,7 +412,7 @@
 		8F6DA666055FC6980050409A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		8F6DA667055FC6980050409A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		8F6DA668055FC6980050409A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		8F6DA669055FC6980050409A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		8F6DA669055FC6980050409A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8F6DA66A055FC6980050409A /* FSObjectBrowserArgumentPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FA8A6D0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.m */; };
 		8F6DA66B055FC6980050409A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		8F6DA66C055FC6980050409A /* FSObjectBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32500D7DFE17BE9C1BD /* FSObjectBrowserView.m */; };
@@ -603,7 +603,7 @@
 		8F6DA87E055FC70C0050409A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		8F6DA87F055FC70C0050409A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		8F6DA880055FC70C0050409A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		8F6DA881055FC70C0050409A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		8F6DA881055FC70C0050409A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8F6DA882055FC70C0050409A /* FSObjectBrowserArgumentPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FA8A6D0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.m */; };
 		8F6DA883055FC70C0050409A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		8F6DA884055FC70C0050409A /* FSObjectBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32500D7DFE17BE9C1BD /* FSObjectBrowserView.m */; };
@@ -783,7 +783,7 @@
 		8F6DA97A055FC71F0050409A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		8F6DA97B055FC71F0050409A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		8F6DA97C055FC71F0050409A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		8F6DA97D055FC71F0050409A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		8F6DA97D055FC71F0050409A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8F6DA97E055FC71F0050409A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		8F6DA97F055FC71F0050409A /* FSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */; };
 		8F6DA980055FC71F0050409A /* BlockInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */; };
@@ -1425,7 +1425,7 @@
 		BA223268189FA403002C5B6A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		BA223269189FA403002C5B6A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		BA22326A189FA403002C5B6A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		BA22326B189FA403002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		BA22326B189FA403002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		BA22326C189FA403002C5B6A /* FSObjectBrowserArgumentPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FA8A6D0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.m */; };
 		BA22326D189FA403002C5B6A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		BA22326E189FA403002C5B6A /* FSObjectBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32500D7DFE17BE9C1BD /* FSObjectBrowserView.m */; };
@@ -1847,7 +1847,7 @@
 		BA223428189FA412002C5B6A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		BA223429189FA412002C5B6A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		BA22342A189FA412002C5B6A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		BA22342B189FA412002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		BA22342B189FA412002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		BA22342C189FA412002C5B6A /* FSObjectBrowserArgumentPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FA8A6D0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.m */; };
 		BA22342D189FA412002C5B6A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		BA22342E189FA412002C5B6A /* FSObjectBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32500D7DFE17BE9C1BD /* FSObjectBrowserView.m */; };
@@ -2264,7 +2264,7 @@
 		BA2235DB189FA429002C5B6A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		BA2235DC189FA429002C5B6A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		BA2235DD189FA429002C5B6A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		BA2235DE189FA429002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		BA2235DE189FA429002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		BA2235DF189FA429002C5B6A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		BA2235E0189FA429002C5B6A /* FSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */; };
 		BA2235E1189FA429002C5B6A /* BlockInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */; };
@@ -2578,7 +2578,7 @@
 		BA223723189FA431002C5B6A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		BA223724189FA431002C5B6A /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		BA223725189FA431002C5B6A /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		BA223726189FA431002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		BA223726189FA431002C5B6A /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		BA223727189FA431002C5B6A /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		BA223728189FA431002C5B6A /* FSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */; };
 		BA223729189FA431002C5B6A /* BlockInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */; };
@@ -2749,6 +2749,35 @@
 		ED3CB6501A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		ED3CB6511A1E5B3300771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		ED3CB6521A1E5B9100771077 /* FSColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3CB6401A1E5B3300771077 /* FSColorWell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE421A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE431A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE441A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE451A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE461A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE471A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE481A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE491A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE4A1A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE4B1A35E39000968430 /* FSObjectBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */; };
+		ED68BE4E1A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE4F1A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE501A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE511A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE521A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE531A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE541A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE551A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE561A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */; };
+		ED68BE571A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE581A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE591A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE5A1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE5B1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE5C1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE5D1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE5E1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE5F1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ED68BE601A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		ED8222D61A194FD600C42C72 /* FSObjectInspectorViewModelItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */; };
 		ED8222D71A194FD600C42C72 /* FSObjectInspectorViewModelItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */; };
 		ED8222D81A194FD600C42C72 /* FSObjectInspectorViewModelItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */; };
@@ -3114,7 +3143,7 @@
 		EDC2C9CF1A1AA50D00942777 /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		EDC2C9D01A1AA50D00942777 /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		EDC2C9D11A1AA50D00942777 /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		EDC2C9D21A1AA50D00942777 /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		EDC2C9D21A1AA50D00942777 /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		EDC2C9D31A1AA50D00942777 /* FSObjectBrowserArgumentPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FA8A6D0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.m */; };
 		EDC2C9D41A1AA50D00942777 /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		EDC2C9D51A1AA50D00942777 /* FSObjectBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32500D7DFE17BE9C1BD /* FSObjectBrowserView.m */; };
@@ -3548,7 +3577,7 @@
 		EDC2CB921A1AA52500942777 /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
 		EDC2CB931A1AA52500942777 /* ArrayRepId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */; };
 		EDC2CB941A1AA52500942777 /* FSCollectionInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */; };
-		EDC2CB951A1AA52500942777 /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; };
+		EDC2CB951A1AA52500942777 /* FSObjectBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		EDC2CB961A1AA52500942777 /* FSObjectBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32300D7DFE17BE9C1BD /* FSObjectBrowserCell.m */; };
 		EDC2CB971A1AA52500942777 /* FSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */; };
 		EDC2CB981A1AA52500942777 /* BlockInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */; };
@@ -4219,6 +4248,9 @@
 		ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectInspectorViewController.xib; sourceTree = "<group>"; };
 		ED3CB63F1A1E5B3300771077 /* FSColorWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSColorWell.h; sourceTree = "<group>"; };
 		ED3CB6401A1E5B3300771077 /* FSColorWell.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSColorWell.m; sourceTree = "<group>"; tabWidth = 8; };
+		ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectBrowser.xib; sourceTree = "<group>"; };
+		ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowserWindow.h; sourceTree = "<group>"; };
+		ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowserWindow.m; sourceTree = "<group>"; };
 		ED8222D41A194FD600C42C72 /* FSObjectInspectorViewModelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorViewModelItem.h; sourceTree = "<group>"; };
 		ED8222D51A194FD600C42C72 /* FSObjectInspectorViewModelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorViewModelItem.m; sourceTree = "<group>"; tabWidth = 8; };
 		ED8222E51A19554F00C42C72 /* FSObjectEnumInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectEnumInfo.h; sourceTree = "<group>"; };
@@ -5077,6 +5109,9 @@
 				0CD4E38E00D7DFE17BE9C1BD /* FSNumber.m */,
 				0CD4E32000D7DFE17BE9C1BD /* FSObjectBrowser.h */,
 				0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */,
+				ED68BE4C1A35E94B00968430 /* FSObjectBrowserWindow.h */,
+				ED68BE4D1A35E94B00968430 /* FSObjectBrowserWindow.m */,
+				ED68BE411A35E38F00968430 /* FSObjectBrowser.xib */,
 				F5FA8A6C0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.h */,
 				F5FA8A6D0215D44C01AFEEFD /* FSObjectBrowserArgumentPanel.m */,
 				8F7A71290F48397C00E95364 /* FSObjectBrowserBottomBarTextDisplay.h */,
@@ -5473,6 +5508,7 @@
 				8F6DA600055FC6980050409A /* FScriptFunctions.h in Headers */,
 				8F6DA601055FC6980050409A /* FSInterpreter.h in Headers */,
 				8F6DA602055FC6980050409A /* FSInterpreterView.h in Headers */,
+				ED68BE561A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				EDA6AC5E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.h in Headers */,
 				8F6DA603055FC6980050409A /* FSInterpreterViewIBHeader.h in Headers */,
 				8F6DA604055FC6980050409A /* FSNSArray.h in Headers */,
@@ -5768,6 +5804,7 @@
 				8F2E34220D8DB61C00912543 /* FSCNUnaryMessage.h in Headers */,
 				8F2E34350D8DBF6A00912543 /* FSCNBinaryMessage.h in Headers */,
 				8F2E343E0D8DBFE700912543 /* FSCNKeywordMessage.h in Headers */,
+				ED68BE4E1A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				8F5900170D9468FC003A8B17 /* FSCNCascade.h in Headers */,
 				8F8F58660D9FE6A900ED0FED /* FSCNStatementList.h in Headers */,
 				8F747DAD0DA03AE200148342 /* FSCNPrecomputedObject.h in Headers */,
@@ -5836,6 +5873,7 @@
 				8F6DA915055FC71F0050409A /* FSInterpreterResultPrivate.h in Headers */,
 				8F6DA916055FC71F0050409A /* FSInterpreterView.h in Headers */,
 				8F6DA917055FC71F0050409A /* FSInterpreterViewIBHeader.h in Headers */,
+				ED68BE4F1A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				8F6DA918055FC71F0050409A /* FSNSArray.h in Headers */,
 				ED83191E1A1BC2B500290EE2 /* FSUtils.h in Headers */,
 				8F6DA919055FC71F0050409A /* FSNSArrayPrivate.h in Headers */,
@@ -6122,6 +6160,7 @@
 				BA22322E189FA403002C5B6A /* FSCNUnaryMessage.h in Headers */,
 				BA22322F189FA403002C5B6A /* FSCNBinaryMessage.h in Headers */,
 				BA223230189FA403002C5B6A /* FSCNKeywordMessage.h in Headers */,
+				ED68BE501A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				BA223231189FA403002C5B6A /* FSCNCascade.h in Headers */,
 				BA223232189FA403002C5B6A /* FSCNStatementList.h in Headers */,
 				BA223233189FA403002C5B6A /* FSCNPrecomputedObject.h in Headers */,
@@ -6301,6 +6340,7 @@
 				BA2233EE189FA412002C5B6A /* FSCNUnaryMessage.h in Headers */,
 				BA2233EF189FA412002C5B6A /* FSCNBinaryMessage.h in Headers */,
 				BA2233F0189FA412002C5B6A /* FSCNKeywordMessage.h in Headers */,
+				ED68BE521A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				BA2233F1189FA412002C5B6A /* FSCNCascade.h in Headers */,
 				BA2233F2189FA412002C5B6A /* FSCNStatementList.h in Headers */,
 				BA2233F3189FA412002C5B6A /* FSCNPrecomputedObject.h in Headers */,
@@ -6369,6 +6409,7 @@
 				BA223543189FA429002C5B6A /* FSInterpreterResultPrivate.h in Headers */,
 				BA223544189FA429002C5B6A /* FSInterpreterView.h in Headers */,
 				BA223545189FA429002C5B6A /* FSInterpreterViewIBHeader.h in Headers */,
+				ED68BE511A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				BA223546189FA429002C5B6A /* FSNSArray.h in Headers */,
 				ED8319201A1BC2B500290EE2 /* FSUtils.h in Headers */,
 				BA223547189FA429002C5B6A /* FSNSArrayPrivate.h in Headers */,
@@ -6544,6 +6585,7 @@
 				BA22368B189FA431002C5B6A /* FSInterpreterResultPrivate.h in Headers */,
 				BA22368C189FA431002C5B6A /* FSInterpreterView.h in Headers */,
 				BA22368D189FA431002C5B6A /* FSInterpreterViewIBHeader.h in Headers */,
+				ED68BE531A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				BA22368E189FA431002C5B6A /* FSNSArray.h in Headers */,
 				ED8319221A1BC2B500290EE2 /* FSUtils.h in Headers */,
 				BA22368F189FA431002C5B6A /* FSNSArrayPrivate.h in Headers */,
@@ -6830,6 +6872,7 @@
 				EDC2C9931A1AA50D00942777 /* FSCNUnaryMessage.h in Headers */,
 				EDC2C9941A1AA50D00942777 /* FSCNBinaryMessage.h in Headers */,
 				EDC2C9951A1AA50D00942777 /* FSCNKeywordMessage.h in Headers */,
+				ED68BE541A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				EDC2C9961A1AA50D00942777 /* FSCNCascade.h in Headers */,
 				EDC2C9971A1AA50D00942777 /* FSCNStatementList.h in Headers */,
 				EDC2C9981A1AA50D00942777 /* FSCNPrecomputedObject.h in Headers */,
@@ -6935,6 +6978,7 @@
 				EDC2CB151A1AA52500942777 /* DOTest.h in Headers */,
 				EDC2CB161A1AA52500942777 /* FScriptTextView.h in Headers */,
 				EDC2CB171A1AA52500942777 /* FSObjectBrowserArgumentPanel.h in Headers */,
+				ED68BE551A35E94B00968430 /* FSObjectBrowserWindow.h in Headers */,
 				ED8319391A1BFA7400290EE2 /* FSObjectInspectorViewController+NonArc.h in Headers */,
 				EDC2CB181A1AA52500942777 /* FSNSProtocolChecker.h in Headers */,
 				EDC2CB191A1AA52500942777 /* FSObjectBrowserToolbar.h in Headers */,
@@ -7304,6 +7348,7 @@
 				8F0CBC660BDB9519002B0AD7 /* license.txt in Resources */,
 				8F0CBC670BDB9519002B0AD7 /* fs.scriptSuite in Resources */,
 				8F0CBC680BDB9519002B0AD7 /* fs.scriptTerminology in Resources */,
+				ED68BE4B1A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				8F0CBC6B0BDB9519002B0AD7 /* FSImageInspector.nib in Resources */,
 				8F0CBC6C0BDB9519002B0AD7 /* ReadMe.txt in Resources */,
 				8F0CBC6D0BDB9519002B0AD7 /* ArrayTableView.nib in Resources */,
@@ -7351,6 +7396,7 @@
 				EDE508E119DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F6DA65F055FC6980050409A /* ArrayTableView.nib in Resources */,
 				8FDCCD7E05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
+				ED68BE4A1A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				8F2D067305CED9B9007EA81B /* run.tiff in Resources */,
 				8F56036705CF22660044FA65 /* build.tiff in Resources */,
 				8FA8EFA307739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
@@ -7397,6 +7443,7 @@
 				8F2D067105CED9B9007EA81B /* run.tiff in Resources */,
 				EDA22BEA1A24C28D0093DB91 /* window.png in Resources */,
 				8F56036805CF22660044FA65 /* build.tiff in Resources */,
+				ED68BE421A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDA6AC691A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8FA8EFA007739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
 				8FCA6B88078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib in Resources */,
@@ -7417,6 +7464,7 @@
 				8F6DA965055FC71F0050409A /* blockInspector.nib in Resources */,
 				8F6DA968055FC71F0050409A /* FlightTutorial.txt in Resources */,
 				8F6DA969055FC71F0050409A /* genObjInspector.nib in Resources */,
+				ED68BE431A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDE508DC19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F6DA96A055FC71F0050409A /* KTest.txt in Resources */,
 				8F6DA96B055FC71F0050409A /* license.txt in Resources */,
@@ -7468,6 +7516,7 @@
 				BA22325E189FA403002C5B6A /* run.tiff in Resources */,
 				EDA22BEC1A24C28D0093DB91 /* window.png in Resources */,
 				BA22325F189FA403002C5B6A /* build.tiff in Resources */,
+				ED68BE441A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDA6AC6B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA223260189FA403002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA223261189FA403002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
@@ -7506,6 +7555,7 @@
 				BA22341E189FA412002C5B6A /* run.tiff in Resources */,
 				EDA22BEE1A24C28D0093DB91 /* window.png in Resources */,
 				BA22341F189FA412002C5B6A /* build.tiff in Resources */,
+				ED68BE461A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDA6AC6D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA223420189FA412002C5B6A /* FSCollectionInspectorView.nib in Resources */,
 				BA223421189FA412002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
@@ -7526,6 +7576,7 @@
 				BA2235C3189FA429002C5B6A /* blockInspector.nib in Resources */,
 				BA2235C4189FA429002C5B6A /* FlightTutorial.txt in Resources */,
 				BA2235C5189FA429002C5B6A /* genObjInspector.nib in Resources */,
+				ED68BE451A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDE508DE19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA2235C6189FA429002C5B6A /* KTest.txt in Resources */,
 				BA2235C7189FA429002C5B6A /* license.txt in Resources */,
@@ -7559,6 +7610,7 @@
 				BA22370B189FA431002C5B6A /* blockInspector.nib in Resources */,
 				BA22370C189FA431002C5B6A /* FlightTutorial.txt in Resources */,
 				BA22370D189FA431002C5B6A /* genObjInspector.nib in Resources */,
+				ED68BE471A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDE508E019DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22370E189FA431002C5B6A /* KTest.txt in Resources */,
 				BA22370F189FA431002C5B6A /* license.txt in Resources */,
@@ -7598,6 +7650,7 @@
 				EDC2C9BA1A1AA50D00942777 /* fs.icns in Resources */,
 				EDC2C9BB1A1AA50D00942777 /* FScriptAppPreference.nib in Resources */,
 				EDC2C9BC1A1AA50D00942777 /* fs.nib in Resources */,
+				ED68BE481A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDC2C9BD1A1AA50D00942777 /* fs.scriptSuite in Resources */,
 				EDC2C9BE1A1AA50D00942777 /* fs.scriptTerminology in Resources */,
 				EDC2C9BF1A1AA50D00942777 /* FSImageInspector.nib in Resources */,
@@ -7628,6 +7681,7 @@
 				EDC2CB7B1A1AA52500942777 /* blockInspector.nib in Resources */,
 				EDC2CB7C1A1AA52500942777 /* FlightTutorial.txt in Resources */,
 				EDC2CB7D1A1AA52500942777 /* genObjInspector.nib in Resources */,
+				ED68BE491A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDC2CB7E1A1AA52500942777 /* FScriptPreferences.xib in Resources */,
 				EDC2CB7F1A1AA52500942777 /* KTest.txt in Resources */,
 				EDC2CB801A1AA52500942777 /* license.txt in Resources */,
@@ -7801,6 +7855,7 @@
 				8F0CBC310BDB94AD002B0AD7 /* FSKeyedUnarchiver.m in Sources */,
 				8F0CBC320BDB94AD002B0AD7 /* FSKeyedArchiver.m in Sources */,
 				8F0CBC330BDB94AD002B0AD7 /* FSConstantListBuilder.m in Sources */,
+				ED68BE601A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				8F0CBC340BDB94AD002B0AD7 /* FSImageInspector.m in Sources */,
 				8F0CBC350BDB94AD002B0AD7 /* FSNSImage.m in Sources */,
 				8F0CBC360BDB94AD002B0AD7 /* FSObjectBrowserToolbarItem.m in Sources */,
@@ -7930,6 +7985,7 @@
 				8F6DA68F055FC6980050409A /* FSGenericObjectInspector.m in Sources */,
 				8F6DA690055FC6980050409A /* KTestManager.m in Sources */,
 				EDA6AC671A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.m in Sources */,
+				ED68BE5F1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				8F6DA691055FC6980050409A /* MessagePatternCodeNode.m in Sources */,
 				8F6DA692055FC6980050409A /* FSMiscTools.m in Sources */,
 				8F6DA693055FC6980050409A /* FSMsgContext.m in Sources */,
@@ -8105,6 +8161,7 @@
 				8F6DA8B8055FC70C0050409A /* FSSystem.m in Sources */,
 				ED8222EE1A19554F00C42C72 /* FSObjectEnumInfo.m in Sources */,
 				8F6DA8BB055FC70C0050409A /* DOTest.m in Sources */,
+				ED68BE571A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				8F6DA8BC055FC70C0050409A /* FSNSProtocolChecker.m in Sources */,
 				8F6DA8BD055FC70C0050409A /* fs_main.m in Sources */,
 				8F6DA8BE055FC70C0050409A /* FScriptAppController.m in Sources */,
@@ -8279,6 +8336,7 @@
 				8F6DA9C8055FC71F0050409A /* FSIdentifierFormatter.m in Sources */,
 				8F6DA9CA055FC71F0050409A /* FSKeyedUnarchiver.m in Sources */,
 				8F6DA9CB055FC71F0050409A /* FSKeyedArchiver.m in Sources */,
+				ED68BE581A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				8F6DA9CC055FC71F0050409A /* FSConstantListBuilder.m in Sources */,
 				8F6DA9CD055FC71F0050409A /* FSImageInspector.m in Sources */,
 				8F6DA9CE055FC71F0050409A /* FSNSImage.m in Sources */,
@@ -8418,6 +8476,7 @@
 				BA223299189FA403002C5B6A /* FSSystem.m in Sources */,
 				ED8222F01A19554F00C42C72 /* FSObjectEnumInfo.m in Sources */,
 				BA22329A189FA403002C5B6A /* DOTest.m in Sources */,
+				ED68BE591A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				BA22329B189FA403002C5B6A /* FSNSProtocolChecker.m in Sources */,
 				BA22329C189FA403002C5B6A /* fs_main.m in Sources */,
 				BA22329D189FA403002C5B6A /* FScriptAppController.m in Sources */,
@@ -8578,6 +8637,7 @@
 				BA223459189FA412002C5B6A /* FSSystem.m in Sources */,
 				ED8222F21A19554F00C42C72 /* FSObjectEnumInfo.m in Sources */,
 				BA22345A189FA412002C5B6A /* DOTest.m in Sources */,
+				ED68BE5B1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				BA22345B189FA412002C5B6A /* FSNSProtocolChecker.m in Sources */,
 				BA22345C189FA412002C5B6A /* fs_main.m in Sources */,
 				BA22345D189FA412002C5B6A /* FScriptAppController.m in Sources */,
@@ -8752,6 +8812,7 @@
 				BA223619189FA429002C5B6A /* FSIdentifierFormatter.m in Sources */,
 				BA22361A189FA429002C5B6A /* FSKeyedUnarchiver.m in Sources */,
 				BA22361B189FA429002C5B6A /* FSKeyedArchiver.m in Sources */,
+				ED68BE5A1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				BA22361C189FA429002C5B6A /* FSConstantListBuilder.m in Sources */,
 				BA22361D189FA429002C5B6A /* FSImageInspector.m in Sources */,
 				BA22361E189FA429002C5B6A /* FSNSImage.m in Sources */,
@@ -8905,6 +8966,7 @@
 				BA223761189FA431002C5B6A /* FSIdentifierFormatter.m in Sources */,
 				BA223762189FA431002C5B6A /* FSKeyedUnarchiver.m in Sources */,
 				BA223763189FA431002C5B6A /* FSKeyedArchiver.m in Sources */,
+				ED68BE5C1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				BA223764189FA431002C5B6A /* FSConstantListBuilder.m in Sources */,
 				BA223765189FA431002C5B6A /* FSImageInspector.m in Sources */,
 				BA223766189FA431002C5B6A /* FSNSImage.m in Sources */,
@@ -9044,6 +9106,7 @@
 				EDC2CA031A1AA50D00942777 /* FSSystem.m in Sources */,
 				EDC2CA041A1AA50D00942777 /* FSObjectEnumInfo.m in Sources */,
 				EDC2CA051A1AA50D00942777 /* DOTest.m in Sources */,
+				ED68BE5D1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				EDC2CA061A1AA50D00942777 /* FSNSProtocolChecker.m in Sources */,
 				EDC2CA071A1AA50D00942777 /* fs_main.m in Sources */,
 				EDC2CA081A1AA50D00942777 /* FScriptAppController.m in Sources */,
@@ -9218,6 +9281,7 @@
 				EDC2CBD41A1AA52500942777 /* FSIdentifierFormatter.m in Sources */,
 				EDC2CBD51A1AA52500942777 /* FSKeyedUnarchiver.m in Sources */,
 				EDC2CBD61A1AA52500942777 /* FSKeyedArchiver.m in Sources */,
+				ED68BE5E1A35E94B00968430 /* FSObjectBrowserWindow.m in Sources */,
 				EDC2CBD71A1AA52500942777 /* FSConstantListBuilder.m in Sources */,
 				EDC2CBD81A1AA52500942777 /* FSImageInspector.m in Sources */,
 				EDC2CBD91A1AA52500942777 /* FSNSImage.m in Sources */,
