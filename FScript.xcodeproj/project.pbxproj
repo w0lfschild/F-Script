@@ -7,6 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7388FC1B397B90005BD678 /* FScriptAppPreference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7388FB1B397B90005BD678 /* FScriptAppPreference.xib */; };
+		0B7388FD1B397B90005BD678 /* FScriptAppPreference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7388FB1B397B90005BD678 /* FScriptAppPreference.xib */; };
+		0B7388FE1B397B90005BD678 /* FScriptAppPreference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7388FB1B397B90005BD678 /* FScriptAppPreference.xib */; };
+		0B7388FF1B397B90005BD678 /* FScriptAppPreference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7388FB1B397B90005BD678 /* FScriptAppPreference.xib */; };
+		0B7389021B397C4F005BD678 /* fs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389001B397C4F005BD678 /* fs.xib */; };
+		0B7389031B397C4F005BD678 /* fs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389001B397C4F005BD678 /* fs.xib */; };
+		0B7389041B397C4F005BD678 /* fs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389001B397C4F005BD678 /* fs.xib */; };
+		0B7389051B397C4F005BD678 /* fs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389001B397C4F005BD678 /* fs.xib */; };
+		0B7389071B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B7389081B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B7389091B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B73890A1B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B73890B1B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B73890C1B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B73890D1B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B73890E1B397CD5005BD678 /* blockInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389061B397CD5005BD678 /* blockInspector.xib */; };
+		0B7389101B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389111B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389121B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389131B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389141B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389151B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389161B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389171B397CE6005BD678 /* ArrayTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73890F1B397CE6005BD678 /* ArrayTableView.xib */; };
+		0B7389191B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B73891A1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B73891B1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B73891C1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B73891D1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B73891E1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B73891F1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B7389201B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */; };
+		0B7389221B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389231B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389241B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389251B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389261B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389271B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389281B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B7389291B397D1E005BD678 /* FSCollectionInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */; };
+		0B73892B1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B73892C1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B73892D1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B73892E1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B73892F1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B7389301B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B7389311B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B7389321B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */; };
+		0B7389341B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B7389351B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B7389361B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B7389371B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B7389381B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B7389391B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B73893A1B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B73893B1B397D43005BD678 /* FSImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7389331B397D43005BD678 /* FSImageInspector.xib */; };
+		0B73893D1B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B73893E1B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B73893F1B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B7389401B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B7389411B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B7389421B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B7389431B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		0B7389441B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
 		8F0B66FD05C5639E0099180D /* FScriptMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F0B66FB05C5639E0099180D /* FScriptMenuItem.h */; };
 		8F0B66FE05C5639E0099180D /* FScriptMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B66FC05C5639E0099180D /* FScriptMenuItem.m */; };
 		8F0B66FF05C5639E0099180D /* FScriptMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F0B66FB05C5639E0099180D /* FScriptMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,23 +177,16 @@
 		8F0CBC540BDB94AD002B0AD7 /* FSObjectBrowserSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F585F6F059B23F100C12B6F /* FSObjectBrowserSearchField.m */; };
 		8F0CBC550BDB94AD002B0AD7 /* FSBlockCompilationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */; };
 		8F0CBC560BDB94AD002B0AD7 /* FSReturnSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7D4A70975B377009B2685 /* FSReturnSignal.m */; };
-		8F0CBC610BDB9519002B0AD7 /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		8F0CBC620BDB9519002B0AD7 /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		8F0CBC630BDB9519002B0AD7 /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		8F0CBC640BDB9519002B0AD7 /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		8F0CBC650BDB9519002B0AD7 /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		8F0CBC660BDB9519002B0AD7 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		8F0CBC670BDB9519002B0AD7 /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		8F0CBC680BDB9519002B0AD7 /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		8F0CBC6B0BDB9519002B0AD7 /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
 		8F0CBC6C0BDB9519002B0AD7 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = F58090EB0375648201AED2EF /* ReadMe.txt */; };
-		8F0CBC6D0BDB9519002B0AD7 /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		8F0CBC6E0BDB9519002B0AD7 /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
-		8F0CBC6F0BDB9519002B0AD7 /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		8F0CBC720BDB9519002B0AD7 /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		8F0CBC730BDB9519002B0AD7 /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
-		8F0CBC750BDB9519002B0AD7 /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		8F0CBC770BDB9519002B0AD7 /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		8F0E3B82059F3DBB003F6CE9 /* FSNamedNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F0E3B7E059F3DBB003F6CE9 /* FSNamedNumber.h */; };
 		8F0E3B83059F3DBB003F6CE9 /* FSNamedNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0E3B7F059F3DBB003F6CE9 /* FSNamedNumber.m */; };
 		8F0E3B84059F3DBB003F6CE9 /* FSNamedNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F0E3B7E059F3DBB003F6CE9 /* FSNamedNumber.h */; };
@@ -391,16 +448,12 @@
 		8F6DA649055FC6980050409A /* ArrayRepBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D4BE29038511FF01461810 /* ArrayRepBoolean.h */; };
 		8F6DA64A055FC6980050409A /* FSArrayEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA3AE55044D4D6700CF7A3A /* FSArrayEnumerator.h */; };
 		8F6DA64B055FC6980050409A /* FSNSMutableArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F66F85404666E8100AFC811 /* FSNSMutableArray.h */; };
-		8F6DA650055FC6980050409A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		8F6DA651055FC6980050409A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		8F6DA653055FC6980050409A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		8F6DA655055FC6980050409A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		8F6DA656055FC6980050409A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		8F6DA657055FC6980050409A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		8F6DA658055FC6980050409A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		8F6DA659055FC6980050409A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		8F6DA65D055FC6980050409A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
-		8F6DA65F055FC6980050409A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		8F6DA663055FC6980050409A /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
 		8F6DA665055FC6980050409A /* ArrayRepDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31800D7DFE17BE9C1BD /* ArrayRepDouble.m */; };
 		8F6DA666055FC6980050409A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
@@ -578,19 +631,13 @@
 		8F6DA85F055FC70C0050409A /* FSNSMutableArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F66F85404666E8100AFC811 /* FSNSMutableArray.h */; };
 		8F6DA861055FC70C0050409A /* FSObjectBrowserButtonsInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F9569602B272FB0121B3BA /* FSObjectBrowserButtonsInspector.h */; };
 		8F6DA862055FC70C0050409A /* ArrayRepBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D4BE29038511FF01461810 /* ArrayRepBoolean.h */; };
-		8F6DA865055FC70C0050409A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		8F6DA866055FC70C0050409A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		8F6DA869055FC70C0050409A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		8F6DA86A055FC70C0050409A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		8F6DA86B055FC70C0050409A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		8F6DA86C055FC70C0050409A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		8F6DA86D055FC70C0050409A /* fs.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9F7022E9A96011160FE /* fs.icns */; };
-		8F6DA86E055FC70C0050409A /* FScriptAppPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9FB022E9A96011160FE /* FScriptAppPreference.nib */; };
-		8F6DA870055FC70C0050409A /* fs.nib in Resources */ = {isa = PBXBuildFile; fileRef = F598CDB7025CF7E5011B2E41 /* fs.nib */; };
 		8F6DA871055FC70C0050409A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		8F6DA872055FC70C0050409A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		8F6DA876055FC70C0050409A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
-		8F6DA878055FC70C0050409A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		8F6DA879055FC70C0050409A /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
 		8F6DA87B055FC70C0050409A /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
 		8F6DA87D055FC70C0050409A /* ArrayRepDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31800D7DFE17BE9C1BD /* ArrayRepDouble.m */; };
@@ -760,17 +807,13 @@
 		8F6DA95E055FC71F0050409A /* FSArrayEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA3AE55044D4D6700CF7A3A /* FSArrayEnumerator.h */; };
 		8F6DA95F055FC71F0050409A /* TestFS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FBB10A4044E28FD00181279 /* TestFS.h */; };
 		8F6DA960055FC71F0050409A /* FSNSMutableArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F66F85404666E8100AFC811 /* FSNSMutableArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F6DA964055FC71F0050409A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		8F6DA965055FC71F0050409A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		8F6DA968055FC71F0050409A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		8F6DA969055FC71F0050409A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		8F6DA96A055FC71F0050409A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		8F6DA96B055FC71F0050409A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		8F6DA96D055FC71F0050409A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		8F6DA96E055FC71F0050409A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		8F6DA972055FC71F0050409A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
 		8F6DA973055FC71F0050409A /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = F58090EB0375648201AED2EF /* ReadMe.txt */; };
-		8F6DA974055FC71F0050409A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		8F6DA975055FC71F0050409A /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
 		8F6DA977055FC71F0050409A /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
 		8F6DA979055FC71F0050409A /* ArrayRepDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31800D7DFE17BE9C1BD /* ArrayRepDouble.m */; };
@@ -949,12 +992,10 @@
 		8F917E29095F5DE5000932D0 /* FSObjectBrowserSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F585F6F059B23F100C12B6F /* FSObjectBrowserSearchField.m */; };
 		8F917E2C095F5DE7000932D0 /* FSObjectBrowserSearchField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F585F6E059B23F100C12B6F /* FSObjectBrowserSearchField.h */; };
 		8F917E2D095F5DE7000932D0 /* FSObjectBrowserSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F585F6F059B23F100C12B6F /* FSObjectBrowserSearchField.m */; };
-		8F936BEF082E8D9F00A04EBF /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		8F936BF0082E8DA100A04EBF /* FSManagedObjectContextInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37AEC3078B7E900083565D /* FSManagedObjectContextInspector.m */; };
 		8F936BF1082E8DA400A04EBF /* FSManagedObjectContextInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F37AEC2078B7E900083565D /* FSManagedObjectContextInspector.h */; };
 		8F936BF5082E8DBA00A04EBF /* FSManagedObjectContextInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F37AEC2078B7E900083565D /* FSManagedObjectContextInspector.h */; };
 		8F936BF6082E8DBD00A04EBF /* FSManagedObjectContextInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37AEC3078B7E900083565D /* FSManagedObjectContextInspector.m */; };
-		8F936BF7082E8DC300A04EBF /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		8F936BF9082E8E4F00A04EBF /* FSNSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5189E807F072EA00A50735 /* FSNSManagedObjectContext.m */; };
 		8F936BFA082E8E5000A04EBF /* FSNSManagedObjectContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5189E707F072EA00A50735 /* FSNSManagedObjectContext.h */; };
 		8F936BFB082E8E5900A04EBF /* FSNSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5189E807F072EA00A50735 /* FSNSManagedObjectContext.m */; };
@@ -997,9 +1038,6 @@
 		8FA8EDEC07735B3B001BEC7B /* FSCollectionInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA8EDD307735B3B001BEC7B /* FSCollectionInspectorView.m */; };
 		8FA8EDED07735B3B001BEC7B /* FSCollectionInspectorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA8EDC607735B3B001BEC7B /* FSCollectionInspectorView.h */; };
 		8FA8EDEE07735B3B001BEC7B /* FSCollectionInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA8EDD307735B3B001BEC7B /* FSCollectionInspectorView.m */; };
-		8FA8EF9F07739FD4001BEC7B /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		8FA8EFA007739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		8FA8EFA307739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
 		8FAE79AC0DA0ED5D00CB6E14 /* FSCNBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE79AB0DA0ED5D00CB6E14 /* FSCNBlock.m */; };
 		8FAE79AD0DA0ED5D00CB6E14 /* FSCNBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FAE79AA0DA0ED5D00CB6E14 /* FSCNBlock.h */; };
 		8FAE79AE0DA0ED5D00CB6E14 /* FSCNBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE79AB0DA0ED5D00CB6E14 /* FSCNBlock.m */; };
@@ -1060,7 +1098,6 @@
 		8FCA593710883B0100F67841 /* FSNewlyAllocatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA593210883B0100F67841 /* FSNewlyAllocatedObject.m */; };
 		8FCA593810883B0100F67841 /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		8FCA593910883B0100F67841 /* FSNewlyAllocatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA593210883B0100F67841 /* FSNewlyAllocatedObject.m */; };
-		8FCA6B88078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		8FCFCF08094F711900FF7406 /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
 		8FCFCF19094F712400FF7406 /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
 		8FD0A3140DD7276000E47459 /* FSCNReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0A3130DD7276000E47459 /* FSCNReturn.m */; };
@@ -1082,9 +1119,6 @@
 		8FDCCD5305C09F8200747C0A /* FSAttributedStringInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCCD4F05C09F8200747C0A /* FSAttributedStringInspector.m */; };
 		8FDCCD5605C09F8200747C0A /* FSAttributedStringInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDCCD4E05C09F8200747C0A /* FSAttributedStringInspector.h */; };
 		8FDCCD5705C09F8200747C0A /* FSAttributedStringInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCCD4F05C09F8200747C0A /* FSAttributedStringInspector.m */; };
-		8FDCCD7B05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
-		8FDCCD7C05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
-		8FDCCD7E05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		8FDCCDC105C0A23000747C0A /* FSNSAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDCCDBF05C0A23000747C0A /* FSNSAttributedString.h */; };
 		8FDCCDC205C0A23000747C0A /* FSNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCCDC005C0A23000747C0A /* FSNSAttributedString.m */; };
 		8FDCCDC305C0A23000747C0A /* FSNSAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDCCDBF05C0A23000747C0A /* FSNSAttributedString.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1386,25 +1420,16 @@
 		BA223248189FA403002C5B6A /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; };
 		BA22324A189FA403002C5B6A /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
 		BA22324B189FA403002C5B6A /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
-		BA22324C189FA403002C5B6A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		BA22324D189FA403002C5B6A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		BA22324E189FA403002C5B6A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		BA22324F189FA403002C5B6A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		BA223250189FA403002C5B6A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		BA223251189FA403002C5B6A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		BA223252189FA403002C5B6A /* fs.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9F7022E9A96011160FE /* fs.icns */; };
-		BA223253189FA403002C5B6A /* FScriptAppPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9FB022E9A96011160FE /* FScriptAppPreference.nib */; };
-		BA223254189FA403002C5B6A /* fs.nib in Resources */ = {isa = PBXBuildFile; fileRef = F598CDB7025CF7E5011B2E41 /* fs.nib */; };
 		BA223255189FA403002C5B6A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		BA223256189FA403002C5B6A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		BA223258189FA403002C5B6A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
-		BA223259189FA403002C5B6A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		BA22325A189FA403002C5B6A /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
-		BA22325B189FA403002C5B6A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		BA22325E189FA403002C5B6A /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		BA22325F189FA403002C5B6A /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
-		BA223260189FA403002C5B6A /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		BA223261189FA403002C5B6A /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		BA223262189FA403002C5B6A /* FSMovieInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F7472BE056B7ACE00E87339 /* FSMovieInspector.nib */; };
 		BA223263189FA403002C5B6A /* FSTestClasses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE3DC990D26C0FD00A1D767 /* FSTestClasses.txt */; };
 		BA223264189FA403002C5B6A /* DemoAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F9636480F8DF86600A70F39 /* DemoAssistant.xib */; };
@@ -1808,25 +1833,16 @@
 		BA223408189FA412002C5B6A /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; };
 		BA22340A189FA412002C5B6A /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
 		BA22340B189FA412002C5B6A /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
-		BA22340C189FA412002C5B6A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		BA22340D189FA412002C5B6A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		BA22340E189FA412002C5B6A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		BA22340F189FA412002C5B6A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		BA223410189FA412002C5B6A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		BA223411189FA412002C5B6A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		BA223412189FA412002C5B6A /* fs.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9F7022E9A96011160FE /* fs.icns */; };
-		BA223413189FA412002C5B6A /* FScriptAppPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9FB022E9A96011160FE /* FScriptAppPreference.nib */; };
-		BA223414189FA412002C5B6A /* fs.nib in Resources */ = {isa = PBXBuildFile; fileRef = F598CDB7025CF7E5011B2E41 /* fs.nib */; };
 		BA223415189FA412002C5B6A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		BA223416189FA412002C5B6A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		BA223418189FA412002C5B6A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
-		BA223419189FA412002C5B6A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		BA22341A189FA412002C5B6A /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
-		BA22341B189FA412002C5B6A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		BA22341E189FA412002C5B6A /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		BA22341F189FA412002C5B6A /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
-		BA223420189FA412002C5B6A /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		BA223421189FA412002C5B6A /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		BA223422189FA412002C5B6A /* FSMovieInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F7472BE056B7ACE00E87339 /* FSMovieInspector.nib */; };
 		BA223423189FA412002C5B6A /* FSTestClasses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE3DC990D26C0FD00A1D767 /* FSTestClasses.txt */; };
 		BA223424189FA412002C5B6A /* DemoAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F9636480F8DF86600A70F39 /* DemoAssistant.xib */; };
@@ -2228,23 +2244,16 @@
 		BA2235BE189FA429002C5B6A /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		BA2235BF189FA429002C5B6A /* FSWorksWhenModalWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5EDA00109B384A003A2F4C /* FSWorksWhenModalWindow.h */; };
 		BA2235C0189FA429002C5B6A /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA2235C2189FA429002C5B6A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		BA2235C3189FA429002C5B6A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		BA2235C4189FA429002C5B6A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		BA2235C5189FA429002C5B6A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		BA2235C6189FA429002C5B6A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		BA2235C7189FA429002C5B6A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		BA2235C8189FA429002C5B6A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		BA2235C9189FA429002C5B6A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		BA2235CB189FA429002C5B6A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
 		BA2235CC189FA429002C5B6A /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = F58090EB0375648201AED2EF /* ReadMe.txt */; };
-		BA2235CD189FA429002C5B6A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		BA2235CE189FA429002C5B6A /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
-		BA2235CF189FA429002C5B6A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		BA2235D2189FA429002C5B6A /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		BA2235D3189FA429002C5B6A /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
-		BA2235D4189FA429002C5B6A /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		BA2235D5189FA429002C5B6A /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		BA2235D6189FA429002C5B6A /* FSMovieInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F7472BE056B7ACE00E87339 /* FSMovieInspector.nib */; };
 		BA2235D7189FA429002C5B6A /* FSTestClasses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE3DC990D26C0FD00A1D767 /* FSTestClasses.txt */; };
 		BA2235D9189FA429002C5B6A /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
@@ -2542,23 +2551,16 @@
 		BA223706189FA431002C5B6A /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		BA223707189FA431002C5B6A /* FSWorksWhenModalWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5EDA00109B384A003A2F4C /* FSWorksWhenModalWindow.h */; };
 		BA223708189FA431002C5B6A /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA22370A189FA431002C5B6A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		BA22370B189FA431002C5B6A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		BA22370C189FA431002C5B6A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		BA22370D189FA431002C5B6A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		BA22370E189FA431002C5B6A /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		BA22370F189FA431002C5B6A /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		BA223710189FA431002C5B6A /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		BA223711189FA431002C5B6A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		BA223713189FA431002C5B6A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
 		BA223714189FA431002C5B6A /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = F58090EB0375648201AED2EF /* ReadMe.txt */; };
-		BA223715189FA431002C5B6A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		BA223716189FA431002C5B6A /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
-		BA223717189FA431002C5B6A /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		BA22371A189FA431002C5B6A /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		BA22371B189FA431002C5B6A /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
-		BA22371C189FA431002C5B6A /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		BA22371D189FA431002C5B6A /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		BA22371E189FA431002C5B6A /* FSMovieInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F7472BE056B7ACE00E87339 /* FSMovieInspector.nib */; };
 		BA22371F189FA431002C5B6A /* FSTestClasses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE3DC990D26C0FD00A1D767 /* FSTestClasses.txt */; };
 		BA223721189FA431002C5B6A /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
@@ -3101,28 +3103,19 @@
 		EDC2C9AD1A1AA50D00942777 /* FSWorksWhenModalWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5EDA00109B384A003A2F4C /* FSWorksWhenModalWindow.h */; };
 		EDC2C9AE1A1AA50D00942777 /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; };
 		EDC2C9B21A1AA50D00942777 /* FSObjectBrowserButtonsInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */; };
-		EDC2C9B31A1AA50D00942777 /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		EDC2C9B41A1AA50D00942777 /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		EDC2C9B51A1AA50D00942777 /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		EDC2C9B61A1AA50D00942777 /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		EDC2C9B71A1AA50D00942777 /* FSConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE508D119DD4D310012F16A /* FSConsole.xib */; };
 		EDC2C9B81A1AA50D00942777 /* KTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37D00D7DFE17BE9C1BD /* KTest.txt */; };
 		EDC2C9B91A1AA50D00942777 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		EDC2C9BA1A1AA50D00942777 /* fs.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9F7022E9A96011160FE /* fs.icns */; };
-		EDC2C9BB1A1AA50D00942777 /* FScriptAppPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F5F1A9FB022E9A96011160FE /* FScriptAppPreference.nib */; };
-		EDC2C9BC1A1AA50D00942777 /* fs.nib in Resources */ = {isa = PBXBuildFile; fileRef = F598CDB7025CF7E5011B2E41 /* fs.nib */; };
 		EDC2C9BD1A1AA50D00942777 /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		EDC2C9BE1A1AA50D00942777 /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		EDC2C9BF1A1AA50D00942777 /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
-		EDC2C9C01A1AA50D00942777 /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		EDC2C9C11A1AA50D00942777 /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
 		EDC2C9C21A1AA50D00942777 /* FSObjectInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */; };
-		EDC2C9C31A1AA50D00942777 /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		EDC2C9C41A1AA50D00942777 /* FScriptPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE508DA19DD4FDC0012F16A /* FScriptPreferences.xib */; };
 		EDC2C9C51A1AA50D00942777 /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		EDC2C9C61A1AA50D00942777 /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
-		EDC2C9C71A1AA50D00942777 /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		EDC2C9C81A1AA50D00942777 /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		EDC2C9C91A1AA50D00942777 /* FSMovieInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F7472BE056B7ACE00E87339 /* FSMovieInspector.nib */; };
 		EDC2C9CA1A1AA50D00942777 /* FSTestClasses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE3DC990D26C0FD00A1D767 /* FSTestClasses.txt */; };
 		EDC2C9CB1A1AA50D00942777 /* DemoAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F9636480F8DF86600A70F39 /* DemoAssistant.xib */; };
@@ -3537,8 +3530,6 @@
 		EDC2CB761A1AA52500942777 /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDC2CB781A1AA52500942777 /* FSConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE508D119DD4D310012F16A /* FSConsole.xib */; };
 		EDC2CB791A1AA52500942777 /* FSObjectInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3004E71A1A86EF00675D94 /* FSObjectInspectorViewController.xib */; };
-		EDC2CB7A1A1AA52500942777 /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
-		EDC2CB7B1A1AA52500942777 /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		EDC2CB7C1A1AA52500942777 /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		EDC2CB7D1A1AA52500942777 /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
 		EDC2CB7E1A1AA52500942777 /* FScriptPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE508DA19DD4FDC0012F16A /* FScriptPreferences.xib */; };
@@ -3546,16 +3537,11 @@
 		EDC2CB801A1AA52500942777 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37E00D7DFE17BE9C1BD /* license.txt */; };
 		EDC2CB811A1AA52500942777 /* fs.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6E0279FD3C01345511 /* fs.scriptSuite */; };
 		EDC2CB821A1AA52500942777 /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
-		EDC2CB831A1AA52500942777 /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
 		EDC2CB841A1AA52500942777 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = F58090EB0375648201AED2EF /* ReadMe.txt */; };
-		EDC2CB851A1AA52500942777 /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
 		EDC2CB861A1AA52500942777 /* constantsDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 8F92F0380463F2A400F4C61F /* constantsDictionary */; };
-		EDC2CB871A1AA52500942777 /* FSAttributedStringInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */; };
 		EDC2CB881A1AA52500942777 /* run.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F2D066F05CED9B9007EA81B /* run.tiff */; };
 		EDC2CB891A1AA52500942777 /* build.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8F56036505CF22660044FA65 /* build.tiff */; };
 		EDC2CB8A1A1AA52500942777 /* FSObjectBrowserButtonsInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */; };
-		EDC2CB8B1A1AA52500942777 /* FSCollectionInspectorView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */; };
-		EDC2CB8C1A1AA52500942777 /* FSManagedObjectContextInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */; };
 		EDC2CB8D1A1AA52500942777 /* FSMovieInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F7472BE056B7ACE00E87339 /* FSMovieInspector.nib */; };
 		EDC2CB8E1A1AA52500942777 /* FSTestClasses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE3DC990D26C0FD00A1D767 /* FSTestClasses.txt */; };
 		EDC2CB901A1AA52500942777 /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
@@ -3788,6 +3774,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B7388FB1B397B90005BD678 /* FScriptAppPreference.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FScriptAppPreference.xib; sourceTree = "<group>"; };
+		0B7389011B397C4F005BD678 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/fs.xib; sourceTree = "<group>"; };
+		0B7389061B397CD5005BD678 /* blockInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = blockInspector.xib; sourceTree = "<group>"; };
+		0B73890F1B397CE6005BD678 /* ArrayTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArrayTableView.xib; sourceTree = "<group>"; };
+		0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAttributedStringInspector.xib; sourceTree = "<group>"; };
+		0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCollectionInspector.xib; sourceTree = "<group>"; };
+		0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCollectionInspectorView.xib; sourceTree = "<group>"; };
+		0B7389331B397D43005BD678 /* FSImageInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSImageInspector.xib; sourceTree = "<group>"; };
+		0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSManagedObjectContextInspector.xib; sourceTree = "<group>"; };
 		0CD4E30F00D7DFE17BE9C1BD /* FSAirplane.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSAirplane.h; sourceTree = "<group>"; };
 		0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSAirplane.m; sourceTree = "<group>"; };
 		0CD4E31300D7DFE17BE9C1BD /* ArrayPrivate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ArrayPrivate.h; sourceTree = "<group>"; };
@@ -3800,7 +3795,6 @@
 		0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ArrayRepId.m; sourceTree = "<group>"; };
 		0CD4E31D00D7DFE17BE9C1BD /* FSCollectionInspector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSCollectionInspector.h; sourceTree = "<group>"; };
 		0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSCollectionInspector.m; sourceTree = "<group>"; };
-		0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FSCollectionInspector.nib; sourceTree = "<group>"; };
 		0CD4E32000D7DFE17BE9C1BD /* FSObjectBrowser.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowser.h; sourceTree = "<group>"; };
 		0CD4E32100D7DFE17BE9C1BD /* FSObjectBrowser.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowser.m; sourceTree = "<group>"; };
 		0CD4E32200D7DFE17BE9C1BD /* FSObjectBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowserCell.h; sourceTree = "<group>"; };
@@ -3811,7 +3805,6 @@
 		0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSBlock.m; sourceTree = "<group>"; };
 		0CD4E32800D7DFE17BE9C1BD /* BlockInspector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BlockInspector.h; sourceTree = "<group>"; };
 		0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BlockInspector.m; sourceTree = "<group>"; };
-		0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = blockInspector.nib; sourceTree = "<group>"; };
 		0CD4E32B00D7DFE17BE9C1BD /* BlockPrivate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BlockPrivate.h; sourceTree = "<group>"; };
 		0CD4E32C00D7DFE17BE9C1BD /* BlockRep.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BlockRep.h; sourceTree = "<group>"; };
 		0CD4E32D00D7DFE17BE9C1BD /* BlockRep.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BlockRep.m; sourceTree = "<group>"; };
@@ -4032,7 +4025,6 @@
 		8FA3AE56044D4D6700CF7A3A /* FSArrayEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSArrayEnumerator.m; path = FScriptFramework/FSArrayEnumerator.m; sourceTree = SOURCE_ROOT; };
 		8FA8EDC607735B3B001BEC7B /* FSCollectionInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCollectionInspectorView.h; sourceTree = "<group>"; };
 		8FA8EDD307735B3B001BEC7B /* FSCollectionInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCollectionInspectorView.m; sourceTree = "<group>"; };
-		8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FSCollectionInspectorView.nib; sourceTree = "<group>"; };
 		8FAE79AA0DA0ED5D00CB6E14 /* FSCNBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCNBlock.h; sourceTree = "<group>"; };
 		8FAE79AB0DA0ED5D00CB6E14 /* FSCNBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNBlock.m; sourceTree = "<group>"; };
 		8FAE79F10DA109C500CB6E14 /* FSCNAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCNAssignment.h; sourceTree = "<group>"; };
@@ -4065,7 +4057,6 @@
 		8FCA00C20EEAF34300B10420 /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
 		8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNewlyAllocatedObject.h; path = "../F-Script/FSNewlyAllocatedObject.h"; sourceTree = "<group>"; };
 		8FCA593210883B0100F67841 /* FSNewlyAllocatedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSNewlyAllocatedObject.m; path = "../F-Script/FSNewlyAllocatedObject.m"; sourceTree = "<group>"; };
-		8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FSManagedObjectContextInspector.nib; sourceTree = "<group>"; };
 		8FD0A3120DD7276000E47459 /* FSCNReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCNReturn.h; sourceTree = "<group>"; };
 		8FD0A3130DD7276000E47459 /* FSCNReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNReturn.m; sourceTree = "<group>"; };
 		8FD37B9B08472E0F00524B98 /* F-Script.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "F-Script.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4077,7 +4068,6 @@
 		8FD8FD92076624AC009820DF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		8FDCCD4E05C09F8200747C0A /* FSAttributedStringInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAttributedStringInspector.h; sourceTree = "<group>"; };
 		8FDCCD4F05C09F8200747C0A /* FSAttributedStringInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAttributedStringInspector.m; sourceTree = "<group>"; };
-		8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FSAttributedStringInspector.nib; sourceTree = "<group>"; };
 		8FDCCDBF05C0A23000747C0A /* FSNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSAttributedString.h; sourceTree = "<group>"; };
 		8FDCCDC005C0A23000747C0A /* FSNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSAttributedString.m; sourceTree = "<group>"; };
 		8FDF6FCF082BD9560044FD86 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
@@ -4269,7 +4259,6 @@
 		F538EF7F0279FD3C01345511 /* FSTask.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSTask.m; sourceTree = "<group>"; };
 		F54B55B9036B45770140C608 /* FSImageInspector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSImageInspector.h; sourceTree = "<group>"; };
 		F54B55BA036B45770140C608 /* FSImageInspector.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSImageInspector.m; sourceTree = "<group>"; };
-		F54B55C3036B48690140C608 /* FSImageInspector.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FSImageInspector.nib; sourceTree = "<group>"; };
 		F54B55C8036B4A330140C608 /* FSNSImage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSNSImage.h; sourceTree = "<group>"; };
 		F54B55C9036B4A330140C608 /* FSNSImage.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSNSImage.m; sourceTree = "<group>"; };
 		F54CA17602FB2CAF01C25A35 /* FSInterpreterPrivate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSInterpreterPrivate.h; sourceTree = "<group>"; };
@@ -4284,8 +4273,6 @@
 		F58090CF03755FC701AED2EF /* FSObjectBrowserToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowserToolbarItem.h; sourceTree = "<group>"; };
 		F58090D003755FC701AED2EF /* FSObjectBrowserToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowserToolbarItem.m; sourceTree = "<group>"; };
 		F58090EB0375648201AED2EF /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
-		F58090FC03756D2401AED2EF /* ArrayTableView.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = ArrayTableView.nib; sourceTree = "<group>"; };
-		F598CDB8025CF7E5011B2E41 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "F-Script/English.lproj/fs.nib"; sourceTree = "<group>"; };
 		F5A25E260357B373011A39F8 /* FSSystemPrivate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSSystemPrivate.h; sourceTree = "<group>"; };
 		F5D4BE29038511FF01461810 /* ArrayRepBoolean.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ArrayRepBoolean.h; sourceTree = "<group>"; };
 		F5D4BE2A038511FF01461810 /* ArrayRepBoolean.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ArrayRepBoolean.m; sourceTree = "<group>"; };
@@ -4303,7 +4290,6 @@
 		F5F1A9F8022E9A96011160FE /* fs_main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = fs_main.m; sourceTree = "<group>"; };
 		F5F1A9F9022E9A96011160FE /* FScriptAppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FScriptAppController.h; sourceTree = "<group>"; };
 		F5F1A9FA022E9A96011160FE /* FScriptAppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FScriptAppController.m; sourceTree = "<group>"; };
-		F5F1A9FB022E9A96011160FE /* FScriptAppPreference.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = FScriptAppPreference.nib; sourceTree = "<group>"; };
 		F5F1AAAE022E9E4F011160FE /* DOCustom.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DOCustom.h; sourceTree = "<group>"; };
 		F5F1AAAF022E9E4F011160FE /* DOCustom.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DOCustom.m; sourceTree = "<group>"; };
 		F5F1AAB0022E9E4F011160FE /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -4854,12 +4840,12 @@
 				8FBC2884077B7D5200F9B4A2 /* ArrayRepFetchRequest.m */,
 				0CD4E31B00D7DFE17BE9C1BD /* ArrayRepId.h */,
 				0CD4E31C00D7DFE17BE9C1BD /* ArrayRepId.m */,
-				F58090FC03756D2401AED2EF /* ArrayTableView.nib */,
+				0B73890F1B397CE6005BD678 /* ArrayTableView.xib */,
 				8FCA00C10EEAF34300B10420 /* Block_fscript.h */,
 				8FCA00C20EEAF34300B10420 /* Block.m */,
 				0CD4E32800D7DFE17BE9C1BD /* BlockInspector.h */,
 				0CD4E32900D7DFE17BE9C1BD /* BlockInspector.m */,
-				0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */,
+				0B7389061B397CD5005BD678 /* blockInspector.xib */,
 				0CD4E32B00D7DFE17BE9C1BD /* BlockPrivate.h */,
 				0CD4E32C00D7DFE17BE9C1BD /* BlockRep.h */,
 				0CD4E32D00D7DFE17BE9C1BD /* BlockRep.m */,
@@ -4889,7 +4875,7 @@
 				8F940B820F2393B0004525E1 /* FSAssociation.m */,
 				8FDCCD4E05C09F8200747C0A /* FSAttributedStringInspector.h */,
 				8FDCCD4F05C09F8200747C0A /* FSAttributedStringInspector.m */,
-				8FDCCD7A05C0A0A000747C0A /* FSAttributedStringInspector.nib */,
+				0B7389181B397D0A005BD678 /* FSAttributedStringInspector.xib */,
 				0CD4E32600D7DFE17BE9C1BD /* FSBlock.h */,
 				0CD4E32700D7DFE17BE9C1BD /* FSBlock.m */,
 				8F90A2EF096DB0660064F4BC /* FSBlockCompilationResult.h */,
@@ -4937,12 +4923,12 @@
 				8F2E341F0D8DB61C00912543 /* FSCNUnaryMessage.m */,
 				0CD4E31D00D7DFE17BE9C1BD /* FSCollectionInspector.h */,
 				0CD4E31E00D7DFE17BE9C1BD /* FSCollectionInspector.m */,
-				0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */,
+				0B7389211B397D1E005BD678 /* FSCollectionInspector.xib */,
 				8F60216E05A25CDC0004EFF1 /* FSCollectionInspectorTableView.h */,
 				8F60216F05A25CDC0004EFF1 /* FSCollectionInspectorTableView.m */,
 				8FA8EDC607735B3B001BEC7B /* FSCollectionInspectorView.h */,
 				8FA8EDD307735B3B001BEC7B /* FSCollectionInspectorView.m */,
-				8FA8EF9107739FD4001BEC7B /* FSCollectionInspectorView.nib */,
+				0B73892A1B397D2E005BD678 /* FSCollectionInspectorView.xib */,
 				0CD4E39A00D7DFE17BE9C1BD /* FSCommandHistory.h */,
 				0CD4E39B00D7DFE17BE9C1BD /* FSCommandHistory.m */,
 				0CD4E33500D7DFE17BE9C1BD /* FSCompilationResult.h */,
@@ -4983,7 +4969,7 @@
 				F5073A2002FC5400013656B0 /* FSIdentifierFormatter.m */,
 				F54B55B9036B45770140C608 /* FSImageInspector.h */,
 				F54B55BA036B45770140C608 /* FSImageInspector.m */,
-				F54B55C3036B48690140C608 /* FSImageInspector.nib */,
+				0B7389331B397D43005BD678 /* FSImageInspector.xib */,
 				8F7F4F9C07FB274C008E42F4 /* FSInspectorUniquier.h */,
 				8F7F4F9D07FB274C008E42F4 /* FSInspectorUniquier.m */,
 				0CD4E35000D7DFE17BE9C1BD /* FSInterpreter.h */,
@@ -5002,7 +4988,7 @@
 				F55D44C50358A88801B9E934 /* FSKeyedUnarchiver.m */,
 				8F37AEC2078B7E900083565D /* FSManagedObjectContextInspector.h */,
 				8F37AEC3078B7E900083565D /* FSManagedObjectContextInspector.m */,
-				8FCA6B79078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib */,
+				0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */,
 				8F3C13980C65E66400948776 /* FSMethod.h */,
 				8F3C13990C65E66400948776 /* FSMethod.m */,
 				0CD4E38100D7DFE17BE9C1BD /* FSMiscTools.h */,
@@ -5368,12 +5354,12 @@
 		F5F1A9F4022E9A96011160FE /* F-Script */ = {
 			isa = PBXGroup;
 			children = (
-				F598CDB7025CF7E5011B2E41 /* fs.nib */,
+				0B7389001B397C4F005BD678 /* fs.xib */,
 				F5F1A9F7022E9A96011160FE /* fs.icns */,
 				F5F1A9F8022E9A96011160FE /* fs_main.m */,
 				F5F1A9F9022E9A96011160FE /* FScriptAppController.h */,
 				F5F1A9FA022E9A96011160FE /* FScriptAppController.m */,
-				F5F1A9FB022E9A96011160FE /* FScriptAppPreference.nib */,
+				0B7388FB1B397B90005BD678 /* FScriptAppPreference.xib */,
 				8F9636430F8DF6AB00A70F39 /* FSDemoAssistant.h */,
 				8F9636480F8DF86600A70F39 /* DemoAssistant.xib */,
 				8F9636410F8DF69F00A70F39 /* FSDemoAssistant.m */,
@@ -7238,6 +7224,7 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = 0CD4E2FB00D7DD4D7BE9C1BD;
 			productRefGroup = 0CD4E2FC00D7DDB47BE9C1BD /* Products */;
@@ -7264,8 +7251,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F0CBC610BDB9519002B0AD7 /* FSCollectionInspector.nib in Resources */,
-				8F0CBC620BDB9519002B0AD7 /* blockInspector.nib in Resources */,
 				8F0CBC630BDB9519002B0AD7 /* FlightTutorial.txt in Resources */,
 				8F0CBC640BDB9519002B0AD7 /* genObjInspector.nib in Resources */,
 				8F0CBC650BDB9519002B0AD7 /* KTest.txt in Resources */,
@@ -7273,15 +7258,10 @@
 				8F0CBC670BDB9519002B0AD7 /* fs.scriptSuite in Resources */,
 				8F0CBC680BDB9519002B0AD7 /* fs.scriptTerminology in Resources */,
 				ED68BE4B1A35E39000968430 /* FSObjectBrowser.xib in Resources */,
-				8F0CBC6B0BDB9519002B0AD7 /* FSImageInspector.nib in Resources */,
 				8F0CBC6C0BDB9519002B0AD7 /* ReadMe.txt in Resources */,
-				8F0CBC6D0BDB9519002B0AD7 /* ArrayTableView.nib in Resources */,
 				8F0CBC6E0BDB9519002B0AD7 /* constantsDictionary in Resources */,
-				8F0CBC6F0BDB9519002B0AD7 /* FSAttributedStringInspector.nib in Resources */,
 				8F0CBC720BDB9519002B0AD7 /* run.tiff in Resources */,
 				8F0CBC730BDB9519002B0AD7 /* build.tiff in Resources */,
-				8F0CBC750BDB9519002B0AD7 /* FSCollectionInspectorView.nib in Resources */,
-				8F0CBC770BDB9519002B0AD7 /* FSManagedObjectContextInspector.nib in Resources */,
 				EDE508E219DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				EDA22BF31A24C28D0093DB91 /* window.png in Resources */,
 				EDA22BE91A24C28D0093DB91 /* view.png in Resources */,
@@ -7298,8 +7278,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F6DA650055FC6980050409A /* FSCollectionInspector.nib in Resources */,
-				8F6DA651055FC6980050409A /* blockInspector.nib in Resources */,
 				8F6DA653055FC6980050409A /* FlightTutorial.txt in Resources */,
 				8F6DA655055FC6980050409A /* KTest.txt in Resources */,
 				8F6DA656055FC6980050409A /* license.txt in Resources */,
@@ -7309,16 +7287,11 @@
 				8F6DA658055FC6980050409A /* fs.scriptSuite in Resources */,
 				8F6DA659055FC6980050409A /* fs.scriptTerminology in Resources */,
 				EDE508D819DD4D310012F16A /* FSConsole.xib in Resources */,
-				8F6DA65D055FC6980050409A /* FSImageInspector.nib in Resources */,
 				EDA22BE81A24C28D0093DB91 /* view.png in Resources */,
 				EDE508E119DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
-				8F6DA65F055FC6980050409A /* ArrayTableView.nib in Resources */,
-				8FDCCD7E05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
 				ED68BE4A1A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				8F2D067305CED9B9007EA81B /* run.tiff in Resources */,
 				8F56036705CF22660044FA65 /* build.tiff in Resources */,
-				8FA8EFA307739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
-				8F936BF7082E8DC300A04EBF /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA22BF21A24C28D0093DB91 /* window.png in Resources */,
 				8F6631D30C4A270100FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9A0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
@@ -7337,37 +7310,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B73892B1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				8FCFCF19094F712400FF7406 /* FSTest2.app in Resources */,
 				8FCFCF08094F711900FF7406 /* FSTest1.app in Resources */,
 				EDFB2FF31A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				8F6DA865055FC70C0050409A /* FSCollectionInspector.nib in Resources */,
-				8F6DA866055FC70C0050409A /* blockInspector.nib in Resources */,
 				8F6DA869055FC70C0050409A /* FlightTutorial.txt in Resources */,
 				8F6DA86A055FC70C0050409A /* genObjInspector.nib in Resources */,
 				EDE508D219DD4D310012F16A /* FSConsole.xib in Resources */,
+				0B7389341B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B7389221B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				8F6DA86B055FC70C0050409A /* KTest.txt in Resources */,
 				8F6DA86C055FC70C0050409A /* license.txt in Resources */,
+				0B7388FC1B397B90005BD678 /* FScriptAppPreference.xib in Resources */,
+				0B73893D1B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				8F6DA86D055FC70C0050409A /* fs.icns in Resources */,
-				8F6DA86E055FC70C0050409A /* FScriptAppPreference.nib in Resources */,
-				8F6DA870055FC70C0050409A /* fs.nib in Resources */,
 				8F6DA871055FC70C0050409A /* fs.scriptSuite in Resources */,
 				8F6DA872055FC70C0050409A /* fs.scriptTerminology in Resources */,
-				8F6DA876055FC70C0050409A /* FSImageInspector.nib in Resources */,
-				8F6DA878055FC70C0050409A /* ArrayTableView.nib in Resources */,
+				0B7389191B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				8F6DA879055FC70C0050409A /* constantsDictionary in Resources */,
 				ED3004F41A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
-				8FDCCD7C05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
 				EDE508DB19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F2D067105CED9B9007EA81B /* run.tiff in Resources */,
 				EDA22BEA1A24C28D0093DB91 /* window.png in Resources */,
+				0B7389071B397CD5005BD678 /* blockInspector.xib in Resources */,
 				8F56036805CF22660044FA65 /* build.tiff in Resources */,
 				ED68BE421A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDA6AC691A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
-				8FA8EFA007739FD5001BEC7B /* FSCollectionInspectorView.nib in Resources */,
-				8FCA6B88078E0E4F005FC6B2 /* FSManagedObjectContextInspector.nib in Resources */,
+				0B7389101B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				EDA22BE01A24C28D0093DB91 /* view.png in Resources */,
 				8F6631D40C4A270200FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9C0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
+				0B7389021B397C4F005BD678 /* fs.xib in Resources */,
 				8F9636490F8DF86600A70F39 /* DemoAssistant.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7378,28 +7351,28 @@
 			files = (
 				EDE508D319DD4D310012F16A /* FSConsole.xib in Resources */,
 				ED3004F51A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
-				8F6DA964055FC71F0050409A /* FSCollectionInspector.nib in Resources */,
-				8F6DA965055FC71F0050409A /* blockInspector.nib in Resources */,
+				0B73891A1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				8F6DA968055FC71F0050409A /* FlightTutorial.txt in Resources */,
 				8F6DA969055FC71F0050409A /* genObjInspector.nib in Resources */,
+				0B7389111B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				ED68BE431A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDE508DC19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F6DA96A055FC71F0050409A /* KTest.txt in Resources */,
+				0B73892C1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				8F6DA96B055FC71F0050409A /* license.txt in Resources */,
 				8F6DA96D055FC71F0050409A /* fs.scriptSuite in Resources */,
+				0B7389351B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B73893E1B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				8F6DA96E055FC71F0050409A /* fs.scriptTerminology in Resources */,
-				8F6DA972055FC71F0050409A /* FSImageInspector.nib in Resources */,
+				0B7389231B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				8F6DA973055FC71F0050409A /* ReadMe.txt in Resources */,
-				8F6DA974055FC71F0050409A /* ArrayTableView.nib in Resources */,
 				8F6DA975055FC71F0050409A /* constantsDictionary in Resources */,
-				8FDCCD7B05C0A0A000747C0A /* FSAttributedStringInspector.nib in Resources */,
 				EDA22BE11A24C28D0093DB91 /* view.png in Resources */,
 				8F2D067005CED9B9007EA81B /* run.tiff in Resources */,
 				8F56036905CF22660044FA65 /* build.tiff in Resources */,
 				EDFB2FF41A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				8FA8EF9F07739FD4001BEC7B /* FSCollectionInspectorView.nib in Resources */,
+				0B7389081B397CD5005BD678 /* blockInspector.xib in Resources */,
 				EDA22BEB1A24C28D0093DB91 /* window.png in Resources */,
-				8F936BEF082E8D9F00A04EBF /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC6A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8F6631D50C4A270200FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9D0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
@@ -7410,37 +7383,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B73892D1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				BA22324A189FA403002C5B6A /* FSTest2.app in Resources */,
 				BA22324B189FA403002C5B6A /* FSTest1.app in Resources */,
 				EDFB2FF51A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				BA22324C189FA403002C5B6A /* FSCollectionInspector.nib in Resources */,
-				BA22324D189FA403002C5B6A /* blockInspector.nib in Resources */,
 				BA22324E189FA403002C5B6A /* FlightTutorial.txt in Resources */,
 				BA22324F189FA403002C5B6A /* genObjInspector.nib in Resources */,
 				EDE508D419DD4D310012F16A /* FSConsole.xib in Resources */,
+				0B7389361B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B7389241B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				BA223250189FA403002C5B6A /* KTest.txt in Resources */,
 				BA223251189FA403002C5B6A /* license.txt in Resources */,
+				0B7388FD1B397B90005BD678 /* FScriptAppPreference.xib in Resources */,
+				0B73893F1B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				BA223252189FA403002C5B6A /* fs.icns in Resources */,
-				BA223253189FA403002C5B6A /* FScriptAppPreference.nib in Resources */,
-				BA223254189FA403002C5B6A /* fs.nib in Resources */,
 				BA223255189FA403002C5B6A /* fs.scriptSuite in Resources */,
 				BA223256189FA403002C5B6A /* fs.scriptTerminology in Resources */,
-				BA223258189FA403002C5B6A /* FSImageInspector.nib in Resources */,
-				BA223259189FA403002C5B6A /* ArrayTableView.nib in Resources */,
+				0B73891B1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				BA22325A189FA403002C5B6A /* constantsDictionary in Resources */,
 				ED3004F61A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
-				BA22325B189FA403002C5B6A /* FSAttributedStringInspector.nib in Resources */,
 				EDE508DD19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22325E189FA403002C5B6A /* run.tiff in Resources */,
 				EDA22BEC1A24C28D0093DB91 /* window.png in Resources */,
+				0B7389091B397CD5005BD678 /* blockInspector.xib in Resources */,
 				BA22325F189FA403002C5B6A /* build.tiff in Resources */,
 				ED68BE441A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDA6AC6B1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
-				BA223260189FA403002C5B6A /* FSCollectionInspectorView.nib in Resources */,
-				BA223261189FA403002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
+				0B7389121B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				EDA22BE21A24C28D0093DB91 /* view.png in Resources */,
 				BA223262189FA403002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA223263189FA403002C5B6A /* FSTestClasses.txt in Resources */,
+				0B7389031B397C4F005BD678 /* fs.xib in Resources */,
 				BA223264189FA403002C5B6A /* DemoAssistant.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7449,37 +7422,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B73892F1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				BA22340A189FA412002C5B6A /* FSTest2.app in Resources */,
 				BA22340B189FA412002C5B6A /* FSTest1.app in Resources */,
 				EDFB2FF71A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				BA22340C189FA412002C5B6A /* FSCollectionInspector.nib in Resources */,
-				BA22340D189FA412002C5B6A /* blockInspector.nib in Resources */,
 				BA22340E189FA412002C5B6A /* FlightTutorial.txt in Resources */,
 				BA22340F189FA412002C5B6A /* genObjInspector.nib in Resources */,
 				EDE508D619DD4D310012F16A /* FSConsole.xib in Resources */,
+				0B7389381B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B7389261B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				BA223410189FA412002C5B6A /* KTest.txt in Resources */,
 				BA223411189FA412002C5B6A /* license.txt in Resources */,
+				0B7388FE1B397B90005BD678 /* FScriptAppPreference.xib in Resources */,
+				0B7389411B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				BA223412189FA412002C5B6A /* fs.icns in Resources */,
-				BA223413189FA412002C5B6A /* FScriptAppPreference.nib in Resources */,
-				BA223414189FA412002C5B6A /* fs.nib in Resources */,
 				BA223415189FA412002C5B6A /* fs.scriptSuite in Resources */,
 				BA223416189FA412002C5B6A /* fs.scriptTerminology in Resources */,
-				BA223418189FA412002C5B6A /* FSImageInspector.nib in Resources */,
-				BA223419189FA412002C5B6A /* ArrayTableView.nib in Resources */,
+				0B73891D1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				BA22341A189FA412002C5B6A /* constantsDictionary in Resources */,
 				ED3004F81A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
-				BA22341B189FA412002C5B6A /* FSAttributedStringInspector.nib in Resources */,
 				EDE508DF19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22341E189FA412002C5B6A /* run.tiff in Resources */,
 				EDA22BEE1A24C28D0093DB91 /* window.png in Resources */,
+				0B73890B1B397CD5005BD678 /* blockInspector.xib in Resources */,
 				BA22341F189FA412002C5B6A /* build.tiff in Resources */,
 				ED68BE461A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDA6AC6D1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
-				BA223420189FA412002C5B6A /* FSCollectionInspectorView.nib in Resources */,
-				BA223421189FA412002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
+				0B7389141B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				EDA22BE41A24C28D0093DB91 /* view.png in Resources */,
 				BA223422189FA412002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA223423189FA412002C5B6A /* FSTestClasses.txt in Resources */,
+				0B7389041B397C4F005BD678 /* fs.xib in Resources */,
 				BA223424189FA412002C5B6A /* DemoAssistant.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7490,28 +7463,28 @@
 			files = (
 				EDE508D519DD4D310012F16A /* FSConsole.xib in Resources */,
 				ED3004F71A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
-				BA2235C2189FA429002C5B6A /* FSCollectionInspector.nib in Resources */,
-				BA2235C3189FA429002C5B6A /* blockInspector.nib in Resources */,
+				0B73891C1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				BA2235C4189FA429002C5B6A /* FlightTutorial.txt in Resources */,
 				BA2235C5189FA429002C5B6A /* genObjInspector.nib in Resources */,
+				0B7389131B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				ED68BE451A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDE508DE19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA2235C6189FA429002C5B6A /* KTest.txt in Resources */,
+				0B73892E1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				BA2235C7189FA429002C5B6A /* license.txt in Resources */,
 				BA2235C8189FA429002C5B6A /* fs.scriptSuite in Resources */,
+				0B7389371B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B7389401B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				BA2235C9189FA429002C5B6A /* fs.scriptTerminology in Resources */,
-				BA2235CB189FA429002C5B6A /* FSImageInspector.nib in Resources */,
+				0B7389251B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				BA2235CC189FA429002C5B6A /* ReadMe.txt in Resources */,
-				BA2235CD189FA429002C5B6A /* ArrayTableView.nib in Resources */,
 				BA2235CE189FA429002C5B6A /* constantsDictionary in Resources */,
-				BA2235CF189FA429002C5B6A /* FSAttributedStringInspector.nib in Resources */,
 				EDA22BE31A24C28D0093DB91 /* view.png in Resources */,
 				BA2235D2189FA429002C5B6A /* run.tiff in Resources */,
 				BA2235D3189FA429002C5B6A /* build.tiff in Resources */,
 				EDFB2FF61A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				BA2235D4189FA429002C5B6A /* FSCollectionInspectorView.nib in Resources */,
+				0B73890A1B397CD5005BD678 /* blockInspector.xib in Resources */,
 				EDA22BED1A24C28D0093DB91 /* window.png in Resources */,
-				BA2235D5189FA429002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC6C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA2235D6189FA429002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA2235D7189FA429002C5B6A /* FSTestClasses.txt in Resources */,
@@ -7524,28 +7497,28 @@
 			files = (
 				EDE508D719DD4D310012F16A /* FSConsole.xib in Resources */,
 				ED3004F91A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
-				BA22370A189FA431002C5B6A /* FSCollectionInspector.nib in Resources */,
-				BA22370B189FA431002C5B6A /* blockInspector.nib in Resources */,
+				0B73891E1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				BA22370C189FA431002C5B6A /* FlightTutorial.txt in Resources */,
 				BA22370D189FA431002C5B6A /* genObjInspector.nib in Resources */,
+				0B7389151B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				ED68BE471A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDE508E019DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22370E189FA431002C5B6A /* KTest.txt in Resources */,
+				0B7389301B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				BA22370F189FA431002C5B6A /* license.txt in Resources */,
 				BA223710189FA431002C5B6A /* fs.scriptSuite in Resources */,
+				0B7389391B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B7389421B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				BA223711189FA431002C5B6A /* fs.scriptTerminology in Resources */,
-				BA223713189FA431002C5B6A /* FSImageInspector.nib in Resources */,
+				0B7389271B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				BA223714189FA431002C5B6A /* ReadMe.txt in Resources */,
-				BA223715189FA431002C5B6A /* ArrayTableView.nib in Resources */,
 				BA223716189FA431002C5B6A /* constantsDictionary in Resources */,
-				BA223717189FA431002C5B6A /* FSAttributedStringInspector.nib in Resources */,
 				EDA22BE51A24C28D0093DB91 /* view.png in Resources */,
 				BA22371A189FA431002C5B6A /* run.tiff in Resources */,
 				BA22371B189FA431002C5B6A /* build.tiff in Resources */,
 				EDFB2FF81A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				BA22371C189FA431002C5B6A /* FSCollectionInspectorView.nib in Resources */,
+				0B73890C1B397CD5005BD678 /* blockInspector.xib in Resources */,
 				EDA22BEF1A24C28D0093DB91 /* window.png in Resources */,
-				BA22371D189FA431002C5B6A /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC6E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA22371E189FA431002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA22371F189FA431002C5B6A /* FSTestClasses.txt in Resources */,
@@ -7557,34 +7530,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDC2C9B21A1AA50D00942777 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				EDC2C9B31A1AA50D00942777 /* FSCollectionInspector.nib in Resources */,
-				EDC2C9B41A1AA50D00942777 /* blockInspector.nib in Resources */,
 				EDC2C9B51A1AA50D00942777 /* FlightTutorial.txt in Resources */,
 				EDA22BF01A24C28D0093DB91 /* window.png in Resources */,
+				0B7388FF1B397B90005BD678 /* FScriptAppPreference.xib in Resources */,
 				EDC2C9B61A1AA50D00942777 /* genObjInspector.nib in Resources */,
 				EDC2C9B71A1AA50D00942777 /* FSConsole.xib in Resources */,
+				0B73891F1B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
+				0B73893A1B397D43005BD678 /* FSImageInspector.xib in Resources */,
 				EDC2C9B81A1AA50D00942777 /* KTest.txt in Resources */,
+				0B7389431B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				EDC2C9B91A1AA50D00942777 /* license.txt in Resources */,
+				0B7389161B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				EDC2C9BA1A1AA50D00942777 /* fs.icns in Resources */,
-				EDC2C9BB1A1AA50D00942777 /* FScriptAppPreference.nib in Resources */,
-				EDC2C9BC1A1AA50D00942777 /* fs.nib in Resources */,
 				ED68BE481A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDC2C9BD1A1AA50D00942777 /* fs.scriptSuite in Resources */,
 				EDC2C9BE1A1AA50D00942777 /* fs.scriptTerminology in Resources */,
-				EDC2C9BF1A1AA50D00942777 /* FSImageInspector.nib in Resources */,
 				EDA22BE61A24C28D0093DB91 /* view.png in Resources */,
-				EDC2C9C01A1AA50D00942777 /* ArrayTableView.nib in Resources */,
 				EDC2C9C11A1AA50D00942777 /* constantsDictionary in Resources */,
 				EDC2C9C21A1AA50D00942777 /* FSObjectInspectorViewController.xib in Resources */,
-				EDC2C9C31A1AA50D00942777 /* FSAttributedStringInspector.nib in Resources */,
+				0B73890D1B397CD5005BD678 /* blockInspector.xib in Resources */,
+				0B7389051B397C4F005BD678 /* fs.xib in Resources */,
 				EDC2C9C41A1AA50D00942777 /* FScriptPreferences.xib in Resources */,
 				EDC2C9C51A1AA50D00942777 /* run.tiff in Resources */,
 				EDC2C9C61A1AA50D00942777 /* build.tiff in Resources */,
 				EDA6AC6F1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
-				EDC2C9C71A1AA50D00942777 /* FSCollectionInspectorView.nib in Resources */,
-				EDC2C9C81A1AA50D00942777 /* FSManagedObjectContextInspector.nib in Resources */,
+				0B7389311B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				EDC2C9C91A1AA50D00942777 /* FSMovieInspector.nib in Resources */,
 				EDC2C9CA1A1AA50D00942777 /* FSTestClasses.txt in Resources */,
+				0B7389281B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				EDC2C9CB1A1AA50D00942777 /* DemoAssistant.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7595,28 +7568,28 @@
 			files = (
 				EDC2CB781A1AA52500942777 /* FSConsole.xib in Resources */,
 				EDC2CB791A1AA52500942777 /* FSObjectInspectorViewController.xib in Resources */,
-				EDC2CB7A1A1AA52500942777 /* FSCollectionInspector.nib in Resources */,
-				EDC2CB7B1A1AA52500942777 /* blockInspector.nib in Resources */,
+				0B7389201B397D0A005BD678 /* FSAttributedStringInspector.xib in Resources */,
 				EDC2CB7C1A1AA52500942777 /* FlightTutorial.txt in Resources */,
 				EDC2CB7D1A1AA52500942777 /* genObjInspector.nib in Resources */,
+				0B7389171B397CE6005BD678 /* ArrayTableView.xib in Resources */,
 				ED68BE491A35E39000968430 /* FSObjectBrowser.xib in Resources */,
 				EDC2CB7E1A1AA52500942777 /* FScriptPreferences.xib in Resources */,
 				EDC2CB7F1A1AA52500942777 /* KTest.txt in Resources */,
+				0B7389321B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
 				EDC2CB801A1AA52500942777 /* license.txt in Resources */,
 				EDC2CB811A1AA52500942777 /* fs.scriptSuite in Resources */,
+				0B73893B1B397D43005BD678 /* FSImageInspector.xib in Resources */,
+				0B7389441B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */,
 				EDC2CB821A1AA52500942777 /* fs.scriptTerminology in Resources */,
-				EDC2CB831A1AA52500942777 /* FSImageInspector.nib in Resources */,
+				0B7389291B397D1E005BD678 /* FSCollectionInspector.xib in Resources */,
 				EDC2CB841A1AA52500942777 /* ReadMe.txt in Resources */,
-				EDC2CB851A1AA52500942777 /* ArrayTableView.nib in Resources */,
 				EDC2CB861A1AA52500942777 /* constantsDictionary in Resources */,
-				EDC2CB871A1AA52500942777 /* FSAttributedStringInspector.nib in Resources */,
 				EDA22BE71A24C28D0093DB91 /* view.png in Resources */,
 				EDC2CB881A1AA52500942777 /* run.tiff in Resources */,
 				EDC2CB891A1AA52500942777 /* build.tiff in Resources */,
 				EDC2CB8A1A1AA52500942777 /* FSObjectBrowserButtonsInspector.xib in Resources */,
-				EDC2CB8B1A1AA52500942777 /* FSCollectionInspectorView.nib in Resources */,
+				0B73890E1B397CD5005BD678 /* blockInspector.xib in Resources */,
 				EDA22BF11A24C28D0093DB91 /* window.png in Resources */,
-				EDC2CB8C1A1AA52500942777 /* FSManagedObjectContextInspector.nib in Resources */,
 				EDA6AC701A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				EDC2CB8D1A1AA52500942777 /* FSMovieInspector.nib in Resources */,
 				EDC2CB8E1A1AA52500942777 /* FSTestClasses.txt in Resources */,
@@ -9316,13 +9289,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F598CDB7025CF7E5011B2E41 /* fs.nib */ = {
+		0B7389001B397C4F005BD678 /* fs.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F598CDB8025CF7E5011B2E41 /* English */,
+				0B7389011B397C4F005BD678 /* English */,
 			);
-			name = fs.nib;
-			sourceTree = SOURCE_ROOT;
+			name = fs.xib;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
