@@ -144,6 +144,7 @@ id FSMapToObject(void *valuePtr, NSUInteger index, char fsEncodedType, const cha
       case fscode_CGSize:  return [NSValue valueWithSize:((NSSize *)valuePtr)[index]];
       case fscode_NSRect:
       case fscode_CGRect:  return [NSValue valueWithRect:((NSRect *)valuePtr)[index]];
+      case fscode_NSEdgeInsets:  return [NSValue valueWithEdgeInsets:((NSEdgeInsets *)valuePtr)[index]];
       case fscode_CGAffineTransform: return FSNSAffineTransformFromCGAffineTransform(((CGAffineTransform *)valuePtr)[index]);
       case '*':
       case '^': 
@@ -302,6 +303,13 @@ void FSMapFromObject(void *valuePtr, NSUInteger index, char fsEncodedType, id ob
     if      (![object isKindOfClass:[NSValue class]])          FSExecError([NSString stringWithFormat:@"%@ is %@. An instance of NSValue containing a NSRect was expected", description(mapType, argumentNumber, selector, ivarName), descriptionForFSMessage(object)]);
     else if (strcmp([object objCType], @encode(NSRect)) != 0)  FSExecError([NSString stringWithFormat:@"%@ must be an NSValue containing a NSRect", description(mapType, argumentNumber, selector, ivarName)]);    
     else                                                       ((NSRect *)valuePtr)[index] = [object rectValue];
+    break;
+  }
+    case fscode_NSEdgeInsets:
+  {
+    if      (![object isKindOfClass:[NSValue class]])          FSExecError([NSString stringWithFormat:@"%@ is %@. An instance of NSValue containing a NSEdgeInsets was expected", description(mapType, argumentNumber, selector, ivarName), descriptionForFSMessage(object)]);
+    else if (strcmp([object objCType], @encode(NSEdgeInsets)) != 0)  FSExecError([NSString stringWithFormat:@"%@ must be an NSValue containing a NSEdgeInsets", description(mapType, argumentNumber, selector, ivarName)]);
+    else                                                       ((NSEdgeInsets *)valuePtr)[index] = [object edgeInsetsValue];
     break;
   }
   case fscode_CGAffineTransform:
