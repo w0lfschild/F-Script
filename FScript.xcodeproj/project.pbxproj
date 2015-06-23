@@ -1099,7 +1099,6 @@
 		8FCA593810883B0100F67841 /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		8FCA593910883B0100F67841 /* FSNewlyAllocatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA593210883B0100F67841 /* FSNewlyAllocatedObject.m */; };
 		8FCFCF08094F711900FF7406 /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
-		8FCFCF19094F712400FF7406 /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
 		8FD0A3140DD7276000E47459 /* FSCNReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0A3130DD7276000E47459 /* FSCNReturn.m */; };
 		8FD0A3150DD7276000E47459 /* FSCNReturn.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD0A3120DD7276000E47459 /* FSCNReturn.h */; };
 		8FD0A3160DD7276000E47459 /* FSCNReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0A3130DD7276000E47459 /* FSCNReturn.m */; };
@@ -1418,7 +1417,6 @@
 		BA223246189FA403002C5B6A /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		BA223247189FA403002C5B6A /* FSWorksWhenModalWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5EDA00109B384A003A2F4C /* FSWorksWhenModalWindow.h */; };
 		BA223248189FA403002C5B6A /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; };
-		BA22324A189FA403002C5B6A /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
 		BA22324B189FA403002C5B6A /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
 		BA22324E189FA403002C5B6A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		BA22324F189FA403002C5B6A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
@@ -1831,7 +1829,6 @@
 		BA223406189FA412002C5B6A /* FSNewlyAllocatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FCA593110883B0100F67841 /* FSNewlyAllocatedObject.h */; };
 		BA223407189FA412002C5B6A /* FSWorksWhenModalWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5EDA00109B384A003A2F4C /* FSWorksWhenModalWindow.h */; };
 		BA223408189FA412002C5B6A /* FSNSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F44270B116549C700E88F21 /* FSNSMutableDictionary.h */; };
-		BA22340A189FA412002C5B6A /* FSTest2.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37B9F08472E0F00524B98 /* FSTest2.app */; };
 		BA22340B189FA412002C5B6A /* FSTest1.app in Resources */ = {isa = PBXBuildFile; fileRef = 8FD37BA108472E0F00524B98 /* FSTest1.app */; };
 		BA22340E189FA412002C5B6A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
 		BA22340F189FA412002C5B6A /* genObjInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E37900D7DFE17BE9C1BD /* genObjInspector.nib */; };
@@ -3729,13 +3726,6 @@
 			remoteGlobalIDString = 8F6DA8F2055FC71F0050409A;
 			remoteInfo = FScriptFramework;
 		};
-		8F3C42560E95545800DFD84F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F6DA5DE055FC6980050409A;
-			remoteInfo = FSTest2;
-		};
 		8FD176B7098C25FB00D0A57D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
@@ -3750,26 +3740,12 @@
 			remoteGlobalIDString = 8F6DA6D8055FC6C80050409A;
 			remoteInfo = FSTest1;
 		};
-		BA2231A6189FA403002C5B6A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F6DA5DE055FC6980050409A;
-			remoteInfo = FSTest2;
-		};
 		BA223364189FA412002C5B6A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8F6DA6D8055FC6C80050409A;
 			remoteInfo = FSTest1;
-		};
-		BA223366189FA412002C5B6A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD4E2FA00D7DD4D7BE9C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F6DA5DE055FC6980050409A;
-			remoteInfo = FSTest2;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -4061,7 +4037,6 @@
 		8FD0A3130DD7276000E47459 /* FSCNReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNReturn.m; sourceTree = "<group>"; };
 		8FD37B9B08472E0F00524B98 /* F-Script.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "F-Script.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD37B9E08472E0F00524B98 /* FScript.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FScript.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FD37B9F08472E0F00524B98 /* FSTest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSTest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD37BA108472E0F00524B98 /* FSTest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSTest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD7D4A60975B377009B2685 /* FSReturnSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReturnSignal.h; sourceTree = "<group>"; };
 		8FD7D4A70975B377009B2685 /* FSReturnSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReturnSignal.m; sourceTree = "<group>"; };
@@ -4806,7 +4781,6 @@
 			children = (
 				8FD37B9B08472E0F00524B98 /* F-Script.app */,
 				8FD37B9E08472E0F00524B98 /* FScript.framework */,
-				8FD37B9F08472E0F00524B98 /* FSTest2.app */,
 				8FD37BA108472E0F00524B98 /* FSTest1.app */,
 				8F6392D10BDB8521005C8D94 /* FScriptIBPlugin.ibplugin */,
 				BA223360189FA403002C5B6A /* F-Script.app */,
@@ -7008,26 +6982,6 @@
 			productReference = 8F6392D10BDB8521005C8D94 /* FScriptIBPlugin.ibplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
-		8F6DA5DE055FC6980050409A /* FSTest2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8F2881F008F9C040005B3C5A /* Build configuration list for PBXNativeTarget "FSTest2" */;
-			buildPhases = (
-				8F6DA5DF055FC6980050409A /* Headers */,
-				8F6DA64E055FC6980050409A /* Resources */,
-				8F6DA660055FC6980050409A /* Sources */,
-				8F6DA6C2055FC6980050409A /* Frameworks */,
-				8F6DA6CF055FC6980050409A /* Rez */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FSTest2;
-			productInstallPath = "$(USER_APPS_DIR)";
-			productName = FSTest2;
-			productReference = 8FD37B9F08472E0F00524B98 /* FSTest2.app */;
-			productType = "com.apple.product-type.application";
-		};
 		8F6DA6D8055FC6C80050409A /* FSTest1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F2881EC08F9C040005B3C5A /* Build configuration list for PBXNativeTarget "FSTest1" */;
@@ -7240,7 +7194,6 @@
 				EDC2C8FF1A1AA50D00942777 /* F-Script 10.10 */,
 				EDC2CACF1A1AA52500942777 /* FScriptFramework 10.10 */,
 				8F6DA6D8055FC6C80050409A /* FSTest1 */,
-				8F6DA5DE055FC6980050409A /* FSTest2 */,
 				8F6392D00BDB8521005C8D94 /* FScriptIBPlugin */,
 			);
 		};
@@ -7311,7 +7264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B73892B1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
-				8FCFCF19094F712400FF7406 /* FSTest2.app in Resources */,
 				8FCFCF08094F711900FF7406 /* FSTest1.app in Resources */,
 				EDFB2FF31A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				8F6DA869055FC70C0050409A /* FlightTutorial.txt in Resources */,
@@ -7384,7 +7336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B73892D1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
-				BA22324A189FA403002C5B6A /* FSTest2.app in Resources */,
 				BA22324B189FA403002C5B6A /* FSTest1.app in Resources */,
 				EDFB2FF51A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				BA22324E189FA403002C5B6A /* FlightTutorial.txt in Resources */,
@@ -7423,7 +7374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B73892F1B397D2E005BD678 /* FSCollectionInspectorView.xib in Resources */,
-				BA22340A189FA412002C5B6A /* FSTest2.app in Resources */,
 				BA22340B189FA412002C5B6A /* FSTest1.app in Resources */,
 				EDFB2FF71A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
 				BA22340E189FA412002C5B6A /* FlightTutorial.txt in Resources */,
@@ -9256,11 +9206,6 @@
 			target = 8F6DA8F2055FC71F0050409A /* FScriptFramework 10.7 */;
 			targetProxy = 8F38D0DA0C36ACE0002512EE /* PBXContainerItemProxy */;
 		};
-		8F3C42570E95545800DFD84F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F6DA5DE055FC6980050409A /* FSTest2 */;
-			targetProxy = 8F3C42560E95545800DFD84F /* PBXContainerItemProxy */;
-		};
 		8FD176B8098C25FB00D0A57D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8F6DA6D8055FC6C80050409A /* FSTest1 */;
@@ -9271,20 +9216,10 @@
 			target = 8F6DA6D8055FC6C80050409A /* FSTest1 */;
 			targetProxy = BA2231A4189FA403002C5B6A /* PBXContainerItemProxy */;
 		};
-		BA2231A5189FA403002C5B6A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F6DA5DE055FC6980050409A /* FSTest2 */;
-			targetProxy = BA2231A6189FA403002C5B6A /* PBXContainerItemProxy */;
-		};
 		BA223363189FA412002C5B6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8F6DA6D8055FC6C80050409A /* FSTest1 */;
 			targetProxy = BA223364189FA412002C5B6A /* PBXContainerItemProxy */;
-		};
-		BA223365189FA412002C5B6A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F6DA5DE055FC6980050409A /* FSTest2 */;
-			targetProxy = BA223366189FA412002C5B6A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -9409,54 +9344,6 @@
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = FSTest1;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		8F2881F108F9C040005B3C5A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = "$(value) NO";
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_PASCAL_STRINGS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = "";
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				INFOPLIST_FILE = "Info-FSTest2_2.plist";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "-lffi";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = FSTest2;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = Debug;
-		};
-		8F2881F208F9C040005B3C5A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_PASCAL_STRINGS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				INFOPLIST_FILE = "Info-FSTest2_2.plist";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "-lffi";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = FSTest2;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
@@ -10129,15 +10016,6 @@
 			buildConfigurations = (
 				8F2881ED08F9C040005B3C5A /* Debug */,
 				8F2881EE08F9C040005B3C5A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		8F2881F008F9C040005B3C5A /* Build configuration list for PBXNativeTarget "FSTest2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8F2881F108F9C040005B3C5A /* Debug */,
-				8F2881F208F9C040005B3C5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
