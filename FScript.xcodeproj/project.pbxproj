@@ -286,8 +286,6 @@
 		8F658B2E05C9694F0040FB24 /* FSNSFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F658B2805C9694F0040FB24 /* FSNSFont.m */; };
 		8F658B2F05C9694F0040FB24 /* FSNSFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F658B2705C9694F0040FB24 /* FSNSFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F658B3005C9694F0040FB24 /* FSNSFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F658B2805C9694F0040FB24 /* FSNSFont.m */; };
-		8F6597B60C37F061006CDCA0 /* FScriptMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6597B50C37F061006CDCA0 /* FScriptMenuItem.png */; };
-		8F6598150C381250006CDCA0 /* FSInterpreterView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 8F6597D90C381103006CDCA0 /* FSInterpreterView.classdescription */; };
 		8F6631CC0C4A26E600FA798A /* FSQTMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F573F90056B780500F2796A /* FSQTMovie.m */; };
 		8F6631CD0C4A26E700FA798A /* FSQTMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F573F90056B780500F2796A /* FSQTMovie.m */; };
 		8F6631CE0C4A26F100FA798A /* FSMovieInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F573F7E056B754B00F2796A /* FSMovieInspector.m */; };
@@ -303,7 +301,6 @@
 		8F67A7A10C497C4600A707A7 /* FSConstantsDictionaryGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F92F0350463F03300F4C61F /* FSConstantsDictionaryGenerator.m */; };
 		8F6937F206B6E03D00AEAC6A /* TestFS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FBB10A4044E28FD00181279 /* TestFS.h */; };
 		8F6B34B206E27E4600B3943E /* TestFS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E3A000D7DFE17BE9C1BD /* TestFS.m */; };
-		8F6DA5E0055FC6980050409A /* DOCustom.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F1AAB7022E9E90011160FE /* DOCustom.h */; };
 		8F6DA5E1055FC6980050409A /* FSAirplane.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CD4E30F00D7DFE17BE9C1BD /* FSAirplane.h */; };
 		8F6DA5E3055FC6980050409A /* ArrayPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CD4E31300D7DFE17BE9C1BD /* ArrayPrivate.h */; };
 		8F6DA5E4055FC6980050409A /* ArrayRep.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CD4E31400D7DFE17BE9C1BD /* ArrayRep.h */; };
@@ -394,7 +391,6 @@
 		8F6DA649055FC6980050409A /* ArrayRepBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D4BE29038511FF01461810 /* ArrayRepBoolean.h */; };
 		8F6DA64A055FC6980050409A /* FSArrayEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA3AE55044D4D6700CF7A3A /* FSArrayEnumerator.h */; };
 		8F6DA64B055FC6980050409A /* FSNSMutableArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F66F85404666E8100AFC811 /* FSNSMutableArray.h */; };
-		8F6DA64F055FC6980050409A /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = F5F1AABA022E9E90011160FE /* MainMenu.nib */; };
 		8F6DA650055FC6980050409A /* FSCollectionInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E31F00D7DFE17BE9C1BD /* FSCollectionInspector.nib */; };
 		8F6DA651055FC6980050409A /* blockInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E32A00D7DFE17BE9C1BD /* blockInspector.nib */; };
 		8F6DA653055FC6980050409A /* FlightTutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0CD4E34400D7DFE17BE9C1BD /* FlightTutorial.txt */; };
@@ -405,8 +401,6 @@
 		8F6DA659055FC6980050409A /* fs.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = F538EF6F0279FD3C01345511 /* fs.scriptTerminology */; };
 		8F6DA65D055FC6980050409A /* FSImageInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = F54B55C3036B48690140C608 /* FSImageInspector.nib */; };
 		8F6DA65F055FC6980050409A /* ArrayTableView.nib in Resources */ = {isa = PBXBuildFile; fileRef = F58090FC03756D2401AED2EF /* ArrayTableView.nib */; };
-		8F6DA661055FC6980050409A /* DOCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F1AAB8022E9E90011160FE /* DOCustom.m */; };
-		8F6DA662055FC6980050409A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F1AAB9022E9E90011160FE /* main.m */; };
 		8F6DA663055FC6980050409A /* FSAirplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31000D7DFE17BE9C1BD /* FSAirplane.m */; };
 		8F6DA665055FC6980050409A /* ArrayRepDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31800D7DFE17BE9C1BD /* ArrayRepDouble.m */; };
 		8F6DA666055FC6980050409A /* ArrayRepEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD4E31A00D7DFE17BE9C1BD /* ArrayRepEmpty.m */; };
@@ -949,10 +943,6 @@
 		8F90A2F6096DB0660064F4BC /* FSBlockCompilationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */; };
 		8F90A2F7096DB0660064F4BC /* FSBlockCompilationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F90A2EF096DB0660064F4BC /* FSBlockCompilationResult.h */; };
 		8F90A2F8096DB0660064F4BC /* FSBlockCompilationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */; };
-		8F913FD20BDB92EE001685EA /* FScriptIBPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F913FD00BDB92EE001685EA /* FScriptIBPlugin.m */; };
-		8F913FDC0BDB92FC001685EA /* FScriptIBPluginInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F913FD50BDB92FC001685EA /* FScriptIBPluginInspector.m */; };
-		8F913FDF0BDB92FC001685EA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F913FD90BDB92FC001685EA /* Info.plist */; };
-		8F913FE00BDB92FC001685EA /* version.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F913FDA0BDB92FC001685EA /* version.plist */; };
 		8F917E20095F5DE3000932D0 /* FSObjectBrowserSearchField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F585F6E059B23F100C12B6F /* FSObjectBrowserSearchField.h */; };
 		8F917E21095F5DE3000932D0 /* FSObjectBrowserSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F585F6F059B23F100C12B6F /* FSObjectBrowserSearchField.m */; };
 		8F917E28095F5DE5000932D0 /* FSObjectBrowserSearchField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F585F6E059B23F100C12B6F /* FSObjectBrowserSearchField.h */; };
@@ -1032,8 +1022,6 @@
 		8FB5060805D53C8600153B33 /* FSObjectBrowserMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB5060005D53C8600153B33 /* FSObjectBrowserMatrix.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8FB523970C21FE030028B297 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F85274707F6016900E706F5 /* Cocoa.framework */; };
 		8FB5239B0C21FE330028B297 /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B24640271980D01DB4759 /* ExceptionHandling.framework */; };
-		8FB524190C2205C20028B297 /* FScriptIBPluginInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB524150C2205C20028B297 /* FScriptIBPluginInspector.nib */; };
-		8FB5241A0C2205C20028B297 /* FScriptIBPluginLibrary.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB524170C2205C20028B297 /* FScriptIBPluginLibrary.nib */; };
 		8FB9D5990F1CEE2100E10274 /* FSGlobalScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9D5980F1CEE2100E10274 /* FSGlobalScope.m */; };
 		8FB9D59A0F1CEE2100E10274 /* FSGlobalScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FB9D5970F1CEE2100E10274 /* FSGlobalScope.h */; };
 		8FB9D59B0F1CEE2100E10274 /* FSGlobalScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9D5980F1CEE2100E10274 /* FSGlobalScope.m */; };
@@ -3343,9 +3331,7 @@
 		EDC2CA9B1A1AA50D00942777 /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223151189F9AC6002C5B6A /* IOBluetoothUI.framework */; };
 		EDC2CA9C1A1AA50D00942777 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223152189F9AC6002C5B6A /* IOKit.framework */; };
 		EDC2CA9D1A1AA50D00942777 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223153189F9AC6002C5B6A /* IOSurface.framework */; };
-		EDC2CA9E1A1AA50D00942777 /* JavaFrameEmbedding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223154189F9AC6002C5B6A /* JavaFrameEmbedding.framework */; };
 		EDC2CA9F1A1AA50D00942777 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223155189F9AC6002C5B6A /* JavaScriptCore.framework */; };
-		EDC2CAA01A1AA50D00942777 /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223156189F9AC6002C5B6A /* JavaVM.framework */; };
 		EDC2CAA11A1AA50D00942777 /* Kerberos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223157189F9AC6002C5B6A /* Kerberos.framework */; };
 		EDC2CAA21A1AA50D00942777 /* LatentSemanticMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223159189F9AC7002C5B6A /* LatentSemanticMapping.framework */; };
 		EDC2CAA31A1AA50D00942777 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA325161CA64B0035A675 /* GLKit.framework */; };
@@ -3991,14 +3977,9 @@
 		8F6584F80C484A5100C8A3FC /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		8F658B2705C9694F0040FB24 /* FSNSFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSFont.h; sourceTree = "<group>"; };
 		8F658B2805C9694F0040FB24 /* FSNSFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSFont.m; sourceTree = "<group>"; };
-		8F6597B50C37F061006CDCA0 /* FScriptMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FScriptMenuItem.png; path = FScriptIBPlugin/FScriptMenuItem.png; sourceTree = "<group>"; };
-		8F6597D90C381103006CDCA0 /* FSInterpreterView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FSInterpreterView.classdescription; path = FScriptIBPlugin/FSInterpreterView.classdescription; sourceTree = "<group>"; };
 		8F66F85404666E8100AFC811 /* FSNSMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSMutableArray.h; sourceTree = "<group>"; };
 		8F66F85504666E8100AFC811 /* FSNSMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSMutableArray.m; sourceTree = "<group>"; };
-		8F6DA6D1055FC6980050409A /* Info-FSTest2_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-FSTest2_2.plist"; sourceTree = "<group>"; };
 		8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-FSTest1_2.plist"; sourceTree = "<group>"; };
-		8F6DA8EB055FC70C0050409A /* Info-F_Script__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-F_Script__Upgraded_.plist"; sourceTree = "<group>"; };
-		8F6DA9DC055FC7200050409A /* Info-FScriptFramework__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-FScriptFramework__Upgraded_.plist"; sourceTree = "<group>"; };
 		8F71F72205C43A7D00C34794 /* FSInterpreterViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSInterpreterViewPrivate.h; sourceTree = "<group>"; };
 		8F72237D0D870C6A00394C99 /* FSCNSuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCNSuper.h; sourceTree = "<group>"; };
 		8F72237E0D870C6A00394C99 /* FSCNSuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNSuper.m; sourceTree = "<group>"; };
@@ -4030,14 +4011,6 @@
 		8F8F58650D9FE6A900ED0FED /* FSCNStatementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNStatementList.m; sourceTree = "<group>"; };
 		8F90A2EF096DB0660064F4BC /* FSBlockCompilationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBlockCompilationResult.h; sourceTree = "<group>"; };
 		8F90A2F0096DB0660064F4BC /* FSBlockCompilationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBlockCompilationResult.m; sourceTree = "<group>"; };
-		8F913FCE0BDB92EE001685EA /* FScriptIBPlugin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FScriptIBPlugin_Prefix.pch; path = FScriptIBPlugin/FScriptIBPlugin_Prefix.pch; sourceTree = "<group>"; };
-		8F913FCF0BDB92EE001685EA /* FScriptIBPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FScriptIBPlugin.h; path = FScriptIBPlugin/FScriptIBPlugin.h; sourceTree = "<group>"; };
-		8F913FD00BDB92EE001685EA /* FScriptIBPlugin.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FScriptIBPlugin.m; path = FScriptIBPlugin/FScriptIBPlugin.m; sourceTree = "<group>"; };
-		8F913FD30BDB92FC001685EA /* FScriptIBPlugin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = "FScriptIBPlugin-Info.plist"; path = "FScriptIBPlugin/FScriptIBPlugin-Info.plist"; sourceTree = "<group>"; };
-		8F913FD40BDB92FC001685EA /* FScriptIBPluginInspector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FScriptIBPluginInspector.h; path = FScriptIBPlugin/FScriptIBPluginInspector.h; sourceTree = "<group>"; };
-		8F913FD50BDB92FC001685EA /* FScriptIBPluginInspector.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FScriptIBPluginInspector.m; path = FScriptIBPlugin/FScriptIBPluginInspector.m; sourceTree = "<group>"; };
-		8F913FD90BDB92FC001685EA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Info.plist; path = FScriptIBPlugin/Info.plist; sourceTree = "<group>"; };
-		8F913FDA0BDB92FC001685EA /* version.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = version.plist; path = FScriptIBPlugin/version.plist; sourceTree = "<group>"; };
 		8F92F0340463F03300F4C61F /* FSConstantsDictionaryGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConstantsDictionaryGenerator.h; sourceTree = "<group>"; };
 		8F92F0350463F03300F4C61F /* FSConstantsDictionaryGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConstantsDictionaryGenerator.m; sourceTree = "<group>"; };
 		8F92F0380463F2A400F4C61F /* constantsDictionary */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = constantsDictionary; sourceTree = "<group>"; };
@@ -4066,8 +4039,6 @@
 		8FAE79F20DA109C500CB6E14 /* FSCNAssignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNAssignment.m; sourceTree = "<group>"; };
 		8FB505FF05D53C8600153B33 /* FSObjectBrowserMatrix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowserMatrix.h; sourceTree = "<group>"; };
 		8FB5060005D53C8600153B33 /* FSObjectBrowserMatrix.m */ = {isa = PBXFileReference; fileEncoding = 30; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowserMatrix.m; sourceTree = "<group>"; tabWidth = 8; };
-		8FB524160C2205C20028B297 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = FScriptIBPlugin/English.lproj/FScriptIBPluginInspector.nib; sourceTree = "<group>"; };
-		8FB524180C2205C20028B297 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = FScriptIBPlugin/English.lproj/FScriptIBPluginLibrary.nib; sourceTree = "<group>"; };
 		8FB9D5970F1CEE2100E10274 /* FSGlobalScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGlobalScope.h; sourceTree = "<group>"; };
 		8FB9D5980F1CEE2100E10274 /* FSGlobalScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGlobalScope.m; sourceTree = "<group>"; };
 		8FBB10A4044E28FD00181279 /* TestFS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFS.h; sourceTree = "<group>"; };
@@ -4271,9 +4242,7 @@
 		EDC2C8EE1A1AA34D00942777 /* FSObjectInspectorBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSObjectInspectorBackgroundView.h; sourceTree = "<group>"; };
 		EDC2C8EF1A1AA34D00942777 /* FSObjectInspectorBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSObjectInspectorBackgroundView.m; sourceTree = "<group>"; };
 		EDC2CACD1A1AA50D00942777 /* F-Script.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "F-Script.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDC2CACE1A1AA50F00942777 /* F-Script 10.9 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "F-Script 10.9 copy-Info.plist"; path = "/Volumes/Macintosh SSD/Users/ant/Development/GitProjects/F-Script/F-Script 10.9 copy-Info.plist"; sourceTree = "<absolute>"; };
 		EDC2CC271A1AA52500942777 /* FScript.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FScript.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDC2CC281A1AA52700942777 /* FScriptFramework 10.9 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FScriptFramework 10.9 copy-Info.plist"; path = "/Volumes/Macintosh SSD/Users/ant/Development/GitProjects/F-Script/FScriptFramework 10.9 copy-Info.plist"; sourceTree = "<absolute>"; };
 		EDE508D119DD4D310012F16A /* FSConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSConsole.xib; sourceTree = "<group>"; };
 		EDE508DA19DD4FDC0012F16A /* FScriptPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FScriptPreferences.xib; sourceTree = "<group>"; };
 		EDFB2FF21A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSObjectBrowserButtonsInspector.xib; sourceTree = "<group>"; };
@@ -4339,10 +4308,6 @@
 		F5F1AAAF022E9E4F011160FE /* DOCustom.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DOCustom.m; sourceTree = "<group>"; };
 		F5F1AAB0022E9E4F011160FE /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5F1AAB1022E9E4F011160FE /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
-		F5F1AAB7022E9E90011160FE /* DOCustom.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DOCustom.h; sourceTree = "<group>"; };
-		F5F1AAB8022E9E90011160FE /* DOCustom.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DOCustom.m; sourceTree = "<group>"; };
-		F5F1AAB9022E9E90011160FE /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F5F1AABA022E9E90011160FE /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
 		F5F856C002EB281C01F7E6F0 /* PointerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PointerPrivate.h; sourceTree = "<group>"; };
 		F5F9569502B272FB0121B3BA /* FSObjectBrowserButtonsInspector.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FSObjectBrowserButtonsInspector.m; sourceTree = "<group>"; };
 		F5F9569602B272FB0121B3BA /* FSObjectBrowserButtonsInspector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSObjectBrowserButtonsInspector.h; sourceTree = "<group>"; };
@@ -4781,9 +4746,7 @@
 				EDC2CA9B1A1AA50D00942777 /* IOBluetoothUI.framework in Frameworks */,
 				EDC2CA9C1A1AA50D00942777 /* IOKit.framework in Frameworks */,
 				EDC2CA9D1A1AA50D00942777 /* IOSurface.framework in Frameworks */,
-				EDC2CA9E1A1AA50D00942777 /* JavaFrameEmbedding.framework in Frameworks */,
 				EDC2CA9F1A1AA50D00942777 /* JavaScriptCore.framework in Frameworks */,
-				EDC2CAA01A1AA50D00942777 /* JavaVM.framework in Frameworks */,
 				EDC2CAA11A1AA50D00942777 /* Kerberos.framework in Frameworks */,
 				EDC2CAA21A1AA50D00942777 /* LatentSemanticMapping.framework in Frameworks */,
 				EDC2CAA31A1AA50D00942777 /* GLKit.framework in Frameworks */,
@@ -4844,18 +4807,11 @@
 			children = (
 				F5F1A9F4022E9A96011160FE /* F-Script */,
 				0CD4E30D00D7DFE17BE9C1BD /* FScriptFramework */,
-				8F6392E00BDB855B005C8D94 /* FScriptIBPlugin */,
 				F5F1AAAD022E9E4F011160FE /* FSTest1 */,
-				F5F1AAB6022E9E90011160FE /* FSTest2 */,
-				8F6DA8EB055FC70C0050409A /* Info-F_Script__Upgraded_.plist */,
-				8F6DA9DC055FC7200050409A /* Info-FScriptFramework__Upgraded_.plist */,
 				8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */,
-				8F6DA6D1055FC6980050409A /* Info-FSTest2_2.plist */,
 				F5F00F100279FB69016D9B48 /* JGAdditions */,
 				0CD4E2FC00D7DDB47BE9C1BD /* Products */,
 				ED48525318B603C300877668 /* Frameworks */,
-				EDC2CACE1A1AA50F00942777 /* F-Script 10.9 copy-Info.plist */,
-				EDC2CC281A1AA52700942777 /* FScriptFramework 10.9 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -5210,25 +5166,6 @@
 			sourceTree = "<group>";
 			tabWidth = 2;
 		};
-		8F6392E00BDB855B005C8D94 /* FScriptIBPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				8F913FD30BDB92FC001685EA /* FScriptIBPlugin-Info.plist */,
-				8F913FD40BDB92FC001685EA /* FScriptIBPluginInspector.h */,
-				8F913FD50BDB92FC001685EA /* FScriptIBPluginInspector.m */,
-				8F913FD90BDB92FC001685EA /* Info.plist */,
-				8F913FDA0BDB92FC001685EA /* version.plist */,
-				8F6597B50C37F061006CDCA0 /* FScriptMenuItem.png */,
-				8FB524150C2205C20028B297 /* FScriptIBPluginInspector.nib */,
-				8FB524170C2205C20028B297 /* FScriptIBPluginLibrary.nib */,
-				8F913FCE0BDB92EE001685EA /* FScriptIBPlugin_Prefix.pch */,
-				8F913FCF0BDB92EE001685EA /* FScriptIBPlugin.h */,
-				8F913FD00BDB92EE001685EA /* FScriptIBPlugin.m */,
-				8F6597D90C381103006CDCA0 /* FSInterpreterView.classdescription */,
-			);
-			name = FScriptIBPlugin;
-			sourceTree = "<group>";
-		};
 		ED48525318B603C300877668 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -5455,17 +5392,6 @@
 			path = FSTest1;
 			sourceTree = "<group>";
 		};
-		F5F1AAB6022E9E90011160FE /* FSTest2 */ = {
-			isa = PBXGroup;
-			children = (
-				F5F1AAB7022E9E90011160FE /* DOCustom.h */,
-				F5F1AAB8022E9E90011160FE /* DOCustom.m */,
-				F5F1AAB9022E9E90011160FE /* main.m */,
-				F5F1AABA022E9E90011160FE /* MainMenu.nib */,
-			);
-			path = FSTest2;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -5473,7 +5399,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F6DA5E0055FC6980050409A /* DOCustom.h in Headers */,
 				8F6DA5E1055FC6980050409A /* FSAirplane.h in Headers */,
 				8F6DA5E3055FC6980050409A /* ArrayPrivate.h in Headers */,
 				8F6DA5E4055FC6980050409A /* ArrayRep.h in Headers */,
@@ -7305,7 +7230,7 @@
 		0CD4E2FA00D7DD4D7BE9C1BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 8F2881FC08F9C040005B3C5A /* Build configuration list for PBXProject "FScript" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -7339,7 +7264,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F6598150C381250006CDCA0 /* FSInterpreterView.classdescription in Resources */,
 				8F0CBC610BDB9519002B0AD7 /* FSCollectionInspector.nib in Resources */,
 				8F0CBC620BDB9519002B0AD7 /* blockInspector.nib in Resources */,
 				8F0CBC630BDB9519002B0AD7 /* FlightTutorial.txt in Resources */,
@@ -7358,16 +7282,11 @@
 				8F0CBC730BDB9519002B0AD7 /* build.tiff in Resources */,
 				8F0CBC750BDB9519002B0AD7 /* FSCollectionInspectorView.nib in Resources */,
 				8F0CBC770BDB9519002B0AD7 /* FSManagedObjectContextInspector.nib in Resources */,
-				8F913FDF0BDB92FC001685EA /* Info.plist in Resources */,
-				8F913FE00BDB92FC001685EA /* version.plist in Resources */,
 				EDE508E219DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				EDA22BF31A24C28D0093DB91 /* window.png in Resources */,
-				8FB524190C2205C20028B297 /* FScriptIBPluginInspector.nib in Resources */,
-				8FB5241A0C2205C20028B297 /* FScriptIBPluginLibrary.nib in Resources */,
 				EDA22BE91A24C28D0093DB91 /* view.png in Resources */,
 				8F38D0FA0C36AD13002512EE /* FScript.framework in Resources */,
 				EDE508D919DD4D310012F16A /* FSConsole.xib in Resources */,
-				8F6597B60C37F061006CDCA0 /* FScriptMenuItem.png in Resources */,
 				8F6631D20C4A270000FA798A /* FSMovieInspector.nib in Resources */,
 				EDA6AC721A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				EDFB2FFA1A17E345002C8DD7 /* FSObjectBrowserButtonsInspector.xib in Resources */,
@@ -7379,7 +7298,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F6DA64F055FC6980050409A /* MainMenu.nib in Resources */,
 				8F6DA650055FC6980050409A /* FSCollectionInspector.nib in Resources */,
 				8F6DA651055FC6980050409A /* blockInspector.nib in Resources */,
 				8F6DA653055FC6980050409A /* FlightTutorial.txt in Resources */,
@@ -7892,8 +7810,6 @@
 				8F0CBC540BDB94AD002B0AD7 /* FSObjectBrowserSearchField.m in Sources */,
 				8F0CBC550BDB94AD002B0AD7 /* FSBlockCompilationResult.m in Sources */,
 				8F0CBC560BDB94AD002B0AD7 /* FSReturnSignal.m in Sources */,
-				8F913FD20BDB92EE001685EA /* FScriptIBPlugin.m in Sources */,
-				8F913FDC0BDB92FC001685EA /* FScriptIBPluginInspector.m in Sources */,
 				8F6631CE0C4A26F100FA798A /* FSMovieInspector.m in Sources */,
 				8F3C139A0C65E66400948776 /* FSMethod.m in Sources */,
 				8F5AD3220D05CFFE000CEAC6 /* FSCNClassDefinition.m in Sources */,
@@ -7939,8 +7855,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F6DA661055FC6980050409A /* DOCustom.m in Sources */,
-				8F6DA662055FC6980050409A /* main.m in Sources */,
 				8F6DA663055FC6980050409A /* FSAirplane.m in Sources */,
 				8F6DA665055FC6980050409A /* ArrayRepDouble.m in Sources */,
 				8F6DA666055FC6980050409A /* ArrayRepEmpty.m in Sources */,
@@ -9402,22 +9316,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8FB524150C2205C20028B297 /* FScriptIBPluginInspector.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FB524160C2205C20028B297 /* English */,
-			);
-			name = FScriptIBPluginInspector.nib;
-			sourceTree = "<group>";
-		};
-		8FB524170C2205C20028B297 /* FScriptIBPluginLibrary.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FB524180C2205C20028B297 /* English */,
-			);
-			name = FScriptIBPluginLibrary.nib;
-			sourceTree = "<group>";
-		};
 		F598CDB7025CF7E5011B2E41 /* fs.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -9669,6 +9567,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
@@ -9758,6 +9657,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.FScriptIBPluginFramework;
 				PRODUCT_NAME = FScriptIBPlugin;
 				WRAPPER_EXTENSION = ibplugin;
 				ZERO_LINK = NO;
@@ -9789,6 +9689,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.FScriptIBPluginFramework;
 				PRODUCT_NAME = FScriptIBPlugin;
 				WRAPPER_EXTENSION = ibplugin;
 				ZERO_LINK = NO;
@@ -10109,8 +10010,9 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.fscriptapp;
 				PRODUCT_NAME = "F-Script";
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
@@ -10152,8 +10054,9 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lffi";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.fscriptapp;
 				PRODUCT_NAME = "F-Script";
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				VALID_ARCHS = x86_64;
 				WARNING_CFLAGS = "-Wmost";
@@ -10191,6 +10094,7 @@
 				OTHER_LIBTOOL_FLAGS = "$(value) ";
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.fscriptframework;
 				PRODUCT_NAME = FScript;
 				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
@@ -10226,6 +10130,7 @@
 				OTHER_LIBTOOL_FLAGS = "$(value) ";
 				OTHER_REZFLAGS = "";
 				PRINCIPAL_CLASS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.fscriptframework;
 				PRODUCT_NAME = FScript;
 				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
