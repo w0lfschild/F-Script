@@ -305,8 +305,13 @@
 //  id selectedObject = [self selectedObject];
   id block=[interpreter objectForIdentifier:title found:&found];
   if (!found) {
-    NSInteger choice=NSRunAlertPanel(@"Undefined block", [NSString stringWithFormat:@"Could not find block with name %@", title], @"Cancel", @"Remove Menu Entry", nil);
-    if (choice) {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Cancel"]; //default
+    [alert addButtonWithTitle:@"Remove Menu Entry"]; //alternate
+    [alert setMessageText:@"Undefined block"];
+    [alert setInformativeText:[NSString stringWithFormat:@"Could not find block with name %@", title]];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    if ([alert runModal] == NSAlertSecondButtonReturn) {
       [[self class] removeCustomBlockMenuIdentifier:title];
     }
   } else {
