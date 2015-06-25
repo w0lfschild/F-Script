@@ -115,4 +115,8 @@ static NSMutableArray *sObjectBrowsers;
         }
 }
 
+-(void)dealloc {
+  
+}
+
 @end

@@ -1527,7 +1527,7 @@ static NSMutableArray* customButtons = nil;
         if ([receiver isKindOfClass:[FSNewlyAllocatedObjectHolder class]])
                 receiver = [receiver object];
         args[0] = receiver;
-        args[1] = (id)selector;
+        args[1] = (id)sel_getName(selector);
         for (i = 0; i < nbarg; i++)
                 args[i + 2] = [arguments objectAtIndex:i];
 

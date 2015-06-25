@@ -3941,7 +3941,6 @@
 		8F60216F05A25CDC0004EFF1 /* FSCollectionInspectorTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCollectionInspectorTableView.m; sourceTree = "<group>"; };
 		8F60F24505A9FE8B00985FEC /* FSNSSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSSet.h; sourceTree = "<group>"; };
 		8F60F24605A9FE8B00985FEC /* FSNSSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSSet.m; sourceTree = "<group>"; };
-		8F6392D10BDB8521005C8D94 /* FScriptIBPlugin.ibplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FScriptIBPlugin.ibplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F63CC08044B95DB00B84480 /* FSNSObjectPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSObjectPrivate.h; sourceTree = "<group>"; };
 		8F6584F80C484A5100C8A3FC /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		8F658B2705C9694F0040FB24 /* FSNSFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSFont.h; sourceTree = "<group>"; };
@@ -4782,7 +4781,6 @@
 				8FD37B9B08472E0F00524B98 /* F-Script.app */,
 				8FD37B9E08472E0F00524B98 /* FScript.framework */,
 				8FD37BA108472E0F00524B98 /* FSTest1.app */,
-				8F6392D10BDB8521005C8D94 /* FScriptIBPlugin.ibplugin */,
 				BA223360189FA403002C5B6A /* F-Script.app */,
 				BA223520189FA412002C5B6A /* F-Script.app */,
 				BA223668189FA429002C5B6A /* FScriptFramework.framework */,
@@ -6964,24 +6962,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8F6392D00BDB8521005C8D94 /* FScriptIBPlugin */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8F6392D30BDB8522005C8D94 /* Build configuration list for PBXNativeTarget "FScriptIBPlugin" */;
-			buildPhases = (
-				8F6392CD0BDB8521005C8D94 /* Resources */,
-				8F6392CE0BDB8521005C8D94 /* Sources */,
-				8F6392CF0BDB8521005C8D94 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8F38D0DB0C36ACE0002512EE /* PBXTargetDependency */,
-			);
-			name = FScriptIBPlugin;
-			productName = FScripIBPlugin;
-			productReference = 8F6392D10BDB8521005C8D94 /* FScriptIBPlugin.ibplugin */;
-			productType = "com.apple.product-type.bundle";
-		};
 		8F6DA6D8055FC6C80050409A /* FSTest1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F2881EC08F9C040005B3C5A /* Build configuration list for PBXNativeTarget "FSTest1" */;
@@ -7194,7 +7174,6 @@
 				EDC2C8FF1A1AA50D00942777 /* F-Script 10.10 */,
 				EDC2CACF1A1AA52500942777 /* FScriptFramework 10.10 */,
 				8F6DA6D8055FC6C80050409A /* FSTest1 */,
-				8F6392D00BDB8521005C8D94 /* FScriptIBPlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -9491,71 +9470,6 @@
 			};
 			name = Release;
 		};
-		8F6392D40BDB8522005C8D94 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_DEVELOPER_DIR)/Library/Frameworks\"";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_GC = unsupported;
-				GCC_MODEL_TUNING = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				INFOPLIST_FILE = "FScriptIBPlugin/FScriptIBPlugin-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-lffi",
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.FScriptIBPluginFramework;
-				PRODUCT_NAME = FScriptIBPlugin;
-				WRAPPER_EXTENSION = ibplugin;
-				ZERO_LINK = NO;
-			};
-			name = Debug;
-		};
-		8F6392D50BDB8522005C8D94 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_DEVELOPER_DIR)/Library/Frameworks\"";
-				GCC_ENABLE_OBJC_GC = unsupported;
-				GCC_MODEL_TUNING = "";
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "FScriptIBPlugin/FScriptIBPlugin-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-lffi",
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.fscript.FScriptIBPluginFramework;
-				PRODUCT_NAME = FScriptIBPlugin;
-				WRAPPER_EXTENSION = ibplugin;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		BA22335E189FA403002C5B6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -10034,15 +9948,6 @@
 			buildConfigurations = (
 				8F2881FD08F9C040005B3C5A /* Debug */,
 				8F2881FE08F9C040005B3C5A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		8F6392D30BDB8522005C8D94 /* Build configuration list for PBXNativeTarget "FScriptIBPlugin" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8F6392D40BDB8522005C8D94 /* Debug */,
-				8F6392D50BDB8522005C8D94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -867,7 +867,7 @@ id sendMsgPattern(id receiver, SEL selector, NSUInteger argumentCount, id *args,
     r_size_tab[currentDeep] = size;
   }   
     
-  subArgs[1] = (id)selector;
+  subArgs[1] = (id)sel_getName(selector);
     
   if ([pattern isSimpleLoopOnReceiver]) 
   {
@@ -880,10 +880,10 @@ id sendMsgPattern(id receiver, SEL selector, NSUInteger argumentCount, id *args,
         id r;
         
         args[0] = [receiver arrayRep];
-        args[1] = (id)wiredSelector;
+        args[1] = (id)sel_getName(wiredSelector);
         r = sendMsgNoPattern(args[0], wiredSelector, argumentCount, args, msgContext, nil);
         args[0] = receiver;
-        args[1] = (id)selector;
+        args[1] = (id)sel_getName(selector);
         return r;
       } 
     }
@@ -952,11 +952,11 @@ id sendMsgPattern(id receiver, SEL selector, NSUInteger argumentCount, id *args,
         
         args[0] = [receiver arrayRep];
         //((SEL)args[1]) = wiredSelector;
-        args[1] = (id)wiredSelector;
+        args[1] = (id)sel_getName(wiredSelector);
 
         r = sendMsgNoPattern(args[0], wiredSelector, argumentCount, args, msgContext, nil);
         args[0] = receiver;
-        args[1] = (id)selector;
+        args[1] = (id)sel_getName(selector);
         return r;
       } 
     }
@@ -1306,7 +1306,7 @@ id execute_rec(FSCNBase *codeNode, FSSymbolTable *localSymbolTable, NSInteger *e
     @try
     {      
       arguments[0] = execute_rec(node->receiver, localSymbolTable, errorFirstCharIndexPtr, errorLastCharIndexPtr);
-      arguments[1] = (id)(node->selector );
+      arguments[1] = (id)sel_getName(node->selector);
 
       if      (codeNode->nodeType == BINARY_MESSAGE) arguments[2] = execute_rec( ((FSCNBinaryMessage *)node)->argument, localSymbolTable, errorFirstCharIndexPtr, errorLastCharIndexPtr);
       else if (codeNode->nodeType == KEYWORD_MESSAGE)
@@ -1394,7 +1394,7 @@ id execute_rec(FSCNBase *codeNode, FSSymbolTable *localSymbolTable, NSInteger *e
       @try
       {
         arguments[0] = receiver;
-        arguments[1] = (id)(messageNode->selector);
+        arguments[1] = (id)sel_getName(messageNode->selector);
 
         if      (messageNode->nodeType == BINARY_MESSAGE) arguments[2] = execute_rec( ((FSCNBinaryMessage *)messageNode)->argument, localSymbolTable, errorFirstCharIndexPtr, errorLastCharIndexPtr);
         else if (messageNode->nodeType == KEYWORD_MESSAGE)
