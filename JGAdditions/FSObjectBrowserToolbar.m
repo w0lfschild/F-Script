@@ -176,13 +176,14 @@
       NSSegmentedControl *button = [[[NSSegmentedControl alloc] init] autorelease];
 	  
 	  [button setSegmentCount:1];
-	  [button setSegmentStyle:NSSegmentStyleTexturedSquare];
+//      [button setSegmentStyle:NSSegmentStyleTexturedSquare];
 	  //[button setSegmentStyle:NSSegmentStyleCapsule];
 	  [button setWidth:80 forSegment:0];
 	  [button setLabel:buttonTitle forSegment:0];
 	  [[button cell] setTrackingMode:NSSegmentSwitchTrackingMomentary]; 
 	  
-	  //NSButton *button = [[[NSButton alloc] initWithFrame:NSMakeRect(0,0,93,30)] autorelease];
+        [button setFrameSize:NSMakeSize(93, 20)];
+//      button = [[[NSButton alloc] initWithFrame:NSMakeRect(0,0,93,30)] autorelease];
       //NSButton *button = [[[NSButton alloc] initWithFrame:NSMakeRect(0,0,93,20)] autorelease];
       //[button setBezelStyle:NSRoundedBezelStyle];
       //[button setTitle:buttonTitle];
@@ -196,8 +197,8 @@
       [toolbarItem setTarget:self];
 
       [toolbarItem setView:button];
-
-      [toolbarItem setMinSize:[[button cell] cellSize].width < 85 ? NSMakeSize(85, 32) : NSMakeSize([button frame].size.width, 32)];
+        
+//      [toolbarItem setMinSize:[[button cell] cellSize].width < 85 ? NSMakeSize(85, 32) : NSMakeSize([button frame].size.width, 32)];
 
       //[toolbarItem setMinSize:[[button cell] cellSize].width < 93 ? NSMakeSize(93, [button frame].size.height) : [[button cell] cellSize]];
       //[toolbarItem setMaxSize:([button frame].size.width < 93 ? NSMakeSize(93, [button frame].size.height) : [[button cell] cellSize])];

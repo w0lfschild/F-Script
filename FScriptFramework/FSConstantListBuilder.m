@@ -37,7 +37,6 @@ b analyseDirectoryAtPath:'/System/Library/Frameworks/IOBluetoothUI.framework/Ver
 b analyseDirectoryAtPath:'/System/Library/Frameworks/OpenDirectory.framework/Versions/Current/Resources/BridgeSupport'. 
 b analyseDirectoryAtPath:'/System/Library/Frameworks/OSAKit.framework/Versions/Current/Resources/BridgeSupport'.
 b analyseDirectoryAtPath:'/System/Library/Frameworks/PreferencePanes.framework/Versions/Current/Resources/BridgeSupport'.
-b analyseDirectoryAtPath:'/System/Library/Frameworks/PubSub.framework/Versions/Current/Resources/BridgeSupport'.
 b analyseDirectoryAtPath:'/System/Library/Frameworks/QTKit.framework/Versions/Current/Resources/BridgeSupport'.
 b analyseDirectoryAtPath:'/System/Library/Frameworks/Quartz.framework/Versions/Current/Resources/BridgeSupport'.
 b analyseDirectoryAtPath:'/System/Library/Frameworks/Quartz.framework/Versions/Current/Frameworks/ImageKit.framework/Versions/Current/Resources/BridgeSupport'.

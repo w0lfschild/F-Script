@@ -53,21 +53,21 @@
   [super dealloc];
 }
 
-- (id) initWithFrame:(NSRect)frameRect
-{
-  self = [super initWithFrame:frameRect];
-  if (self)
-  {
-    [self setSegmentCount:1];
-	[self setSegmentStyle:NSSegmentStyleTexturedSquare];
-	//[self setSegmentStyle:NSSegmentStyleCapsule];
-	[self setWidth:80 forSegment:0];
-	[[self cell] setTrackingMode:NSSegmentSwitchTrackingMomentary]; 
-	
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:@"FSObjectBrowserToolBarButtonUpdated" object:nil];
-  }
-  return self;
-}
+//- (id) initWithFrame:(NSRect)frameRect
+//{
+//  self = [super initWithFrame:frameRect];
+//  if (self)
+//  {
+//    [self setSegmentCount:1];
+//  [self setSegmentStyle:NSSegmentStyleTexturedSquare];
+//  //[self setSegmentStyle:NSSegmentStyleCapsule];
+//  [self setWidth:80 forSegment:0];
+//  [[self cell] setTrackingMode:NSSegmentSwitchTrackingMomentary]; 
+//  
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:@"FSObjectBrowserToolBarButtonUpdated" object:nil];
+//  }
+//  return self;
+//}
 
 - (NSString *) identifier
 {

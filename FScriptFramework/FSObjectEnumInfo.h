@@ -12,8 +12,8 @@
 
 typedef NSUInteger NSGlyphStorageLayoutOptions;
 typedef CGFloat NSStatusItemLength;
-typedef NSUInteger NSToolbarItemVisibilityPriority;
-typedef CGWindowLevelKey NSWindowLevel;
+//typedef NSUInteger NSToolbarItemVisibilityPriority;
+//typedef CGWindowLevelKey NSWindowLevel;
 typedef NSUInteger NSWindowMask;
 typedef id NSMergePolicyMarker;
 @class NSMutableDictionary;

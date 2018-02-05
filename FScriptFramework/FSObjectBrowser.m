@@ -74,7 +74,7 @@ static NSMutableArray *sObjectBrowsers;
     // jg added to here
     NSSearchField *searchField = [self visibleSearchField];
     if (searchField) [self.window setInitialFirstResponder:searchField];
-    
+
     [self.window setAcceptsMouseMovedEvents:YES];
     [(FSObjectBrowserWindow*)self.window setVisibleSearchField:searchField];
     self.objectBrowserView.rootObject = self.rootObject;
