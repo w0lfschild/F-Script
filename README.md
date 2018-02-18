@@ -14,5 +14,5 @@ F-Script heavily depends on frameworks available in the system. There is a schem
 Each scheme consists of app and frameworks that a linked against all relevent frameworks available in the system. It is *highly* suggest that you to use app that is specifically build for you version of Mac OS X.
 
 ## Paid Support
-If functional you need is missing but you're ready to pay for it, feel free to contact me. If not, create an issue anyway, I'll take a look as soon as I can.
+If functionality you need is missing but you're ready to pay for it, feel free to contact me. If not, create an issue anyway, I'll take a look as soon as I can.
 
