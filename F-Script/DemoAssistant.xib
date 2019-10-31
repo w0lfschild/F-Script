@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <deployment version="1070" identifier="macosx"/>
+        <development version="10000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +23,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Demo Assistant" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="1">
+        <window title="Demo Assistant" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="473" y="420" width="260" height="292"/>
@@ -153,7 +154,7 @@
             </view>
             <point key="canvasLocation" x="292" y="348"/>
         </window>
-        <window title="Core Image" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="15">
+        <window title="Core Image" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="15">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
             <rect key="contentRect" x="307" y="21" width="881" height="848"/>
@@ -165,19 +166,21 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="21">
                         <rect key="frame" x="20" y="831" width="841" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="OJl-q1-cQY">
+                        <clipView key="contentView" drawsBackground="NO" id="OJl-q1-cQY">
                             <rect key="frame" x="1" y="1" width="839" height="24"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="24">
                                     <rect key="frame" x="0.0" y="2" width="839" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="24"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="image := CIImage imageWithContentsOfURL:(NSURL fileURLWithPath:'/Library/Desktop Pictures/Nature/Clown Fish.jpg').">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
                                                     <tabStops>
@@ -285,13 +288,12 @@
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="23">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="23">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="22">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="22">
                             <rect key="frame" x="824" y="1" width="16" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -308,19 +310,21 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="35">
                         <rect key="frame" x="20" y="772" width="841" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="iu1-ff-h1v">
+                        <clipView key="contentView" drawsBackground="NO" id="iu1-ff-h1v">
                             <rect key="frame" x="1" y="1" width="839" height="24"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="38">
                                     <rect key="frame" x="0.0" y="0.0" width="839" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="24"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="image drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:image extent operation:NSCompositeSourceOver fraction:1.">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -329,13 +333,12 @@
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="39">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="39">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="40">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="40">
                             <rect key="frame" x="824" y="1" width="16" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -352,19 +355,21 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="91">
                         <rect key="frame" x="20" y="713" width="841" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="Q7L-bA-Kmp">
+                        <clipView key="contentView" drawsBackground="NO" id="Q7L-bA-Kmp">
                             <rect key="frame" x="1" y="1" width="839" height="24"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="96">
                                     <rect key="frame" x="0.0" y="0.0" width="839" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="24"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="NSApplication sharedApplication mainWindow contentView lockFocus.">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -373,13 +378,12 @@
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="95">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="95">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="94">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="94">
                             <rect key="frame" x="824" y="1" width="16" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -396,14 +400,15 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="41">
                         <rect key="frame" x="20" y="473" width="841" height="184"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="38H-cs-aZd">
+                        <clipView key="contentView" drawsBackground="NO" id="38H-cs-aZd">
                             <rect key="frame" x="1" y="1" width="839" height="182"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="46">
                                     <rect key="frame" x="0.0" y="0.0" width="839" height="182"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="182"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -419,6 +424,7 @@ perspectiveFilter setValue:image                              forKey:'inputImage
 perspectiveImage := perspectiveFilter valueForKey:'outputImage'.
 perspectiveImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:image extent operation:NSCompositeSourceOver fraction:1.</mutableString>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -427,13 +433,12 @@ perspectiveImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:imag
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="45">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="45">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="44">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="44">
                             <rect key="frame" x="824" y="1" width="16" height="182"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -450,14 +455,15 @@ perspectiveImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:imag
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="47">
                         <rect key="frame" x="20" y="319" width="841" height="121"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="EQg-CQ-zSo">
+                        <clipView key="contentView" drawsBackground="NO" id="EQg-CQ-zSo">
                             <rect key="frame" x="1" y="1" width="839" height="119"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="50">
                                     <rect key="frame" x="0.0" y="0.0" width="839" height="119"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="119"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -470,6 +476,7 @@ hueFilter setValue:image forKey:'inputImage'.
 hueImage := hueFilter valueForKey:'outputImage'.
 hueImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:image extent operation:NSCompositeSourceOver fraction:1.</string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -478,13 +485,12 @@ hueImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:image extent
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="51">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="51">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="52">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="52">
                             <rect key="frame" x="824" y="1" width="16" height="119"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -501,14 +507,15 @@ hueImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:image extent
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="59">
                         <rect key="frame" x="20" y="177" width="841" height="109"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="1Ot-b0-Wq2">
+                        <clipView key="contentView" drawsBackground="NO" id="1Ot-b0-Wq2">
                             <rect key="frame" x="1" y="1" width="839" height="107"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="64">
-                                    <rect key="frame" x="0.0" y="0.0" width="839" height="192"/>
+                                    <rect key="frame" x="0.0" y="-0.017578125" width="839" height="192.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="107"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -525,6 +532,7 @@ bumpFilter setValue:image  forKey:'inputImage'.
 bumpImage := bumpFilter valueForKey:'outputImage'.
 bumpImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:bumpImage extent operation:NSCompositeSourceOver fraction:1.</string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -533,13 +541,12 @@ bumpImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:bumpImage e
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="63">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="63">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="62">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="62">
                             <rect key="frame" x="824" y="1" width="16" height="107"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -556,14 +563,15 @@ bumpImage drawInRect:(150&lt;&gt;200 extent:600&lt;&gt;400) fromRect:bumpImage e
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="69">
                         <rect key="frame" x="20" y="20" width="841" height="124"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="WRW-Yp-cl2">
+                        <clipView key="contentView" drawsBackground="NO" id="WRW-Yp-cl2">
                             <rect key="frame" x="1" y="1" width="839" height="122"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="72">
                                     <rect key="frame" x="0.0" y="0.0" width="839" height="224"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="839" height="122"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -585,6 +593,7 @@ rect := (150&lt;&gt;200 extent:600&lt;&gt;400).
 ]
 </mutableString>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Helvetica"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -593,13 +602,12 @@ rect := (150&lt;&gt;200 extent:600&lt;&gt;400).
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="73">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="73">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="74">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="74">
                             <rect key="frame" x="824" y="1" width="16" height="122"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -616,7 +624,7 @@ rect := (150&lt;&gt;200 extent:600&lt;&gt;400).
                 </subviews>
             </view>
         </window>
-        <window title="Horloge" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="101">
+        <window title="Horloge" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="101">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="283" width="518" height="227"/>
@@ -628,14 +636,15 @@ rect := (150&lt;&gt;200 extent:600&lt;&gt;400).
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="103">
                         <rect key="frame" x="20" y="20" width="478" height="187"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="rFX-PP-XaD">
+                        <clipView key="contentView" drawsBackground="NO" id="rFX-PP-XaD">
                             <rect key="frame" x="1" y="1" width="476" height="185"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="104">
                                     <rect key="frame" x="0.0" y="0.0" width="476" height="252"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="476" height="185"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -658,6 +667,7 @@ rect := (150&lt;&gt;200 extent:600&lt;&gt;400).
 NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Contents/Resources/English.lproj/MainMenu.nib' externalNameTable:nil withZone:nil
 </string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Helvetica"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -666,13 +676,12 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="105">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="105">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="106">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106">
                             <rect key="frame" x="461" y="1" width="16" height="185"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -680,7 +689,7 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
                 </subviews>
             </view>
         </window>
-        <window title="SystemWideScripting" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="113">
+        <window title="SystemWideScripting" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="113">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="337" y="217" width="790" height="565"/>
@@ -692,19 +701,21 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="120">
                         <rect key="frame" x="20" y="489" width="750" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="Wy9-v7-JPA">
+                        <clipView key="contentView" drawsBackground="NO" id="Wy9-v7-JPA">
                             <rect key="frame" x="1" y="1" width="748" height="24"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="123">
                                     <rect key="frame" x="0.0" y="0.0" width="748" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="748" height="24"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="iTunes := SBApplication applicationWithBundleIdentifier:'com.apple.iTunes'">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -713,13 +724,12 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="124">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="124">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="125">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="125">
                             <rect key="frame" x="733" y="1" width="16" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -745,14 +755,15 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="135">
                         <rect key="frame" x="20" y="138" width="750" height="313"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="TeL-wW-xBm">
+                        <clipView key="contentView" drawsBackground="NO" id="TeL-wW-xBm">
                             <rect key="frame" x="1" y="1" width="748" height="311"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="140">
-                                    <rect key="frame" x="0.0" y="0.0" width="748" height="448"/>
+                                    <rect key="frame" x="0.0" y="1.953125" width="748" height="446.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="748" height="311"/>
                                     <size key="maxSize" width="1665" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -786,6 +797,7 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
 ]
 </mutableString>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Monaco"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
@@ -794,13 +806,12 @@ NSBundle loadNibFile:'/Users/pmougin/Desktop/Sample/build/Debug/Sample.app/Conte
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="139">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="139">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="138">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="138">
                             <rect key="frame" x="733" y="1" width="16" height="311"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
