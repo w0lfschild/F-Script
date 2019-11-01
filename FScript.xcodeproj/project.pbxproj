@@ -71,6 +71,12 @@
 		0B7389421B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
 		0B7389431B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
 		0B7389441B397D62005BD678 /* FSManagedObjectContextInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B73893C1B397D62005BD678 /* FSManagedObjectContextInspector.xib */; };
+		46209939236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46209938236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist */; };
+		4620993A236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46209938236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist */; };
+		4620993B236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46209938236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist */; };
+		4620993D236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4620993C236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist */; };
+		4620993E236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4620993C236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist */; };
+		4620993F236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4620993C236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist */; };
 		8F0B66FD05C5639E0099180D /* FScriptMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F0B66FB05C5639E0099180D /* FScriptMenuItem.h */; };
 		8F0B66FE05C5639E0099180D /* FScriptMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B66FC05C5639E0099180D /* FScriptMenuItem.m */; };
 		8F0B66FF05C5639E0099180D /* FScriptMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F0B66FB05C5639E0099180D /* FScriptMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -708,7 +714,6 @@
 		BA223121189F9A9A002C5B6A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FD189F9A99002C5B6A /* OSAKit.framework */; };
 		BA223122189F9A9A002C5B6A /* PCSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FE189F9A99002C5B6A /* PCSC.framework */; };
 		BA223123189F9A9A002C5B6A /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FF189F9A99002C5B6A /* PreferencePanes.framework */; };
-		BA223124189F9A9A002C5B6A /* PubSub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223100189F9A99002C5B6A /* PubSub.framework */; };
 		BA223125189F9A9A002C5B6A /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223101189F9A99002C5B6A /* QTKit.framework */; };
 		BA223126189F9A9A002C5B6A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223102189F9A99002C5B6A /* Quartz.framework */; };
 		BA223127189F9A9A002C5B6A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223103189F9A99002C5B6A /* QuartzCore.framework */; };
@@ -1107,7 +1112,6 @@
 		BA2232FA189FA403002C5B6A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A1189F9A14002C5B6A /* AppKit.framework */; };
 		BA2232FB189FA403002C5B6A /* AppleScriptKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A3189F9A14002C5B6A /* AppleScriptKit.framework */; };
 		BA2232FC189FA403002C5B6A /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A4189F9A14002C5B6A /* AppleScriptObjC.framework */; };
-		BA2232FD189FA403002C5B6A /* AppleShareClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A5189F9A14002C5B6A /* AppleShareClientCore.framework */; };
 		BA2232FE189FA403002C5B6A /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A6189F9A14002C5B6A /* ApplicationServices.framework */; };
 		BA2232FF189FA403002C5B6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223097189F9958002C5B6A /* AudioToolbox.framework */; };
 		BA223300189FA403002C5B6A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230A7189F9A14002C5B6A /* AudioUnit.framework */; };
@@ -1171,12 +1175,10 @@
 		BA223340189FA403002C5B6A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FD189F9A99002C5B6A /* OSAKit.framework */; };
 		BA223341189FA403002C5B6A /* PCSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FE189F9A99002C5B6A /* PCSC.framework */; };
 		BA223342189FA403002C5B6A /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FF189F9A99002C5B6A /* PreferencePanes.framework */; };
-		BA223343189FA403002C5B6A /* PubSub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223100189F9A99002C5B6A /* PubSub.framework */; };
 		BA223344189FA403002C5B6A /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223101189F9A99002C5B6A /* QTKit.framework */; };
 		BA223345189FA403002C5B6A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223102189F9A99002C5B6A /* Quartz.framework */; };
 		BA223346189FA403002C5B6A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223103189F9A99002C5B6A /* QuartzCore.framework */; };
 		BA223347189FA403002C5B6A /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223104189F9A99002C5B6A /* QuickLook.framework */; };
-		BA223349189FA403002C5B6A /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223107189F9A9A002C5B6A /* RubyCocoa.framework */; };
 		BA22334A189FA403002C5B6A /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223108189F9A9A002C5B6A /* ScreenSaver.framework */; };
 		BA22334B189FA403002C5B6A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22310A189F9A9A002C5B6A /* ScriptingBridge.framework */; };
 		BA22334C189FA403002C5B6A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA22310B189F9A9A002C5B6A /* Security.framework */; };
@@ -1584,7 +1586,6 @@
 		BA223500189FA412002C5B6A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FD189F9A99002C5B6A /* OSAKit.framework */; };
 		BA223501189FA412002C5B6A /* PCSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FE189F9A99002C5B6A /* PCSC.framework */; };
 		BA223502189FA412002C5B6A /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2230FF189F9A99002C5B6A /* PreferencePanes.framework */; };
-		BA223503189FA412002C5B6A /* PubSub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223100189F9A99002C5B6A /* PubSub.framework */; };
 		BA223504189FA412002C5B6A /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223101189F9A99002C5B6A /* QTKit.framework */; };
 		BA223505189FA412002C5B6A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223102189F9A99002C5B6A /* Quartz.framework */; };
 		BA223506189FA412002C5B6A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA223103189F9A99002C5B6A /* QuartzCore.framework */; };
@@ -3341,6 +3342,8 @@
 		0CD4E3A000D7DFE17BE9C1BD /* TestFS.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TestFS.m; sourceTree = "<group>"; };
 		0CD4E46500D7E1C37BE9C1BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0CD4E46900D7E1F17BE9C1BD /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = /System/Library/Frameworks/JavaVM.framework; sourceTree = "<absolute>"; };
+		46209938236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-F_Script__Upgraded_.plist"; sourceTree = "<group>"; };
+		4620993C236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-FScriptFramework__Upgraded_.plist"; sourceTree = "<group>"; };
 		66029E580161E0650055708C /* KTestManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = KTestManager.h; sourceTree = "<group>"; };
 		66029E590161E0650055708C /* KTestManager.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = KTestManager.m; sourceTree = "<group>"; };
 		8F0B66FB05C5639E0099180D /* FScriptMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FScriptMenuItem.h; sourceTree = "<group>"; };
@@ -3407,7 +3410,7 @@
 		8F658B2805C9694F0040FB24 /* FSNSFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSFont.m; sourceTree = "<group>"; };
 		8F66F85404666E8100AFC811 /* FSNSMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNSMutableArray.h; sourceTree = "<group>"; };
 		8F66F85504666E8100AFC811 /* FSNSMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNSMutableArray.m; sourceTree = "<group>"; };
-		8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-FSTest1_2.plist"; sourceTree = "<group>"; };
+		8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-FSTest1_2.plist"; sourceTree = "<group>"; };
 		8F71F72205C43A7D00C34794 /* FSInterpreterViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSInterpreterViewPrivate.h; sourceTree = "<group>"; };
 		8F72237D0D870C6A00394C99 /* FSCNSuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCNSuper.h; sourceTree = "<group>"; };
 		8F72237E0D870C6A00394C99 /* FSCNSuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCNSuper.m; sourceTree = "<group>"; };
@@ -3484,7 +3487,6 @@
 		8FC290F90C4A81630071E9CC /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
 		8FC291040C4A81A60071E9CC /* PubSub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PubSub.framework; path = /System/Library/Frameworks/PubSub.framework; sourceTree = "<absolute>"; };
 		8FC291160C4A82070071E9CC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
-		8FC2911F0C4A82730071E9CC /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
 		8FC291710C4A82D10071E9CC /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = /System/Library/Frameworks/SecurityFoundation.framework; sourceTree = "<absolute>"; };
 		8FC2917F0C4A82F90071E9CC /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = /System/Library/Frameworks/SecurityInterface.framework; sourceTree = "<absolute>"; };
 		8FC291920C4A83380071E9CC /* SyncServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SyncServices.framework; path = /System/Library/Frameworks/SyncServices.framework; sourceTree = "<absolute>"; };
@@ -3532,7 +3534,6 @@
 		BA2230A2189F9A14002C5B6A /* AppKitScripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKitScripting.framework; path = System/Library/Frameworks/AppKitScripting.framework; sourceTree = SDKROOT; };
 		BA2230A3189F9A14002C5B6A /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
 		BA2230A4189F9A14002C5B6A /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
-		BA2230A5189F9A14002C5B6A /* AppleShareClientCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleShareClientCore.framework; path = System/Library/Frameworks/AppleShareClientCore.framework; sourceTree = SDKROOT; };
 		BA2230A6189F9A14002C5B6A /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		BA2230A7189F9A14002C5B6A /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		BA2230A8189F9A14002C5B6A /* Automator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Automator.framework; path = System/Library/Frameworks/Automator.framework; sourceTree = SDKROOT; };
@@ -3571,14 +3572,12 @@
 		BA2230FD189F9A99002C5B6A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = System/Library/Frameworks/OSAKit.framework; sourceTree = SDKROOT; };
 		BA2230FE189F9A99002C5B6A /* PCSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PCSC.framework; path = System/Library/Frameworks/PCSC.framework; sourceTree = SDKROOT; };
 		BA2230FF189F9A99002C5B6A /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
-		BA223100189F9A99002C5B6A /* PubSub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PubSub.framework; path = System/Library/Frameworks/PubSub.framework; sourceTree = SDKROOT; };
 		BA223101189F9A99002C5B6A /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		BA223102189F9A99002C5B6A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BA223103189F9A99002C5B6A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BA223104189F9A99002C5B6A /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		BA223105189F9A99002C5B6A /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		BA223106189F9A9A002C5B6A /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = System/Library/Frameworks/Ruby.framework; sourceTree = SDKROOT; };
-		BA223107189F9A9A002C5B6A /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = System/Library/Frameworks/RubyCocoa.framework; sourceTree = SDKROOT; };
 		BA223108189F9A9A002C5B6A /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
 		BA223109189F9A9A002C5B6A /* Scripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scripting.framework; path = System/Library/Frameworks/Scripting.framework; sourceTree = SDKROOT; };
 		BA22310A189F9A9A002C5B6A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -3814,7 +3813,6 @@
 				BA223121189F9A9A002C5B6A /* OSAKit.framework in Frameworks */,
 				BA223122189F9A9A002C5B6A /* PCSC.framework in Frameworks */,
 				BA223123189F9A9A002C5B6A /* PreferencePanes.framework in Frameworks */,
-				BA223124189F9A9A002C5B6A /* PubSub.framework in Frameworks */,
 				BA223125189F9A9A002C5B6A /* QTKit.framework in Frameworks */,
 				BA223126189F9A9A002C5B6A /* Quartz.framework in Frameworks */,
 				BA223127189F9A9A002C5B6A /* QuartzCore.framework in Frameworks */,
@@ -3856,7 +3854,6 @@
 				BA2232FA189FA403002C5B6A /* AppKit.framework in Frameworks */,
 				BA2232FB189FA403002C5B6A /* AppleScriptKit.framework in Frameworks */,
 				BA2232FC189FA403002C5B6A /* AppleScriptObjC.framework in Frameworks */,
-				BA2232FD189FA403002C5B6A /* AppleShareClientCore.framework in Frameworks */,
 				BA2232FE189FA403002C5B6A /* ApplicationServices.framework in Frameworks */,
 				BA2232FF189FA403002C5B6A /* AudioToolbox.framework in Frameworks */,
 				BA223300189FA403002C5B6A /* AudioUnit.framework in Frameworks */,
@@ -3920,12 +3917,10 @@
 				BA223340189FA403002C5B6A /* OSAKit.framework in Frameworks */,
 				BA223341189FA403002C5B6A /* PCSC.framework in Frameworks */,
 				BA223342189FA403002C5B6A /* PreferencePanes.framework in Frameworks */,
-				BA223343189FA403002C5B6A /* PubSub.framework in Frameworks */,
 				BA223344189FA403002C5B6A /* QTKit.framework in Frameworks */,
 				BA223345189FA403002C5B6A /* Quartz.framework in Frameworks */,
 				BA223346189FA403002C5B6A /* QuartzCore.framework in Frameworks */,
 				BA223347189FA403002C5B6A /* QuickLook.framework in Frameworks */,
-				BA223349189FA403002C5B6A /* RubyCocoa.framework in Frameworks */,
 				BA22334A189FA403002C5B6A /* ScreenSaver.framework in Frameworks */,
 				BA22334B189FA403002C5B6A /* ScriptingBridge.framework in Frameworks */,
 				BA22334C189FA403002C5B6A /* Security.framework in Frameworks */,
@@ -4026,7 +4021,6 @@
 				BA223500189FA412002C5B6A /* OSAKit.framework in Frameworks */,
 				BA223501189FA412002C5B6A /* PCSC.framework in Frameworks */,
 				BA223502189FA412002C5B6A /* PreferencePanes.framework in Frameworks */,
-				BA223503189FA412002C5B6A /* PubSub.framework in Frameworks */,
 				BA223504189FA412002C5B6A /* QTKit.framework in Frameworks */,
 				BA223505189FA412002C5B6A /* Quartz.framework in Frameworks */,
 				BA223506189FA412002C5B6A /* QuartzCore.framework in Frameworks */,
@@ -4193,10 +4187,12 @@
 				F5F1A9F4022E9A96011160FE /* F-Script */,
 				0CD4E30D00D7DFE17BE9C1BD /* FScriptFramework */,
 				F5F1AAAD022E9E4F011160FE /* FSTest1 */,
-				8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */,
 				F5F00F100279FB69016D9B48 /* JGAdditions */,
 				0CD4E2FC00D7DDB47BE9C1BD /* Products */,
 				ED48525318B603C300877668 /* Frameworks */,
+				46209938236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist */,
+				4620993C236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist */,
+				8F6DA6E7055FC6C80050409A /* Info-FSTest1_2.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4558,7 +4554,6 @@
 				BA2230A2189F9A14002C5B6A /* AppKitScripting.framework */,
 				BA2230A3189F9A14002C5B6A /* AppleScriptKit.framework */,
 				BA2230A4189F9A14002C5B6A /* AppleScriptObjC.framework */,
-				BA2230A5189F9A14002C5B6A /* AppleShareClientCore.framework */,
 				BA2230A6189F9A14002C5B6A /* ApplicationServices.framework */,
 				BA223097189F9958002C5B6A /* AudioToolbox.framework */,
 				BA2230A7189F9A14002C5B6A /* AudioUnit.framework */,
@@ -4654,7 +4649,6 @@
 				BA2230FE189F9A99002C5B6A /* PCSC.framework */,
 				BA2230FF189F9A99002C5B6A /* PreferencePanes.framework */,
 				8FC290F90C4A81630071E9CC /* PreferencePanes.framework */,
-				BA223100189F9A99002C5B6A /* PubSub.framework */,
 				8FC291040C4A81A60071E9CC /* PubSub.framework */,
 				BA223101189F9A99002C5B6A /* QTKit.framework */,
 				8FDF6FCF082BD9560044FD86 /* QTKit.framework */,
@@ -4665,8 +4659,6 @@
 				BA223104189F9A99002C5B6A /* QuickLook.framework */,
 				BA223105189F9A99002C5B6A /* QuickTime.framework */,
 				BA223106189F9A9A002C5B6A /* Ruby.framework */,
-				BA223107189F9A9A002C5B6A /* RubyCocoa.framework */,
-				8FC2911F0C4A82730071E9CC /* RubyCocoa.framework */,
 				E2DBA327161CA65A0035A675 /* SceneKit.framework */,
 				BA223108189F9A9A002C5B6A /* ScreenSaver.framework */,
 				8FA095F80CE38F27001AC147 /* ScreenSaver.framework */,
@@ -6456,6 +6448,7 @@
 				ED3004F41A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
 				EDE508DB19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				8F2D067105CED9B9007EA81B /* run.tiff in Resources */,
+				46209939236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist in Resources */,
 				EDA22BEA1A24C28D0093DB91 /* window.png in Resources */,
 				0B7389071B397CD5005BD678 /* blockInspector.xib in Resources */,
 				8F56036805CF22660044FA65 /* build.tiff in Resources */,
@@ -6501,6 +6494,7 @@
 				EDA6AC6A1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				8F6631D50C4A270200FA798A /* FSMovieInspector.nib in Resources */,
 				8FE3DC9D0D26C0FD00A1D767 /* FSTestClasses.txt in Resources */,
+				4620993D236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6528,6 +6522,7 @@
 				ED3004F61A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
 				EDE508DD19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22325E189FA403002C5B6A /* run.tiff in Resources */,
+				4620993A236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist in Resources */,
 				EDA22BEC1A24C28D0093DB91 /* window.png in Resources */,
 				0B7389091B397CD5005BD678 /* blockInspector.xib in Resources */,
 				BA22325F189FA403002C5B6A /* build.tiff in Resources */,
@@ -6566,6 +6561,7 @@
 				ED3004F81A1A86EF00675D94 /* FSObjectInspectorViewController.xib in Resources */,
 				EDE508DF19DD4FDC0012F16A /* FScriptPreferences.xib in Resources */,
 				BA22341E189FA412002C5B6A /* run.tiff in Resources */,
+				4620993B236BAB3E00D4B5BF /* Info-F_Script__Upgraded_.plist in Resources */,
 				EDA22BEE1A24C28D0093DB91 /* window.png in Resources */,
 				0B73890B1B397CD5005BD678 /* blockInspector.xib in Resources */,
 				BA22341F189FA412002C5B6A /* build.tiff in Resources */,
@@ -6611,6 +6607,7 @@
 				EDA6AC6C1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA2235D6189FA429002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA2235D7189FA429002C5B6A /* FSTestClasses.txt in Resources */,
+				4620993E236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6645,6 +6642,7 @@
 				EDA6AC6E1A1F52E6001CD1F2 /* FSObjectInspectorOptionsViewController.xib in Resources */,
 				BA22371E189FA431002C5B6A /* FSMovieInspector.nib in Resources */,
 				BA22371F189FA431002C5B6A /* FSTestClasses.txt in Resources */,
+				4620993F236BAC5500D4B5BF /* Info-FScriptFramework__Upgraded_.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
